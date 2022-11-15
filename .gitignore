@@ -1,0 +1,12 @@
+wp-admin/
+wp-includes/
+wp-content/languages/
+wp-content/plugins/
+wp-content/themes/twentytwentyone
+wp-content/themes/twentytwentytwo
+wp-content/themes/twentytwentythree
+.git/
+.vs/
+
+# others #
+##########
