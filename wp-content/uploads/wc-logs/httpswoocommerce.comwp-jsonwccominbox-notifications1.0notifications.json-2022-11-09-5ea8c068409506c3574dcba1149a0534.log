@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 2022-11-09T17:26:21+00:00 ERROR Error getting data feed
 2022-11-09T17:26:21+00:00 ERROR WP_Error Object
@@ -5,16 +6,33 @@
 2022-11-09T17:15:10+00:00 ERROR Error getting data feed
 2022-11-09T17:15:10+00:00 ERROR WP_Error Object
 >>>>>>> e10e9da8bbad68bfdf4d0fc4a71a197701b6ce7b
+=======
+<<<<<<< Updated upstream
+2022-11-09T17:15:10+00:00 ERROR Error getting data feed
+2022-11-09T17:15:10+00:00 ERROR WP_Error Object
+=======
+2022-11-09T17:33:08+00:00 ERROR Error getting data feed
+2022-11-09T17:33:08+00:00 ERROR WP_Error Object
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 (
     [errors] => Array
         (
             [http_request_failed] => Array
                 (
+<<<<<<< Updated upstream
 <<<<<<< HEAD
                     [0] => cURL error 28: Operation timed out after 5005 milliseconds with 0 out of 0 bytes received
 =======
                     [0] => cURL error 6: Could not resolve host: woocommerce.com
 >>>>>>> e10e9da8bbad68bfdf4d0fc4a71a197701b6ce7b
+=======
+<<<<<<< Updated upstream
+                    [0] => cURL error 6: Could not resolve host: woocommerce.com
+=======
+                    [0] => cURL error 28: Operation timed out after 5009 milliseconds with 0 out of 0 bytes received
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 )
 
         )
@@ -29,6 +47,7 @@
 
 )
 
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 2022-11-09T17:26:26+00:00 ERROR Error getting data feed
 2022-11-09T17:26:26+00:00 ERROR WP_Error Object
@@ -36,16 +55,55 @@
 2022-11-09T17:15:10+00:00 ERROR Error getting data feed
 2022-11-09T17:15:10+00:00 ERROR WP_Error Object
 >>>>>>> e10e9da8bbad68bfdf4d0fc4a71a197701b6ce7b
+=======
+<<<<<<< Updated upstream
+2022-11-09T17:15:10+00:00 ERROR Error getting data feed
+2022-11-09T17:15:10+00:00 ERROR WP_Error Object
+=======
+2022-11-09T17:33:13+00:00 ERROR Error getting data feed
+2022-11-09T17:33:13+00:00 ERROR WP_Error Object
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 (
     [errors] => Array
         (
             [http_request_failed] => Array
                 (
+<<<<<<< Updated upstream
 <<<<<<< HEAD
                     [0] => cURL error 28: Operation timed out after 5013 milliseconds with 0 bytes received
 =======
                     [0] => cURL error 6: Could not resolve host: woocommerce.com
 >>>>>>> e10e9da8bbad68bfdf4d0fc4a71a197701b6ce7b
+=======
+<<<<<<< Updated upstream
+                    [0] => cURL error 6: Could not resolve host: woocommerce.com
+=======
+                    [0] => cURL error 28: Operation timed out after 5001 milliseconds with 0 bytes received
+                )
+
+        )
+
+    [error_data] => Array
+        (
+        )
+
+    [additional_data:protected] => Array
+        (
+        )
+
+)
+
+2022-11-09T22:20:55+00:00 ERROR Error getting data feed
+2022-11-09T22:20:55+00:00 ERROR WP_Error Object
+(
+    [errors] => Array
+        (
+            [http_request_failed] => Array
+                (
+                    [0] => cURL error 28: Operation timed out after 5011 milliseconds with 0 bytes received
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 )
 
         )
