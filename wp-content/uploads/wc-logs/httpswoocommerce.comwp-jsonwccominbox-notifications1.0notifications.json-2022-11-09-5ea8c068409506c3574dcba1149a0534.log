@@ -1,11 +1,20 @@
+<<<<<<< HEAD
 2022-11-09T17:26:21+00:00 ERROR Error getting data feed
 2022-11-09T17:26:21+00:00 ERROR WP_Error Object
+=======
+2022-11-09T17:15:10+00:00 ERROR Error getting data feed
+2022-11-09T17:15:10+00:00 ERROR WP_Error Object
+>>>>>>> e10e9da8bbad68bfdf4d0fc4a71a197701b6ce7b
 (
     [errors] => Array
         (
             [http_request_failed] => Array
                 (
+<<<<<<< HEAD
                     [0] => cURL error 28: Operation timed out after 5005 milliseconds with 0 out of 0 bytes received
+=======
+                    [0] => cURL error 6: Could not resolve host: woocommerce.com
+>>>>>>> e10e9da8bbad68bfdf4d0fc4a71a197701b6ce7b
                 )
 
         )
@@ -20,14 +29,23 @@
 
 )
 
+<<<<<<< HEAD
 2022-11-09T17:26:26+00:00 ERROR Error getting data feed
 2022-11-09T17:26:26+00:00 ERROR WP_Error Object
+=======
+2022-11-09T17:15:10+00:00 ERROR Error getting data feed
+2022-11-09T17:15:10+00:00 ERROR WP_Error Object
+>>>>>>> e10e9da8bbad68bfdf4d0fc4a71a197701b6ce7b
 (
     [errors] => Array
         (
             [http_request_failed] => Array
                 (
+<<<<<<< HEAD
                     [0] => cURL error 28: Operation timed out after 5013 milliseconds with 0 bytes received
+=======
+                    [0] => cURL error 6: Could not resolve host: woocommerce.com
+>>>>>>> e10e9da8bbad68bfdf4d0fc4a71a197701b6ce7b
                 )
 
         )
