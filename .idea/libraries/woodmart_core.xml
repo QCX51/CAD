@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="woodmart-core">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/wp-content/themes/woodmart/inc/plugins/woodmart-core.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
