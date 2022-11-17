@@ -7,6 +7,9 @@ wp-content/themes/twentytwentytwo
 wp-content/themes/twentytwentythree
 .git/
 .vs/
+# Database config
+wp-config.php
 
 # others #
 ##########
+.gitignore
