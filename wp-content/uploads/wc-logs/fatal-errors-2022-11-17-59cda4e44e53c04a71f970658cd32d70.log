@@ -1,0 +1,13 @@
+2022-11-17T03:49:12+00:00 CRITICAL Uncaught Error: Failed opening required 'C:\laragon\www\CAD\wp-includes/block-patterns/query-standard-posts.php' (include_path='.;C:/laragon/etc/php/pear') in C:\laragon\www\CAD\wp-includes\block-patterns.php:34
+Stack trace:
+#0 C:\laragon\www\CAD\wp-includes\class-wp-hook.php(308): _register_core_block_patterns_and_categories('')
+#1 C:\laragon\www\CAD\wp-includes\class-wp-hook.php(332): WP_Hook->apply_filters(NULL, Array)
+#2 C:\laragon\www\CAD\wp-includes\plugin.php(517): WP_Hook->do_action(Array)
+#3 C:\laragon\www\CAD\wp-settings.php(617): do_action('init')
+#4 C:\laragon\www\CAD\wp-config.php(103): require_once('C:\\laragon\\www\\...')
+#5 C:\laragon\www\CAD\wp-load.php(50): require_once('C:\\laragon\\www\\...')
+#6 C:\laragon\www\CAD\wp-blog-header.php(13): require_once('C:\\laragon\\www\\...')
+#7 C:\laragon\www\CAD\index.php(17): require('C:\\laragon\\www\\...')
+#8 {main}
+  thrown en C:\laragon\www\CAD\wp-includes\block-patterns.php en la línea 34
+

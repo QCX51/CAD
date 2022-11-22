@@ -1985,7 +1985,7 @@ if ( ! function_exists( 'woodmart_login_form' ) ) {
 					<?php if ( $redirect ) : ?>
 						<input type="hidden" name="redirect" value="<?php echo esc_url( $redirect ); ?>" />
 					<?php endif ?>
-					<button type="submit" class="button woocommerce-button woocommerce-form-login__submit" name="login" value="<?php esc_attr_e( 'Log in', 'woodmart' ); ?>"><?php esc_html_e( 'Log in', 'woodmart' ); ?></button>
+					<button type="submit" class="button woocommerce-button woocommerce-form-login__submit<?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name') && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="login" value="<?php esc_attr_e( 'Log in', 'woodmart' ); ?>"><?php esc_html_e( 'Log in', 'woodmart' ); ?></button>
 				</p>
 
 				<div class="login-form-footer">

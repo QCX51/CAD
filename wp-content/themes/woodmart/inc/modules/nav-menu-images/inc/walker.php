@@ -112,13 +112,13 @@ class NMI_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 					</select>
 				</label>
 			</p>
-			<p class="description description-thin nmi-width" style="display:none;">
+			<p class="description description-thin nmi-width">
 				<label for="edit-menu-item-width-<?php echo esc_attr( $item_id ); ?>">
 					<?php esc_html_e( 'Dropdown width', 'woodmart' ); ?><br>
 					<input type="number" id="edit-menu-item-width-<?php echo esc_attr( $item_id ); ?>" class="widefat" name="menu-item-width[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $width ); ?>">
 				</label>
 			</p>
-			<p class="description description-thin nmi-height" style="display:none;">
+			<p class="description description-thin nmi-height">
 				<label for="edit-menu-item-height-<?php echo esc_attr( $item_id ); ?>">
 					<?php esc_html_e( 'Dropdown height', 'woodmart' ); ?><br>
 					<input type="number" id="edit-menu-item-height-<?php echo esc_attr( $item_id ); ?>" class="widefat" name="menu-item-height[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $height ); ?>">

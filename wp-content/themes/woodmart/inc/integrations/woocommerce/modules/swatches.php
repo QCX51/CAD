@@ -220,7 +220,10 @@ if ( ! function_exists( 'woodmart_get_option_variations' ) ) {
 
 			$val = $variation['attributes'][ $attr_key ]; // red green black ..
 
-			if ( ! empty( $variation['image']['src'] ) && ! empty( $variation['image_id'] ) && $product_image_id !== $variation['image_id'] ) {
+			$variation_product = wc_get_product( $variation['variation_id'] );
+			$variation_image   = $variation_product->get_image_id( 'edit' );
+
+			if ( ! empty( $variation['image']['src'] ) && $variation_image ) {
 				$option_variation = array(
 					'variation_id' => $variation['variation_id'],
 					'is_in_stock'  => $variation['is_in_stock'],

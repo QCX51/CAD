@@ -6046,7 +6046,7 @@ ShaderX.prototype = {
 						}
 
 						if ('undefined' !== typeof response.fragments) {
-							if ('undefined' !== typeof $.fn.magnificPopup && woodmart_settings.add_to_cart_action === 'widget') {
+							if (woodmart_settings.add_to_cart_action === 'widget') {
 								$.magnificPopup.close();
 							}
 
