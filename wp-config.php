@@ -23,13 +23,13 @@
 define( 'DB_NAME', 'db_a8fe73_caddb' );
 
 /** Database username */
-define( 'DB_USER', 'a8fe73_caddb' );
+define( 'DB_USER', 'root' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'C@dart2022' );
+define( 'DB_PASSWORD', 'root' );
 
 /** Database hostname */
-define( 'DB_HOST', 'mysql8001.site4now.net' );
+define( 'DB_HOST', 'localhost' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8' );

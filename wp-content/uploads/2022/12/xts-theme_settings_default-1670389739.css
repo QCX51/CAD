@@ -1,6 +1,6 @@
 .wd-popup.wd-promo-popup{
 	background-color:#111111;
-	background-image: url(http://cad.test/wp-content/uploads/2021/08/promo-popup.jpg);
+	background-image: url(https://cad.test/wp-content/uploads/2021/08/promo-popup.jpg);
 	background-repeat:no-repeat;
 	background-size:cover;
 	background-position:center center;
@@ -191,9 +191,6 @@
 			max-width: 920px;
 		}
 	
-			div.wd-popup.wd-promo-popup {
-			max-width: 800px;
-		}
 	
 	
 	
@@ -222,9 +219,17 @@
 .wd-nav[class*=wd-style-underline] .nav-link-text {
     color: white!important;
 }
+.whb-general-header-inner a {
+	color: #fff!important;
+}
+.woocommerce-MyAccount-navigation-link a {
+color: #000!important;
+}
+/*
 .wd-tools-element>a {
     color: #fff!important;
 }
+*/
 
 .wd-tools-element:hover>a {
     color: rgb(246 243 243 / 60%)!important;

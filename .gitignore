@@ -13,3 +13,4 @@ wp-config.php
 # others #
 ##########
 .gitignore
+*.log

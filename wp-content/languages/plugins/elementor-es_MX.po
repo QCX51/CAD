@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the Plugins - Elementor Website Builder - Stable (latest release) package.
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-09-15 14:23:41+0000\n"
+"PO-Revision-Date: 2022-11-14 14:12:04+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -567,13 +567,13 @@ msgstr "URL no válida"
 
 #: includes/managers/elements.php:309
 #: app/modules/kit-library/assets/js/pages/index/index.js:73
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:3952
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:3984
 msgid "Favorites"
 msgstr "Favoritos"
 
 #: includes/template-library/sources/admin-menu-items/templates-categories-menu-item.php:23
 #: app/modules/kit-library/assets/js/models/taxonomy.js:6
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:3493
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:3525
 msgid "Categories"
 msgstr "Categorías"
 
@@ -689,10 +689,10 @@ msgstr "El kit no existe."
 #: app/modules/kit-library/assets/js/pages/index/index.js:140
 #: app/modules/kit-library/assets/js/pages/overview/overview.js:51
 #: app/modules/kit-library/assets/js/pages/preview/preview.js:134
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:1619
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4012
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4607
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4963
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:1610
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4044
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4639
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4995
 msgid "Kit Library"
 msgstr "Biblioteca de kits"
 
@@ -960,7 +960,7 @@ msgstr "Diseña sitios más rápidamente con un conjunto de plantillas que conti
 #: app/modules/import-export/assets/js/pages/import/import-complete/components/failed-plugins-notice/failed-plugins-notice.js:9
 #: app/modules/kit-library/assets/js/pages/index/index-header.js:98
 #: assets/js/app.js:9216
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:3745
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:3777
 msgid "Learn more"
 msgstr "Más información"
 
@@ -2301,7 +2301,7 @@ msgstr "Personalizado"
 
 #: modules/promotions/admin-menu-items/popups-promotion-item.php:29
 msgid "Popup Builder lets you take advantage of all the amazing features in Elementor, so you can build beautiful & highly converting popups. Go pro and start designing your popups today."
-msgstr "El constructor de popups te permite aprovechar todas las características de Elementor para que puedas construir bellos popups de alta conversión. Conviértete en Pro y empieza a diseñar tus popups hoy mismo."
+msgstr "El maquetador de ventanas emergentes te permite aprovechar todas las increíbles características de Elementor, para que puedas crear ventanas emergentes bonitas y altamente convertibles. Mejora a Pro y empieza a diseñar tus ventanas emergentes hoy mismo."
 
 #: modules/promotions/admin-menu-items/popups-promotion-item.php:25
 msgid "Get Popup Builder"
@@ -2313,7 +2313,7 @@ msgstr "Obtén Popup Builder"
 #: app/modules/import-export/assets/js/shared/kit-content-data/kit-content-data.js:18
 #: app/modules/kit-library/assets/js/hooks/use-content-types.js:51
 #: assets/js/app.js:12316
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:2373
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:2405
 msgid "Popups"
 msgstr "Popups"
 
@@ -2810,11 +2810,11 @@ msgstr "Opacidad"
 #: includes/plugin.php:598
 #: app/assets/js/organisms/unfiltered-files-dialog.js:62
 #: app/modules/import-export/assets/js/shared/process-failed-dialog/process-failed-dialog.js:26
-#: app/modules/kit-library/assets/js/components/item-header.js:129
+#: app/modules/kit-library/assets/js/components/item-header.js:115
 #: app/modules/kit-library/assets/js/pages/index/index.js:266
 #: assets/js/app-packages.js:2803 assets/js/app.js:4233 assets/js/app.js:13245
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:1230
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4141
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:1217
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4173
 msgid "Something went wrong."
 msgstr "Algo salió mal."
 
@@ -2945,7 +2945,7 @@ msgstr "Buscar plantillas:"
 #: core/document-types/page.php:41 modules/library/documents/page.php:61
 #: app/modules/kit-library/assets/js/hooks/use-content-types.js:23
 #: assets/js/editor.js:10419
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:2361
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:2393
 msgid "Pages"
 msgstr "Páginas"
 
@@ -3107,7 +3107,7 @@ msgstr "Publicada"
 #: core/common/modules/finder/template.php:19
 #: app/modules/kit-library/assets/js/components/taxonomies-filter-list.js:69
 #: assets/js/editor.js:11539
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:2023
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:2014
 msgid "No Results Found"
 msgstr "Ningún resultado"
 
@@ -3173,7 +3173,7 @@ msgstr "Mis favoritas"
 
 #: includes/editor-templates/templates.php:70
 #: app/modules/kit-library/assets/js/pages/index/index.js:243
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4113
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4145
 msgid "Popular"
 msgstr "Populares"
 
@@ -3183,7 +3183,7 @@ msgstr "Tendencias"
 
 #: includes/editor-templates/templates.php:66
 #: app/modules/kit-library/assets/js/pages/index/index.js:238
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4109
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4141
 msgid "New"
 msgstr "Nueva"
 
@@ -3196,7 +3196,7 @@ msgstr "Importar plantilla"
 #: includes/controls/media.php:214 includes/controls/media.php:260
 #: includes/editor-templates/repeater.php:27
 #: app/modules/kit-library/assets/js/components/filter-indication-text.js:37
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:1008
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:1008
 msgid "Remove"
 msgstr "Eliminar"
 
@@ -4082,7 +4082,7 @@ msgstr "Revertir Columnas"
 #: core/breakpoints/manager.php:314
 #: core/settings/editor-preferences/model.php:133
 #: app/modules/kit-library/assets/js/pages/preview/preview.js:36
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4847
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4879
 msgid "Mobile"
 msgstr "Móvil"
 
@@ -4218,7 +4218,7 @@ msgstr "¡Manténgase al tanto! Habrá más plantillas asombrosas muy pronto."
 
 #: includes/editor-templates/templates.php:37
 #: app/modules/kit-library/assets/js/components/layout/header-back-button.js:27
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:1546
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:1537
 msgid "Back to Library"
 msgstr "Regresar a la biblioteca"
 
@@ -4293,7 +4293,7 @@ msgstr "Si quiere modificar el código fuente de su tema, le recomendamos usar u
 #: app/modules/import-export/assets/js/shared/info-modal/export-info-modal.js:24
 #: app/modules/import-export/assets/js/shared/info-modal/import-info-modal.js:43
 #: app/modules/import-export/assets/js/shared/process-failed-dialog/process-failed-dialog.js:90
-#: app/modules/kit-library/assets/js/components/item-header.js:161
+#: app/modules/kit-library/assets/js/components/item-header.js:147
 #: app/modules/kit-library/assets/js/pages/index/index.js:269
 #: app/modules/site-editor/assets/js/organisms/site-parts.js:23
 #: app/modules/site-editor/assets/js/pages/not-found.js:13
@@ -4303,8 +4303,8 @@ msgstr "Si quiere modificar el código fuente de su tema, le recomendamos usar u
 #: assets/js/app.js:12050 assets/js/app.js:13318 assets/js/editor.js:14960
 #: assets/js/editor.js:30523 assets/js/editor.js:30555
 #: assets/js/editor.js:43596
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:1258
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4144
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:1245
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4176
 msgid "Learn More"
 msgstr "Aprender más."
 
@@ -5484,7 +5484,7 @@ msgstr "Éxito"
 #: app/modules/kit-library/assets/js/pages/index/index-header.js:33
 #: app/modules/site-editor/assets/js/organisms/site-parts.js:11
 #: assets/js/app-packages.js:6154
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:3685
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:3717
 msgid "Info"
 msgstr "Info"
 
@@ -5982,7 +5982,7 @@ msgstr "Ayuda"
 #: core/breakpoints/manager.php:324
 #: core/settings/editor-preferences/model.php:134
 #: app/modules/kit-library/assets/js/pages/preview/preview.js:26
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4838
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4870
 msgid "Tablet"
 msgstr "Tableta"
 
@@ -5993,7 +5993,7 @@ msgstr "Laptop"
 #: core/settings/editor-preferences/model.php:135
 #: includes/base/element-base.php:737 includes/editor-templates/panel.php:255
 #: app/modules/kit-library/assets/js/pages/preview/preview.js:18
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:4831
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:4863
 msgid "Desktop"
 msgstr "Escritorio"
 
@@ -6026,7 +6026,7 @@ msgstr "Agregar Nueva Sección"
 #: app/assets/js/molecules/elementor-loading.js:24
 #: app/modules/site-editor/assets/js/context/template-types.js:58
 #: assets/js/app-packages.js:5731
-#: assets/js/kit-library.b64c64cb74630835c1e3.bundle.js:240
+#: assets/js/kit-library.5f449c6c414ea8220544.bundle.js:240
 #: assets/js/onboarding.07504ab8f3b6a8e61982.bundle.js:50
 msgid "Loading"
 msgstr "Cargando"
