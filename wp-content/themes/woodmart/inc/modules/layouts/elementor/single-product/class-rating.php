@@ -132,4 +132,4 @@ class Rating extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Rating() );
+Plugin::instance()->widgets_manager->register( new Rating() );

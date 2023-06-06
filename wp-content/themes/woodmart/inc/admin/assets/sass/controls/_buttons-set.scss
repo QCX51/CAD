@@ -166,6 +166,7 @@
 				// border: 1px solid #EFEFEF;
 				border: 1px solid var(--xts-option-border-color);
 				border-radius: var(--xts-option-border-radius);
+				background-color: #FFF;
 			}
 		}
 
@@ -179,8 +180,12 @@
 				// padding: 5px 12px;
 				border-radius: var(--xts-option-border-radius);
 				// background: #E3E3E3;
-
 				@extend %xts-button;
+
+				.xts-hint {
+					margin-inline-start: 5px;
+					background-color: transparent;
+				}
 
 				&:not(.whb-active-option) {
 					// cursor: pointer;
@@ -200,6 +205,14 @@
 					user-select: none;
 
 					@extend %xts-button-alternative;
+
+					.xts-hint {
+						--xts-hint-color: rgba(255, 255, 255, .7);
+		
+						&:hover {
+							--xts-hint-color: rgba(255, 255, 255, .4);
+						}
+					}
 				}
 
 				// &:first-child {

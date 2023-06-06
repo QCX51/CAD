@@ -171,4 +171,4 @@ class Meta_Value extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Meta_Value() );
+Plugin::instance()->widgets_manager->register( new Meta_Value() );

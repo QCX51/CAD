@@ -68,5 +68,12 @@ return apply_filters(
 			'description' => esc_html__( 'Improve your WordPress SEO: Write better content and have a fully optimized WordPress site using the Yoast SEO plugin.', 'woodmart' ),
 			'buttons'     => array( woodmart_get_compatible_plugin_btn( 'wordpress-seo' ) ),
 		),
+		'woo-extra-product-options' => array(
+			'name'        => 'Extra product options For WooCommerce',
+			'slug'        => 'woo-extra-product-options',
+			'description' => esc_html__( 'The WooCommerce Extra Product Options (WooCommerce Product Addons) plugin lets you add custom product fields(19 field types) and sections to your product page, making your WooCommerce product page more functional.', 'woodmart' ),
+			'image'       => 'woo-extra-product-options.jpg',
+			'buttons'     => array( woodmart_get_compatible_plugin_btn( 'woo-extra-product-options' ) ),
+		),
 	)
 );

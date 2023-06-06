@@ -37,7 +37,7 @@
 						});
 					}
 				}
-			} else if ($dropdown.hasClass('wd-design-sized') || $dropdown.hasClass('wd-design-default')) {
+			} else if ($dropdown.hasClass('wd-design-sized') || $dropdown.hasClass('wd-design-full-height')) {
 				viewportWidth = woodmart_settings.site_width;
 
 				if (woodmartThemeModule.$window.width() < viewportWidth || ! viewportWidth || li.parents('.whb-header').hasClass('whb-full-width')) {
@@ -49,6 +49,11 @@
 				var extraSpace = 15;
 				var containerOffset = (woodmartThemeModule.$window.width() - viewportWidth) / 2;
 				var dropdownOffsetLeft;
+				var $stickyCat = $('.wd-sticky-nav');
+
+				if (woodmartThemeModule.$body.hasClass('wd-sticky-nav-enabled') && $stickyCat.length) {
+					extraSpace -= $stickyCat.width() / 2;
+				}
 
 				if (woodmartThemeModule.$body.hasClass('rtl')) {
 					dropdownOffsetLeft = containerOffset + dropdownOffsetRight;
@@ -82,7 +87,7 @@
 			}
 
 			function recalc() {
-				if ($menu.hasClass('wd-offsets-calculated')) {
+				if ($menu.hasClass('wd-offsets-calculated') || $menu.parents('.wd-design-aside').length) {
 					return;
 				}
 
@@ -151,7 +156,9 @@
 	}
 
 	woodmartThemeModule.$window.on('wdEventStarted', function() {
-		woodmartThemeModule.menuDropdownAside();
-		woodmartThemeModule.menuOffsets();
+		setTimeout(function () {
+			woodmartThemeModule.menuDropdownAside();
+			woodmartThemeModule.menuOffsets();
+		}, 100);
 	});
 })(jQuery);

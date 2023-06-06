@@ -56,6 +56,14 @@ class Elementor extends Singleton {
 			'integrations/elementor/default-elements/accordion',
 			'integrations/elementor/default-elements/video',
 			'integrations/elementor/default-elements/container',
+
+			'integrations/elementor/elements/button/button',
+			'integrations/elementor/elements/button/global-button',
+			'integrations/elementor/elements/blog/blog',
+			'integrations/elementor/elements/banner/banner',
+			'integrations/elementor/elements/infobox/infobox',
+			'integrations/elementor/elements/instagram/instagram',
+			'integrations/elementor/elements/portfolio/portfolio',
 		);
 
 		$woo_files = array(
@@ -117,15 +125,11 @@ class Elementor extends Singleton {
 	 * @since 1.0.0
 	 */
 	public function register_widgets() {
-		$files = array(
-			'integrations/elementor/elements/button/button',
-			'integrations/elementor/elements/button/global-button',
-			'integrations/elementor/elements/blog/blog',
-			'integrations/elementor/elements/banner/banner',
-			'integrations/elementor/elements/infobox/infobox',
-			'integrations/elementor/elements/instagram/instagram',
-			'integrations/elementor/elements/portfolio/portfolio',
+		if ( isset( $_GET['elementor_updater'] ) ) { //phpcs:ignore
+			$this->files_include();
+		}
 
+		$files = array(
 			'integrations/elementor/elements/class-text-block',
 			'integrations/elementor/elements/class-image',
 			'integrations/elementor/elements/class-title',
@@ -164,6 +168,8 @@ class Elementor extends Singleton {
 			'integrations/elementor/elements/class-tabs',
 			'integrations/elementor/elements/class-accordion',
 			'integrations/elementor/elements/class-off-canvas-column-btn',
+			'integrations/elementor/elements/class-open-street-map',
+			'integrations/elementor/elements/class-table',
 		);
 
 		$woo_files = array(

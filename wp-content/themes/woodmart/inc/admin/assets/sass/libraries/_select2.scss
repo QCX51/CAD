@@ -492,7 +492,7 @@
 	// SELECT 2 - XTS STYLES
 	// ------------------------------------------------------------------------------------
 
-	.wp-toolbar {
+	.wp-admin {
 
 		.xts-select[multiple] {
 
@@ -543,6 +543,7 @@
 				}
 
 				.select2-selection__placeholder {
+					// transition: all .25s ease;
 					color: rgba(0,0,0,.4);
 				}
 
@@ -591,6 +592,13 @@
 						line-height: calc(var(--xts-input-height) - 1px) !important;
 
 						@include font-icon($xts-icon-close);
+					}
+				}
+
+				&:hover {
+
+					.select2-selection__placeholder {
+						color: #2C3338;
 					}
 				}
 			}

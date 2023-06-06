@@ -31,6 +31,7 @@ if ( ! function_exists( 'woodmart_shortcode_accordion' ) ) {
 				'style'                     => 'default',
 				'state'                     => 'first',
 				'box_shadow'                => '',
+				'hide_top_bottom_border'    => '',
 
 				/**
 				 * Title Settings.
@@ -67,6 +68,10 @@ if ( ! function_exists( 'woodmart_shortcode_accordion' ) ) {
 		}
 
 		$wrapper_classes .= ' wd-style-' . $args['style'];
+
+		if ( 'yes' === $args['hide_top_bottom_border'] ) {
+			$wrapper_classes .= ' wd-border-off';
+		}
 
 		$title_classes  = ' font-' . $args['title_font_family'];
 		$title_classes .= ' wd-fontsize-' . $args['title_font_size'];

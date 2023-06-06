@@ -58,8 +58,8 @@ return apply_filters(
 		),
 		'browse_categories'                  => array(
 			'title'          => '"Browse categories" title',
-			'selector'       => 'html .wd-header-cats .menu-opener',
-			'selector-hover' => 'html .wd-header-cats .menu-opener:hover',
+			'selector'       => 'html .whb-header .wd-header-cats .menu-opener',
+			'selector-hover' => 'html .whb-header .wd-header-cats .menu-opener:hover',
 		),
 		'category_navigation'                => array(
 			'title'          => 'Categories navigation links',
@@ -107,16 +107,16 @@ return apply_filters(
 		),
 		'product_title'                      => array(
 			'title'          => 'Product grid title',
-			'selector'       => 'html .main-page-wrapper .product-grid-item .wd-entities-title',
-			'selector-hover' => 'html .main-page-wrapper .product-grid-item .wd-entities-title a:hover',
+			'selector'       => 'html .main-page-wrapper .product-grid-item .product-wrapper .wd-entities-title',
+			'selector-hover' => 'html .main-page-wrapper .product-grid-item .product-wrapper .wd-entities-title a:hover',
 		),
 		'product_price'                      => array(
 			'title'    => 'Product grid price',
-			'selector' => 'html .product-grid-item .price > .amount, html .product-grid-item .price ins > .amount',
-			'selector-hover' => 'html .product-grid-item .price > .amount:hover, html .product-grid-item .price ins > .amount:hover',
+			'selector' => 'html .product-grid-item .price, html .product-grid-item .price > .amount, html .product-grid-item .price ins > .amount',
+			'selector-hover' => 'html .product-grid-item .price:hover, html .product-grid-item .price > .amount:hover, html .product-grid-item .price ins > .amount:hover',
 		),
 		'product_old_price'                  => array(
-			'title'    => 'Product old price',
+			'title'    => 'Product grid old price',
 			'selector' => 'html .product.product-grid-item del, html .product.product-grid-item del .amount',
 			'selector-hover' => 'html .product.product-grid-item del:hover, html .product.product-grid-item del .amount:hover',
 		),
@@ -140,8 +140,8 @@ return apply_filters(
 		),
 		'product_price_single_page'          => array(
 			'title'    => 'Single product price',
-			'selector' => 'html .product-image-summary-wrap .summary-inner > .price > .amount, html .product-image-summary-wrap .summary-inner > .price > ins .amount, html .wd-single-price .price > .amount, html .wd-single-price .price > ins .amount',
-			'selector-hover' => 'html .product-image-summary-wrap .summary-inner > .price > .amount:hover, html .product-image-summary-wrap .summary-inner > .price > ins .amount:hover, html .wd-single-price .price > .amount:hover, html .wd-single-price .price > ins .amount:hover',
+			'selector' => 'html .product-image-summary-wrap .summary-inner > .price, html .product-image-summary-wrap .summary-inner > .price > .amount, html .product-image-summary-wrap .summary-inner > .price > .price > .amount, html .product-image-summary-wrap .summary-inner > .price ins .amount, html .wd-single-price .price, html .wd-single-price .price > .amount, html .wd-single-price .price > ins .amount',
+			'selector-hover' => 'html .product-image-summary-wrap .summary-inner > .price:hover, html .product-image-summary-wrap .summary-inner > .price > .amount:hover, html .product-image-summary-wrap .summary-inner > .price > .price .amount:hover, html .product-image-summary-wrap .summary-inner > .price > ins .amount:hover, html .wd-single-price .price:hover, html .wd-single-price .price > .amount:hover, html .wd-single-price .price > ins .amount:hover',
 		),
 		'product_price_old_single_page'      => array(
 			'title'    => 'Single product old price',

@@ -118,4 +118,4 @@ class Filters_Btn extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Filters_Btn() );
+Plugin::instance()->widgets_manager->register( new Filters_Btn() );

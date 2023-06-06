@@ -117,4 +117,4 @@ class Visitor_Counter extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Visitor_Counter() );
+Plugin::instance()->widgets_manager->register( new Visitor_Counter() );

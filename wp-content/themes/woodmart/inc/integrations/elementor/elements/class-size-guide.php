@@ -164,4 +164,4 @@ class Size_Guide extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Size_Guide() );
+Plugin::instance()->widgets_manager->register( new Size_Guide() );

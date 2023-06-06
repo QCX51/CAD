@@ -236,4 +236,4 @@ class Frequently_Bought_Together extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Frequently_Bought_Together() );
+Plugin::instance()->widgets_manager->register( new Frequently_Bought_Together() );

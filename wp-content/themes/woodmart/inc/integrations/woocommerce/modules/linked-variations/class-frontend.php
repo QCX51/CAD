@@ -48,6 +48,7 @@ class Frontend extends Singleton {
 		woodmart_enqueue_js_library( 'tooltips' );
 		woodmart_enqueue_js_script( 'btns-tooltips' );
 
+		woodmart_enqueue_inline_style( 'woo-mod-variation-form-single' );
 		woodmart_enqueue_inline_style( 'woo-mod-variation-form' );
 		woodmart_enqueue_inline_style( 'woo-mod-swatches-base' );
 
@@ -166,24 +167,38 @@ class Frontend extends Singleton {
 	 */
 	public function get_linked_variations( $product_id ) {
 		$attributes = $this->get_product_attributes( $product_id );
-		$output     = [];
+		$output     = array();
+
+		if ( empty( $attributes['slugs'] ) ) {
+			return $output;
+		}
 
 		foreach ( $attributes['slugs'] as $taxonomy => $attribute ) {
-			$terms = get_terms(
-				[
-					'taxonomy'   => $taxonomy,
-					'hide_empty' => true,
-				]
-			);
+			foreach ( $this->linked_data['products'] as $current_product_id ) {
+				$current_product = wc_get_product( $current_product_id );
 
-			foreach ( $terms as $term ) {
-				$data = $this->get_linked_variation_data_for_attribute( $product_id, $taxonomy, $term->slug );
-
-				if ( ! $data ) {
+				if ( ! $current_product || $current_product->get_status() !== 'publish' ) {
 					continue;
 				}
 
-				$output[ $taxonomy ]['terms'][ $term->slug ] = $data;
+				$current_product_attrs = $current_product->get_attributes();
+
+				if ( is_wp_error( $current_product_attrs ) || empty( $current_product_attrs[ $taxonomy ] ) ) {
+					continue;
+				}
+
+				$term_id = current( $current_product_attrs[ $taxonomy ]->get_options() );
+				$term    = get_term( $term_id );
+
+				$output[ $taxonomy ]['terms'][ $term->slug ] = array(
+					'id'             => $current_product_id,
+					'permalink'      => $current_product->get_permalink(),
+					'image'          => $current_product->get_image( 'shop_thumbnail' ),
+					'title'          => $current_product->get_title(),
+					'stock_status'   => $current_product->get_stock_status(),
+					'is_purchasable' => $current_product->is_purchasable(),
+					'attributes'     => $this->get_product_attributes( $current_product_id ),
+				);
 				$output[ $taxonomy ]['label'][ $term->slug ] = $term->name;
 			}
 		}
@@ -235,7 +250,7 @@ class Frontend extends Singleton {
 		foreach ( $this->linked_data['attrs'] as $attribute ) {
 			$terms = get_the_terms( $product_id, $attribute );
 
-			if ( ! $terms ) {
+			if ( ! $terms || is_wp_error( $terms ) ) {
 				continue;
 			}
 
@@ -251,63 +266,6 @@ class Frontend extends Singleton {
 		}
 
 		return $attributes[ $product_id ];
-	}
-
-	/**
-	 * Get linked variation data for attribute.
-	 *
-	 * @param int    $product_id Product id.
-	 * @param string $taxonomy Taxonomy.
-	 * @param string $term_slug Term slug.
-	 *
-	 * @return array
-	 */
-	public function get_linked_variation_data_for_attribute( $product_id, $taxonomy, $term_slug ) {
-		$current_attributes = $this->get_product_attributes( $product_id );
-		$linked_variations  = $this->get_linked_variations_data( $product_id );
-
-		$current_attributes['slugs'][ $taxonomy ] = $term_slug;
-
-		$output = [];
-
-		foreach ( $linked_variations as $linked_variation ) {
-			if ( ! array_diff_assoc( $current_attributes['slugs'], $linked_variation['attributes']['slugs'] ) ) {
-				$output = $linked_variation;
-			}
-		}
-
-		return $output;
-	}
-
-	/**
-	 * Get product attributes.
-	 *
-	 * @param int $product_id Product id.
-	 *
-	 * @return array
-	 */
-	private function get_linked_variations_data( $product_id ) {
-		$linked_products = [];
-
-		foreach ( $this->linked_data['products'] as $linked_variation_id ) {
-			$linked_variation = wc_get_product( $linked_variation_id );
-
-			if ( ! $linked_variation || $linked_variation->get_status() !== 'publish' ) {
-				continue;
-			}
-
-			$linked_products[ $product_id ][ $linked_variation_id ] = [
-				'id'             => $linked_variation_id,
-				'permalink'      => $linked_variation->get_permalink(),
-				'image'          => $linked_variation->get_image( 'shop_thumbnail' ),
-				'title'          => $linked_variation->get_title(),
-				'stock_status'   => $linked_variation->get_stock_status(),
-				'is_purchasable' => $linked_variation->is_purchasable(),
-				'attributes'     => $this->get_product_attributes( $linked_variation_id ),
-			];
-		}
-
-		return $linked_products[ $product_id ];
 	}
 }
 

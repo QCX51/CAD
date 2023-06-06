@@ -47,7 +47,7 @@
 			// display: inline-block;
 
 			.iris-picker {
-				z-index: 101;
+				z-index: 401; // REWRITE FOR BUTTON CUSTOM TEXT COLORSCHEME.
 				border: 1px solid var(--xts-option-border-color);
 				border-radius: var(--xts-option-border-radius);
 				box-shadow: var(--xts-option-box-shadow);
@@ -365,12 +365,16 @@
 
 	.whb-color-picker-absolute {
 		position: absolute;
-		top: 90px;
+		top: 50px;
 		z-index: 2;
 
 		.whb-picker-top & {
 			top: auto;
 			bottom: 45px;
+		}
+
+		.whb-picker-overlap & {
+			top: 90px;
 		}
 	}
 

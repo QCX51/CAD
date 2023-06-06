@@ -9,7 +9,7 @@ Options::add_field(
 	array(
 		'id'          => 'sticky_social',
 		'name'        => esc_html__( 'Sticky social links', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'sticky-social-links.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'sticky-social-links.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Social buttons will be fixed on the screen when you scroll the page.', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'social_profiles',

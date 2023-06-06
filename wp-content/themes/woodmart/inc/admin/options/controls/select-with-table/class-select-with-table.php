@@ -61,7 +61,7 @@ class Select_With_Table extends Field {
 						</div>
 						<div class="xts-bundle-discount">
 							<div class="xts-input-append">
-								<input type="number" min="0" max="100" name="<?php echo esc_attr( $this->get_input_name() . '[' . $id . '][discount]' ); ?>" value="<?php echo esc_attr( $product['discount'] ); ?>">
+								<input type="number" min="0" max="100" step="0.01" name="<?php echo esc_attr( $this->get_input_name() . '[' . $id . '][discount]' ); ?>" value="<?php echo esc_attr( $product['discount'] ); ?>">
 								<span class="add-on">%</span>
 							</div>
 						</div>
@@ -74,7 +74,7 @@ class Select_With_Table extends Field {
 		</div>
 
 		<a href="#" class="xts-add-row xts-inline-btn xts-color-primary xts-i-add">
-			<?php esc_html_e( 'Add new row', 'woodmart' ); ?>
+			<?php esc_html_e( 'Add new product', 'woodmart' ); ?>
 		</a>
 
 		<?php

@@ -12,10 +12,21 @@
  *
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @package WooCommerce/Templates
- * @version 7.0.1
+ * @version 7.4.0
  */
 
-defined( 'ABSPATH' ) || exit; ?>
+defined( 'ABSPATH' ) || exit;
+
+$update_cart_btn_classes = '';
+
+if ( function_exists( 'wc_wp_theme_get_element_class_name' ) ) {
+	$update_cart_btn_classes .= ' ' . wc_wp_theme_get_element_class_name( 'button' );
+}
+
+if ( woodmart_get_opt( 'update_cart_quantity_change' ) ) {
+	$update_cart_btn_classes .= ' wd-hide';
+}
+?>
 
 <div class="woocommerce cart-content-wrapper row">
 
@@ -119,16 +130,24 @@ defined( 'ABSPATH' ) || exit; ?>
 								<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
 									<?php
 										if ( $_product->is_sold_individually() ) {
-											$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
+											$min_quantity = 1;
+											$max_quantity = 1;
 										} else {
-											$product_quantity = woocommerce_quantity_input( array(
-												'input_name'  => "cart[{$cart_item_key}][qty]",
-												'input_value' => $cart_item['quantity'],
-												'max_value'   => $_product->get_max_purchase_quantity(),
-												'min_value'   => '0',
-												'product_name'  => $_product->get_name(),
-											), $_product, false );
+											$min_quantity = 0;
+											$max_quantity = $_product->get_max_purchase_quantity();
 										}
+
+										$product_quantity = woocommerce_quantity_input(
+											array(
+												'input_name'   => "cart[{$cart_item_key}][qty]",
+												'input_value'  => $cart_item['quantity'],
+												'max_value'    => $max_quantity,
+												'min_value'    => $min_quantity,
+												'product_name' => $_product->get_name(),
+											),
+											$_product,
+											false
+										);
 
 										echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item );
 									?>
@@ -157,18 +176,22 @@ defined( 'ABSPATH' ) || exit; ?>
 
 				<?php if ( wc_coupons_enabled() ) { ?>
 					<div class="coupon">
-						
-						<label for="coupon_code"><?php esc_html_e( 'Coupon:', 'woocommerce' ); ?></label> <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" /> <button type="submit" class="button<?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name') && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>"><?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?></button>
+						<label for="coupon_code" class="screen-reader-text">
+							<?php esc_html_e( 'Coupon:', 'woocommerce' ); ?>
+						</label>
+						<input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="<?php esc_attr_e( 'Coupon code', 'woocommerce' ); ?>" />
+						<button type="submit" class="button<?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name' ) && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="apply_coupon" value="<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>">
+							<?php esc_attr_e( 'Apply coupon', 'woocommerce' ); ?>
+						</button>
 						<?php do_action( 'woocommerce_cart_coupon' ); ?>
-						
 					</div>
 				<?php } ?>
 
 			</div>
 				<div class="col-12 order-first order-md-last col-md-auto">
-					
-					<button type="submit" class="button<?php echo esc_attr( function_exists( 'wc_wp_theme_get_element_class_name') && wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
-
+					<button type="submit" class="button<?php echo esc_attr( $update_cart_btn_classes ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>">
+						<?php esc_html_e( 'Update cart', 'woocommerce' ); ?>
+					</button>
 
 					<?php do_action( 'woocommerce_cart_actions'  ); ?>
 

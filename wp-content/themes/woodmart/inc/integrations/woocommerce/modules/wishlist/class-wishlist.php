@@ -112,6 +112,52 @@ class Wishlist {
 		if ( $wishlist_id && (int) $wishlist_id > 0 ) {
 			$this->editable = false;
 		}
+
+		add_action( 'delete_user', array( $this, 'remove_all_user_wishlists' ) );
+	}
+
+	/**
+	 * Remove all user wishlists from database.
+	 *
+	 * @param int $id ID of the user to delete.
+	 * @return void
+	 */
+	public function remove_all_user_wishlists( $id ) {
+		global $wpdb;
+
+		$where_query         = '';
+		$wishlists_ids_from_db = $wpdb->get_results(
+			$wpdb->prepare(
+				"
+					SELECT ID
+					FROM $wpdb->woodmart_wishlists_table
+					WHERE user_id = %d 
+					",
+				$id
+			),
+			ARRAY_N
+		);
+
+		foreach ( $wishlists_ids_from_db as $wishlists_id ) {
+			$where_query .= ! empty( $where_query ) ? ','  . $wishlists_id[0] : $wishlists_id[0];
+		}
+
+		if ( empty( $where_query ) ) {
+			return;
+		}
+
+		$wpdb->query(
+			"DELETE FROM $wpdb->woodmart_products_table
+				WHERE $wpdb->woodmart_products_table.wishlist_id IN ( $where_query )"
+		);
+
+		$wpdb->delete(
+			$wpdb->woodmart_wishlists_table,
+			array(
+				'user_id' => $id,
+			),
+			array( '%d' )
+		);
 	}
 
 	/**
@@ -306,9 +352,11 @@ class Wishlist {
 				array(
 					'user_id'        => $this->get_user_id(),
 					'wishlist_group' => ucfirst( $group ),
+					'date_created'   => current_time( 'mysql', 1 ),
 				),
 				array(
 					'%d',
+					'%s',
 					'%s',
 				)
 			);
@@ -316,10 +364,12 @@ class Wishlist {
 			$wpdb->insert(
 				$wpdb->woodmart_wishlists_table,
 				array(
-					'user_id' => $this->get_user_id(),
+					'user_id'      => $this->get_user_id(),
+					'date_created' => current_time( 'mysql', 1 ),
 				),
 				array(
 					'%d',
+					'%s',
 				)
 			);
 		}

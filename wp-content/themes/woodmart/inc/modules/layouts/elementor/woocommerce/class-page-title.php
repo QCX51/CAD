@@ -57,6 +57,15 @@ class Page_Title extends Widget_Base {
 	}
 
 	/**
+	 * Show in panel.
+	 *
+	 * @return bool Whether to show the widget in the panel or not.
+	 */
+	public function show_in_panel() {
+		return woodmart_woocommerce_installed();
+	}
+
+	/**
 	 * Register the widget controls.
 	 */
 	protected function register_controls() {
@@ -139,4 +148,4 @@ class Page_Title extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Page_Title() );
+Plugin::instance()->widgets_manager->register( new Page_Title() );

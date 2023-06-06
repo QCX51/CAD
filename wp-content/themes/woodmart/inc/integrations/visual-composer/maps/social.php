@@ -5,17 +5,6 @@
 * ------------------------------------------------------------------------------------------------
 */
 
-if( ! function_exists( 'woodmart_vc_shortcode_social' ) ) {
-	function woodmart_vc_shortcode_social() {
-		if ( ! shortcode_exists( 'social_buttons' ) ) {
-			return;
-		}
-
-		vc_map( woodmart_get_social_buttons_shortcode_args() );
-	}
-	add_action( 'vc_before_init', 'woodmart_vc_shortcode_social' );
-}
-
 if( ! function_exists( 'woodmart_get_social_buttons_shortcode_args' ) ) {
 	function woodmart_get_social_buttons_shortcode_args() {
 		return array(
@@ -168,29 +157,6 @@ if( ! function_exists( 'woodmart_get_social_shortcode_params' ) ) {
 			),
 
 			array(
-				'type'             => 'dropdown',
-				'heading'          => esc_html__( 'Buttons size', 'woodmart' ),
-				'param_name'       => 'size',
-				'value'            => array(
-					esc_html__( 'Default (18px)', 'woodmart' ) => '',
-					esc_html__( 'Small (14px)', 'woodmart' ) => 'small',
-					esc_html__( 'Large (22px)', 'woodmart' ) => 'large',
-				),
-				'group'            => esc_html__( 'Style', 'js_composer' ),
-				'edit_field_class' => 'vc_col-sm-6 vc_column',
-			),
-			array(
-				'type'             => 'woodmart_button_set',
-				'heading'          => esc_html__( 'Color', 'woodmart' ),
-				'param_name'       => 'color',
-				'value'            => array(
-					esc_html__( 'Dark', 'woodmart' )  => 'dark',
-					esc_html__( 'Light', 'woodmart' ) => 'light',
-				),
-				'group'            => esc_html__( 'Style', 'js_composer' ),
-				'edit_field_class' => 'vc_col-sm-6 vc_column',
-			),
-			array(
 				'type'             => 'woodmart_image_select',
 				'heading'          => esc_html__( 'Button style', 'woodmart' ),
 				'param_name'       => 'style',
@@ -229,6 +195,29 @@ if( ! function_exists( 'woodmart_get_social_shortcode_params' ) ) {
 				'std'              => 'circle',
 				'group'            => esc_html__( 'Style', 'js_composer' ),
 				'edit_field_class' => 'vc_col-xs-12 vc_column social-form',
+			),
+			array(
+				'type'             => 'dropdown',
+				'heading'          => esc_html__( 'Buttons size', 'woodmart' ),
+				'param_name'       => 'size',
+				'value'            => array(
+					esc_html__( 'Default (18px)', 'woodmart' ) => '',
+					esc_html__( 'Small (14px)', 'woodmart' ) => 'small',
+					esc_html__( 'Large (22px)', 'woodmart' ) => 'large',
+				),
+				'group'            => esc_html__( 'Style', 'js_composer' ),
+				'edit_field_class' => 'vc_col-sm-6 vc_column',
+			),
+			array(
+				'type'             => 'woodmart_button_set',
+				'heading'          => esc_html__( 'Color', 'woodmart' ),
+				'param_name'       => 'color',
+				'value'            => array(
+					esc_html__( 'Dark', 'woodmart' )  => 'dark',
+					esc_html__( 'Light', 'woodmart' ) => 'light',
+				),
+				'group'            => esc_html__( 'Style', 'js_composer' ),
+				'edit_field_class' => 'vc_col-sm-6 vc_column',
 			),
 			// Label.
 			array(

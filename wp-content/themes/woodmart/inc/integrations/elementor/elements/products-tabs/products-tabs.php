@@ -45,6 +45,9 @@ if ( ! function_exists( 'woodmart_elementor_products_tabs_template' ) ) {
 			'highlighted_products'          => 0,
 			'products_bordered_grid'        => 0,
 			'products_bordered_grid_style'  => 'outside',
+			'products_with_background'      => 0,
+			'products_shadow'               => 0,
+			'products_color_scheme'         => 'default',
 			'img_size'                      => 'woocommerce_thumbnail',
 
 			// Extra.

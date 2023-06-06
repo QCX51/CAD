@@ -9,10 +9,8 @@
 
 		if ('yes' === woodmart_settings.counter_visitor_ajax_update) {
 			woodmartThemeModule.updateCountProductVisits();
-		} else {
-			setTimeout(function() {
-				woodmartThemeModule.updateCountProductVisits();
-			}, live_duration);
+		} else if ( 'yes' === woodmart_settings.counter_visitor_live_mode) {
+			setInterval(woodmartThemeModule.updateCountProductVisits, live_duration);
 		}
 	}
 
@@ -20,7 +18,7 @@
 		$('.wd-visits-count').each( function () {
 			var $this = $(this);
 			var productId = $this.data('product-id');
-			var count = $this.find('.wd-visits-count-number').text();
+			var $count = $this.find('.wd-visits-count-number');
 
 			if ( ! productId ) {
 				return;
@@ -31,28 +29,24 @@
 				data    : {
 					action    : 'woodmart_update_count_product_visits',
 					product_id: productId,
-					count     : count,
+					count     : $count.text(),
 				},
 				method  : 'POST',
 				success : function(response) {
 					if (response) {
-						$this.find('.wd-visits-count-number').html(response.count);
+						$count.text(response.count);
 
 						if (!response.count) {
 							$this.addClass('wd-hide');
 						} else {
 							$this.removeClass('wd-hide');
 						}
-
-						if ('yes' === response.live_mode) {
-							setTimeout(function() { woodmartThemeModule.countProductVisits() }, woodmart_settings.counter_visitor_live_duration)
-						}
 					}
 				},
 				error   : function() {
 					console.log('ajax error');
 				},
-				complete: function() { }
+				complete: function() {}
 			});
 		});
 	};

@@ -403,11 +403,16 @@
 				span {
 
 					&:before {
-						content: "\f153";
 						border-radius: 50%;
 						background-color: #FFF;
-						color: #999;
-						font-size: 17px;
+						color: #333;
+						font-size: 8px;
+						width: 15px;
+						height: 15px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						box-shadow: 0 1px 3px 1px rgba(0, 0, 0, .2);
 					}
 				}
 
@@ -427,6 +432,127 @@
 			content: " ";
 			display: table;
 			clear: both;
+		}
+	}
+
+	// ------------------------------------------
+	// PROGUCT GALLERY VIDEO
+	// ------------------------------------------
+
+	.xts-product-gallery-video {
+
+		&:is(
+		.xts-edit-video,
+		.xts-add-video) {
+
+			&.xts-active {
+				opacity: .5;
+			}
+		}
+
+		&.xts-edit-video {
+
+			&:before {
+				@include font-icon-content($xts-icon-edit-write);
+			}
+		}
+	}
+
+	//**** POPUP ****//
+
+	.xts-popup-product-gallery {
+
+		.xts-upload-preview {
+			display: none;
+		}
+
+		.xts-popup-content {
+			padding-bottom: 0;
+
+			&:before,
+			&:after {
+				display: none;
+			}
+		}
+
+		&.xts-loading {
+
+			:is(
+			.xts-set-btn,
+			.xts-switcher-btn
+			.xts-switcher-dot-wrap) {
+				transition: none !important;
+			}
+
+			.xts-field {
+				animation: none;
+				opacity: 0;
+			}
+		}
+
+		:is(
+		.xts-gallery_hide_gallery_img-field,
+		.xts-gallery_autoplay-field) { // NOTE ALIGN SWITCHER TO BUTTON SWITCH
+
+			.xts-option-control {
+				display: flex;
+				align-items: center;
+				min-height: 41px;
+			}
+		}
+	}
+
+	//**** MAIN IMAGE ****//
+
+	.xts-product-video-wrapp {
+
+		#postimagediv & {
+			padding: 10px;
+		}
+	}
+
+	//**** PRODUCT GALLERY ****//
+
+	#woocommerce-product-images {
+		// display: none !important;
+
+		.xts-product-gallery-video {
+			position: absolute;
+			left: -1px;
+			right: -1px;
+			bottom: -1px;
+			height: 20px;
+			padding: 3px 5px;
+			border-radius: 0;
+			transition: .2s background-color ease-in-out !important;
+			// transition: none;
+
+			&.xts-add-video {
+				opacity: 0;
+				visibility: hidden;
+
+				&.xts-active {
+					opacity: .5;
+					visibility: visible;
+				}
+			}
+		}
+
+		.product_images {
+
+			> .image {
+
+				&:hover {
+
+					.xts-product-gallery-video {
+
+						&.xts-add-video {
+							opacity: 1;
+							visibility: visible;
+						}
+					}
+				}
+			}
 		}
 	}
 

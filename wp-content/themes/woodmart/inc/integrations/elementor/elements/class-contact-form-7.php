@@ -248,4 +248,4 @@ class Contact_Form_7 extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Contact_Form_7() );
+Plugin::instance()->widgets_manager->register( new Contact_Form_7() );

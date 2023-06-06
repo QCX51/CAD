@@ -276,4 +276,4 @@ class Counter extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Counter() );
+Plugin::instance()->widgets_manager->register( new Counter() );

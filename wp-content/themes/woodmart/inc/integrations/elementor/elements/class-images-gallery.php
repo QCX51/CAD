@@ -615,7 +615,7 @@ class Images_Gallery extends Widget_Base {
 			}
 
 			$owl_attributes = woodmart_get_owl_attributes( $settings );
-			$this->add_render_attribute( 'gallery', 'class', 'owl-carousel ' . woodmart_owl_items_per_slide( $settings['slides_per_view'], array(), false, false, $settings['custom_sizes'] ) );
+			$this->add_render_attribute( 'gallery', 'class', 'owl-carousel wd-owl ' . woodmart_owl_items_per_slide( $settings['slides_per_view'], array(), false, false, $settings['custom_sizes'] ) );
 
 			$this->add_render_attribute( 'wrapper', 'class', 'wd-carousel-spacing-' . $settings['spacing'] );
 			$this->add_render_attribute( 'wrapper', 'class', 'wd-carousel-container' );
@@ -711,4 +711,4 @@ class Images_Gallery extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Images_Gallery() );
+Plugin::instance()->widgets_manager->register( new Images_Gallery() );

@@ -285,6 +285,53 @@ Options::add_field(
 	)
 );
 
+/**
+ * Icons Fonts.
+ */
+Options::add_field(
+	array(
+		'id'       => 'icon_font',
+		'type'     => 'icons_font',
+		'name'     => esc_html__( 'Icon fonts', 'woodmart' ),
+		'section'  => 'icons_fonts_section',
+		'options'  => array(
+			'font'   => array(
+				'1' => array(
+					'name'  => esc_html__( 'Icon font 1', 'woodmart' ),
+					'value' => '1',
+				),
+				'2' => array(
+					'name'  => esc_html__( 'Icon font 2', 'woodmart' ),
+					'value' => '2',
+				),
+				'3' => array(
+					'name'  => esc_html__( 'Icon font 3', 'woodmart' ),
+					'value' => '3',
+				),
+			),
+			'weight' => array(
+				'300' => array(
+					'name'  => esc_html__( 'Light', 'woodmart' ),
+					'value' => '300',
+				),
+				'400' => array(
+					'name'  => esc_html__( 'Regular', 'woodmart' ),
+					'value' => '400',
+				),
+				'700' => array(
+					'name'  => esc_html__( 'Bold', 'woodmart' ),
+					'value' => '700',
+				),
+			),
+		),
+		'default'  => array(
+			'font'   => '1',
+			'weight' => '400',
+		),
+		'class'    => 'xts-hide-field-title',
+		'priority' => 10,
+	)
+);
 
 /**
  * Typekit fonts.

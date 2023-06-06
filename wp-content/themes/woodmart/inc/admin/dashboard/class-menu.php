@@ -76,6 +76,8 @@ class Menu {
 
 		if ( ! empty( $item_data['type'] ) && 'page' === $item_data['type'] && isset( $_GET['page'] ) && $item_data['slug'] === $_GET['page'] ) { // phpcs:ignore
 			$classes = ' ' . add_cssclass( $active_class, $classes );
+		} else if ( ! empty( $item_data['type'] ) && 'tab' === $item_data['type'] && ( isset( $_GET['tab'] ) && $item_data['slug'] === $_GET['tab'] ) || ( ! empty( $item_data['parentPage'] ) && $item_data['parentPage'] === $_GET['page'] && empty( $_GET['tab'] ) )  ) { // phpcs:ignore
+			$classes = ' ' . add_cssclass( $active_class, $classes );
 		} elseif ( ! empty( $item_data['type'] ) && 'post_type' === $item_data['type'] && isset( $_GET['post_type'] ) && $item_data['slug'] === $_GET['post_type'] && ! isset( $_GET['taxonomy'] ) ) { // phpcs:ignore
 			$classes = ' ' . add_cssclass( $active_class, $classes );
 		} elseif ( ! empty( $item_data['type'] ) && 'post_type_taxonomy' === $item_data['type'] && isset( $_GET['post_type'] ) && $item_data['slug'] === $_GET['post_type'] && isset( $_GET['taxonomy'] ) ) { // phpcs:ignore

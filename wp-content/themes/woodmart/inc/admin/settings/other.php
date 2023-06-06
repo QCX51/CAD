@@ -128,6 +128,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'other_section',
 		'default'     => '1',
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 30,
 	)
 );
@@ -150,6 +152,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'other_section',
 		'default'     => '1',
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 40,
 	)
 );

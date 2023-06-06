@@ -10,15 +10,22 @@ do_action( 'woocommerce_before_shop_loop_item' );
 		<a href="<?php echo esc_url( get_permalink() ); ?>" class="product-image-link">
 			<?php
 			/**
-			 * woocommerce_before_shop_loop_item_title hook
+			 * Hook woocommerce_before_shop_loop_item_title.
 			 *
+			 * @hooked woodmart_template_loop_product_thumbnails_gallery - 5
 			 * @hooked woocommerce_show_product_loop_sale_flash - 10
 			 * @hooked woodmart_template_loop_product_thumbnail - 10
 			 */
 			do_action( 'woocommerce_before_shop_loop_item_title' );
 			?>
 		</a>
-		<?php woodmart_hover_image(); ?>
+
+		<?php
+		if ( ! woodmart_loop_prop( 'grid_gallery' ) || ( ! woodmart_get_opt( 'grid_gallery' ) && empty( woodmart_loop_prop( 'grid_gallery_control', 'hover' ) ) && empty( woodmart_loop_prop( 'grid_gallery_enable_arrows', 'none' ) ) ) ) {
+			woodmart_hover_image();
+		}
+		?>
+
 		<div class="wd-buttons wd-pos-r-t<?php echo esc_attr( woodmart_get_old_classes( ' woodmart-buttons' ) ); ?>">
 			<?php woodmart_enqueue_js_script( 'btns-tooltip' ); ?>
 			<?php woodmart_add_to_compare_loop_btn(); ?>
@@ -77,8 +84,7 @@ do_action( 'woocommerce_before_shop_loop_item' );
 		<?php
 		woodmart_product_sku();
 		?>
-
-		<div class="fade-in-block">
+		<div class="fade-in-block wd-scroll">
 			<?php if ( 'none' !== woodmart_get_opt( 'base_hover_content' ) ) : ?>
 				<div class="hover-content-wrap">
 					<div class="hover-content wd-more-desc<?php echo esc_attr( woodmart_get_old_classes( ' woodmart-more-desc' ) ); ?>">

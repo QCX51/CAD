@@ -5,6 +5,7 @@
 
 namespace XTS\Elementor;
 
+use Elementor\Group_Control_Typography;
 use Elementor\Widget_Base;
 use Elementor\Controls_Manager;
 use Elementor\Plugin;
@@ -167,6 +168,7 @@ class WD_Mega_Menu extends Widget_Base {
 					'underline' => esc_html__( 'Underline', 'woodmart' ),
 					'bordered'  => esc_html__( 'Bordered', 'woodmart' ),
 					'separated' => esc_html__( 'Separated', 'woodmart' ),
+					'bg'        => esc_html__( 'Background', 'woodmart' ),
 				),
 				'condition' => array(
 					'design' => array( 'horizontal' ),
@@ -215,6 +217,15 @@ class WD_Mega_Menu extends Widget_Base {
 					'design' => array( 'horizontal' ),
 				),
 				'default'   => 'left',
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'item_typography',
+				'label'    => esc_html__( 'Typography', 'woodmart' ),
+				'selector' => '{{WRAPPER}} .wd-nav > .menu-item > a',
 			)
 		);
 
@@ -350,4 +361,4 @@ class WD_Mega_Menu extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new WD_Mega_Menu() );
+Plugin::instance()->widgets_manager->register( new WD_Mega_Menu() );

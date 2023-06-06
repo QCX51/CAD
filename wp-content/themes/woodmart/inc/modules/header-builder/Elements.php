@@ -31,6 +31,7 @@ if( ! class_exists( 'WOODMART_HB_Elements' ) ) {
 			'Button',
 			'Infobox',
 			'Social',
+			'Stickynavigation',
 		);
 
 		public $elements_classes = array();

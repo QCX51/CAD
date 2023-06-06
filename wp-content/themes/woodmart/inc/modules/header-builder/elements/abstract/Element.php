@@ -362,7 +362,7 @@ if ( ! class_exists( 'WOODMART_HB_Element' ) ) {
 			$blocks_posts = get_posts( $args );
 			foreach ( $blocks_posts as $post ) {
 				$array[$post->ID] = array(
-					'label' => $post->post_title,
+					'label' => $post->post_title ? $post->post_title : esc_html__( '(no title)', 'woodmart' ),
 					'value' => $post->ID
 				);
 			}

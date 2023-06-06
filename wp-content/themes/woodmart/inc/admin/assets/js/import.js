@@ -22,13 +22,7 @@
 		var $progressBarPercent = $this.find('.xts-import-progress-bar-percent');
 		var $wrapper = $('.xts-import-items');
 
-		var progress1;
-		var progress2;
-		var progress3;
-		var progress4;
-		var progress5;
 		var noticeTimeout;
-		var errorTimeout;
 		var interval;
 
 		$importBtn.on('click', async function(e) {
@@ -107,6 +101,8 @@
 
 							return;
 						}
+
+						updateProgressBar( type, process );
 
 						$.ajax({
 							url    : woodmartConfig.ajaxUrl,
@@ -260,48 +256,32 @@
 			});
 		}
 
-		function startProgressBar(type) {
-			var multiplier = 1;
-			var multiplier2 = 1;
-
-			if ('base' === type) {
-				multiplier = 10;
-				multiplier2 = 2;
-			}
-
-			progress1 = setTimeout(function() {
-				updateProgress(10);
-			}, 500 * multiplier2);
-
-			progress2 = setTimeout(function() {
-				updateProgress(25);
-			}, 1000 * multiplier);
-
-			progress3 = setTimeout(function() {
-				updateProgress(50);
-			}, 2000 * multiplier);
-
-			progress4 = setTimeout(function() {
-				updateProgress(70);
-			}, 3500 * multiplier);
-
-			progress5 = setTimeout(function() {
-				updateProgress(80);
-			}, 7500 * multiplier);
-
-			noticeTimeout = setTimeout(function() {
+		function updateProgressBar( type, process ) {
+			if ( 'base' === type ) {
+				if ( 'xml' === process ) {
+					updateProgress(15);
+				}
+				if ( process.indexOf('images') + 1 ) {
+					updateProgress(15 + ( 15 * process.substr(6) ) );
+				}
+				if ( 'other' === process ) {
+					updateProgress(80);
+				}
+			} else if ( 'xml' === process ) {
 				updateProgress(90);
+			} else if ( 'other' === process ) {
+				updateProgress(95);
+			}
+		}
+
+		function startProgressBar(type) {
+			noticeTimeout = setTimeout(function() {
 				printNotice('info', 'Please, wait. The theme needs a bit more time than expected to import all the attachments.');
 			}, 150000);
-
-			errorTimeout = setTimeout(function() {
-				clearNotices();
-				printNotice('error', 'Something is wrong with the import and it can\'t be complete. Try to disable all external plugins and run the import again. If it doesn\'t help, contact our support center for further assistance.');
-			}, 300000);
 		}
 
 		function updateProgress(progress) {
-			var timeout = 100;
+			var timeout = 400;
 
 			function update(value) {
 				$progressBar.attr('data-progress', value);
@@ -310,12 +290,7 @@
 			}
 
 			if (progress === 100) {
-				clearTimeout(progress1);
-				clearTimeout(progress2);
-				clearTimeout(progress3);
-				clearTimeout(progress4);
-				clearTimeout(progress5);
-				timeout = 5;
+				timeout = 20;
 			}
 
 			var from = $progressBar.attr('data-progress');
@@ -334,13 +309,7 @@
 		}
 
 		function endProgress() {
-			clearTimeout(progress1);
-			clearTimeout(progress2);
-			clearTimeout(progress3);
-			clearTimeout(progress4);
-			clearTimeout(progress5);
 			clearTimeout(noticeTimeout);
-			clearTimeout(errorTimeout);
 			clearInterval(interval);
 		}
 
@@ -466,11 +435,13 @@
 			e.preventDefault();
 
 			$('.xts-import-remove').addClass('xts-opened');
+			$('html').addClass('xts-popup-opened');
 		});
 		$('.xts-popup-close, .xts-popup-overlay').off('click').on('click', function(e) {
 			e.preventDefault();
 
 			$('.xts-import-remove').removeClass('xts-opened');
+			$('html').removeClass('xts-popup-opened');
 		});
 		$('.xts-import-remove-btn').off('click').on('click', function(e) {
 			e.preventDefault();

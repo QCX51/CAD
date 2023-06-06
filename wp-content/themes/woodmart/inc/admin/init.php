@@ -123,6 +123,7 @@ if ( ! function_exists( 'woodmart_admin_wpb_scripts' ) ) {
 
 		wp_enqueue_script( 'jquery-ui-datepicker' );
 		wp_enqueue_script( 'jquery-datetimepicker', WOODMART_ASSETS . '/js/libs/datetimepicker.min.js', array(), WOODMART_VERSION, true );
+		wp_enqueue_script( 'wp-color-picker-alpha', WOODMART_ASSETS . '/js/libs/wp-color-picker-alpha.js', array( 'wp-color-picker' ), woodmart_get_theme_info( 'Version' ), true );
 
 		wp_enqueue_script( 'jquery-ui-slider' );
 		wp_enqueue_script( 'wd-wpb-slider', WOODMART_ASSETS . '/js/vc-fields/slider.js', array(), WOODMART_VERSION, true );
@@ -204,23 +205,6 @@ if ( ! function_exists( 'woodmart_enqueue_admin_scripts' ) ) {
 		wp_enqueue_script( 'woodmart-admin-scripts', WOODMART_ASSETS . '/js/admin.js', array(), WOODMART_VERSION, true );
 
 		$localize_data = array(
-			'deactivate_plugin_nonce'            => wp_create_nonce( 'woodmart_deactivate_plugin_nonce' ),
-			'check_plugins_nonce'                => wp_create_nonce( 'woodmart_check_plugins_nonce' ),
-			'install_child_theme_nonce'          => wp_create_nonce( 'woodmart_install_child_theme_nonce' ),
-			'get_builder_elements_nonce'         => wp_create_nonce( 'woodmart-get-builder-elements-nonce' ),
-			'get_builder_element_nonce'          => wp_create_nonce( 'woodmart-get-builder-element-nonce' ),
-			'builder_load_header_nonce'          => wp_create_nonce( 'woodmart-builder-load-header-nonce' ),
-			'builder_save_header_nonce'          => wp_create_nonce( 'woodmart-builder-save-header-nonce' ),
-			'builder_remove_header_nonce'        => wp_create_nonce( 'woodmart-builder-remove-header-nonce' ),
-			'builder_set_default_header_nonce'   => wp_create_nonce( 'woodmart-builder-set-default-header-nonce' ),
-			'presets_nonce'                      => wp_create_nonce( 'xts_presets_nonce' ),
-			'import_nonce'                       => wp_create_nonce( 'woodmart-import-nonce' ),
-			'backup_nonce'                       => wp_create_nonce( 'xts_backup_nonce' ),
-			'import_remove_nonce'                => wp_create_nonce( 'woodmart-import-remove-nonce' ),
-			'mega_menu_added_thumbnail_nonce'    => wp_create_nonce( 'woodmart-mega-menu-added-thumbnail-nonce' ),
-			'get_hotspot_image_nonce'            => wp_create_nonce( 'woodmart-get-hotspot-image-nonce' ),
-			'get_theme_settings_data_nonce'      => wp_create_nonce( 'woodmart-get-theme-settings-data-nonce' ),
-			'get_new_template_nonce'             => wp_create_nonce( 'wd-new-template-nonce' ),
 			'searchOptionsPlaceholder'           => esc_js( __( 'Search for options', 'woodmart' ) ),
 			'ajaxUrl'                            => admin_url( 'admin-ajax.php' ),
 			'demoAjaxUrl'                        => WOODMART_DEMO_URL . 'wp-admin/admin-ajax.php',
@@ -235,15 +219,37 @@ if ( ! function_exists( 'woodmart_enqueue_admin_scripts' ) ) {
 			'animate_it_btn_text'                => esc_html__( 'Animate it', 'woodmart' ),
 			'remove_backup_text'                 => esc_html__( 'Are you sure you want to remove backup? This process cannot be undone. Continue?', 'woodmart' ),
 			'apply_backup_text'                  => esc_html__( 'Are you sure you want to apply backup? This process cannot be undone. Continue?', 'woodmart' ),
-			'patcher_nonce'                      => wp_create_nonce( 'patcher_nonce' ),
-			'bought_together_nonce'              => wp_create_nonce( 'bought_together_nonce' ),
-			'get_slides_nonce'                   => wp_create_nonce( 'woodmart-get-slides-nonce' ),
 			'wd_layout_type'                     => 'post.php' === $pagenow && isset( $_GET['post'] ) ? get_post_meta( woodmart_clean( $_GET['post'] ),'wd_layout_type', true ) : '', // phpcs:ignore
 			'current_page_builder'               => woodmart_get_current_page_builder(),
 			'import_base_versions_name'          => implode( ',', Helpers::get_instance()->get_base_version() ),
 		);
+		
+		if ( current_user_can( 'administrator' ) ) {
+			$localize_data = array_merge($localize_data, array(
+				'deactivate_plugin_nonce'            => wp_create_nonce( 'woodmart_deactivate_plugin_nonce' ),
+				'check_plugins_nonce'                => wp_create_nonce( 'woodmart_check_plugins_nonce' ),
+				'install_child_theme_nonce'          => wp_create_nonce( 'woodmart_install_child_theme_nonce' ),
+				'get_builder_elements_nonce'         => wp_create_nonce( 'woodmart-get-builder-elements-nonce' ),
+				'get_builder_element_nonce'          => wp_create_nonce( 'woodmart-get-builder-element-nonce' ),
+				'builder_load_header_nonce'          => wp_create_nonce( 'woodmart-builder-load-header-nonce' ),
+				'builder_save_header_nonce'          => wp_create_nonce( 'woodmart-builder-save-header-nonce' ),
+				'builder_remove_header_nonce'        => wp_create_nonce( 'woodmart-builder-remove-header-nonce' ),
+				'builder_set_default_header_nonce'   => wp_create_nonce( 'woodmart-builder-set-default-header-nonce' ),
+				'presets_nonce'                      => wp_create_nonce( 'xts_presets_nonce' ),
+				'import_nonce'                       => wp_create_nonce( 'woodmart-import-nonce' ),
+				'backup_nonce'                       => wp_create_nonce( 'xts_backup_nonce' ),
+				'import_remove_nonce'                => wp_create_nonce( 'woodmart-import-remove-nonce' ),
+				'mega_menu_added_thumbnail_nonce'    => wp_create_nonce( 'woodmart-mega-menu-added-thumbnail-nonce' ),
+				'get_hotspot_image_nonce'            => wp_create_nonce( 'woodmart-get-hotspot-image-nonce' ),
+				'get_theme_settings_data_nonce'      => wp_create_nonce( 'woodmart-get-theme-settings-data-nonce' ),
+				'get_new_template_nonce'             => wp_create_nonce( 'wd-new-template-nonce' ),
+				'patcher_nonce'                      => wp_create_nonce( 'patcher_nonce' ),
+				'bought_together_nonce'              => wp_create_nonce( 'bought_together_nonce' ),
+				'get_slides_nonce'                   => wp_create_nonce( 'woodmart-get-slides-nonce' )
+			));
+		}
 
-		wp_localize_script( 'woodmart-admin-scripts', 'woodmartConfig', $localize_data );
+		wp_localize_script( 'woodmart-admin-scripts', 'woodmartConfig', apply_filters( 'woodmart_admin_localized_string_array', $localize_data ) );
 	}
 
 	add_action( 'admin_init', 'woodmart_enqueue_admin_scripts', 100 );
@@ -284,7 +290,7 @@ if ( ! function_exists( 'woodmart_enqueue_admin_styles' ) ) {
 			wp_enqueue_style( 'wd-admin-int-woo-page-attributes', WOODMART_ASSETS . '/css/parts/int-woo-page-attributes.min.css', array(), WOODMART_VERSION );
 		}
 
-		if ( isset( $_GET['post_type'], $_GET['taxonomy'] ) && 'product_cat' === $_GET['taxonomy'] ) { //phpcs:ignore
+		if ( isset( $_GET['post_type'], $_GET['taxonomy'] ) && ( 'product_cat' === $_GET['taxonomy'] || 'cms_block_cat' === $_GET['taxonomy'] ) ) { //phpcs:ignore
 			wp_enqueue_style( 'wd-admin-int-woo-page-categories', WOODMART_ASSETS . '/css/parts/int-woo-page-categories.min.css', array(), WOODMART_VERSION );
 		}
 
@@ -326,6 +332,27 @@ if ( ! function_exists( 'woodmart_enqueue_admin_styles' ) ) {
 	}
 
 	add_action( 'admin_enqueue_scripts', 'woodmart_enqueue_admin_styles' );
+}
+
+if ( ! function_exists( 'woodmart_admin_custom_css_file' ) ) {
+	/**
+	 * This function creates and includes a custom CSS for the WordPress admin panel when the css_backend option is passed.
+	 *
+	 * @return void
+	 */
+	function woodmart_admin_custom_css_file() {
+		$css_backend = woodmart_get_opt( 'css_backend' );
+
+		if ( ! $css_backend ) {
+			return;
+		}
+
+		$storage = new WOODMART_Stylesstorage( 'admin-custom' );
+		$storage->write( $css_backend, false );
+		$storage->inline_css();
+	}
+
+	add_action( 'xts_after_theme_settings', 'woodmart_admin_custom_css_file', 100 );
 }
 
 if ( ! function_exists( 'woodmart_get_html_block_links' ) ) {
@@ -447,4 +474,46 @@ if ( ! function_exists( 'woodmart_get_compatible_plugin_btn' ) ) {
 			'extra-class' => $classes,
 		);
 	}
+}
+
+if ( ! function_exists( 'woodmart_get_update_enqueue_icons_fonts' ) ) {
+	/**
+	 * AJAX update enqueue icons fonts.
+	 *
+	 * @return void
+	 */
+	function woodmart_get_update_enqueue_icons_fonts() {
+		check_ajax_referer( 'woodmart-get-theme-settings-data-nonce', 'security' );
+
+		$enqueue = '';
+		$font    = sanitize_text_field( $_GET['font'] );
+		$weight  = sanitize_text_field( $_GET['weight'] );
+
+		if ( $font && $weight ) {
+			$icon_font_name = 'woodmart-font-' . $font . '-' . $weight;
+
+			ob_start();
+			?>
+			<style id="wd-icon-font">
+				@font-face {
+					font-weight: normal;
+					font-style: normal;
+					font-family: "woodmart-font";
+					src: url("<?php echo esc_url( woodmart_remove_https( WOODMART_THEME_DIR . '/fonts/' . $icon_font_name . '.woff2' ) . '?v=' . woodmart_get_theme_info( 'Version' ) ); ?>") format("woff2");
+				}
+			</style>
+			<?php
+
+			$enqueue = ob_get_clean();
+		}
+
+		wp_send_json(
+			array(
+				'enqueue' => $enqueue,
+			)
+		);
+
+	}
+
+	add_action( 'wp_ajax_woodmart_get_enqueue_custom_icon_fonts', 'woodmart_get_update_enqueue_icons_fonts' );
 }

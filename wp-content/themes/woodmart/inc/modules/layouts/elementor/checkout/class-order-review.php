@@ -10,6 +10,7 @@ namespace XTS\Modules\Layouts;
 use Elementor\Controls_Manager;
 use Elementor\Plugin;
 use Elementor\Widget_Base;
+use XTS\Modules\Checkout_Order_Table;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Direct access not allowed.
@@ -19,6 +20,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Elementor widget that inserts an embeddable content into the page, from any given URL.
  */
 class Order_Review extends Widget_Base {
+	/**
+	 * Classes added to this element's wrapper.
+	 *
+	 * @var string
+	 */
+	private $wd_css_classes = 'wd-order-table';
+
 	/**
 	 * Get widget name.
 	 *
@@ -97,7 +105,7 @@ class Order_Review extends Widget_Base {
 			'css_classes',
 			array(
 				'type'         => 'wd_css_class',
-				'default'      => 'wd-order-table',
+				'default'      => $this->get_element_wrapper_classes(),
 				'prefix_class' => '',
 			)
 		);
@@ -124,6 +132,19 @@ class Order_Review extends Widget_Base {
 
 		woocommerce_order_review();
 	}
+
+	/**
+	 * Add the required classes to this element's wrapper.
+	 *
+	 * @return string
+	 */
+	private function get_element_wrapper_classes() {
+		if ( Checkout_Order_Table::get_instance()->is_enable_woodmart_product_table_template() ) {
+			$this->wd_css_classes .= ' wd-manage-on';
+		}
+
+		return $this->wd_css_classes;
+	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Order_Review() );
+Plugin::instance()->widgets_manager->register( new Order_Review() );

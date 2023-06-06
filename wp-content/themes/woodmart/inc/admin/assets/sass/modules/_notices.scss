@@ -286,13 +286,27 @@
 			padding-bottom: 0;
 			background-color: transparent !important;
 
-			&.xts-warning {
+			&:is(
+			.xts-warning,
+			.xts-info) {
 
 				.whb-editor-field-inner {
 					padding: 15px;
 					border-radius: inherit;
+				}
+			}
 
+			&.xts-warning {
+
+				.whb-editor-field-inner {
 					@extend %warning-notice;
+				}
+			}
+
+			&.xts-info {
+
+				.whb-editor-field-inner {
+					@extend %warning-info;
 				}
 			}
 		}

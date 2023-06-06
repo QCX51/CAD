@@ -17,23 +17,19 @@ class Main extends Singleton {
 	 * Constructor.
 	 */
 	public function init() {
-		add_filter( 'init', array( $this, 'define_constants' ), 5 );
-		add_filter( 'init', array( $this, 'include_files' ), 10 );
+		define( 'XTS_LAYOUTS_DIR', WOODMART_THEMEROOT . '/inc/modules/layouts/' );
+		define( 'XTS_LAYOUTS_TEMPLATES_DIR', '/inc/modules/layouts/templates/' );
+
+		$this->include_classes_files();
+
+		add_action( 'init', array( $this, 'include_files' ), 10 );
 		add_action( 'elementor/elements/categories_registered', array( $this, 'register_elementor_categories' ), 20 );
 	}
 
 	/**
-	 * Define constants.
+	 * Include classes files.
 	 */
-	public function define_constants() {
-		define( 'XTS_LAYOUTS_DIR', WOODMART_THEMEROOT . '/inc/modules/layouts/' );
-		define( 'XTS_LAYOUTS_TEMPLATES_DIR', '/inc/modules/layouts/templates/' );
-	}
-
-	/**
-	 * Include files.
-	 */
-	public function include_files() {
+	public function include_classes_files() {
 		require_once XTS_LAYOUTS_DIR . 'admin/class-admin.php';
 		require_once XTS_LAYOUTS_DIR . 'admin/class-conditions-cache.php';
 		require_once XTS_LAYOUTS_DIR . 'admin/class-manager.php';
@@ -43,7 +39,12 @@ class Main extends Singleton {
 		require_once XTS_LAYOUTS_DIR . 'class-cart.php';
 		require_once XTS_LAYOUTS_DIR . 'class-shop-archive.php';
 		require_once XTS_LAYOUTS_DIR . 'class-single-product.php';
+	}
 
+	/**
+	 * Include files.
+	 */
+	public function include_files() {
 		$directory       = '';
 		$current_builder = woodmart_get_current_page_builder();
 
@@ -51,6 +52,8 @@ class Main extends Singleton {
 			foreach ( glob( XTS_LAYOUTS_DIR . 'wpb/**/**/*.php', GLOB_NOSORT ) as $file ) {
 				require_once $file;
 			}
+
+			require_once XTS_LAYOUTS_DIR . 'wpb/maps/register-maps.php';
 		} elseif ( 'elementor' === $current_builder ) {
 			add_action( 'elementor/widgets/register', array( $this, 'register_layout_widgets' ) );
 		}
@@ -302,6 +305,8 @@ class Main extends Singleton {
 			}
 		} elseif ( function_exists( 'vc_is_inline' ) && vc_is_inline() ) {
 			$layout_id = (int) vc_get_param( 'vc_post_id' );
+		} elseif ( 'post-new.php' === $GLOBALS['pagenow'] && ( ! isset( $_REQUEST['post_type'] ) || 'woodmart_layout' !== $_REQUEST['post_type'] ) ) {
+			return false;
 		} elseif ( is_admin() ) {
 			return true;
 		} else {

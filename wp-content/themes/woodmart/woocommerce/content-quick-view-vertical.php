@@ -43,14 +43,11 @@ if ( is_rtl() ) {
 
 	<div class="row product-image-summary">
 		<div class="col-lg-12 col-md-12 col-12 product-images woocommerce-product-gallery">
-			<?php
-				woodmart_product_images_slider();
-				woodmart_view_product_button();
-			?>
+			<?php woodmart_product_images_slider(); ?>
 		</div>
 		<div class="col-lg-12 col-md-12 col-12 summary entry-summary<?php echo esc_attr( $product_summary_class ); ?>">
 			<div class="wd-scroll">
-				<div class="summary-inner wd-scroll-content">
+				<div class="summary-inner set-mb-l reset-last-child wd-scroll-content">
 					<?php
 						/**
 						 * woocommerce_single_product_summary hook

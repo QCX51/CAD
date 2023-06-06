@@ -342,4 +342,21 @@ class After extends Singleton {
 		$wpdb->query( "UPDATE {$wpdb->posts} SET `post_content` = REPLACE(`post_content`, '{$encoded_from}', '{$encoded_to}')" );
 		// @codingStandardsIgnoreEnd
 	}
+
+	/**
+	 * Set shop page.
+	 */
+	public function set_shop_page() {
+		$shop_page = get_page_by_title( 'Shop', OBJECT, 'page' );
+
+		if ( ! is_null( $shop_page ) ) {
+			update_option( 'woocommerce_shop_page_id', $shop_page->ID );
+		} else {
+			wc_create_page(
+				esc_sql( _x( 'shop', 'Page slug', 'woocommerce' ) ),
+				'woocommerce_shop_page_id',
+				_x( 'Shop', 'Page title', 'woocommerce' )
+			);
+		}
+	}
 }

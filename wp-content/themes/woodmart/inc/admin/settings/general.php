@@ -570,8 +570,8 @@ Options::add_field(
 Options::add_field(
 	array(
 		'id'          => 'promo_popup_hide_mobile',
-		'name'        => esc_html__( 'Hide for mobile devices', 'woodmart' ),
-		'description' => esc_html__( 'You can disable this option for mobile devices completely.', 'woodmart' ),
+		'name'        => esc_html__( 'Hide on mobile devices', 'woodmart' ),
+		'description' => esc_html__( 'You can disable this option on mobile devices completely.', 'woodmart' ),
 		'type'        => 'switcher',
 		'group'       => esc_html__( 'Settings', 'woodmart' ),
 		'section'     => 'promo_popup_section',
@@ -668,7 +668,7 @@ Options::add_field(
 	array(
 		'id'          => 'cookies_info',
 		'name'        => esc_html__( 'Show cookies info', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'general-cookies-notice.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'general-cookies-notice.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Under EU privacy regulations, websites must make it clear to visitors what information about them is being stored. This specifically includes cookies. Turn on this option and user will see info box at the bottom of the page that your web-site is using cookies.', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'cookie_section',
@@ -733,7 +733,7 @@ Options::add_field(
 	array(
 		'id'          => 'header_banner',
 		'name'        => esc_html__( 'Header banner', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'general-header-banner.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'general-header-banner.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Display a thin line above the header with your custom content. Useful for promotions and global messages.', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'header_banner_section',
@@ -908,7 +908,7 @@ Options::add_field(
 	array(
 		'id'          => 'header_close_btn',
 		'name'        => esc_html__( 'Close button', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'header-close-button.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'header-close-button.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Show close banner button', 'woodmart' ),
 		'group'       => esc_html__( 'Settings', 'woodmart' ),
 		'type'        => 'switcher',
@@ -949,7 +949,7 @@ Options::add_field(
 	array(
 		'id'          => 'enqueue_posts_results',
 		'name'        => esc_html__( 'Display results from blog', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'display-results-from-blog.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'display-results-from-blog.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Enable this option to show search results from the blog below the product results.', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'general_search',
@@ -1004,6 +1004,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'general_search',
 		'default'     => '0',
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 40,
 	)
 );
@@ -1012,7 +1014,7 @@ Options::add_field(
 	array(
 		'id'          => 'popular_requests',
 		'name'        => esc_html__( 'Popular requests', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'popular-requests.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'popular-requests.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Show quick buttons under the search form with popular search requests. Separate words with new lines.', 'woodmart' ),
 		'group'       => esc_html__( 'Full screen search', 'woodmart' ),
 		'type'        => 'textarea',
@@ -1027,7 +1029,7 @@ Options::add_field(
 	array(
 		'id'          => 'full_search_content_type',
 		'name'        => esc_html__( 'Full screen search extra content', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'full-screen-search-extra-content.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'full-screen-search-extra-content.mp4" autoplay loop muted></video>',
 		'type'        => 'buttons',
 		'section'     => 'general_search',
 		'group'       => esc_html__( 'Full screen search', 'woodmart' ),

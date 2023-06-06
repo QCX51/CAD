@@ -9,16 +9,21 @@
 	<div class="product-element-top wd-quick-shop">
 		<a href="<?php echo esc_url( get_permalink() ); ?>" class="product-image-link">
 			<?php
-				/**
-				 * woocommerce_before_shop_loop_item_title hook
-				 *
-				 * @hooked woocommerce_show_product_loop_sale_flash - 10
-				 * @hooked woodmart_template_loop_product_thumbnail - 10
-				 */
-				do_action( 'woocommerce_before_shop_loop_item_title' );
+			/**
+			 * woocommerce_before_shop_loop_item_title hook
+			 *
+			 * @hooked woocommerce_show_product_loop_sale_flash - 10
+			 * @hooked woodmart_template_loop_product_thumbnail - 10
+			 */
+			do_action( 'woocommerce_before_shop_loop_item_title' );
 			?>
 		</a>
-		<?php woodmart_hover_image(); ?>
+
+		<?php
+		if ( 'no' === woodmart_loop_prop( 'grid_gallery' ) || ! woodmart_loop_prop( 'grid_gallery' ) ) {
+			woodmart_hover_image();
+		}
+		?>
 		<div class="wd-buttons wd-pos-r-t<?php echo woodmart_get_old_classes( ' woodmart-buttons' ); ?>">
 			<?php woodmart_enqueue_js_script( 'btns-tooltip' ); ?>
 			<?php woodmart_add_to_compare_loop_btn(); ?>
@@ -26,13 +31,17 @@
 			<?php do_action( 'woodmart_product_action_buttons' ); ?>
 		</div>
 
-		<div class="wd-add-btn wd-add-btn-replace<?php echo woodmart_get_old_classes( ' woodmart-add-btn' ); ?>">
-			<?php if ( woodmart_loop_prop( 'product_quantity' ) ): ?>
-				<?php woodmart_product_quantity( $product ); ?>
-			<?php endif ?>
+		<?php if ( has_action( 'woodmart_add_loop_btn' ) || ( woodmart_loop_prop( 'product_quantity' ) && ! woodmart_get_opt( 'catalog_mode' ) ) ) : ?>
+			<div class="wd-add-btn wd-add-btn-replace<?php echo woodmart_get_old_classes( ' woodmart-add-btn' ); ?>">
+				<?php if ( woodmart_loop_prop( 'product_quantity' )): ?>
+					<?php woodmart_product_quantity( $product ); ?>
+				<?php endif ?>
 
-			<?php do_action( 'woodmart_add_loop_btn' ); ?>
-		</div>
+				<?php do_action( 'woodmart_add_loop_btn' ); ?>
+			</div>
+		<?php endif; ?>
+
+		<?php echo woodmart_get_thumbnails_gallery_pagin(); ?>
 	</div>
 	<?php if ( woodmart_loop_prop( 'stretch_product_desktop' ) || woodmart_loop_prop( 'stretch_product_tablet' ) || woodmart_loop_prop( 'stretch_product_mobile' ) ) : ?>
 	<div class="product-element-bottom">

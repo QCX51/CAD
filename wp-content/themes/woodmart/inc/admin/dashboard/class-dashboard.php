@@ -2,6 +2,7 @@
 
 namespace XTS\Inc\Admin\Dashboard;
 
+use XTS\Modules\Patcher\Client;
 use XTS\Options;
 use XTS\Presets;
 use XTS\Setup_Wizard;
@@ -183,6 +184,20 @@ class Dashboard extends Singleton {
 			);
 		}
 
+		if ( woodmart_get_opt( 'dummy_import', '1' ) ) {
+			$admin_bar->add_node(
+				array(
+					'id'     => 'xts_prebuilt_websites',
+					'title' => '<i class="xts-i-dummy-content"></i>' . esc_html__('Prebuilt websites', 'woodmart'),
+					'href'   => admin_url( 'admin.php?page=xts_prebuilt_websites' ),
+					'parent' => 'xts_dashboard',
+					'meta'   => array(
+						'title' => esc_html__( 'Prebuilt websites', 'woodmart' ),
+					),
+				)
+			);
+		}
+
 		$admin_bar->add_node(
 			array(
 				'id'     => 'xts_layouts',
@@ -290,6 +305,47 @@ class Dashboard extends Singleton {
 				),
 			)
 		);
+
+		$admin_bar->add_group(
+			array(
+				'parent' => 'xts_dashboard',
+				'id'     => 'xts_dashboard_external',
+				'meta'   => array(
+					'class' => 'ab-sub-secondary',
+				),
+			)
+		);
+
+		if ( woodmart_get_opt( 'white_label_theme_license_tab', '1' ) ) {
+			$admin_bar->add_node(
+				array(
+					'parent' => 'xts_dashboard_external',
+					'id' => 'xts_license',
+					'title' => '<i class="xts-i-key"></i>' . esc_html__('Theme license', 'woodmart'),
+					'href' => admin_url('admin.php?page=xts_license'),
+				)
+			);
+		}
+
+		$admin_bar->add_node(
+			array(
+				'parent' => 'xts_dashboard_external',
+				'id'     => 'xts_plugins',
+				'title'  => '<i class="xts-i-puzzle"></i>' . esc_html__( 'Plugins', 'woodmart' ),
+				'href'   => admin_url( 'admin.php?page=xts_plugins' ),
+			)
+		);
+
+		$patches_count = class_exists( 'XTS\Modules\Patcher\Client' ) ? Client::get_instance()->get_count_patches_map() : '';
+
+		$admin_bar->add_node(
+			array(
+				'parent' => 'xts_dashboard_external',
+				'id'     => 'xts_patcher',
+				'title'  => '<i class="xts-i-cog"></i>' . esc_html__( 'Patcher', 'woodmart' ) . $patches_count,
+				'href'   => admin_url( 'admin.php?page=xts_patcher' ),
+			)
+		);
 	}
 
 	/**
@@ -311,7 +367,7 @@ class Dashboard extends Singleton {
 		add_menu_page(
 			$theme_name,
 			$theme_name,
-			'manage_options',
+			apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'xts_dashboard' ),
 			'xts_dashboard',
 			[ $this, 'page_content' ],
 			$this->get_logo_url(),
@@ -322,7 +378,7 @@ class Dashboard extends Singleton {
 			'xts_dashboard',
 			esc_html__( 'Theme settings', 'woodmart' ),
 			esc_html__( 'Theme settings', 'woodmart' ),
-			'edit_posts',
+			apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'xts_theme_settings' ),
 			'xts_theme_settings',
 			[ $this, 'page_content' ],
 			1
@@ -332,7 +388,7 @@ class Dashboard extends Singleton {
 			null,
 			esc_html__( 'Theme settings backup', 'woodmart' ),
 			esc_html__( 'Theme settings backup', 'woodmart' ),
-			'edit_posts',
+			'manage_options',
 			'xts_theme_settings_backup',
 			[ $this, 'page_content' ],
 			1
@@ -342,7 +398,7 @@ class Dashboard extends Singleton {
 			null,
 			esc_html__( 'Theme settings presets', 'woodmart' ),
 			esc_html__( 'Theme settings presets', 'woodmart' ),
-			'edit_posts',
+			'manage_options',
 			'xts_theme_settings_presets',
 			[ $this, 'page_content' ],
 			2
@@ -352,7 +408,7 @@ class Dashboard extends Singleton {
 			'xts_dashboard',
 			esc_html__( 'Header builder', 'woodmart' ),
 			esc_html__( 'Header builder', 'woodmart' ),
-			'edit_posts',
+			apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'xts_header_builder' ),
 			'xts_header_builder',
 			[ $this, 'page_content' ],
 			3
@@ -363,7 +419,7 @@ class Dashboard extends Singleton {
 				'xts_dashboard',
 				esc_html__( 'Prebuilt websites', 'woodmart' ),
 				esc_html__( 'Prebuilt websites', 'woodmart' ),
-				'edit_posts',
+				apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'xts_prebuilt_websites' ),
 				'xts_prebuilt_websites',
 				[ $this, 'page_content' ],
 				4
@@ -375,7 +431,7 @@ class Dashboard extends Singleton {
 				'xts_dashboard',
 				esc_html__( 'Theme license', 'woodmart' ),
 				esc_html__( 'Theme license', 'woodmart' ),
-				'edit_posts',
+				apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'xts_license' ),
 				'xts_license',
 				[ $this, 'page_content' ],
 				5
@@ -386,17 +442,19 @@ class Dashboard extends Singleton {
 			'xts_dashboard',
 			esc_html__( 'Plugins', 'woodmart' ),
 			esc_html__( 'Plugins', 'woodmart' ),
-			'edit_posts',
+			apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'plugins' ),
 			'xts_plugins',
 			[ $this, 'page_content' ],
 			6
 		);
 
+		$patches_count = class_exists( 'XTS\Modules\Patcher\Client' ) ? Client::get_instance()->get_count_patches_map() : '';
+
 		add_submenu_page(
 			'xts_dashboard',
 			esc_html__( 'Patcher', 'woodmart' ),
-			esc_html__( 'Patcher', 'woodmart' ),
-			'edit_posts',
+			esc_html__( 'Patcher', 'woodmart' ) . $patches_count,
+			apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'xts_patcher' ),
 			'xts_patcher',
 			[ $this, 'page_content' ],
 			7
@@ -406,7 +464,7 @@ class Dashboard extends Singleton {
 			'xts_dashboard',
 			esc_html__( 'Status', 'woodmart' ),
 			esc_html__( 'Status', 'woodmart' ),
-			'edit_posts',
+			apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'xts_status' ),
 			'xts_status',
 			[ $this, 'page_content' ],
 			8
@@ -417,7 +475,7 @@ class Dashboard extends Singleton {
 				'xts_dashboard',
 				esc_html__('Changelog', 'woodmart'),
 				esc_html__('Changelog', 'woodmart'),
-				'edit_posts',
+				apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'xts_changelog' ),
 				'xts_changelog',
 				[$this, 'page_content'],
 				9
@@ -429,7 +487,7 @@ class Dashboard extends Singleton {
 				'xts_dashboard',
 				esc_html__( 'WPBakery CSS Generator', 'woodmart' ),
 				esc_html__( 'WPBakery CSS Generator', 'woodmart' ),
-				'edit_posts',
+				apply_filters( 'woodmart_capability_menu_page', 'manage_options', 'xts_wpb_css_generator' ),
 				'xts_wpb_css_generator',
 				[ $this, 'page_content' ],
 				10

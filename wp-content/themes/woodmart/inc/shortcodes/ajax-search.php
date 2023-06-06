@@ -22,6 +22,7 @@ if( ! function_exists( 'woodmart_ajax_search' ) ) {
 				'woodmart_color_scheme' => 'dark',
 				'el_class'              => '',
 				'form_style'            => 'default',
+				'cat_selector_style'    => 'bordered',
 			),
 			$atts
 		);
@@ -38,13 +39,14 @@ if( ! function_exists( 'woodmart_ajax_search' ) ) {
 				<?php
 					woodmart_search_form(
 						array(
-							'ajax'            => true,
-							'post_type'       => $atts['search_post_type'],
-							'count'           => $atts['number'],
-							'thumbnail'       => $atts['thumbnail'],
-							'price'           => $atts['price'],
-							'show_categories' => $atts['category'],
-							'search_style'    => $atts['form_style'],
+							'ajax'               => true,
+							'post_type'          => $atts['search_post_type'],
+							'count'              => $atts['number'],
+							'thumbnail'          => $atts['thumbnail'],
+							'price'              => $atts['price'],
+							'show_categories'    => $atts['category'],
+							'search_style'       => $atts['form_style'],
+							'cat_selector_style' => $atts['cat_selector_style'],
 						)
 					);
 				?>

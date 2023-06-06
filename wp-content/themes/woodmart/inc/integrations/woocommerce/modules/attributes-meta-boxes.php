@@ -38,6 +38,9 @@ if ( ! function_exists( 'woodmart_wc_attribute_update' ) ) {
 
 		$attribute_hint = isset( $_POST['attribute_hint'] ) ? $_POST['attribute_hint'] : ''; // phpcs:ignore.
 		update_option( 'woodmart_pa_' . $attribute['attribute_name'] . '_hint', sanitize_text_field( $attribute_hint ) );
+
+		$attribute_change_image = isset( $_POST['attribute_change_image'] ) ? $_POST['attribute_change_image'] : ''; // phpcs:ignore.
+		update_option( 'woodmart_pa_' . $attribute['attribute_name'] . '_change_image', sanitize_text_field( $attribute_change_image ) );
 	}
 
 	add_action( 'woocommerce_attribute_updated', 'woodmart_wc_attribute_update', 20, 3 );
@@ -71,6 +74,9 @@ if ( ! function_exists( 'woodmart_wc_attribute_add' ) ) {
 
 		$attribute_hint = isset( $_POST['attribute_hint'] ) ? $_POST['attribute_hint'] : ''; // phpcs:ignore.
 		add_option( 'woodmart_pa_' . $attribute['attribute_name'] . '_hint', sanitize_text_field( $attribute_hint ) );
+
+		$attribute_change_image = isset( $_POST['attribute_change_image'] ) ? $_POST['attribute_change_image'] : ''; // phpcs:ignore.
+		add_option( 'woodmart_pa_' . $attribute['attribute_name'] . '_change_image', sanitize_text_field( $attribute_change_image ) );
 	}
 
 	add_action( 'woocommerce_attribute_added', 'woodmart_wc_attribute_add', 20, 2 );
@@ -85,8 +91,8 @@ if ( ! function_exists( 'woodmart_wc_get_attribute_term' ) ) {
 	 * @param mixed $term .
 	 * @return false|mixed|void
 	 */
-	function woodmart_wc_get_attribute_term( $attribute_name, $term ) {
-		return get_option( 'woodmart_' . $attribute_name . '_' . $term );
+	function woodmart_wc_get_attribute_term( $attribute_name, $term, $default = false ) {
+		return get_option( 'woodmart_' . $attribute_name . '_' . $term, $default );
 	}
 }
 
@@ -125,22 +131,24 @@ if ( ! function_exists( 'woodmart_render_product_attrs_admin_options' ) ) {
 			'3' => esc_html__( 'Style 3', 'woodmart' ),
 		);
 
-		$show_on_product = '';
-		$thumb_id        = '';
-		$attribute_hint  = '';
+		$show_on_product      = '';
+		$thumb_id             = '';
+		$attribute_hint       = '';
+		$change_image_product = '';
 
-		if ( isset( $_GET['edit'] ) && ! empty( $_GET['edit'] ) ) { // phpcs:ignore
+		if ( ! empty( $_GET['edit'] ) ) { // phpcs:ignore
 			$attribute_id   = sanitize_text_field( wp_unslash( $_GET['edit'] ) ); // phpcs:ignore
 			$taxonomy_ids   = wc_get_attribute_taxonomy_ids();
 			$attribute_name = 'pa_' . array_search( $attribute_id, $taxonomy_ids, false ); // phpcs:ignore
 
-			$swatch_shape     = woodmart_wc_get_attribute_term( $attribute_name, 'swatch_shape' );
-			$swatch_size      = woodmart_wc_get_attribute_term( $attribute_name, 'swatch_size' );
-			$swatch_style     = woodmart_wc_get_attribute_term( $attribute_name, 'swatch_style' );
-			$swatch_dis_style = woodmart_wc_get_attribute_term( $attribute_name, 'swatch_dis_style' );
-			$show_on_product  = woodmart_wc_get_attribute_term( $attribute_name, 'show_on_product' );
-			$thumb_id         = woodmart_wc_get_attribute_term( $attribute_name, 'thumbnail' );
-			$attribute_hint   = woodmart_wc_get_attribute_term( $attribute_name, 'hint' );
+			$swatch_shape         = woodmart_wc_get_attribute_term( $attribute_name, 'swatch_shape' );
+			$swatch_size          = woodmart_wc_get_attribute_term( $attribute_name, 'swatch_size' );
+			$swatch_style         = woodmart_wc_get_attribute_term( $attribute_name, 'swatch_style' );
+			$swatch_dis_style     = woodmart_wc_get_attribute_term( $attribute_name, 'swatch_dis_style' );
+			$show_on_product      = woodmart_wc_get_attribute_term( $attribute_name, 'show_on_product' );
+			$thumb_id             = woodmart_wc_get_attribute_term( $attribute_name, 'thumbnail' );
+			$attribute_hint       = woodmart_wc_get_attribute_term( $attribute_name, 'hint' );
+			$change_image_product = woodmart_wc_get_attribute_term( $attribute_name, 'change_image' );
 		}
 
 		$swatch_shape     = ! empty( $swatch_shape ) ? $swatch_shape : 'round';
@@ -250,8 +258,8 @@ if ( ! function_exists( 'woodmart_render_product_attrs_admin_options' ) ) {
 													<?php esc_html_e( 'Show attribute label on products', 'woodmart' ); ?>
 												</span>
 											</label>
-											<div class="xts-hint xts-loaded">
-												<div class="xts-tooltip xts-top"><img data-src="https://woodmart.xtemos.com/theme-settings-tooltips/show-attribute-label-on-products.jpg" alt="" src="https://woodmart.xtemos.com/theme-settings-tooltips/show-attribute-label-on-products.jpg"></div>
+											<div class="xts-hint">
+												<div class="xts-tooltip xts-top"><img data-src="<?php echo esc_url( WOODMART_TOOLTIP_URL . 'show-attribute-label-on-products.jpg' ); ?>" alt=""></div>
 											</div>
 										</div>
 										<div class="xts-option-control">
@@ -261,10 +269,10 @@ if ( ! function_exists( 'woodmart_render_product_attrs_admin_options' ) ) {
 												</div>
 												<div class="xts-switcher-labels">
 													<span class="xts-switcher-label xts-on">
-														<?php esc_html_e( 'On', 'woodmart' ); ?>
+														<?php esc_html_e( 'Yes', 'woodmart' ); ?>
 													</span>
 													<span class="xts-switcher-label xts-off">
-														<?php esc_html_e( 'Off', 'woodmart' ); ?>
+														<?php esc_html_e( 'No', 'woodmart' ); ?>
 													</span>
 												</div>
 											</div>
@@ -274,6 +282,36 @@ if ( ! function_exists( 'woodmart_render_product_attrs_admin_options' ) ) {
 											<?php esc_html_e( 'Enable this option to show an attribute label on the product image.', 'woodmart' ); ?>
 										</p>
 									</div>
+									<div class="xts-field xts-settings-field xts-switcher-control">
+										<div class="xts-option-title">
+											<label>
+												<span>
+													<?php esc_html_e( 'Change product image on attribute click', 'woodmart' ); ?>
+												</span>
+											</label>
+											<div class="xts-hint xts-loaded">
+												<div class="xts-tooltip xts-top">
+													<div class="xts-tooltip-inner"><video data-src="https://woodmart.xtemos.com/theme-settings-tooltips/change-product-image-attribute-click.mp4" autoplay="" loop="" muted="" src="https://woodmart.xtemos.com/theme-settings-tooltips/change-product-image-attribute-click.mp4"></video></div>
+												</div>
+											</div>
+										</div>
+										<div class="xts-option-control">
+											<div class="xts-switcher-btn<?php echo esc_attr( 'on' === $change_image_product ? ' xts-active' : '' ); ?>" data-on="on" data-off="off">
+												<div class="xts-switcher-dot-wrap">
+													<div class="xts-switcher-dot"></div>
+												</div>
+												<div class="xts-switcher-labels">
+													<span class="xts-switcher-label xts-on">
+														<?php esc_html_e( 'Yes', 'woodmart' ); ?>
+													</span>
+													<span class="xts-switcher-label xts-off">
+														<?php esc_html_e( 'No', 'woodmart' ); ?>
+													</span>
+												</div>
+											</div>
+											<input type="hidden" name="attribute_change_image" value="<?php echo esc_attr( $change_image_product ); ?>" >
+										</div>
+									</div>
 									<div class="xts-field xts-settings-field xts-upload-control">
 										<div class="xts-option-title">
 											<label>
@@ -281,8 +319,8 @@ if ( ! function_exists( 'woodmart_render_product_attrs_admin_options' ) ) {
 													<?php esc_html_e( 'Attribute icon', 'woocommerce' ); ?>
 												</span>
 											</label>
-											<div class="xts-hint xts-loaded">
-												<div class="xts-tooltip xts-top"><img data-src="https://woodmart.xtemos.com/theme-settings-tooltips/attribute-icon.jpg" alt="" src="https://woodmart.xtemos.com/theme-settings-tooltips/attribute-icon.jpg"></div>
+											<div class="xts-hint">
+												<div class="xts-tooltip xts-top"><img data-src="<?php echo esc_url( WOODMART_TOOLTIP_URL . 'attribute-icon.jpg' ); ?>" alt=""></div>
 											</div>
 										</div>
 										<div class="xts-option-control">
@@ -292,12 +330,12 @@ if ( ! function_exists( 'woodmart_render_product_attrs_admin_options' ) ) {
 												<?php endif; ?>
 											</div>
 											<div class="xts-upload-btns">
-												<button class="xts-btn xts-upload-btn xts-i-import">
+												<a class="xts-btn xts-upload-btn xts-i-import">
 													<?php esc_html_e( 'Upload', 'woodmart' ); ?>
-												</button>
-												<button class="xts-btn xts-color-warning xts-remove-upload-btn xts-i-trash<?php echo ( isset( $thumb_id ) && ! empty( $thumb_id ) ) ? ' xts-active' : ''; ?>">
+												</a>
+												<a class="xts-btn xts-color-warning xts-remove-upload-btn xts-i-trash<?php echo ( isset( $thumb_id ) && ! empty( $thumb_id ) ) ? ' xts-active' : ''; ?>">
 													<?php esc_html_e( 'Remove', 'woodmart' ); ?>
-												</button>
+												</a>
 
 												<input id="product_attr_thumbnail_id" type="hidden" class="xts-upload-input-id" name="product_attr_thumbnail_id" value="<?php echo esc_attr( $thumb_id ); ?>" />
 											</div>
@@ -313,8 +351,8 @@ if ( ! function_exists( 'woodmart_render_product_attrs_admin_options' ) ) {
 													<?php esc_html_e( 'Attribute hint content', 'woodmart' ); ?>
 												</span>
 											</label>
-											<div class="xts-hint xts-loaded">
-												<div class="xts-tooltip xts-top"><img data-src="https://woodmart.xtemos.com/theme-settings-tooltips/attribute-hint.gif" alt="" src="https://woodmart.xtemos.com/theme-settings-tooltips/attribute-hint.gif"></div>
+											<div class="xts-hint">
+												<div class="xts-tooltip xts-top"><img data-src="<?php echo esc_url( WOODMART_TOOLTIP_URL . 'attribute-hint.gif' ); ?>" alt=""></div>
 											</div>
 										</div>
 										<div class="xts-option-control">

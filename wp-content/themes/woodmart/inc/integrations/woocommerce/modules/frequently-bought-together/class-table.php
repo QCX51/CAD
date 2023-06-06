@@ -76,7 +76,7 @@ class Bundles_Table extends \WP_List_Table {
 				|
 			</span>
 			<span class="delete">
-				<a href="<?php echo esc_url( get_delete_post_link( $item['id'] ) ); ?>" class="xts-delete-bundle" data-id="<?php echo esc_attr( $item['id'] ); ?>" data-link="ajax-delete">
+				<a href="#" class="xts-delete-bundle" data-id="<?php echo esc_attr( $item['id'] ); ?>" data-link="ajax-delete">
 					<?php esc_html_e( 'Delete', 'woodmart' ); ?>
 				</a>
 			</span>

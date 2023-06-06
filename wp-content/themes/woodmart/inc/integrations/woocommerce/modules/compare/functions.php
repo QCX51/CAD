@@ -96,7 +96,7 @@ if ( ! function_exists( 'woodmart_compare_available_fields' ) ) {
 	 *
 	 * @return mixed
 	 */
-	function woodmart_compare_available_fields( $new = false ) {
-		return Compare::get_instance()->compare_available_fields( $new );
+	function woodmart_compare_available_fields() {
+		return Compare::get_instance()->compare_available_fields( true );
 	}
 }

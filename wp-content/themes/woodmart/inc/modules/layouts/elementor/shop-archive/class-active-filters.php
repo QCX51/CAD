@@ -110,12 +110,10 @@ class Active_Filters extends Widget_Base {
 	protected function render() {
 		Main::setup_preview();
 
-		woodmart_enqueue_inline_style( 'woo-shop-el-active-filters' );
-
 		woodmart_get_active_filters();
 
 		Main::restore_preview();
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Active_Filters() );
+Plugin::instance()->widgets_manager->register( new Active_Filters() );

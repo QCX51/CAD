@@ -1,6 +1,9 @@
 /* global woodmart_settings */
 (function($) {
-	woodmartThemeModule.$document.on('wdPjaxStart', function() {
+	woodmartThemeModule.$document.on('wdPjaxStart wdBackHistory', function() {
+		woodmartThemeModule.hideShopSidebar();
+	});
+	window.addEventListener('popstate', function() {
 		woodmartThemeModule.hideShopSidebar();
 	});
 
@@ -23,15 +26,20 @@
 
 		woodmartThemeModule.$body.off('click', '.wd-show-sidebar-btn, .wd-sidebar-opener').on('click', '.wd-show-sidebar-btn, .wd-sidebar-opener', function(e) {
 			e.preventDefault();
+			var $btn = $('.wd-show-sidebar-btn, .wd-sidebar-opener');
 
 			if ($('.sidebar-container').hasClass('wd-opened')) {
+				$btn.removeClass('wd-opened');
 				woodmartThemeModule.hideShopSidebar();
 			} else {
+				$btn.addClass('wd-opened');
 				showSidebar();
 			}
 		});
 
-		woodmartThemeModule.$body.on('click touchstart', '.wd-close-side, .close-side-widget', function() {
+		woodmartThemeModule.$body.on('click touchstart', '.wd-close-side, .close-side-widget', function(e) {
+			e.preventDefault();
+
 			woodmartThemeModule.hideShopSidebar();
 		});
 

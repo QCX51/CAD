@@ -279,4 +279,4 @@ class Brands extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Brands() );
+Plugin::instance()->widgets_manager->register( new Brands() );

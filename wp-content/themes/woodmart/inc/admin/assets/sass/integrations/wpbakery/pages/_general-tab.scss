@@ -9,6 +9,44 @@
 @if $int-wpbakery {
 
 	// ------------------------------------------
+	// SECTION
+	// ------------------------------------------
+
+	[data-vc-shortcode*="vc_section"] {
+
+		[data-vc-shortcode-param-name="full_width"] {
+
+			&,
+			~ * {
+				order: 2;
+			}
+		}
+
+		[data-vc-shortcode-param-name="woodmart_stretch_content"] {
+			order: 1;
+		}
+	}
+
+	// ------------------------------------------
+	// ROW
+	// ------------------------------------------
+
+	[data-vc-shortcode*="vc_row"] {
+
+		[data-vc-shortcode-param-name="full_width"] {
+
+			&,
+			~ * {
+				order: 2;
+			}
+		}
+
+		[data-vc-shortcode-param-name="woodmart_stretch_content"] {
+			order: 1;
+		}
+	}
+
+	// ------------------------------------------
 	// COLUMN
 	// ------------------------------------------
 

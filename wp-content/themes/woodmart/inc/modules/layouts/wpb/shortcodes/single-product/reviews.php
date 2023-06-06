@@ -5,6 +5,7 @@
  * @package Woodmart
  */
 
+use XTS\Modules\Layouts\Global_Data;
 use XTS\Modules\Layouts\Main;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -19,11 +20,23 @@ if ( ! function_exists( 'woodmart_shortcode_single_product_reviews' ) ) {
 	 */
 	function woodmart_shortcode_single_product_reviews( $settings ) {
 		$default_settings = array(
-			'css'    => '',
-			'layout' => 'one-column',
+			'css'             => '',
+			'layout'          => 'one-column',
+			'reviews_columns' => '',
 		);
 
 		$settings = wp_parse_args( $settings, $default_settings );
+
+		foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+			$key   = 'reviews_columns' . ( 'desktop' === $device ? '' : '_' . $device );
+			$value = woodmart_vc_get_control_data( $settings['reviews_columns'], $device );
+
+			if ( ! $value ) {
+				$value = 1;
+			}
+
+			Global_Data::get_instance()->set_data( $key, $value );
+		}
 
 		$wrapper_classes = apply_filters( 'vc_shortcodes_css_class', '', '', $settings );
 
@@ -44,6 +57,7 @@ if ( ! function_exists( 'woodmart_shortcode_single_product_reviews' ) ) {
 		}
 
 		woodmart_enqueue_inline_style( 'woo-single-prod-el-reviews' );
+		woodmart_enqueue_inline_style( 'woo-single-prod-el-reviews-' . woodmart_get_opt( 'reviews_style', 'style-1' ) );
 		woodmart_enqueue_inline_style( 'mod-comments' );
 
 		?>

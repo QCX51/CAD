@@ -117,4 +117,4 @@ class Stock_Progress_Bar extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Stock_Progress_Bar() );
+Plugin::instance()->widgets_manager->register( new Stock_Progress_Bar() );

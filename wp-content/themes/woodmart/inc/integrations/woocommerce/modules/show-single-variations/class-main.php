@@ -30,6 +30,7 @@ class Main extends Singleton {
 
 		$this->include_files();
 
+		add_action( 'woocommerce_variation_options', array( $this, 'add_exclude_variation_option' ), 1, 3 );
 		add_action( 'woocommerce_variation_options', array( $this, 'get_option' ), 15, 3 );
 	}
 
@@ -51,7 +52,7 @@ class Main extends Singleton {
 			array(
 				'id'          => 'show_single_variation',
 				'name'        => esc_html__( 'Show single variation', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'show-single-variation.jpg" alt="">', 'woodmart' ), true ),
+				'hint'        => '<img data-src="' . WOODMART_TOOLTIP_URL . 'show-single-variation.jpg" alt="">',
 				'description' => wp_kses( __( 'Enable it to show each variation as a separate product on the shop page. You need to resave variable products to make this option work. You can do this separately or using the bulk edit function. Read more information in our <a href="https://xtemos.com/docs-topic/show-single-variation/" target="_blank">documentation</a>.', 'woodmart' ), true ),
 				'group'       => esc_html__( 'Variation as product', 'woodmart' ),
 				'type'        => 'switcher',
@@ -60,6 +61,8 @@ class Main extends Singleton {
 					'switcher' => esc_html__( 'You need to resave variable products to make this option work. You can do this separately or using the bulk edit function.', 'woodmart' ),
 				),
 				'default'     => false,
+				'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+				'off-text'    => esc_html__( 'No', 'woodmart' ),
 				'priority'    => 170,
 			)
 		);
@@ -72,6 +75,8 @@ class Main extends Singleton {
 				'type'        => 'switcher',
 				'section'     => 'variable_products_section',
 				'default'     => false,
+				'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+				'off-text'    => esc_html__( 'No', 'woodmart' ),
 				'priority'    => 180,
 			)
 		);
@@ -102,6 +107,27 @@ class Main extends Singleton {
 				);
 			?>
 		</div>
+		<?php
+	}
+
+	/**
+	 * Output control in product variation.
+	 *
+	 * @param integer $loop Numbers variations.
+	 * @param array   $variation_data Variation data.
+	 * @param object  $variation Variation product object.
+	 *
+	 * @return void
+	 */
+	public function add_exclude_variation_option( $loop, $variation_data, $variation ) {
+		$enable = get_post_meta( $variation->ID, '_wd_show_variation', true );
+		$enable = 'on' === $enable || '' === $enable;
+
+		?>
+		<label>
+			<input type="checkbox" class="checkbox show_variation_product" name="wd_show_variation[<?php echo esc_attr( $loop ); ?>]" <?php checked( $enable ); ?> />
+			<?php esc_html_e( 'Show variation product', 'woodmart' ); ?>
+		</label>
 		<?php
 	}
 }

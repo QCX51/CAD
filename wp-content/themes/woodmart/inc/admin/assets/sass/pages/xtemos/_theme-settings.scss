@@ -431,7 +431,8 @@
 		}
 	}
 
-	.xts-section[data-id*="social_"] .xts-field[class*="ok"] {
+	.xts-section[data-id*="social_"] .xts-field[class*="ok_link"],
+	.xts-section[data-id*="social_"] .xts-field[class*="share_ok"] {
 
 		.xts-option-title {
 
@@ -516,7 +517,6 @@
 		.xts-option-title {
 
 			span {
-				// background-color: red;
 
 				&:before {
 					@include font-icon-content($xts-icon-logo-viber);
@@ -525,7 +525,7 @@
 		}
 	}
 
-	.xts-field[class*="tiktok"] {
+	#wpwrap .xts-field[class*="tiktok"] {
 
 		.xts-option-title {
 
@@ -667,7 +667,7 @@
 		}
 	}
 
-	.xts-field[class*="vimeo"] {
+	.xts-field[class*="vimeo_link"] { // NOTE NOT FOR JS VIMEO
 
 		.xts-option-title {
 
@@ -800,6 +800,48 @@
 						transform: rotate(90deg);
 					}
 				}
+			}
+		}
+	}
+
+	// ------------------------------------------------------------------------------------------------
+	// CUSTOM CSS
+	// ------------------------------------------------------------------------------------------------
+
+	.xts-icons-preview {
+		position: relative;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		// margin-top: 15px;
+
+		> span {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 36px;
+			height: 36px;
+			font-family: 'woodmart-font' !important;
+			min-width: 30px;
+			letter-spacing: normal;
+			line-height: 1;
+			font-size: 20px;
+			background-color: #FFF;
+			border: 1px solid var(--xts-option-border-color);
+			border-radius: var(--xts-option-border-radius);
+			transition: all .25s ease;
+		}
+
+		// [class*="wd-icon-caret-"] { // NOTE REMOVE AFTER FIX
+		// 	display: none;
+		// }
+
+		&.xts-loading {
+			@include xts-bg-loader($bg-color: var(--xts-group-bg-color));
+			@include xts-act-bg-loader;
+
+			> span {
+				opacity: 0;
 			}
 		}
 	}

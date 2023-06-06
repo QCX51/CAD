@@ -6,6 +6,7 @@
 			var $nav = $('.mobile-nav');
 
 			if (!$nav.hasClass('wd-opened')) {
+				$(this).addClass('wd-opened');
 				$nav.addClass('wd-opened');
 				$('.wd-close-side').addClass('wd-close-side-opened');
 				$('.mobile-nav .searchform').find('input[type="text"]').trigger('focus');

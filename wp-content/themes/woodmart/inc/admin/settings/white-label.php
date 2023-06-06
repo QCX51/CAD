@@ -8,7 +8,7 @@ Options::add_field(
 	array(
 		'id'          => 'white_label',
 		'name'        => esc_html__( 'White label', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'dashboard-white-lable.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'dashboard-white-lable.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Hide most of the "WoodMart" and "Xtemos" attributions.', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'white_label_section',
@@ -33,7 +33,7 @@ Options::add_field(
 	array(
 		'id'          => 'dummy_import',
 		'name'        => esc_html__( 'Prebuilt websites page', 'woodmart' ),
-		'description' => esc_html__( 'Show prebuilt websites page from the dashboard.', 'woodmart' ),
+		'description' => esc_html__( 'Show prebuilt websites page in the dashboard.', 'woodmart' ),
 		'group'       => esc_html__( 'Settings', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'white_label_section',
@@ -47,7 +47,7 @@ Options::add_field(
 	array(
 		'id'          => 'white_label_theme_license_tab',
 		'name'        => esc_html__( 'Theme license page', 'woodmart' ),
-		'description' => esc_html__( 'Show theme license page from the dashboard.', 'woodmart' ),
+		'description' => esc_html__( 'Show theme license page in the dashboard.', 'woodmart' ),
 		'group'       => esc_html__( 'Settings', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'white_label_section',
@@ -61,7 +61,7 @@ Options::add_field(
 	array(
 		'id'          => 'white_label_changelog_tab',
 		'name'        => esc_html__( 'Changelog page', 'woodmart' ),
-		'description' => esc_html__( 'Show changelog page from the dashboard.', 'woodmart' ),
+		'description' => esc_html__( 'Show changelog page in the dashboard.', 'woodmart' ),
 		'group'       => esc_html__( 'Settings', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'white_label_section',
@@ -102,7 +102,7 @@ Options::add_field(
 	array(
 		'id'          => 'white_label_sidebar_icon_logo',
 		'name'        => esc_html__( 'Dashboard sidebar & admin bar logo', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'dashboard-sidebar-admin-bar-logo.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'dashboard-sidebar-admin-bar-logo.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Recommended size: 20x20 (px). Icons that will be displayed in Wordpress dashboard admin bar and sidebar.', 'woodmart' ),
 		'group'       => esc_html__( 'Images', 'woodmart' ),
 		'type'        => 'upload',
@@ -115,7 +115,7 @@ Options::add_field(
 	array(
 		'id'          => 'white_label_dashboard_logo',
 		'name'        => esc_html__( 'Dashboard header logo', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'dashboard-white-lable.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'dashboard-white-lable.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Recommended size: 170x45 (px). Logo image that will be displayed in dashboard header on theme pages.', 'woodmart' ),
 		'group'       => esc_html__( 'Images', 'woodmart' ),
 		'type'        => 'upload',

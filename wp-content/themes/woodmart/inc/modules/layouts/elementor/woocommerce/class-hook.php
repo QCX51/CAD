@@ -12,6 +12,7 @@ use Elementor\Plugin;
 use Elementor\Widget_Base;
 use XTS\WC_Wishlist\Ui as Wishlist;
 use XTS\Modules\Compare\Ui as Compare;
+use XTS\Modules\Linked_Variations\Frontend as Linked_Variations;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Direct access not allowed.
@@ -55,6 +56,15 @@ class Hook extends Widget_Base {
 	 */
 	public function get_categories() {
 		return array( 'wd-woocommerce-elements' );
+	}
+
+	/**
+	 * Show in panel.
+	 *
+	 * @return bool Whether to show the widget in the panel or not.
+	 */
+	public function show_in_panel() {
+		return woodmart_woocommerce_installed();
 	}
 
 	/**
@@ -196,13 +206,14 @@ class Hook extends Widget_Base {
 				remove_action( 'woocommerce_single_product_summary', 'woodmart_before_add_to_cart_area', 25 );
 				remove_action( 'woocommerce_single_product_summary', 'woodmart_after_add_to_cart_area', 31 );
 
-				if ( woodmart_get_opt( 'compare' ) ) {
-					remove_action( 'woocommerce_single_product_summary', array( Compare::get_instance(), 'add_to_compare_single_btn' ), 33 );
-
+				if ( woodmart_get_opt( 'linked_variations' ) ) {
+					remove_action( 'woocommerce_single_product_summary', array( Linked_Variations::get_instance(), 'output' ), 25 );
 				}
-
 				if ( woodmart_get_opt( 'wishlist' ) ) {
 					remove_action( 'woocommerce_single_product_summary', array( Wishlist::get_instance(), 'add_to_wishlist_single_btn' ), 33 );
+				}
+				if ( woodmart_get_opt( 'compare' ) ) {
+					remove_action( 'woocommerce_single_product_summary', array( Compare::get_instance(), 'add_to_compare_single_btn' ), 33 );
 				}
 			} elseif ( 'woocommerce_before_add_to_cart_form' === $settings['hook'] ) {
 				remove_action( 'woocommerce_before_add_to_cart_form', 'woodmart_single_product_add_to_cart_scripts' );
@@ -237,4 +248,4 @@ class Hook extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Hook() );
+Plugin::instance()->widgets_manager->register( new Hook() );

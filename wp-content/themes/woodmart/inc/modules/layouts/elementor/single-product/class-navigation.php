@@ -132,4 +132,4 @@ class Navigation extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Navigation() );
+Plugin::instance()->widgets_manager->register( new Navigation() );

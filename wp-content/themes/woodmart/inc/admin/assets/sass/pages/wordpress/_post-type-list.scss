@@ -50,6 +50,9 @@
 		min-width: 35px;
 		min-height: 35px;
 		border-radius: 35px;
+		text-align: center;
+		padding-top: 3px;
+		padding-bottom: 3px;
 
 		&.wd-img {
 			@extend %attributes-outline;

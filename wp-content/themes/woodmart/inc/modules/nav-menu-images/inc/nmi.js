@@ -63,25 +63,7 @@ jQuery(document).ready(function($) {
 		var selectValue = $this.val();
 
 		if ( 'nmi-design' === $this.data('field') ) {
-			$this.parents('li.menu-item').removeClass('wd-design-default wd-design-full-width wd-design-sized wd-design-aside').addClass('wd-design-' + selectValue );
-		}
-
-		var $block = $this.parents('li').find('.nmi-block');
-
-		if ('aside' === selectValue) {
-			$width.hide();
-		}
-
-		if ('full-width' === selectValue) {
-			$block.show();
-		}
-
-		if ('sized' === selectValue) {
-			$block.show();
-		}
-
-		if ('default' === selectValue) {
-			$block.show();
+			$this.parents('li.menu-item').removeClass('wd-design-default wd-design-full-width wd-design-full-height wd-design-sized wd-design-aside').addClass('wd-design-' + selectValue );
 		}
 
 	}).trigger('change');

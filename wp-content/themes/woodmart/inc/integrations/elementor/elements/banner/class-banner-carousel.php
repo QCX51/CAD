@@ -242,6 +242,30 @@ class Banner_Carousel extends Widget_Base {
 		);
 
 		$repeater->add_control(
+			'show_countdown',
+			array(
+				'label'        => esc_html__( 'Show countdown', 'woodmart' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'no',
+				'label_on'     => esc_html__( 'Yes', 'woodmart' ),
+				'label_off'    => esc_html__( 'No', 'woodmart' ),
+				'return_value' => 'yes',
+			)
+		);
+
+		$repeater->add_control(
+			'date',
+			array(
+				'label'   => esc_html__( 'Date', 'woodmart' ),
+				'type'    => Controls_Manager::DATE_TIME,
+				'default' => date( 'Y-m-d', strtotime( ' +2 months' ) ),
+				'condition' => array(
+					'show_countdown' => array( 'yes' ),
+				),
+			)
+		);
+
+		$repeater->add_control(
 			'btn_text',
 			array(
 				'label'   => esc_html__( 'Button text', 'woodmart' ),
@@ -877,6 +901,62 @@ class Banner_Carousel extends Widget_Base {
 		$this->end_controls_section();
 
 		/**
+		 * Countdown settings.
+		 */
+		$this->start_controls_section(
+			'countdown_style_section',
+			array(
+				'label' => esc_html__( 'Countdown', 'woodmart' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'countdown_style',
+			[
+				'label'   => esc_html__( 'Style', 'woodmart' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'standard'    => esc_html__( 'Standard', 'woodmart' ),
+					'transparent' => esc_html__( 'Transparent', 'woodmart' ),
+					'active'      => esc_html__( 'Primary color', 'woodmart' ),
+				],
+				'default' => 'standard',
+			]
+		);
+
+		$this->add_control(
+			'countdown_color_scheme',
+			[
+				'label'   => esc_html__( 'Color Scheme', 'woodmart' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					''      => esc_html__( 'Inherit', 'woodmart' ),
+					'light' => esc_html__( 'Light', 'woodmart' ),
+					'dark'  => esc_html__( 'Dark', 'woodmart' ),
+				],
+				'default' => '',
+			]
+		);
+
+		$this->add_control(
+			'countdown_size',
+			[
+				'label'   => esc_html__( 'Predefined size', 'woodmart' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => [
+					'small'  => esc_html__( 'Small (20px)', 'woodmart' ),
+					'medium' => esc_html__( 'Medium (24px)', 'woodmart' ),
+					'large'  => esc_html__( 'Large (28px)', 'woodmart' ),
+					'xlarge' => esc_html__( 'Extra Large (42px)', 'woodmart' ),
+				],
+				'default' => 'medium',
+			]
+		);
+
+		$this->end_controls_section();
+
+		/**
 		 * Button settings.
 		 */
 		$this->start_controls_section(
@@ -1021,7 +1101,7 @@ class Banner_Carousel extends Widget_Base {
 				'label'   => esc_html__( 'Style', 'woodmart' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
-					'default'  => esc_html__( 'Default', 'woodmart' ),
+					'default'  => esc_html__( 'Flat', 'woodmart' ),
 					'bordered' => esc_html__( 'Bordered', 'woodmart' ),
 					'link'     => esc_html__( 'Link button', 'woodmart' ),
 					'3d'       => esc_html__( '3D', 'woodmart' ),
@@ -1128,4 +1208,4 @@ class Banner_Carousel extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Banner_Carousel() );
+Plugin::instance()->widgets_manager->register( new Banner_Carousel() );

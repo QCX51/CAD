@@ -9,12 +9,8 @@ if ( ! defined( 'WOODMART_THEME_DIR' ) ) exit( 'No direct script access allowed'
 * ------------------------------------------------------------------------------------------------
 */
 
-if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
-	function woodmart_vc_map_products_tabs() {
-		if ( ! shortcode_exists( 'products_tabs' ) ) {
-			return;
-		}
-
+if ( ! function_exists( 'woodmart_get_vc_map_products_tabs' ) ) {
+	function woodmart_get_vc_map_products_tabs() {
 		$heading_typography = woodmart_get_typography_map(
 			array(
 				'title'    => esc_html__( 'Heading typography', 'woodmart' ),
@@ -31,8 +27,8 @@ if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
 				'selector' => '{{WRAPPER}} .wd-nav.wd-nav-tabs .wd-nav-link',
 			)
 		);
-		
-		vc_map( array(
+
+		return array(
 			'name' => esc_html__( 'AJAX Products tabs', 'woodmart' ),
 			'base' => 'products_tabs',
 			'as_parent' => array( 'only' => 'products_tab' ),
@@ -40,7 +36,7 @@ if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
 			'show_settings_on_create' => true,
 			'category' => woodmart_get_tab_title_category_for_wpb( esc_html__( 'Theme elements', 'woodmart' ) ),
 			'description' => esc_html__( 'Product tabs for your marketplace', 'woodmart' ),
-        	'icon' => WOODMART_ASSETS . '/images/vc-icon/ajax-products-tabs.svg',
+			'icon' => WOODMART_ASSETS . '/images/vc-icon/ajax-products-tabs.svg',
 			'params' => array(
 				array(
 					'type' => 'woodmart_css_id',
@@ -180,8 +176,8 @@ if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
 					'edit_field_class' => 'vc_col-sm-6 vc_column title-align',
 				),
 				/**
-				* Heading
-				*/
+				 * Heading
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -203,8 +199,8 @@ if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
 					),
 				),
 				/**
-				* Image
-				*/
+				 * Image
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -539,9 +535,13 @@ if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
 				woodmart_get_vc_responsive_visible_map( 'wd_hide_on_tablet' ),
 				woodmart_get_vc_responsive_visible_map( 'wd_hide_on_mobile' ),
 			),
-		    'js_view' => 'VcColumnView'
-		) );
+			'js_view' => 'VcColumnView'
+		);
+	}
+}
 
+if ( ! function_exists( 'woodmart_get_vc_map_products_tab' ) ) {
+	function woodmart_get_vc_map_products_tab() {
 		$woodmart_prdoucts_params = vc_map_integrate_shortcode( woodmart_get_products_shortcode_map_params(), '', '', array(
 			'exclude' => array(
 				'highlighted_products',
@@ -559,6 +559,13 @@ if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
 				'custom_width_tablet',
 				'custom_width_mobile',
 				'post_type',
+				'title_color',
+				'title_font_family',
+				'title_font_size',
+				'title_font_weight',
+				'title_text_transform',
+				'title_font_style',
+				'title_line_height',
 			),
 		) );
 
@@ -587,14 +594,14 @@ if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
 			}
 		}
 
-		vc_map( array(
+		return array(
 			'name' => esc_html__( 'Products tab', 'woodmart' ),
 			'base' => 'products_tab',
 			'as_child' => array( 'only' => 'products_tabs' ),
 			'content_element' => true,
 			'category' => woodmart_get_tab_title_category_for_wpb( esc_html__( 'Theme elements', 'woodmart' ) ),
 			'description' => esc_html__( 'Products block', 'woodmart' ),
-        	'icon' => WOODMART_ASSETS . '/images/vc-icon/product-categories.svg',
+			'icon' => WOODMART_ASSETS . '/images/vc-icon/product-categories.svg',
 			'params' => array_merge( array(
 				array(
 					'type' => 'woodmart_title_divider',
@@ -608,8 +615,8 @@ if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
 					'param_name' => 'title'
 				),
 				/**
-				* Icon
-				*/
+				 * Icon
+				 */
 				array(
 					'type'       => 'woodmart_title_divider',
 					'holder'     => 'div',
@@ -789,25 +796,24 @@ if( ! function_exists( 'woodmart_vc_map_products_tabs' ) ) {
 					'edit_field_class' => 'vc_col-sm-6 vc_column',
 				),
 			), $woodmart_prdoucts_params )
-		) );
-
-		// Necessary hooks for blog autocomplete fields
-		add_filter( 'vc_autocomplete_products_tab_include_callback', 'woodmart_productIdAutocompleteSuggester_new', 10, 1 );
-		add_filter( 'vc_autocomplete_products_tab_include_render', 'woodmart_productIdAutocompleteRender', 10, 1 );
-
-		// Narrow data taxonomies
-		add_filter( 'vc_autocomplete_products_tab_taxonomies_callback', 'woodmart_vc_autocomplete_taxonomies_field_search', 10, 1 );
-		add_filter( 'vc_autocomplete_products_tab_taxonomies_render', 'woodmart_vc_autocomplete_taxonomies_field_render', 10, 1 );
-
-		// Narrow data taxonomies for exclude_filter
-		add_filter( 'vc_autocomplete_products_tab_exclude_filter_callback', 'vc_autocomplete_taxonomies_field_search', 10, 1 );
-		add_filter( 'vc_autocomplete_products_tab_exclude_filter_render', 'vc_autocomplete_taxonomies_field_render', 10, 1 );
-
-		add_filter( 'vc_autocomplete_products_tab_exclude_callback',	'vc_exclude_field_search', 10, 1 ); // Get suggestion(find). Must return an array
-		add_filter( 'vc_autocomplete_products_tab_exclude_render', 'vc_exclude_field_render', 10, 1 ); // Render exact product. Must return an array (label,value)
+		);
 	}
-	add_action( 'vc_before_init', 'woodmart_vc_map_products_tabs' );
 }
+
+// Necessary hooks for blog autocomplete fields
+add_filter( 'vc_autocomplete_products_tab_include_callback', 'woodmart_productIdAutocompleteSuggester_new', 10, 1 );
+add_filter( 'vc_autocomplete_products_tab_include_render', 'woodmart_productIdAutocompleteRender', 10, 1 );
+
+// Narrow data taxonomies
+add_filter( 'vc_autocomplete_products_tab_taxonomies_callback', 'woodmart_vc_autocomplete_taxonomies_field_search', 10, 1 );
+add_filter( 'vc_autocomplete_products_tab_taxonomies_render', 'woodmart_vc_autocomplete_taxonomies_field_render', 10, 1 );
+
+// Narrow data taxonomies for exclude_filter
+add_filter( 'vc_autocomplete_products_tab_exclude_filter_callback', 'vc_autocomplete_taxonomies_field_search', 10, 1 );
+add_filter( 'vc_autocomplete_products_tab_exclude_filter_render', 'vc_autocomplete_taxonomies_field_render', 10, 1 );
+
+add_filter( 'vc_autocomplete_products_tab_exclude_callback',	'vc_exclude_field_search', 10, 1 ); // Get suggestion(find). Must return an array
+add_filter( 'vc_autocomplete_products_tab_exclude_render', 'vc_exclude_field_render', 10, 1 ); // Render exact product. Must return an array (label,value)
 
 // A must for container functionality, replace Wbc_Item with your base name from mapping for parent container
 if( class_exists( 'WPBakeryShortCodesContainer' ) ){

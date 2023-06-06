@@ -19,7 +19,11 @@
 				method  : 'POST',
 				success : function(data) {
 					if (data.items) {
-						$this.parent().replaceWith(data.items);
+						if ( $this.hasClass('wd-carousel-container') && $this.parents('.elementor-widget-container').length ) {
+							$this.replaceWith(data.items);
+						} else {
+							$this.parent().replaceWith(data.items);
+						}
 
 						woodmartThemeModule.$document.trigger('wdRecentlyViewedProductLoaded');
 						woodmartThemeModule.$document.trigger('wood-images-loaded');

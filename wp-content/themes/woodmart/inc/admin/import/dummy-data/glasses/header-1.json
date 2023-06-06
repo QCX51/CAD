@@ -162,6 +162,61 @@
                                         "value": false,
                                         "type": "switcher"
                                     },
+                                    "style": {
+                                        "id": "style",
+                                        "value": "text",
+                                        "type": "selector"
+                                    },
+                                    "icon_design": {
+                                        "id": "icon_design",
+                                        "value": "1",
+                                        "type": "selector"
+                                    },
+                                    "wrap_type": {
+                                        "id": "wrap_type",
+                                        "value": "icon_only",
+                                        "type": "selector"
+                                    },
+                                    "color": {
+                                        "id": "color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "hover_color": {
+                                        "id": "hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_color": {
+                                        "id": "bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_hover_color": {
+                                        "id": "bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_color": {
+                                        "id": "icon_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_hover_color": {
+                                        "id": "icon_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_color": {
+                                        "id": "icon_bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_hover_color": {
+                                        "id": "icon_bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
                                     "icon_type": {
                                         "id": "icon_type",
                                         "value": "default",
@@ -176,6 +231,16 @@
                                         "id": "items_gap",
                                         "value": "s",
                                         "type": "selector"
+                                    },
+                                    "inline": {
+                                        "id": "inline",
+                                        "value": false,
+                                        "type": "switcher"
+                                    },
+                                    "bg_overlay": {
+                                        "id": "bg_overlay",
+                                        "value": false,
+                                        "type": "switcher"
                                     }
                                 }
                             }
@@ -193,6 +258,56 @@
                                         "id": "display",
                                         "value": "text",
                                         "type": "selector"
+                                    },
+                                    "icon_design": {
+                                        "id": "icon_design",
+                                        "value": "1",
+                                        "type": "selector"
+                                    },
+                                    "wrap_type": {
+                                        "id": "wrap_type",
+                                        "value": "icon_only",
+                                        "type": "selector"
+                                    },
+                                    "color": {
+                                        "id": "color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "hover_color": {
+                                        "id": "hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_color": {
+                                        "id": "bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_hover_color": {
+                                        "id": "bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_color": {
+                                        "id": "icon_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_hover_color": {
+                                        "id": "icon_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_color": {
+                                        "id": "icon_bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_hover_color": {
+                                        "id": "icon_bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
                                     },
                                     "icon_type": {
                                         "id": "icon_type",
@@ -218,6 +333,11 @@
                                         "id": "form_display",
                                         "value": "side",
                                         "type": "selector"
+                                    },
+                                    "bg_overlay": {
+                                        "id": "bg_overlay",
+                                        "value": false,
+                                        "type": "switcher"
                                     }
                                 }
                             },
@@ -230,14 +350,19 @@
                                         "value": "full-screen",
                                         "type": "selector"
                                     },
-                                    "search_style": {
-                                        "id": "search_style",
-                                        "value": "default",
-                                        "type": "selector"
-                                    },
                                     "categories_dropdown": {
                                         "id": "categories_dropdown",
                                         "value": true,
+                                        "type": "switcher"
+                                    },
+                                    "cat_selector_style": {
+                                        "id": "cat_selector_style",
+                                        "value": "bordered",
+                                        "type": "selector"
+                                    },
+                                    "popular_requests": {
+                                        "id": "popular_requests",
+                                        "value": false,
                                         "type": "switcher"
                                     },
                                     "ajax": {
@@ -255,9 +380,64 @@
                                         "value": "product",
                                         "type": "selector"
                                     },
+                                    "style": {
+                                        "id": "style",
+                                        "value": "icon",
+                                        "type": "selector"
+                                    },
+                                    "icon_design": {
+                                        "id": "icon_design",
+                                        "value": "1",
+                                        "type": "selector"
+                                    },
+                                    "wrap_type": {
+                                        "id": "wrap_type",
+                                        "value": "icon_only",
+                                        "type": "selector"
+                                    },
+                                    "color": {
+                                        "id": "color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "hover_color": {
+                                        "id": "hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_color": {
+                                        "id": "bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_hover_color": {
+                                        "id": "bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_color": {
+                                        "id": "icon_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_hover_color": {
+                                        "id": "icon_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_color": {
+                                        "id": "icon_bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_hover_color": {
+                                        "id": "icon_bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
                                     "icon_type": {
                                         "id": "icon_type",
-                                        "value": "custom",
+                                        "value": "default",
                                         "type": "selector"
                                     },
                                     "custom_icon": {
@@ -265,10 +445,45 @@
                                         "value": {
                                             "id": 3413,
                                             "url": "http:\/\/dummy.xtemos.com\/woodmart2\/wp-content\/uploads\/2021\/08\/glasses-search.svg",
-                                            "width": false,
-                                            "height": false
+                                            "width": 51,
+                                            "height": 53
                                         },
                                         "type": "image"
+                                    },
+                                    "search_style": {
+                                        "id": "search_style",
+                                        "value": "default",
+                                        "type": "selector"
+                                    },
+                                    "form_color": {
+                                        "id": "form_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "form_placeholder_color": {
+                                        "id": "form_placeholder_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "form_brd_color": {
+                                        "id": "form_brd_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "form_brd_color_focus": {
+                                        "id": "form_brd_color_focus",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "form_bg": {
+                                        "id": "form_bg",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "form_shape": {
+                                        "id": "form_shape",
+                                        "value": "",
+                                        "type": "options"
                                     }
                                 }
                             },
@@ -281,6 +496,56 @@
                                         "value": "icon",
                                         "type": "selector"
                                     },
+                                    "icon_design": {
+                                        "id": "icon_design",
+                                        "value": "2",
+                                        "type": "selector"
+                                    },
+                                    "wrap_type": {
+                                        "id": "wrap_type",
+                                        "value": "icon_only",
+                                        "type": "selector"
+                                    },
+                                    "color": {
+                                        "id": "color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "hover_color": {
+                                        "id": "hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_color": {
+                                        "id": "bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_hover_color": {
+                                        "id": "bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_color": {
+                                        "id": "icon_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_hover_color": {
+                                        "id": "icon_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_color": {
+                                        "id": "icon_bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_hover_color": {
+                                        "id": "icon_bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
                                     "hide_product_count": {
                                         "id": "hide_product_count",
                                         "value": true,
@@ -288,7 +553,7 @@
                                     },
                                     "icon_type": {
                                         "id": "icon_type",
-                                        "value": "custom",
+                                        "value": "default",
                                         "type": "selector"
                                     },
                                     "custom_icon": {
@@ -296,8 +561,8 @@
                                         "value": {
                                             "id": 3415,
                                             "url": "http:\/\/dummy.xtemos.com\/woodmart2\/wp-content\/uploads\/2021\/08\/glasses-wish-list.svg",
-                                            "width": false,
-                                            "height": false
+                                            "width": 52,
+                                            "height": 48
                                         },
                                         "type": "image"
                                     }
@@ -312,14 +577,64 @@
                                         "value": "side",
                                         "type": "selector"
                                     },
+                                    "design": {
+                                        "id": "design",
+                                        "value": "",
+                                        "type": "selector"
+                                    },
                                     "style": {
                                         "id": "style",
                                         "value": "2",
                                         "type": "selector"
                                     },
+                                    "wrap_type": {
+                                        "id": "wrap_type",
+                                        "value": "icon_only",
+                                        "type": "selector"
+                                    },
+                                    "color": {
+                                        "id": "color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "hover_color": {
+                                        "id": "hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_color": {
+                                        "id": "bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_hover_color": {
+                                        "id": "bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_color": {
+                                        "id": "icon_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_hover_color": {
+                                        "id": "icon_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_color": {
+                                        "id": "icon_bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_hover_color": {
+                                        "id": "icon_bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
                                     "icon_type": {
                                         "id": "icon_type",
-                                        "value": "custom",
+                                        "value": "bag",
                                         "type": "selector"
                                     },
                                     "custom_icon": {
@@ -327,8 +642,8 @@
                                         "value": {
                                             "id": 3414,
                                             "url": "http:\/\/dummy.xtemos.com\/woodmart2\/wp-content\/uploads\/2021\/08\/glasses-shopping-bag-3.svg",
-                                            "width": false,
-                                            "height": false
+                                            "width": 64,
+                                            "height": 64
                                         },
                                         "type": "image"
                                     }
@@ -348,6 +663,56 @@
                                         "id": "style",
                                         "value": "text",
                                         "type": "selector"
+                                    },
+                                    "icon_design": {
+                                        "id": "icon_design",
+                                        "value": "1",
+                                        "type": "selector"
+                                    },
+                                    "wrap_type": {
+                                        "id": "wrap_type",
+                                        "value": "icon_only",
+                                        "type": "selector"
+                                    },
+                                    "color": {
+                                        "id": "color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "hover_color": {
+                                        "id": "hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_color": {
+                                        "id": "bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_hover_color": {
+                                        "id": "bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_color": {
+                                        "id": "icon_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_hover_color": {
+                                        "id": "icon_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_color": {
+                                        "id": "icon_bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_hover_color": {
+                                        "id": "icon_bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
                                     },
                                     "icon_type": {
                                         "id": "icon_type",
@@ -374,18 +739,53 @@
                                         "value": true,
                                         "type": "switcher"
                                     },
+                                    "post_type": {
+                                        "id": "post_type",
+                                        "value": "product",
+                                        "type": "selector"
+                                    },
                                     "categories_menu": {
                                         "id": "categories_menu",
                                         "value": true,
                                         "type": "switcher"
+                                    },
+                                    "tabs_swap": {
+                                        "id": "tabs_swap",
+                                        "value": false,
+                                        "type": "switcher"
+                                    },
+                                    "primary_menu_title": {
+                                        "id": "primary_menu_title",
+                                        "value": "",
+                                        "type": "text"
+                                    },
+                                    "secondary_menu_title": {
+                                        "id": "secondary_menu_title",
+                                        "value": "",
+                                        "type": "text"
                                     },
                                     "menu_id": {
                                         "id": "menu_id",
                                         "value": "mobile-categories",
                                         "type": "options"
                                     },
-                                    "tabs_swap": {
-                                        "id": "tabs_swap",
+                                    "show_wishlist": {
+                                        "id": "show_wishlist",
+                                        "value": true,
+                                        "type": "switcher"
+                                    },
+                                    "show_compare": {
+                                        "id": "show_compare",
+                                        "value": true,
+                                        "type": "switcher"
+                                    },
+                                    "show_account": {
+                                        "id": "show_account",
+                                        "value": true,
+                                        "type": "switcher"
+                                    },
+                                    "close_btn": {
+                                        "id": "close_btn",
                                         "value": false,
                                         "type": "switcher"
                                     }
@@ -448,14 +848,64 @@
                                         "value": "side",
                                         "type": "selector"
                                     },
+                                    "design": {
+                                        "id": "design",
+                                        "value": "",
+                                        "type": "selector"
+                                    },
                                     "style": {
                                         "id": "style",
                                         "value": "5",
                                         "type": "selector"
                                     },
+                                    "wrap_type": {
+                                        "id": "wrap_type",
+                                        "value": "icon_only",
+                                        "type": "selector"
+                                    },
+                                    "color": {
+                                        "id": "color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "hover_color": {
+                                        "id": "hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_color": {
+                                        "id": "bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "bg_hover_color": {
+                                        "id": "bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_color": {
+                                        "id": "icon_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_hover_color": {
+                                        "id": "icon_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_color": {
+                                        "id": "icon_bg_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
+                                    "icon_bg_hover_color": {
+                                        "id": "icon_bg_hover_color",
+                                        "value": "",
+                                        "type": "color"
+                                    },
                                     "icon_type": {
                                         "id": "icon_type",
-                                        "value": "custom",
+                                        "value": "bag",
                                         "type": "selector"
                                     },
                                     "custom_icon": {
@@ -463,8 +913,8 @@
                                         "value": {
                                             "id": 3414,
                                             "url": "http:\/\/dummy.xtemos.com\/woodmart2\/wp-content\/uploads\/2021\/08\/glasses-shopping-bag-3.svg",
-                                            "width": false,
-                                            "height": false
+                                            "width": 64,
+                                            "height": 64
                                         },
                                         "type": "image"
                                     }

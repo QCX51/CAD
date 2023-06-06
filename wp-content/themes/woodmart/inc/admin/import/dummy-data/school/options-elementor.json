@@ -188,5 +188,6 @@
         "position": ""
     },
     "disable_copyrights": "0",
-    "portfolio_page": "51"
+    "portfolio_page": "51",
+    "rounding_size": "12"
 }

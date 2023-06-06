@@ -77,7 +77,7 @@ var woodmartAdminModule, woodmart_media_init;
 										var attachment_image = attachment.sizes && attachment.sizes.thumbnail ? attachment.sizes.thumbnail.url : attachment.url;
 										attachment_ids = attachment_ids ? attachment_ids + ',' + attachment.id : attachment.id;
 
-										$galleryImages.append('<li class="image" data-attachment_id="' + attachment.id + '"><img src="' + attachment_image + '"><a href="#" class="delete woodmart-remove-variation-gallery-image"><span class="dashicons dashicons-dismiss"></span></a></li>');
+										$galleryImages.append('<li class="image" data-attachment_id="' + attachment.id + '"><img src="' + attachment_image + '"><a href="#" class="delete woodmart-remove-variation-gallery-image"><span class="xts-i-close"></span></a></li>');
 
 										$this.trigger('woodmart_variation_gallery_image_added');
 									}

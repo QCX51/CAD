@@ -228,4 +228,4 @@ class Price extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Price() );
+Plugin::instance()->widgets_manager->register( new Price() );

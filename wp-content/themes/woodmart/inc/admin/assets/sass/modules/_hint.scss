@@ -33,6 +33,17 @@
 		&:hover {
 			--xts-hint-color: #CCC;
 		}
+
+		&.xts-loading {
+
+			.xts-tooltip-inner {
+				min-height: 282px;
+			}
+		}
+
+		.wp-list-table & {
+			margin-inline-start: 5px;
+		}
 	}
 
 } // END IF

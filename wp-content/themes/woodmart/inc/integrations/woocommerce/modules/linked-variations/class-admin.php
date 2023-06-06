@@ -32,12 +32,14 @@ class Admin extends Singleton {
 			array(
 				'id'          => 'linked_variations',
 				'name'        => esc_html__( 'Enable linked variations', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'enable-linked-variations.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'enable-linked-variations.mp4" autoplay loop muted></video>',
 				'description' => wp_kses( __( 'This feature allows you to create a new kind of variable product based on simple products. You can create linked variations bundles via Dashboard -> Products -> Linked variations. Read more information in our <a href="https://xtemos.com/docs-topic/linked-variations/" target="_blank">documentation</a>.', 'woodmart' ), true ),
 				'group'       => esc_html__( 'Linked variations', 'woodmart' ),
 				'type'        => 'switcher',
 				'section'     => 'variable_products_section',
 				'default'     => true,
+				'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+				'off-text'    => esc_html__( 'No', 'woodmart' ),
 				'priority'    => 190,
 			)
 		);
@@ -94,7 +96,7 @@ class Admin extends Singleton {
 				'select2'      => true,
 				'multiple'     => true,
 				'empty_option' => true,
-				'options'      => woodmart_product_attributes_array(),
+				'callback'     => 'woodmart_product_attributes_array',
 				'priority'     => 20,
 			]
 		);
@@ -109,7 +111,7 @@ class Admin extends Singleton {
 				'select2'      => true,
 				'multiple'     => true,
 				'empty_option' => true,
-				'options'      => woodmart_product_attributes_array(),
+				'callback'     => 'woodmart_product_attributes_array',
 				'priority'     => 30,
 			]
 		);

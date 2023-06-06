@@ -122,26 +122,9 @@
 			// ------------------------------------------
 
 			p.submit {
-				position: relative;
-				z-index: $z-layer-2;
-				margin-top: 30px;
-				margin-bottom: 0;
-				padding: 0;
-
-				.button {
-					padding-inline-start: 30px;
-				}
+				@extend %sticky-save-button;
 
 				&:before {
-					position: absolute;
-					top: 50%;
-					bottom: 0;
-					inset-inline-start: 10px;
-					z-index: $z-layer-1;
-					color: #FFF;
-					transform: translateY(-50%);
-					pointer-events: none;
-
 					@include font-icon($xts-icon-add);
 				}
 			}
@@ -235,37 +218,14 @@
 			// ------------------------------------------
 
 			.edit-tag-actions {
-				position: relative;
-				z-index: $z-layer-2;
-				margin-top: 30px;
+				@extend %sticky-save-button;
 
-				.button {
-					padding-inline-start: 30px;
+				&:before {
+					@include font-icon($xts-icon-update);
 				}
 
 				#delete-link a {
-					@extend %xts-inline-button;
-
-					&.delete {
-						@extend %xts-inline-button-warning;
-					}
-
-					&:before {
-						@include font-icon($xts-icon-delete-bin);
-					}
-				}
-
-				&:before {
-					position: absolute;
-					top: 50%;
-					bottom: 0;
-					inset-inline-start: 10px;
-					z-index: $z-layer-1;
-					color: #FFF;
-					transform: translateY(-50%);
-					pointer-events: none;
-
-					@include font-icon($xts-icon-update);
+					@extend %sticky-save-button-delete;
 				}
 			}
 
@@ -425,6 +385,13 @@
 		.xts-edit-slider-slides {
 			position: sticky;
 			top: 50px;
+		}
+
+		.taxonomy-woodmart_slider {
+
+			.form-table {
+				max-width: calc(50% - 25px);
+			}
 		}
 
 		.taxonomy-woodmart_slider:not(.xts-pages) {

@@ -42,17 +42,18 @@ class Ui extends Singleton {
 	public function add_to_compare_btn( $classes = '' ) {
 		global $product;
 
-		$url = woodmart_get_compare_page_url();
+		$url        = woodmart_get_compare_page_url();
+		$product_id = apply_filters( 'wpml_object_id', $product->get_id(), 'product', true, apply_filters( 'wpml_default_language', null ) );
 
 		if ( woodmart_get_opt( 'compare_by_category' ) ) {
-			$url = add_query_arg( 'product_id', $product->get_id(), $url );
+			$url = add_query_arg( 'product_id', $product_id, $url );
 		}
 
 		woodmart_enqueue_js_script( 'woodmart-compare' );
 
 		?>
 		<div class="wd-compare-btn product-compare-button <?php echo esc_attr( $classes ); ?>">
-			<a href="<?php echo esc_url( $url ); ?>" data-id="<?php echo esc_attr( $product->get_id() ); ?>" rel="nofollow" data-added-text="<?php esc_html_e( 'Compare products', 'woodmart' ); ?>">
+			<a href="<?php echo esc_url( $url ); ?>" data-id="<?php echo esc_attr( $product_id ); ?>" rel="nofollow" data-added-text="<?php esc_html_e( 'Compare products', 'woodmart' ); ?>">
 				<span><?php esc_html_e( 'Compare', 'woodmart' ); ?></span>
 			</a>
 		</div>
@@ -331,7 +332,7 @@ class Ui extends Singleton {
 		switch ( $type ) {
 			case 'basic':
 				?>
-				<div class="wd-action-btn wd-style-text wd-cross-icon">
+				<div class="wd-compare-remove-action wd-action-btn wd-style-text wd-cross-icon">
 					<a href="#" rel="nofollow" class="wd-compare-remove" data-id="<?php echo esc_attr( $product['id'] ); ?>">
 						<?php echo esc_html__( 'Remove', 'woodmart' ); ?>
 					</a>
@@ -498,8 +499,8 @@ class Ui extends Singleton {
 
 		$fields_settings = woodmart_get_opt( 'fields_compare' );
 
-		if ( class_exists( 'XTS\Options' ) && count( $fields_settings ) > 1 ) {
-			$fields_labels = woodmart_compare_available_fields( true );
+		if ( class_exists( 'XTS\Options' ) && $fields_settings && count( $fields_settings ) > 1 ) {
+			$fields_labels = woodmart_compare_available_fields();
 
 			foreach ( $fields_settings as $field ) {
 				if ( isset( $fields_labels [ $field ] ) ) {
@@ -536,7 +537,7 @@ class Ui extends Singleton {
 				$availability['class'] .= ' wd-style-' . woodmart_get_opt( 'stock_status_design', 'default' );
 			}
 
-			if ( 'with-bg' === woodmart_get_opt( 'stock_status_design', 'default' ) ) {
+			if ( 'with-bg' === woodmart_get_opt( 'stock_status_design', 'default' ) || 'bordered' === woodmart_get_opt( 'stock_status_design', 'default' ) ) {
 				$availability['availability'] = '<span>' . $availability['availability'] . '</span>';
 			}
 		}

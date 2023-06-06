@@ -64,7 +64,7 @@ woodmart_enqueue_js_script( 'accordion-element' );
 			}
 			?>
 			<div class="wd-accordion-item">
-				<div class="wd-accordion-title<?php echo esc_attr( $title_wrapper_classes ); ?>" data-accordion-index="<?php echo esc_attr( $key ); ?>">
+				<div id="tab-title-<?php echo esc_attr( $key ); ?>" class="wd-accordion-title<?php echo esc_attr( $title_wrapper_classes ); ?>" data-accordion-index="<?php echo esc_attr( $key ); ?>">
 					<div class="wd-accordion-title-text">
 						<span>
 							<?php echo wp_kses_post( apply_filters( 'woocommerce_product_' . $key . '_tab_title', $product_tab['title'], $key ) ); ?>

@@ -89,7 +89,7 @@ class Responsive_Range extends Field {
 				<?php endif; ?>
 			</div>
 
-			<input type="hidden" class="xts-responsive-range-value" name="<?php echo esc_attr( $this->get_input_name() ); ?>" value="<?php echo woodmart_compress( wp_json_encode( $data ) ); ?>" data-settings="<?php echo esc_attr( wp_json_encode( $this->args ) ); ?>">
+			<input type="hidden" class="xts-responsive-range-value" name="<?php echo esc_attr( $this->get_input_name() ); ?>" value="<?php echo function_exists( 'woodmart_compress' ) ? woodmart_compress( wp_json_encode( $data ) ) : ''; ?>" data-settings="<?php echo esc_attr( wp_json_encode( $this->args ) ); ?>">
 
 		<?php
 	}

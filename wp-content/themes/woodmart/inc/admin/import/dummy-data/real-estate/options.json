@@ -135,5 +135,6 @@
     "prefooter_content_type": "text",
     "prefooter_html_block": "258",
     "prefooter_area": "",
-    "portfolio_page": "150"
+    "portfolio_page": "150",
+    "rounding_size": "8"
 }

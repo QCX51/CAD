@@ -365,6 +365,10 @@ class Admin extends Singleton {
 				'layout-13' => array(
 					'url' => WOODMART_DEMO_URL . 'accessories/shop/',
 				),
+				// Mega-electronics.
+				'layout-14' => array(
+					'url' => WOODMART_DEMO_URL . 'mega-electronics/product-category/hardware-components/',
+				),
 			),
 			'single_product'   => array(
 				'layout-1'  => array(
@@ -401,6 +405,10 @@ class Admin extends Singleton {
 				// Accessories.
 				'layout-11' => array(
 					'url' => WOODMART_DEMO_URL . 'accessories/product/iphone-12-pro-moment-case-blue/',
+				),
+				// Mega-electronics.
+				'layout-12' => array(
+					'url' => WOODMART_DEMO_URL . 'mega-electronics/product/apple-macbook-pro-16-m1-pro-2/',
 				),
 			),
 			'cart'             => array(

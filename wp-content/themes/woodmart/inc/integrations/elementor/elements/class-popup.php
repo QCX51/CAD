@@ -222,4 +222,4 @@ class Popup extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Popup() );
+Plugin::instance()->widgets_manager->register( new Popup() );

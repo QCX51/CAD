@@ -11,6 +11,7 @@
 		select,
 		textarea,
 		input[type="text"],
+		input[type="url"],
 		input[type="number"] {
 			@extend %input-style;
 		}
@@ -32,9 +33,11 @@
 			background-repeat: no-repeat;
 			text-align: start !important;
 			text-overflow: ellipsis;
+			// transition: all .25s ease;
 
 			option {
 				text-align: inherit !important;
+				// transition: all .25s ease;
 				// text-overflow: inherit;
 			}
 
@@ -214,7 +217,7 @@
 
 %textarea-style {
 	min-height: 150px;
-	max-width: 100%;
+	max-width: 100% !important;
 	height: auto;
 	line-height: 1.4;
 }

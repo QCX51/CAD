@@ -21,12 +21,14 @@
 		woodmartThemeModule.$document.on('click', function(e) {
 			var target = e.target;
 
-			if ($('.' + openedClass).length > 0 && !$(target).is('.wd-event-hover') && !$(target).parents().is('.wd-event-hover') && !$(target).parents().is('.' + openedClass + '')) {
+			if ($('.' + openedClass).length > 0 && !$(target).is('.wd-event-hover') && !$(target).parents().is('.wd-event-hover') && !$(target).parents().is('.' + openedClass + '') && !$(target).is('.' + openedClass + '')) {
 				mainMenu.find('.wd-event-click.' + openedClass + '').removeClass(openedClass);
 
 				if (mainMenu.hasClass('wd-event-click')) {
 					mainMenu.removeClass(openedClass);
 				}
+
+				$('.wd-close-side').removeClass('wd-close-side-opened wd-location-header');
 			}
 		});
 

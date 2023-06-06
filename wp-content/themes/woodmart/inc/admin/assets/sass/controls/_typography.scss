@@ -38,11 +38,22 @@
 		bottom: var(--xts-group-sp);
 	}
 
+	:is(
+	.xts-icon-font-select,
+	.xts-icon-weight-select) {
+
+		.xts-loading & {
+			pointer-events: none;
+		}
+	}
+
 	// ------------------------------------------------------------------------------------------------
 	// XTS TYPOGRAPHY
 	// ------------------------------------------------------------------------------------------------
 
-	.xts-typography-control {
+	:is(
+	[data-id="typography_section"],
+	.xts-advanced_typography_button-field) {
 
 		.xts-option-title {
 			margin-bottom: 20px;
@@ -54,6 +65,10 @@
 			}
 		}
 	}
+
+	// .xts-typography-control {
+
+	// }
 
 	.xts-typography-responsive-controls {
 		display: flex;
@@ -99,12 +114,39 @@
 	}
 
 	.xts-typography-preview {
-		margin-top: var(--xts-option-space);
+		margin-top: 20px;
 		margin-inline-end: 90px;
 		margin-bottom: 0;
 		padding: 15px;
+		width: 100%;
 		border: 1px solid var(--xts-option-border-color);
 		border-radius: var(--xts-option-border-radius);
+		background-color: #FFF;
+
+		:is(
+		[data-id="advanced_typography_section"],
+		.xts-advanced_typography_button-field) & {
+			width: auto;
+		}
+	}
+
+	// ------------------------------------------
+	// XTS BUTTON TYPOGRAPHY
+	// ------------------------------------------
+
+	.xts-btn-typography {
+	
+		.xts-group & {
+
+			.xts-typography-section {
+				--xts-group-bg-color: transparent;
+				padding: 0;
+			}
+
+			// .xts-typography-preview {
+			// 	display: none !important;
+			// }
+		}
 	}
 
 	// ------------------------------------------
@@ -114,7 +156,6 @@
 	.xts-custom-fonts-field {
 
 		.xts-upload-preview {
-			position: relative;
 			margin-bottom: var(--xts-option-space);
 			width: 100%;
 
@@ -144,7 +185,7 @@
 	// ADVANCED TYPOGRAPHY
 	// ------------------------------------------
 
-	.wp-toolbar {
+	.wp-admin {
 
 		.select2-container--xts {
 

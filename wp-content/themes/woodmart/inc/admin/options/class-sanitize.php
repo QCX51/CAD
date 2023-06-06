@@ -53,7 +53,7 @@
 		public function sanitize() {
 			
 			$val = $this->_value;
-			
+
 			switch ( $this->_field->args['type'] ) {
 				case 'typography':
 					if ( is_array( $val ) && ! isset( $val[0] ) ) {
@@ -102,6 +102,7 @@
 					break;
 				
 				case 'custom_fonts':
+				case 'upload_icons':
 					// TODO: sanitize complex array.
 					break;
 				
@@ -129,6 +130,17 @@
 								unset( $val[ $id ] );
 							}
 						}
+					}
+
+					break;
+
+				case 'text_input':
+					if ( ! empty( $this->_field->args['sanitize'] ) && 'slug' === $this->_field->args['sanitize'] ) {
+						$val = strtolower( trim( preg_replace('/[^A-Za-z0-9-]+/', '_', $val ) ) );
+					} elseif ( ! empty( $this->_field->args['attributes']['type'] ) && 'url' === $this->_field->args['attributes']['type'] ) {
+						$val = sanitize_url( $val );
+					} else {
+						$val = sanitize_text_field( $val );
 					}
 
 					break;

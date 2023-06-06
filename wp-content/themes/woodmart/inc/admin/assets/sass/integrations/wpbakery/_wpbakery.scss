@@ -226,6 +226,60 @@
 	// XTS ELEMENTS TABS
 	// ------------------------------------------
 
+	// .vc_panel-tabs {
+	// 	transition: opacity .25s ease;
+	// }
+
+	.wpb_edit_form_elements {
+		transition: opacity .25s ease;
+
+		&:not(.xts-loaded) {
+			min-height: 110px;
+				
+			> div {
+				display: none !important;
+				opacity: 0;
+				visibility: hidden;
+			}
+
+			&:before {
+				content: "";
+				position: absolute;
+				left: 50%;
+				top: calc(50% - 16px);
+				background-image: url(../../../../../../../plugins/js_composer/assets/vc/loaders/spinner.svg);
+				height: 32px;
+				width: 32px;
+				background-size: contain;
+				animation: vc_ui-wp-spinner-animation 1.08s linear infinite;
+				opacity: .7;
+			}
+
+			// .vc_panel-tabs {
+			// 	min-height: 120px;
+				
+			// 	> div {
+			// 		display: none !important;
+			// 		opacity: 0;
+			// 		visibility: hidden;
+			// 	}
+	
+			// 	&:before {
+			// 		content: "";
+			// 		position: absolute;
+			// 		left: 50%;
+			// 		top: 50%;
+			// 		background-image: url(../../../../../../../plugins/js_composer/assets/vc/loaders/spinner.svg);
+			// 		height: 32px;
+			// 		width: 32px;
+			// 		background-size: contain;
+			// 		animation: vc_ui-wp-spinner-animation 1.08s linear infinite;
+			// 		opacity: .7;
+			// 	}
+			// }
+		}
+	}
+
 	.xts-wpb-tab-title {
 		position: relative;
 		display: flex;
@@ -305,6 +359,18 @@
 	// 	font-weight: 600;
 	// 	font-size: 16px;
 	// }
+
+	:is(
+	[data-vc-shortcode="woodmart_open_street_map"],
+	[data-vc-shortcode="woodmart_google_map"]) {
+
+		.xts-slider-field-value-display {
+
+			.wd-slider-value-preview {
+				min-width: 42px;
+			}
+		}
+	}
 
 	.xts-slider-field-value-display {
 

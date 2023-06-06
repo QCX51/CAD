@@ -105,7 +105,10 @@ class WOODMART_Theme {
 			'integrations/woocommerce/modules/compare/class-compare',
 			'integrations/woocommerce/modules/quantity',
 			'integrations/woocommerce/modules/class-adjacent-products',
-			'integrations/woocommerce/modules/comment-images/class-wc-comment-images',
+			'integrations/woocommerce/modules/checkout-order-table/class-checkout-order-table',
+			'integrations/woocommerce/modules/product-reviews/class-product-reviews',
+			'integrations/woocommerce/modules/sticky-navigation/class-main',
+			'integrations/woocommerce/modules/product-gallery-video/class-main',
 
 			// Plugin integrations.
 			'integrations/wcmp',
@@ -121,6 +124,7 @@ class WOODMART_Theme {
 			'integrations/tgm-plugin-activation',
 			'integrations/rocket',
 			'integrations/woo-preview-emails',
+			'integrations/woocs',
 
 			'admin/options/class-field',
 			'admin/options/class-metabox',
@@ -153,6 +157,7 @@ class WOODMART_Theme {
 			'admin/options/controls/sorter/class-sorter',
 			'admin/options/controls/responsive-range/class-responsive-range',
 			'admin/options/controls/select-with-table/class-select-with-table',
+			'admin/options/controls/icons-font/class-icons-font',
 
 			'admin/settings/sections',
 			'admin/settings/api-integrations',
@@ -270,6 +275,7 @@ class WOODMART_Theme {
 		);
 
 		$wpb_files = array(
+			'register-maps',
 			'parallax-scroll',
 			'3d-view',
 			'products-tabs',
@@ -310,6 +316,8 @@ class WOODMART_Theme {
 			'sidebar',
 			'products-widget',
 			'off-canvas-column-btn',
+			'open-street-map',
+			'table',
 		);
 
 		if ( 'wpb' === woodmart_get_current_page_builder() && defined( 'WPB_VC_VERSION' ) ) {
@@ -376,6 +384,8 @@ class WOODMART_Theme {
 			'accordion',
 			'sidebar',
 			'off-canvas-column-btn',
+			'open-street-map',
+			'table',
 		);
 
 		$woo_files = array(

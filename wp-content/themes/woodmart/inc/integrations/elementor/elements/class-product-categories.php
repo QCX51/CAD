@@ -385,6 +385,42 @@ class Product_Categories extends Widget_Base {
 		);
 
 		$this->add_control(
+			'color_scheme',
+			[
+				'label'     => esc_html__( 'Color scheme', 'woodmart' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => 'inherit',
+				'options'   => array(
+					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'dark'    => esc_html__( 'Dark', 'woodmart' ),
+					'light'   => esc_html__( 'Light', 'woodmart' ),
+				),
+				'condition' => [
+					'type'              => [ 'grid' ],
+					'categories_design' => [ 'default', 'mask-subcat' ],
+				],
+			]
+		);
+
+		$this->add_control(
+			'categories_with_shadow',
+			[
+				'label'     => esc_html__( 'Categories with shadow', 'woodmart' ),
+				'type'      => Controls_Manager::SELECT,
+				'default'   => '',
+				'options'   => array(
+					''        => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'enable'  => esc_html__( 'Enable', 'woodmart' ),
+					'disable' => esc_html__( 'Disable', 'woodmart' ),
+				),
+				'condition' => [
+					'type'              => [ 'grid' ],
+					'categories_design' => [ 'alt', 'default' ],
+				],
+			]
+		);
+
+		$this->add_control(
 			'rounding_size',
 			array(
 				'label'     => esc_html__( 'Rounding', 'woodmart' ),
@@ -432,42 +468,6 @@ class Product_Categories extends Widget_Base {
 					'rounding_size' => array( 'custom' ),
 				),
 			)
-		);
-
-		$this->add_control(
-			'color_scheme',
-			[
-				'label'     => esc_html__( 'Color scheme', 'woodmart' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => 'inherit',
-				'options'   => array(
-					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
-					'dark'    => esc_html__( 'Dark', 'woodmart' ),
-					'light'   => esc_html__( 'Light', 'woodmart' ),
-				),
-				'condition' => [
-					'type'              => [ 'grid' ],
-					'categories_design' => [ 'default', 'mask-subcat' ],
-				],
-			]
-		);
-
-		$this->add_control(
-			'categories_with_shadow',
-			[
-				'label'     => esc_html__( 'Categories with shadow', 'woodmart' ),
-				'type'      => Controls_Manager::SELECT,
-				'default'   => '',
-				'options'   => array(
-					''        => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
-					'enable'  => esc_html__( 'Enable', 'woodmart' ),
-					'disable' => esc_html__( 'Disable', 'woodmart' ),
-				),
-				'condition' => [
-					'type'              => [ 'grid' ],
-					'categories_design' => [ 'alt', 'default' ],
-				],
-			]
 		);
 
 		$this->add_control(
@@ -585,7 +585,7 @@ class Product_Categories extends Widget_Base {
 			array(
 				'name'     => 'title_typography',
 				'label'    => esc_html__( 'Title Typography', 'woodmart' ),
-				'selector' => '{{WRAPPER}} div.product-category .wd-entities-title',
+				'selector' => '{{WRAPPER}} div.product-category .wd-entities-title, {{WRAPPER}} .wd-nav-product-cat>li>a',
 			)
 		);
 
@@ -1043,6 +1043,7 @@ class Product_Categories extends Widget_Base {
 						'owl' => [
 							'class' => [
 								'owl-carousel',
+								'wd-owl',
 								'carousel-items',
 								woodmart_owl_items_per_slide( $settings['slides_per_view'], array(), 'product', false, $settings['custom_sizes'] ),
 							],
@@ -1096,4 +1097,4 @@ class Product_Categories extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Product_Categories() );
+Plugin::instance()->widgets_manager->register( new Product_Categories() );

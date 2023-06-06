@@ -99,15 +99,17 @@ class WOODMART_Options {
 
 		if ( isset( $xts_woodmart_options[ $slug ] ) ) {
 			$opt = $xts_woodmart_options[ $slug ];
-			return $opt;
+
+			return apply_filters( 'woodmart_option', $opt, $slug );
 		}
 
 		if ( isset( $woodmart_options[ $slug ] ) ) {
 			$opt = $woodmart_options[ $slug ];
-			return $opt;
+
+			return apply_filters( 'woodmart_option', $opt, $slug );
 		}
 
-		return $opt;
+		return apply_filters( 'woodmart_option', $opt, $slug );
 	}
 }
 

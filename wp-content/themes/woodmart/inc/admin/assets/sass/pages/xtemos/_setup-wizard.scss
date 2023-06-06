@@ -97,6 +97,12 @@
 			font-size: 12px;
 		}
 
+		::-webkit-scrollbar,
+		::-webkit-scrollbar-track,
+		::-webkit-scrollbar-thumb {
+			border-radius: 3px;
+		}
+
 		::-webkit-scrollbar {
 			width: 5px;
 		}

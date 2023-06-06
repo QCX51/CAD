@@ -16,6 +16,7 @@ if( ! function_exists( 'woodmart_shortcode_info_box' ) ) {
 			'link' => '',
 			'alignment' => 'left',
 			'image_alignment' => 'top',
+			'image_vertical_alignment' => 'top',
 			'style' => '',
 			'hover' => '',
 			'woodmart_color_scheme' => '',
@@ -103,6 +104,10 @@ if( ! function_exists( 'woodmart_shortcode_info_box' ) ) {
 		$class .= ' wd-bg-' . $woodmart_bg_position;
 		$class .= woodmart_get_css_animation( $css_animation );
 
+		if ( in_array( $image_alignment, array( 'left', 'right' ), true ) ) {
+			$class .= ' wd-items-' . $image_vertical_alignment;
+		}
+
 		if ( ! $subtitle_custom_color && ! $subtitle_custom_bg_color ) {
 			$subtitle_class .= ' subtitle-color-' . $subtitle_color;
 		}
@@ -111,7 +116,7 @@ if( ! function_exists( 'woodmart_shortcode_info_box' ) ) {
 		if ( $style == 'bg-hover' ) $class .= ' color-scheme-hover-' . $woodmart_hover_color_scheme;
 
 		$subtitle_class .= ' subtitle-style-' . $subtitle_style;
-		$subtitle_class .= ' wd-font-weight-' . $subtitle_font_weight;
+		$subtitle_class .= $subtitle_font_weight ? ' wd-font-weight-' . $subtitle_font_weight : '';
 		if ( $subtitle_font ) {
 			$subtitle_class .= ' font-'. $subtitle_font;
 		}
@@ -123,7 +128,7 @@ if( ! function_exists( 'woodmart_shortcode_info_box' ) ) {
 		$class .= ( $el_class ) ? ' ' . $el_class : '';
 		$wrapper_class .= ( $wrapper_classes ) ? ' ' . $wrapper_classes : '';
 
-		$title_class .= ' wd-font-weight-' . $title_font_weight;
+		$title_class .= $title_font_weight ? ' wd-font-weight-' . $title_font_weight : '';
 		$title_class .= ' box-title-style-' . $title_style;
 		if ( $title_font ) {
 			$title_class .= ' font-'. $title_font;
@@ -162,6 +167,16 @@ if( ! function_exists( 'woodmart_shortcode_info_box' ) ) {
 
 		woodmart_enqueue_inline_style( 'info-box' );
 
+		if ( 'border' === $style ) {
+			woodmart_enqueue_inline_style( 'info-box-style-brd' );
+		} elseif ( in_array( $style, array( 'shadow', 'bg-hover' ), true ) ) {
+			woodmart_enqueue_inline_style( 'info-box-style-shadow-and-bg-hover' );
+		}
+
+		if ( ! empty( $btn_text ) && 'hover' === $btn_position ) {
+			woodmart_enqueue_inline_style( 'info-box-btn-hover' );
+		}
+
 		?>
 			<div class="info-box-wrapper<?php echo esc_html( $wrapper_class ); ?>">
 				<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $class ); ?>" <?php if( ! empty( $attributes['url'] ) && empty( $btn_text ) ): ?> onclick="<?php echo esc_js( $onclick ); ?>" <?php endif; ?> >
@@ -181,11 +196,24 @@ if( ! function_exists( 'woodmart_shortcode_info_box' ) ) {
 											$src = isset( $img['p_img_large'][0] ) ? $img['p_img_large'][0] : '';
 											$image_output = $img['thumbnail'];
 										} elseif ( function_exists( 'woodmart_get_image_url' ) ) {
+											$custom_dimension = array();
+
+											if ( strpos( $img_size, 'x' ) ) {
+												$custom_dimension = explode( 'x', $img_size );
+												$custom_dimension = array(
+													'width'  => $custom_dimension[0],
+													'height' => $custom_dimension[1],
+												);
+
+												$img_size = 'custom';
+											}
+
 											$src = woodmart_get_image_url(
 												$img_id,
 												'image',
 												array(
-													'image_size' => $img_size,
+													'image_size'             => $img_size,
+													'image_custom_dimension' => $custom_dimension,
 													'image'                  => array(
 														'id' => $img_id,
 													),
@@ -194,6 +222,7 @@ if( ! function_exists( 'woodmart_shortcode_info_box' ) ) {
 											$image_output = woodmart_get_image_html( // phpcs:ignore
 												array(
 													'image_size'             => $img_size,
+													'image_custom_dimension' => $custom_dimension,
 													'image'                  => array(
 														'id' => $img_id,
 													),
@@ -455,7 +484,7 @@ if( ! function_exists( 'woodmart_shortcode_info_box_carousel' ) ) {
 		woodmart_enqueue_inline_style( 'owl-carousel' );
 		?>
 			<div id="<?php echo esc_attr( $carousel_id ); ?>" class="wd-carousel-container info-box-carousel-wrapper <?php echo esc_attr( $wrapper_classes ); ?>" <?php echo ! empty( $owl_atts ) ? $owl_atts : ''; ?>>
-				<div class="owl-carousel info-box-carousel<?php echo esc_attr( $class ); ?>" >
+				<div class="owl-carousel wd-owl info-box-carousel<?php echo esc_attr( $class ); ?>" >
 					<?php echo do_shortcode( $content ); ?>
 				</div>
 			</div>

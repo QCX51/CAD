@@ -134,7 +134,7 @@ class Import extends Singleton {
 		if ( Remove::get_instance()->has_data_to_remove() ) {
 			$wrapper_classes .= ' xts-has-data';
 		}
-		if ( $this->get_required_plugins() || ( defined( 'ELEMENTOR_VERSION' ) && defined( 'WPB_PLUGIN_DIR' ) ) ) {
+		if ( $this->get_required_plugins() || ( defined( 'ELEMENTOR_VERSION' ) && defined( 'WPB_PLUGIN_DIR' ) ) || ! class_exists( 'DOMDocument' ) || ! function_exists( 'simplexml_load_file' ) ) {
 			$items_classes .= ' xts-disabled';
 		}
 
@@ -177,47 +177,49 @@ class Import extends Singleton {
 					<div class="xts-col-12 xts-col-lg-3 xts-col-xl-2 xts-col-dummy-nav">
 						<?php if ( ! isset( $_GET['tab'] ) || ( isset( $_GET['tab'] ) && 'wizard' !== $_GET['tab'] ) ) : // phpcs:ignore ?>
 
-							<div class="xts-buttons-control">
-								<div class="xts-import-cats-set xts-btns-set">
-									<div class="xts-set-item xts-set-btn xts-active" data-type="version">
-										<span>
-											<?php esc_html_e( 'Websites', 'woodmart' ); ?>
-										</span>
-									</div>
-									<div class="xts-set-item xts-set-btn" data-type="page">
-										<span>
-											<?php esc_html_e( 'Additional pages', 'woodmart' ); ?>
-										</span>
+							<div class="xts-import-cats-list-wrap">
+								<div class="xts-buttons-control">
+									<div class="xts-import-cats-set xts-btns-set">
+										<div class="xts-set-item xts-set-btn xts-active" data-type="version">
+											<span>
+												<?php esc_html_e( 'Websites', 'woodmart' ); ?>
+											</span>
+										</div>
+										<div class="xts-set-item xts-set-btn" data-type="page">
+											<span>
+												<?php esc_html_e( 'Additional pages', 'woodmart' ); ?>
+											</span>
+										</div>
 									</div>
 								</div>
-							</div>
 
-							<div class="xts-import-cats-list">
-								<?php foreach ( $this->get_categories() as $type => $categories ) : ?>
-									<?php
-									$classes = '';
+								<div class="xts-import-cats-list">
+									<?php foreach ( $this->get_categories() as $type => $categories ) : ?>
+										<?php
+										$classes = '';
 
-									if ( 'version' === $type ) {
-										$classes = wd_add_cssclass( 'xts-active', $classes );
-									}
-									?>
-									<ul class="xts-filter <?php echo esc_attr( $classes ); ?>" data-type="<?php echo esc_attr( $type ); ?>">
-										<li data-cat="*" class="xts-active">
-											<a>
-												<span><?php esc_html_e( 'All', 'woodmart' ); ?></span>
-												<span class="xts-filter-count"><?php echo esc_html( $this->get_all_category_count( $type ) ); ?></span>
-											</a>
-										</li>
-										<?php foreach ( $categories as $category ) : ?>
-											<li data-cat="<?php echo esc_attr( $category['data']['slug'] ); ?>">
+										if ( 'version' === $type ) {
+											$classes = wd_add_cssclass( 'xts-active', $classes );
+										}
+										?>
+										<ul class="xts-filter <?php echo esc_attr( $classes ); ?>" data-type="<?php echo esc_attr( $type ); ?>">
+											<li data-cat="*" class="xts-active">
 												<a>
-													<span><?php echo esc_html( $category['data']['name'] ); ?></span>
-													<span class="xts-filter-count"><?php echo esc_html( $category['count'] ); ?></span>
+													<span><?php esc_html_e( 'All', 'woodmart' ); ?></span>
+													<span class="xts-filter-count"><?php echo esc_html( $this->get_all_category_count( $type ) ); ?></span>
 												</a>
 											</li>
-										<?php endforeach; ?>
-									</ul>
-								<?php endforeach; ?>
+											<?php foreach ( $categories as $category ) : ?>
+												<li data-cat="<?php echo esc_attr( $category['data']['slug'] ); ?>">
+													<a>
+														<span><?php echo esc_html( $category['data']['name'] ); ?></span>
+														<span class="xts-filter-count"><?php echo esc_html( $category['count'] ); ?></span>
+													</a>
+												</li>
+											<?php endforeach; ?>
+										</ul>
+									<?php endforeach; ?>
+								</div>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -313,6 +315,14 @@ class Import extends Singleton {
 
 		if ( defined( 'ELEMENTOR_VERSION' ) && defined( 'WPB_PLUGIN_DIR' ) ) {
 			$this->print_notice( 'warning', __( 'Please, deactivate one of the builders and leave only ONE plugin either <strong>WPBakery page builder</strong> or <strong>Elementor</strong>.', 'woodmart' ) );
+		}
+
+		if ( ! class_exists( 'DOMDocument' ) ) {
+			$this->print_notice( 'warning', __( 'Please, contact the host support and ask them to enable <strong>DOMDocument</strong>.', 'woodmart' ) );
+		}
+
+		if ( ! function_exists( 'simplexml_load_file' ) ) {
+			$this->print_notice( 'warning', __( 'Please, contact the host support and ask them to enable <strong>simplexml_load_file</strong>.', 'woodmart' ) );
 		}
 	}
 

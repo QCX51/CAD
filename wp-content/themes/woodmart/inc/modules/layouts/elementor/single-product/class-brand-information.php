@@ -114,4 +114,4 @@ class Brand_Information extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Brand_Information() );
+Plugin::instance()->widgets_manager->register( new Brand_Information() );

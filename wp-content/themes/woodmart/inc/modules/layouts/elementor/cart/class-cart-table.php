@@ -124,6 +124,16 @@ class Cart_Table extends Widget_Base {
 
 		wc()->cart->calculate_totals();
 
+		$update_cart_btn_classes = '';
+
+		if ( function_exists( 'wc_wp_theme_get_element_class_name' ) ) {
+			$update_cart_btn_classes .= ' ' . wc_wp_theme_get_element_class_name( 'button' );
+		}
+
+		if ( woodmart_get_opt( 'update_cart_quantity_change' ) ) {
+			$update_cart_btn_classes .= ' wd-hide';
+		}
+
 		?>
 		<form class="woocommerce-cart-form cart-data-form" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 			<div class="cart-table-section">
@@ -221,20 +231,24 @@ class Cart_Table extends Widget_Base {
 								<td class="product-quantity" data-title="<?php esc_attr_e( 'Quantity', 'woocommerce' ); ?>">
 									<?php
 									if ( $_product->is_sold_individually() ) {
-										$product_quantity = sprintf( '1 <input type="hidden" name="cart[%s][qty]" value="1" />', $cart_item_key );
+										$min_quantity = 1;
+										$max_quantity = 1;
 									} else {
-										$product_quantity = woocommerce_quantity_input(
-											array(
-												'input_name'   => "cart[{$cart_item_key}][qty]",
-												'input_value'  => $cart_item['quantity'],
-												'max_value'    => $_product->get_max_purchase_quantity(),
-												'min_value'    => '0',
-												'product_name' => $_product->get_name(),
-											),
-											$_product,
-											false
-										);
+										$min_quantity = 0;
+										$max_quantity = $_product->get_max_purchase_quantity();
 									}
+
+									$product_quantity = woocommerce_quantity_input(
+										array(
+											'input_name'   => "cart[{$cart_item_key}][qty]",
+											'input_value'  => $cart_item['quantity'],
+											'max_value'    => $max_quantity,
+											'min_value'    => $min_quantity,
+											'product_name' => $_product->get_name(),
+										),
+										$_product,
+										false
+									);
 
 									echo apply_filters( 'woocommerce_cart_item_quantity', $product_quantity, $cart_item_key, $cart_item );
 									?>
@@ -266,7 +280,7 @@ class Cart_Table extends Widget_Base {
 					</div>
 
 					<div class="col-12 order-first order-md-last col-md-auto">
-						<button type="submit" class="button" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
+						<button type="submit" class="button<?php echo esc_attr( $update_cart_btn_classes ); ?>" name="update_cart" value="<?php esc_attr_e( 'Update cart', 'woocommerce' ); ?>"><?php esc_html_e( 'Update cart', 'woocommerce' ); ?></button>
 
 						<?php do_action( 'woocommerce_cart_actions' ); ?>
 
@@ -279,4 +293,4 @@ class Cart_Table extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Cart_Table() );
+Plugin::instance()->widgets_manager->register( new Cart_Table() );

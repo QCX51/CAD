@@ -46,7 +46,7 @@
 
 		function init($wrapper) {
 			var image = $wrapper.find('img');
-			if (image.data('large_image_width') > $wrapper.width()) {
+			if (image.data('large_image_width') > $wrapper.width() ) {
 				$wrapper.trigger('zoom.destroy');
 				$wrapper.zoom(zoomOptions);
 			}

@@ -12,21 +12,29 @@ if ( ! defined( 'WOODMART_THEME_DIR' ) ) {
 	exit( 'No direct script access allowed' );
 }
 
-function wd_array_unique_recursive( $array ) {
-	$scalars = array();
-	foreach ( $array as $key => $value ) {
-		if ( is_scalar( $value ) ) {
-			if ( isset( $scalars[ $value ] ) ) {
-				unset( $array[ $key ] );
-			} else {
-				$scalars[ $value ] = true;
-			}
-		} elseif ( is_array( $value ) ) {
-			$array[ $key ] = wd_array_unique_recursive( $value );
-		}
+if ( ! function_exists( 'woodmart_is_core_installed' ) ) {
+	function woodmart_is_core_installed() {
+		return defined( 'WOODMART_CORE_PLUGIN_VERSION' );
 	}
+}
 
-	return $array;
+if ( ! function_exists( 'wd_array_unique_recursive' ) ) {
+	function wd_array_unique_recursive( $array ) {
+		$scalars = array();
+		foreach ( $array as $key => $value ) {
+			if ( is_scalar( $value ) ) {
+				if ( isset( $scalars[ $value ] ) ) {
+					unset( $array[ $key ] );
+				} else {
+					$scalars[ $value ] = true;
+				}
+			} elseif ( is_array( $value ) ) {
+				$array[ $key ] = wd_array_unique_recursive( $value );
+			}
+		}
+
+		return $array;
+	}
 }
 
 if ( ! function_exists( 'wd_add_cssclass' ) ) {
@@ -287,7 +295,7 @@ if ( ! function_exists( 'woodmart_get_old_classes' ) ) {
 	 * @return string
 	 */
 	function woodmart_get_old_classes( $classes ) {
-		if ( ! woodmart_get_opt( 'old_elements_classes', true ) ) {
+		if ( ! apply_filters( 'woodmart_show_deprecated_css_classes', false ) ) {
 			$classes = '';
 		}
 
@@ -707,7 +715,7 @@ if ( ! function_exists( 'woodmart_is_portfolio_archive' ) ) {
 
 if ( ! function_exists( 'woodmart_maintenance_page' ) ) {
 	function woodmart_maintenance_page() {
-		if ( ! woodmart_get_opt( 'maintenance_mode' ) || is_user_logged_in() ) {
+		if ( ! woodmart_get_opt( 'maintenance_mode' ) || is_user_logged_in() || ( woodmart_get_opt( 'maintenance_mode' ) && isset( $_GET[ woodmart_get_opt( 'maintenance_access_key' ) ] ) ) ) {
 			return false;
 		}
 
@@ -718,6 +726,25 @@ if ( ! function_exists( 'woodmart_maintenance_page' ) ) {
 		}
 
 		return false;
+	}
+}
+
+if ( ! function_exists( 'woodmart_is_maintenance_active' ) ) {
+	/**
+	 * This function will return true if the site visitor should be redirected to the maintenance page.
+	 *
+	 * @return bool
+	 */
+	function woodmart_is_maintenance_active() {
+		$maintenance_mode       = woodmart_get_opt( 'maintenance_mode' );
+		$maintenance_access_key = woodmart_get_opt( 'maintenance_access_key' );
+		$is_access_key          = ! empty( $maintenance_access_key ) && isset( $_GET[ $maintenance_access_key ] ); //phpcs:ignore;
+
+		if ( ! $maintenance_mode || is_user_logged_in() || $is_access_key ) {
+			return false;
+		}
+
+		return true;
 	}
 }
 
@@ -1338,3 +1365,56 @@ if ( ! function_exists( 'woodmart_is_compressed_data' ) ) {
 		return woodmart_compress( woodmart_decompress( $variable ) ) === $variable;
 	}
 }
+
+if ( ! function_exists( 'woodmart_get_current_user_roles' ) ) {
+	/**
+	 * Get the current user roles list.
+	 *
+	 * @retun array
+	 */
+	function woodmart_get_current_user_roles() {
+		return is_user_logged_in() ? (array) wp_get_current_user()->roles : array();
+	}
+}
+
+if ( ! function_exists( 'woodmart_get_center_coords' ) ) {
+	/**
+	 * This function accepts a list of coords and returns a prepared array with the coordinates of the center.
+	 * If the token list is empty, the method will return an empty array.
+	 *
+	 * @param array $coords List of coords.
+	 * @return array
+	 */
+	function woodmart_get_center_coords( $coords ) {
+		if ( empty( $coords ) ) {
+			return array();
+		}
+
+		$count_coords = count( $coords );
+		$xcos         = 0.0;
+		$ycos         = 0.0;
+		$zsin         = 0.0;
+
+		foreach ( $coords as $lnglat ) {
+			$lat = $lnglat['lat'] * pi() / 180;
+			$lon = $lnglat['lng'] * pi() / 180;
+
+			$acos  = cos( $lat ) * cos( $lon );
+			$bcos  = cos( $lat ) * sin( $lon );
+			$csin  = sin( $lat );
+			$xcos += $acos;
+			$ycos += $bcos;
+			$zsin += $csin;
+		}
+
+		$xcos /= $count_coords;
+		$ycos /= $count_coords;
+		$zsin /= $count_coords;
+		$lon   = atan2( $ycos, $xcos );
+		$sqrt  = sqrt( $xcos * $xcos + $ycos * $ycos );
+		$lat   = atan2( $zsin, $sqrt );
+
+		return array( $lat * 180 / pi(), $lon * 180 / pi() );
+	}
+}
+

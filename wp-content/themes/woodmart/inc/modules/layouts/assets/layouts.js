@@ -281,6 +281,7 @@
 	$('.page-title-action, .menu-icon-woodmart_layout li:not(.current) a').on('click', function(event) {
 		event.preventDefault();
 		$wrapper.find('.xts-popup-holder').addClass('xts-opened');
+		$('html').addClass('xts-popup-opened');
 		$form.find('.xts-layout-type').trigger('change');
 
 		setTimeout(function() {
@@ -292,8 +293,10 @@
 	});
 	$(document).on('click', '.xts-popup-opener', function() {
 		$(this).parent().addClass('xts-opened');
+		$('html').addClass('xts-popup-opened');
 	});
 	$(document).on('click', '.xts-popup-close, .xts-popup-overlay', function() {
 		$('.xts-popup-holder').removeClass('xts-opened');
+		$('html').removeClass('xts-popup-opened');
 	});
 })(jQuery);

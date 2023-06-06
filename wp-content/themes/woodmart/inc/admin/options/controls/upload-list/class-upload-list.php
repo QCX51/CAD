@@ -33,7 +33,7 @@ class Upload_List extends Field {
 					<div data-attachment_id="<?php echo esc_attr( $image_id ); ?>">
 						<?php echo wp_get_attachment_image( $image_id, 'thumbnail' ); // phpcs:ignore ?>
 						<a href="#" class="xts-remove">
-							<span class="dashicons dashicons-dismiss"></span>
+							<span class="xts-i-close"></span>
 						</a>
 					</div>
 				<?php endif; ?>
@@ -41,8 +41,8 @@ class Upload_List extends Field {
 		</div>
 
 		<div class="xts-upload-btns">
-			<button class="xts-btn xts-upload-btn xts-i-import"><?php esc_html_e( 'Upload', 'woodmart' ); ?></button>
-			<button class="xts-btn xts-color-warning xts-clear-all xts-remove-upload-btn xts-i-trash"><?php esc_html_e( 'Clear all', 'woodmart' ); ?></button>
+			<a class="xts-btn xts-upload-btn xts-i-import"><?php esc_html_e( 'Upload', 'woodmart' ); ?></a>
+			<a class="xts-btn xts-color-warning xts-clear-all xts-remove-upload-btn xts-i-trash"><?php esc_html_e( 'Clear all', 'woodmart' ); ?></a>
 			<input type="hidden" class="xts-upload-input-id" name="<?php echo esc_attr( $this->get_input_name() ); ?>" value="<?php echo esc_attr( $images ); ?>" />
 		</div>
 		<?php
@@ -68,6 +68,13 @@ class Upload_List extends Field {
 
 		return $value;
 	}
+
+	/**
+	 * Enqueue media lib.
+	 *
+	 * @since 1.0.0
+	 */
+	public function enqueue() {
+		wp_enqueue_media();
+	}
 }
-
-

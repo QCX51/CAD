@@ -20,12 +20,81 @@ return apply_filters(
 			'link'       => 'https://woodmart.xtemos.com/home/',
 			'categories' => [
 				[
-					'name' => 'Furniture',
-					'slug' => 'furniture',
+					'name' => 'Electronics',
+					'slug' => 'electronics',
 				],
 				[
 					'name' => 'Shop',
 					'slug' => 'shop',
+				],
+			],
+		],
+		'food-delivery'            => [
+			'title'      => 'Food Delivery',
+			'process'    => 'xml,home,options,widgets,headers,images',
+			'type'       => 'version',
+			'base'       => 'base',
+			'categories' => [
+				[
+					'name' => 'Business',
+					'slug' => 'business',
+				],
+			],
+		],
+		'event-agency'            => [
+			'title'      => 'Event Agency',
+			'process'    => 'xml,home,options,widgets,headers,images',
+			'type'       => 'version',
+			'base'       => 'base',
+			'categories' => [
+				[
+					'name' => 'Business',
+					'slug' => 'business',
+				],
+			],
+		],
+		'developer'            => [
+			'title'      => 'Developer',
+			'process'    => 'xml,home,options,widgets,headers,images',
+			'type'       => 'version',
+			'base'       => 'base',
+			'categories' => [
+				[
+					'name' => 'Business',
+					'slug' => 'business',
+				],
+			],
+		],
+		'architecture-studio'            => [
+			'title'      => 'Architecture Studio',
+			'process'    => 'xml,home,options,widgets,headers,images',
+			'type'       => 'version',
+			'base'       => 'base',
+			'categories' => [
+				[
+					'name' => 'Business',
+					'slug' => 'business',
+				],
+			],
+		],
+		'mega-electronics'            => [
+			'title'      => 'Mega Electronics',
+			'process'    => 'xml,home,options,widgets,headers,sliders',
+			'type'       => 'version',
+			'base'       => 'mega-electronics_base',
+			'link'       => 'https://woodmart.xtemos.com/mega-electronics/',
+			'categories' => [
+				[
+					'name' => 'Shop',
+					'slug' => 'shop',
+				],
+				[
+					'name' => 'Electronics',
+					'slug' => 'electronics',
+				],
+				[
+					'name' => 'Business',
+					'slug' => 'business',
 				],
 			],
 		],
@@ -1161,6 +1230,11 @@ return apply_filters(
 		],
 		'accessories_base'      => [
 			'title'   => 'Base content accessories (required)',
+			'process' => 'xml,xml_images,widgets,options,headers',
+			'type'    => 'base',
+		],
+		'mega-electronics_base' => [
+			'title'   => 'Base content mega electronics (required)',
 			'process' => 'xml,xml_images,widgets,options,headers',
 			'type'    => 'base',
 		],

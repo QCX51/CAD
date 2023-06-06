@@ -107,10 +107,6 @@ if ( ! function_exists( 'woodmart_register_slider_metaboxes' ) ) {
 						'name'  => esc_html__( 'Contain', 'woodmart' ),
 						'value' => 'contain',
 					),
-					'inherit' => array(
-						'name'  => esc_html__( 'Inherit', 'woodmart' ),
-						'value' => 'inherit',
-					),
 				),
 				'default'      => 'cover',
 				't_tab'        => [
@@ -552,7 +548,7 @@ if ( ! function_exists( 'woodmart_register_slider_metaboxes' ) ) {
 				'id'          => 'content_without_padding',
 				'type'        => 'checkbox',
 				'name'        => esc_html__( 'Content no space', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'content-without-padding.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'content-without-padding.mp4" autoplay loop muted></video>',
 				'description' => esc_html__( 'The content block will not have any paddings', 'woodmart' ),
 				'section'     => 'slide_content',
 				'priority'    => 10,
@@ -564,7 +560,7 @@ if ( ! function_exists( 'woodmart_register_slider_metaboxes' ) ) {
 				'id'          => 'content_full_width',
 				'type'        => 'checkbox',
 				'name'        => esc_html__( 'Full width content', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'content-full-width.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'content-full-width.mp4" autoplay loop muted></video>',
 				'description' => esc_html__( 'Takes the slider\'s width', 'woodmart' ),
 				'section'     => 'slide_content',
 				'priority'    => 20,
@@ -928,6 +924,9 @@ if ( ! function_exists( 'woodmart_register_slider_metaboxes' ) ) {
 				'description' => esc_html__( 'Add URL to make whole slide clickable', 'woodmart' ),
 				'section'     => 'slide_link',
 				'group'       => esc_html__( 'Slide link', 'woodmart' ),
+				'attributes'  => array(
+					'type' => 'url',
+				),
 				'priority'    => 240,
 				'class'       => 'xts-col-6',
 			)
@@ -940,6 +939,8 @@ if ( ! function_exists( 'woodmart_register_slider_metaboxes' ) ) {
 				'name'     => esc_html__( 'Open link in new tab', 'woodmart' ),
 				'section'  => 'slide_link',
 				'group'    => esc_html__( 'Slide link', 'woodmart' ),
+				'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+				'off-text'    => esc_html__( 'No', 'woodmart' ),
 				'priority' => 250,
 				'class'    => 'xts-col-6',
 			)
@@ -978,22 +979,22 @@ $slider_metabox->add_field(
 		'options'  => array(
 			'slide'      => array(
 				'name'  => esc_html__( 'Slide', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'slide-change-animation-slide.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'slide-change-animation-slide.mp4" autoplay loop muted></video>',
 				'value' => 'slide',
 			),
 			'fade'       => array(
 				'name'  => esc_html__( 'Fade', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'slide-change-animation-fade.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'slide-change-animation-fade.mp4" autoplay loop muted></video>',
 				'value' => 'fade',
 			),
 			'parallax'   => array(
 				'name'  => esc_html__( 'Parallax', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'slide-change-animation-parallax.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'slide-change-animation-parallax.mp4" autoplay loop muted></video>',
 				'value' => 'parallax',
 			),
 			'distortion' => array(
 				'name'  => esc_html__( 'Distortion', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'slide-change-animation-distortion.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'slide-change-animation-distortion.mp4" autoplay loop muted></video>',
 				'value' => 'distortion',
 			),
 		),
@@ -1005,12 +1006,14 @@ $slider_metabox->add_field(
 	array(
 		'id'          => 'stretch_slider',
 		'name'        => esc_html__( 'Stretch slider', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'stretch-slider.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'stretch-slider.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Make slider full width', 'woodmart' ),
 		'group'       => esc_html__( 'Layout', 'woodmart' ),
 		'type'        => 'checkbox',
 		'section'     => 'slide_content',
 		'class'       => 'xts-col-6',
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 10,
 	)
 );
@@ -1019,7 +1022,7 @@ $slider_metabox->add_field(
 	array(
 		'id'          => 'stretch_content',
 		'name'        => esc_html__( 'Full width content', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'slider-full-with-content.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'slider-full-with-content.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Make content full width', 'woodmart' ),
 		'group'       => esc_html__( 'Layout', 'woodmart' ),
 		'type'        => 'checkbox',
@@ -1156,6 +1159,11 @@ $slider_metabox->add_field(
 				'value' => '2',
 				'image' => WOODMART_ASSETS_IMAGES . '/settings/slider-navigation/pagination-style-2.jpg',
 			),
+			'3' => array(
+				'name'  => esc_html__( 'Style 3', 'woodmart' ),
+				'value' => '3',
+				'image' => WOODMART_ASSETS_IMAGES . '/settings/slider-navigation/pagination-style-3.jpg',
+			),
 			'0' => array(
 				'name'  => esc_html__( 'Disable', 'woodmart' ),
 				'value' => '0',
@@ -1165,6 +1173,35 @@ $slider_metabox->add_field(
 		'priority' => 50,
 	)
 );
+
+	$slider_metabox->add_field(
+		array(
+			'id'       => 'pagination_horizon_align',
+			'name'     => esc_html__( 'Pagination horizontal alignment', 'woodmart' ),
+			'group'    => esc_html__( 'Navigation', 'woodmart' ),
+			'type'     => 'buttons',
+			'section'  => 'slide_content',
+			'default'  => 'center',
+			'options'  => array(
+				'left'   => array(
+					'name'  => esc_html__( 'Left', 'woodmart' ),
+					'value' => 'left',
+					'image' => WOODMART_ASSETS_IMAGES . '/settings/slider-navigation/pagination-horizontal-alignment-left.jpg',
+				),
+				'center' => array(
+					'name'  => esc_html__( 'Center', 'woodmart' ),
+					'value' => 'center',
+					'image' => WOODMART_ASSETS_IMAGES . '/settings/slider-navigation/pagination-horizontal-alignment-center.jpg',
+				),
+				'right'  => array(
+					'name'  => esc_html__( 'Right', 'woodmart' ),
+					'value' => 'right',
+					'image' => WOODMART_ASSETS_IMAGES . '/settings/slider-navigation/pagination-horizontal-alignment-right.jpg',
+				),
+			),
+			'priority' => 50,
+		)
+	);
 
 $slider_metabox->add_field(
 	array(
@@ -1186,7 +1223,7 @@ $slider_metabox->add_field(
 				'image' => WOODMART_ASSETS_IMAGES . '/settings/slider-navigation/pagination-color-dark.jpg',
 			),
 		),
-		'priority' => 50,
+		'priority' => 55,
 	)
 );
 
@@ -1198,6 +1235,8 @@ $slider_metabox->add_field(
 		'group'       => esc_html__( 'Settings', 'woodmart' ),
 		'type'        => 'checkbox',
 		'section'     => 'slide_content',
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 60,
 	)
 );
@@ -1233,6 +1272,8 @@ $slider_metabox->add_field(
 		'group'       => esc_html__( 'Settings', 'woodmart' ),
 		'type'        => 'checkbox',
 		'section'     => 'slide_content',
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 70,
 	)
 );

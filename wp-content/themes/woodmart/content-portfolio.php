@@ -77,7 +77,6 @@ if ( 'text-shown' !== $style ) {
 <article id="post-<?php the_ID(); ?>" <?php post_class( $classes ); ?>>
 	<header class="entry-header">
 		<?php if ( has_post_thumbnail() && ! post_password_required() && ! is_attachment() ) : ?>
-			<a href="<?php echo esc_url( get_permalink() ); ?>" class="project-link wd-fill" aria-label="<?php esc_attr_e( 'Project link', 'woodmart' ); ?>"></a>
 			<figure class="entry-thumbnail color-scheme-light">
 				<a href="<?php echo esc_url( get_permalink() ); ?>" class="portfolio-thumbnail">
 					<?php echo $img; ?>

@@ -7,26 +7,18 @@ if ( ! defined( 'WOODMART_THEME_DIR' ) ) {
 * Instagram element map
 * ------------------------------------------------------------------------------------------------
 */
-
-if ( ! function_exists( 'woodmart_vc_map_instagram' ) ) {
-	function woodmart_vc_map_instagram() {
-		if ( ! shortcode_exists( 'woodmart_instagram' ) ) {
-			return;
-		}
-
-		vc_map(
-			array(
-				'name'        => esc_html__( 'Instagram', 'woodmart' ),
-				'base'        => 'woodmart_instagram',
-				'category'    => function_exists( 'woodmart_get_tab_title_category_for_wpb' ) ?
-					woodmart_get_tab_title_category_for_wpb( esc_html__( 'Theme elements', 'woodmart' ) ) : esc_html__( 'Theme elements', 'woodmart' ),
-				'description' => esc_html__( 'Instagram photos', 'woodmart' ),
-				'icon'        => WOODMART_ASSETS . '/images/vc-icon/instagram.svg',
-				'params'      => woodmart_get_instagram_params(),
-			)
+if ( ! function_exists( 'woodmart_get_vc_map_instagram' ) ) {
+	function woodmart_get_vc_map_instagram() {
+		return array(
+			'name'        => esc_html__( 'Instagram', 'woodmart' ),
+			'base'        => 'woodmart_instagram',
+			'category'    => function_exists( 'woodmart_get_tab_title_category_for_wpb' ) ?
+				woodmart_get_tab_title_category_for_wpb( esc_html__( 'Theme elements', 'woodmart' ) ) : esc_html__( 'Theme elements', 'woodmart' ),
+			'description' => esc_html__( 'Instagram photos', 'woodmart' ),
+			'icon'        => WOODMART_ASSETS . '/images/vc-icon/instagram.svg',
+			'params'      => woodmart_get_instagram_params(),
 		);
 	}
-	add_action( 'vc_before_init', 'woodmart_vc_map_instagram' );
 }
 
 if ( ! function_exists( 'woodmart_get_instagram_params' ) ) {

@@ -64,3 +64,14 @@ Options::add_field(
 
 	)
 );
+
+Options::add_field(
+	array(
+		'id'       => 'css_backend',
+		'name'     => esc_html__( 'Custom CSS for admin dashboard', 'woodmart' ),
+		'type'     => 'editor',
+		'language' => 'css',
+		'section'  => 'custom_css',
+		'priority' => 60,
+	)
+);

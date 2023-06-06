@@ -1957,17 +1957,17 @@ input[disabled] {
     margin-top: 15px;
     margin-bottom: 0; }
   .comment-form .submit {
-    border-radius: var(--btn-accent-brd-radius);
-    color: var(--btn-accent-color);
-    box-shadow: var(--btn-accent-box-shadow);
-    background-color: var(--btn-accent-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .comment-form .submit:hover {
-      color: var(--btn-accent-color-hover);
-      box-shadow: var(--btn-accent-box-shadow-hover);
-      background-color: var(--btn-accent-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .comment-form .submit:active {
-      box-shadow: var(--btn-accent-box-shadow-active);
-      bottom: var(--btn-accent-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
 
 .form-style-underlined .comment-form-comment {
   margin-bottom: 30px; }
@@ -4354,18 +4354,18 @@ p.has-background {
   padding-left: 20px !important;
   padding-right: 20px !important;
   border: 0;
-  border-radius: var(--btn-accent-brd-radius);
-  color: var(--btn-accent-color);
-  box-shadow: var(--btn-accent-box-shadow);
-  background-color: var(--btn-accent-bgcolor);
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor);
   fill: currentColor; }
   .wp-block-search .wp-block-search__button:hover {
-    color: var(--btn-accent-color-hover);
-    box-shadow: var(--btn-accent-box-shadow-hover);
-    background-color: var(--btn-accent-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .wp-block-search .wp-block-search__button:active {
-    box-shadow: var(--btn-accent-box-shadow-active);
-    bottom: var(--btn-accent-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 .wp-block-search:not(.wp-block-search__button-inside) .wp-block-search__input {
   border: var(--wd-form-brd-width) solid var(--wd-form-brd-color);
   border-radius: var(--wd-form-brd-radius); }
@@ -6709,17 +6709,17 @@ footer.entry-author .author-info {
 .post-password-form input[type="submit"] {
   margin-bottom: 10px;
   vertical-align: bottom;
-  border-radius: var(--btn-accent-brd-radius);
-  color: var(--btn-accent-color);
-  box-shadow: var(--btn-accent-box-shadow);
-  background-color: var(--btn-accent-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .post-password-form input[type="submit"]:hover {
-    color: var(--btn-accent-color-hover);
-    box-shadow: var(--btn-accent-box-shadow-hover);
-    background-color: var(--btn-accent-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .post-password-form input[type="submit"]:active {
-    box-shadow: var(--btn-accent-box-shadow-active);
-    bottom: var(--btn-accent-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .post-title-large-image > .container {
   position: relative;
@@ -8717,17 +8717,17 @@ div.wd-portfolio-holder {
   .wd-price-table .wd-plan-footer {
     padding: 20px 15px; }
     .wd-price-table .wd-plan-footer > a {
-      border-radius: var(--btn-accent-brd-radius);
-      color: var(--btn-accent-color);
-      box-shadow: var(--btn-accent-box-shadow);
-      background-color: var(--btn-accent-bgcolor); }
+      border-radius: var(--btn-accented-brd-radius);
+      color: var(--btn-accented-color);
+      box-shadow: var(--btn-accented-box-shadow);
+      background-color: var(--btn-accented-bgcolor); }
       .wd-price-table .wd-plan-footer > a:hover {
-        color: var(--btn-accent-color-hover);
-        box-shadow: var(--btn-accent-box-shadow-hover);
-        background-color: var(--btn-accent-bgcolor-hover); }
+        color: var(--btn-accented-color-hover);
+        box-shadow: var(--btn-accented-box-shadow-hover);
+        background-color: var(--btn-accented-bgcolor-hover); }
       .wd-price-table .wd-plan-footer > a:active {
-        box-shadow: var(--btn-accent-box-shadow-active);
-        bottom: var(--btn-accent-bottom-active); }
+        box-shadow: var(--btn-accented-box-shadow-active);
+        bottom: var(--btn-accented-bottom-active); }
   .wd-price-table.label-color-red .price-label > span {
     background-color: #EF4836; }
   .wd-price-table.label-color-green .price-label > span {
@@ -9370,19 +9370,19 @@ body:not(.elementor-editor-active) .wd-slide [class*="wd-animation"]:not(.wd-ani
   padding: 10px 14px;
   font-size: 12px;
   line-height: 16px;
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .hotspot-content .add_to_cart_button:hover,
   .hotspot-content .product_type_variable:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .hotspot-content .add_to_cart_button:active,
   .hotspot-content .product_type_variable:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 .hotspot-content .added_to_cart {
   display: none; }
 
@@ -9966,17 +9966,17 @@ body:not(.elementor-editor-active) .wd-slide [class*="wd-animation"]:not(.wd-ani
   .cookies-buttons > a:last-child {
     margin-inline-end: 0; }
 .cookies-buttons .cookies-accept-btn {
-  border-radius: var(--btn-accent-brd-radius);
-  color: var(--btn-accent-color);
-  box-shadow: var(--btn-accent-box-shadow);
-  background-color: var(--btn-accent-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .cookies-buttons .cookies-accept-btn:hover {
-    color: var(--btn-accent-color-hover);
-    box-shadow: var(--btn-accent-box-shadow-hover);
-    background-color: var(--btn-accent-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .cookies-buttons .cookies-accept-btn:active {
-    box-shadow: var(--btn-accent-box-shadow-active);
-    bottom: var(--btn-accent-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 .cookies-buttons .cookies-more-btn {
   border-bottom: 2px solid var(--brdcolor-gray-300);
   color: var(--color-gray-800);
@@ -10071,17 +10071,17 @@ body:not(.elementor-editor-active) .wd-slide [class*="wd-animation"]:not(.wd-ani
     margin-bottom: 10px; }
 
 .wd-age-verify-allowed {
-  border-radius: var(--btn-accent-brd-radius);
-  color: var(--btn-accent-color);
-  box-shadow: var(--btn-accent-box-shadow);
-  background-color: var(--btn-accent-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .wd-age-verify-allowed:hover {
-    color: var(--btn-accent-color-hover);
-    box-shadow: var(--btn-accent-box-shadow-hover);
-    background-color: var(--btn-accent-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .wd-age-verify-allowed:active {
-    box-shadow: var(--btn-accent-box-shadow-active);
-    bottom: var(--btn-accent-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .wd-age-verify-forbidden {
   border-radius: var(--btn-default-brd-radius);
@@ -11828,17 +11828,17 @@ form.sent div.wpcf7-response-output, form.invalid div.wpcf7-response-output, for
   --wd-form-placeholder-color: #777; }
 
 .mc4wp-form input[type="submit"] {
-  border-radius: var(--btn-accent-brd-radius);
-  color: var(--btn-accent-color);
-  box-shadow: var(--btn-accent-box-shadow);
-  background-color: var(--btn-accent-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .mc4wp-form input[type="submit"]:hover {
-    color: var(--btn-accent-color-hover);
-    box-shadow: var(--btn-accent-box-shadow-hover);
-    background-color: var(--btn-accent-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .mc4wp-form input[type="submit"]:active {
-    box-shadow: var(--btn-accent-box-shadow-active);
-    bottom: var(--btn-accent-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 .mc4wp-form .row {
   margin-bottom: -10px; }
 .mc4wp-form [class*="col"] {
@@ -11941,17 +11941,17 @@ td.woocommerce-orders-table__cell-order-actions a {
   padding: 10px 14px;
   font-size: 12px;
   line-height: 16px;
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   td.woocommerce-orders-table__cell-order-actions a:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   td.woocommerce-orders-table__cell-order-actions a:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
   td.woocommerce-orders-table__cell-order-actions a:last-child {
     margin-right: 0; }
 td.product-remove {
@@ -12366,33 +12366,33 @@ ul.variation {
   margin-left: 10px; }
 
 .single_add_to_cart_button {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .single_add_to_cart_button:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .single_add_to_cart_button:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
   .single_add_to_cart_button + .added_to_cart {
     display: none; }
 
 .wd-buy-now-btn {
   margin-left: 10px;
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .wd-buy-now-btn:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .wd-buy-now-btn:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .cart:not(.variations_form):not(.grouped_form) {
   margin-bottom: 15px; }
@@ -12713,19 +12713,19 @@ table.variations {
 .register .button,
 .login .button {
   width: 100%;
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .register .button:hover,
   .login .button:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .register .button:active,
   .login .button:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .wd-login-divider {
   display: flex;
@@ -12758,9 +12758,9 @@ table.variations {
     .wd-quantity-overlap div.quantity input[type] {
       height: 100%;
       border: none;
-      background-color: var(--btn-shop-bgcolor);
-      box-shadow: var(--btn-shop-box-shadow);
-      color: var(--btn-shop-color);
+      background-color: var(--btn-accented-bgcolor);
+      box-shadow: var(--btn-accented-box-shadow);
+      color: var(--btn-accented-color);
       transition: all .25s ease; }
       .wd-quantity-overlap div.quantity input[type]:hover {
         filter: brightness(0.95); }
@@ -12783,22 +12783,22 @@ table.variations {
   .wd-quantity-overlap div:hover > div.quantity + .button,
   .wd-quantity-overlap .cart:hover > div.quantity input[type],
   .wd-quantity-overlap .cart:hover > div.quantity + .button {
-    background-color: var(--btn-shop-bgcolor-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    color: var(--btn-shop-color-hover); }
+    background-color: var(--btn-accented-bgcolor-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    color: var(--btn-accented-color-hover); }
   .wd-quantity-overlap div:active > div.quantity,
   .wd-quantity-overlap .cart:active > div.quantity {
-    bottom: var(--btn-shop-bottom-active); }
+    bottom: var(--btn-accented-bottom-active); }
     .wd-quantity-overlap div:active > div.quantity input[type],
     .wd-quantity-overlap div:active > div.quantity + .button,
     .wd-quantity-overlap .cart:active > div.quantity input[type],
     .wd-quantity-overlap .cart:active > div.quantity + .button {
-      box-shadow: var(--btn-shop-box-shadow-active); }
+      box-shadow: var(--btn-accented-box-shadow-active); }
   .wd-quantity-overlap div.quantity:active {
     bottom: 0 !important; }
     .wd-quantity-overlap div.quantity:active input[type],
     .wd-quantity-overlap div.quantity:active + .button {
-      box-shadow: var(--btn-shop-box-shadow) !important; }
+      box-shadow: var(--btn-accented-box-shadow) !important; }
 
 .wd-hint {
   --wd-hint-bg: var(--wd-primary-color);
@@ -13350,17 +13350,17 @@ table.variations {
       box-shadow: var(--btn-default-box-shadow-active);
       bottom: var(--btn-default-bottom-active); }
   .woocommerce-mini-cart__buttons .checkout {
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .woocommerce-mini-cart__buttons .checkout:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .woocommerce-mini-cart__buttons .checkout:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
 
 .wd-empty-mini-cart {
   padding-top: 10px;
@@ -13379,17 +13379,17 @@ table.variations {
     font-weight: 600;
     font-size: 14px; }
   .wd-empty-mini-cart .btn {
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .wd-empty-mini-cart .btn:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .wd-empty-mini-cart .btn:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
 
 .widget_price_filter .price_slider {
   margin-bottom: 20px; }
@@ -14500,17 +14500,17 @@ body #cboxWrapper {
   width: 35px;
   height: 35px; }
 .wd-hover-base .wd-bottom-actions:not(.wd-add-small-btn) .wd-add-btn > a {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .wd-hover-base .wd-bottom-actions:not(.wd-add-small-btn) .wd-add-btn > a:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .wd-hover-base .wd-bottom-actions:not(.wd-add-small-btn) .wd-add-btn > a:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 .wd-hover-base .wd-bottom-actions:not(.wd-add-small-btn) .add-to-cart-loop {
   font-size: 12px;
   line-height: 16px; }
@@ -14801,17 +14801,17 @@ body #cboxWrapper {
     display: block;
     border-radius: 0 !important;
     font-size: 13px;
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .wd-hover-quick .wd-add-btn > a:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .wd-hover-quick .wd-add-btn > a:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
     .wd-hover-quick .wd-add-btn > a span {
       padding: 10px; }
   .wd-hover-quick .wd-add-btn:hover {
@@ -14847,17 +14847,17 @@ body #cboxWrapper {
   width: 20px;
   height: 20px; }
 .product-list-item .wd-add-btn > a {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .product-list-item .wd-add-btn > a:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .product-list-item .wd-add-btn > a:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 .product-list-item .add-to-cart-loop span {
   padding: 10px 14px;
   font-size: 12px;
@@ -14878,17 +14878,17 @@ body #cboxWrapper {
 .wd-hover-standard .wd-add-btn {
   margin-top: 10px; }
   .wd-hover-standard .wd-add-btn > a {
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .wd-hover-standard .wd-add-btn > a:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .wd-hover-standard .wd-add-btn > a:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
 .wd-hover-standard .add-to-cart-loop span {
   padding: 10px 14px;
   font-size: 12px;
@@ -14965,17 +14965,17 @@ body #cboxWrapper {
     margin-top: 10px; }
     .wd-hover-fw-button .wd-add-btn > a {
       width: 100%;
-      border-radius: var(--btn-shop-brd-radius);
-      color: var(--btn-shop-color);
-      box-shadow: var(--btn-shop-box-shadow);
-      background-color: var(--btn-shop-bgcolor); }
+      border-radius: var(--btn-accented-brd-radius);
+      color: var(--btn-accented-color);
+      box-shadow: var(--btn-accented-box-shadow);
+      background-color: var(--btn-accented-bgcolor); }
       .wd-hover-fw-button .wd-add-btn > a:hover {
-        color: var(--btn-shop-color-hover);
-        box-shadow: var(--btn-shop-box-shadow-hover);
-        background-color: var(--btn-shop-bgcolor-hover); }
+        color: var(--btn-accented-color-hover);
+        box-shadow: var(--btn-accented-box-shadow-hover);
+        background-color: var(--btn-accented-bgcolor-hover); }
       .wd-hover-fw-button .wd-add-btn > a:active {
-        box-shadow: var(--btn-shop-box-shadow-active);
-        bottom: var(--btn-shop-bottom-active); }
+        box-shadow: var(--btn-accented-box-shadow-active);
+        bottom: var(--btn-accented-bottom-active); }
   .wd-hover-fw-button .add-to-cart-loop span {
     overflow: hidden;
     padding: 12px 12px;
@@ -15015,11 +15015,11 @@ body #cboxWrapper {
 .wd-hover-fw-button .wd-add-btn {
   position: relative; }
   .wd-hover-fw-button .wd-add-btn div.quantity input[type="button"].minus {
-    border-top-left-radius: var(--btn-shop-brd-radius);
-    border-bottom-left-radius: var(--btn-shop-brd-radius); }
+    border-top-left-radius: var(--btn-accented-brd-radius);
+    border-bottom-left-radius: var(--btn-accented-brd-radius); }
   .wd-hover-fw-button .wd-add-btn div.quantity input[type="button"].plus {
-    border-top-right-radius: var(--btn-shop-brd-radius);
-    border-bottom-right-radius: var(--btn-shop-brd-radius); }
+    border-top-right-radius: var(--btn-accented-brd-radius);
+    border-bottom-right-radius: var(--btn-accented-brd-radius); }
 
 .single-product .site-content.wd-builder-off {
   padding-right: 0;
@@ -16062,17 +16062,17 @@ label[for="rating"] {
 .wd-pf-btn button {
   padding-right: 40px;
   padding-left: 40px;
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .wd-pf-btn button:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .wd-pf-btn button:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 .wd-grid-stretch .wd-pf-btn {
   flex: 0 0 auto;
   width: auto; }
@@ -16443,17 +16443,17 @@ label[for="rating"] {
     display: none; }
 
 button[name="track"] {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   button[name="track"]:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   button[name="track"]:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .breadcrumbs-location-below_header .single-breadcrumbs-wrapper {
   margin-top: -15px;
@@ -16503,14 +16503,14 @@ button[name="track"] {
   padding-left: 20px !important;
   padding-right: 20px !important;
   border: 0;
-  border-radius: var(--btn-accent-brd-radius);
-  background-color: var(--btn-accent-bgcolor);
-  box-shadow: var(--btn-accent-box-shadow);
-  color: var(--btn-accent-color) !important; }
+  border-radius: var(--btn-accented-brd-radius);
+  background-color: var(--btn-accented-bgcolor);
+  box-shadow: var(--btn-accented-box-shadow);
+  color: var(--btn-accented-color) !important; }
   .wc-block-product-categories .wc-block-product-categories__button:hover, .wc-block-product-search .wc-block-product-search__button:hover {
-    background-color: var(--btn-accent-bgcolor-hover);
-    box-shadow: var(--btn-accent-box-shadow-hover);
-    color: var(--btn-accent-color-hover) !important; }
+    background-color: var(--btn-accented-bgcolor-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    color: var(--btn-accented-color-hover) !important; }
 
 .wc-block-review-list .wc-block-review-list-item__rating__stars, .wc-block-grid .wc-block-grid__product-rating > div {
   vertical-align: middle;
@@ -16802,17 +16802,17 @@ button[name="track"] {
     max-width: 65px; }
 .popup-quick-view .wd-scroll-content > a {
   margin-bottom: 20px;
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .popup-quick-view .wd-scroll-content > a:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .popup-quick-view .wd-scroll-content > a:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
   .popup-quick-view .wd-scroll-content > a.added {
     display: none; }
 
@@ -16824,17 +16824,17 @@ button[name="track"] {
   .popup-added_to_cart .btn {
     margin: 5px 10px; }
   .popup-added_to_cart .view-cart {
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .popup-added_to_cart .view-cart:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .popup-added_to_cart .view-cart:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
   [class*="color-scheme-light"] .popup-added_to_cart .close-popup {
     border-color: rgba(255, 255, 255, 0.5);
     color: #FFF; }
@@ -16953,17 +16953,17 @@ button[name="track"] {
     height: 40px; }
 
 .wd-sticky-add-to-cart {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .wd-sticky-add-to-cart:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .wd-sticky-add-to-cart:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .wd-sticky-btn-shown.wd-sticky-btn {
   transform: translate3d(0, 0, 0); }
@@ -16989,7 +16989,7 @@ button[name="track"] {
   .social-login-btn .btn {
     display: block;
     color: #FFF;
-    border-radius: var(--btn-shop-brd-radius); }
+    border-radius: var(--btn-accented-brd-radius); }
     .social-login-btn .btn:before {
       position: absolute;
       top: 50%;
@@ -17002,20 +17002,20 @@ button[name="track"] {
   .social-login-btn .login-vk-link {
     background-color: #597DA3; }
     .social-login-btn .login-vk-link:before {
-      left: calc(10px + (var(--btn-shop-brd-radius) / 4));
+      left: calc(10px + (var(--btn-accented-brd-radius) / 4));
       font-size: 22px;
       content: ""; }
   .social-login-btn .login-fb-link {
     background-color: #3B5998; }
     .social-login-btn .login-fb-link:before {
-      left: calc(9px + (var(--btn-shop-brd-radius) / 4));
+      left: calc(9px + (var(--btn-accented-brd-radius) / 4));
       font-size: 28px;
       content: ""; }
   .social-login-btn .login-goo-link {
     background-color: #4285F4; }
     .social-login-btn .login-goo-link:before {
       content: '';
-      left: calc(8px + (var(--btn-shop-brd-radius) / 4));
+      left: calc(8px + (var(--btn-accented-brd-radius) / 4));
       width: 26px;
       height: 26px;
       border-radius: 2px;
@@ -17467,17 +17467,17 @@ button[name="track"] {
     margin-bottom: 15px; }
   .checkout_coupon .button {
     width: 100%;
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .checkout_coupon .button:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .checkout_coupon .button:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
   .checkout_coupon .form-row-first,
   .checkout_coupon .form-row-last {
     display: inline-block;
@@ -17635,17 +17635,17 @@ div.create-account {
   padding: 14px 28px;
   font-size: 14px;
   line-height: 20px;
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   #place_order:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   #place_order:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .wd-builder-off #place_order {
   width: 100%; }
@@ -17692,17 +17692,17 @@ div.create-account {
     max-width: 230px; }
 .cart-actions .button[name="apply_coupon"] {
   flex: 0 0 auto;
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .cart-actions .button[name="apply_coupon"]:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .cart-actions .button[name="apply_coupon"]:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .cart-totals-inner > h2 {
   margin-bottom: 5px;
@@ -17744,17 +17744,17 @@ div.create-account {
       box-shadow: var(--btn-default-box-shadow-active);
       bottom: var(--btn-default-bottom-active); }
 .cart-totals-inner .checkout-button {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .cart-totals-inner .checkout-button:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .cart-totals-inner .checkout-button:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .cart-content-wrapper .cart-totals-inner {
   padding: 25px;
@@ -17897,17 +17897,17 @@ div.create-account {
   font-size: 110%; }
   .lost_reset_password .button {
     width: 100%;
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .lost_reset_password .button:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .lost_reset_password .button:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
   .lost_reset_password .form-row-first {
     padding-top: 20px;
     border-top: 1px solid var(--brdcolor-gray-300); }
@@ -17949,17 +17949,17 @@ div.create-account {
   .woocommerce-MyAccount-content .woocommerce-Message {
     margin-bottom: 30px !important; }
   .woocommerce-MyAccount-content > .button {
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .woocommerce-MyAccount-content > .button:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .woocommerce-MyAccount-content > .button:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
   .woocommerce-MyAccount-content > .col-1 {
     max-width: 100%;
     padding: 0; }
@@ -18009,17 +18009,17 @@ div.create-account {
 .order-again {
   margin-bottom: 30px; }
   .order-again .button {
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .order-again .button:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .order-again .button:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
 
 .wd-my-account-links {
   display: flex;
@@ -18079,43 +18079,43 @@ div.create-account {
     background-color: var(--bgcolor-gray-200); }
 
 .woocommerce-pagination .button {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .woocommerce-pagination .button:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .woocommerce-pagination .button:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .woocommerce-MyAccount-downloads-file {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .woocommerce-MyAccount-downloads-file:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .woocommerce-MyAccount-downloads-file:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .account-payment-methods-table .button {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .account-payment-methods-table .button:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .account-payment-methods-table .button:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 header.title {
   margin-bottom: 10px; }
@@ -18142,19 +18142,19 @@ header.title {
 
 button[name="save_account_details"],
 button[name="save_address"] {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   button[name="save_account_details"]:hover,
   button[name="save_address"]:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   button[name="save_account_details"]:active,
   button[name="save_address"]:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .woocommerce-order-pay .shop_table tfoot tr:last-child th {
   font-size: 24px; }
@@ -18296,19 +18296,19 @@ button[name="save_address"] {
     padding: 10px 14px;
     font-size: 12px;
     line-height: 16px;
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .wd-compare-table .button:hover,
     .wd-compare-table .added_to_cart:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .wd-compare-table .button:active,
     .wd-compare-table .added_to_cart:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
   .wd-compare-table .button.added {
     display: none; }
   .wd-compare-table .wd-compare-brand img {
@@ -18563,17 +18563,17 @@ button[name="save_address"] {
 .return-to-shop {
   text-align: center; }
   .return-to-shop .button {
-    border-radius: var(--btn-shop-brd-radius);
-    color: var(--btn-shop-color);
-    box-shadow: var(--btn-shop-box-shadow);
-    background-color: var(--btn-shop-bgcolor); }
+    border-radius: var(--btn-accented-brd-radius);
+    color: var(--btn-accented-color);
+    box-shadow: var(--btn-accented-box-shadow);
+    background-color: var(--btn-accented-bgcolor); }
     .return-to-shop .button:hover {
-      color: var(--btn-shop-color-hover);
-      box-shadow: var(--btn-shop-box-shadow-hover);
-      background-color: var(--btn-shop-bgcolor-hover); }
+      color: var(--btn-accented-color-hover);
+      box-shadow: var(--btn-accented-box-shadow-hover);
+      background-color: var(--btn-accented-bgcolor-hover); }
     .return-to-shop .button:active {
-      box-shadow: var(--btn-shop-box-shadow-active);
-      bottom: var(--btn-shop-bottom-active); }
+      box-shadow: var(--btn-accented-box-shadow-active);
+      bottom: var(--btn-accented-bottom-active); }
 
 .cart-empty:before {
   content: "";
@@ -18598,17 +18598,17 @@ table.wishlist_table {
     font-size: 13px;
     line-height: 18px; }
     table.wishlist_table .product-add-to-cart a.button.add_to_cart {
-      border-radius: var(--btn-shop-brd-radius);
-      color: var(--btn-shop-color);
-      box-shadow: var(--btn-shop-box-shadow);
-      background-color: var(--btn-shop-bgcolor); }
+      border-radius: var(--btn-accented-brd-radius);
+      color: var(--btn-accented-color);
+      box-shadow: var(--btn-accented-box-shadow);
+      background-color: var(--btn-accented-bgcolor); }
       table.wishlist_table .product-add-to-cart a.button.add_to_cart:hover {
-        color: var(--btn-shop-color-hover);
-        box-shadow: var(--btn-shop-box-shadow-hover);
-        background-color: var(--btn-shop-bgcolor-hover); }
+        color: var(--btn-accented-color-hover);
+        box-shadow: var(--btn-accented-box-shadow-hover);
+        background-color: var(--btn-accented-bgcolor-hover); }
       table.wishlist_table .product-add-to-cart a.button.add_to_cart:active {
-        box-shadow: var(--btn-shop-box-shadow-active);
-        bottom: var(--btn-shop-bottom-active); }
+        box-shadow: var(--btn-accented-box-shadow-active);
+        bottom: var(--btn-accented-bottom-active); }
     table.wishlist_table .product-add-to-cart a.button.added_to_cart {
       display: none !important; }
 
@@ -18968,21 +18968,21 @@ div.wcmp_regi_main .button {
   padding: 12px 20px;
   font-size: 13px;
   line-height: 18px;
-  border-radius: var(--btn-accent-brd-radius);
-  color: var(--btn-accent-color);
-  box-shadow: var(--btn-accent-box-shadow);
-  background-color: var(--btn-accent-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   div.wcmp_regi_main .button:hover {
     text-decoration: none; }
   div.wcmp_regi_main .button:focus {
     outline: none; }
   div.wcmp_regi_main .button:hover {
-    color: var(--btn-accent-color-hover);
-    box-shadow: var(--btn-accent-box-shadow-hover);
-    background-color: var(--btn-accent-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   div.wcmp_regi_main .button:active {
-    box-shadow: var(--btn-accent-box-shadow-active);
-    bottom: var(--btn-accent-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 div.wcmp_regi_main,
 div.wcmp_regi_main .button,
 div.wcmp_regi_main div.wcmp_regi_form_box,
@@ -19949,10 +19949,10 @@ body .dokan-hide {
   transition: color .25s ease, background-color .25s ease, border-color .25s ease, box-shadow .25s ease, opacity .25s ease;
   color: #FFF;
   background-color: var(--wd-primary-color);
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   #dokan-store-listing-filter-wrap .right .item .dokan-btn-theme:hover, #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn:hover, .dokan-theme-woodmart input[type='submit'].dokan-btn-theme:hover,
   .dokan-theme-woodmart .dokan-btn-theme:hover {
     text-decoration: none; }
@@ -19965,16 +19965,16 @@ body .dokan-hide {
     box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.1); }
   #dokan-store-listing-filter-wrap .right .item .dokan-btn-theme:hover, #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn:hover, .dokan-theme-woodmart input[type='submit'].dokan-btn-theme:hover,
   .dokan-theme-woodmart .dokan-btn-theme:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   #dokan-store-listing-filter-wrap .right .item .dokan-btn-theme:active, #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn:active, .dokan-theme-woodmart input[type='submit'].dokan-btn-theme:active,
   .dokan-theme-woodmart .dokan-btn-theme:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
   #dokan-store-listing-filter-wrap .right .item .dokan-btn-theme:focus, #dokan-store-listing-filter-form-wrap .apply-filter #apply-filter-btn:focus, .dokan-theme-woodmart input[type='submit'].dokan-btn-theme:focus,
   .dokan-theme-woodmart .dokan-btn-theme:focus {
-    background-color: var(--btn-shop-bgcolor-hover); }
+    background-color: var(--btn-accented-bgcolor-hover); }
 
 #dokan-seller-rating svg {
   width: auto; }
@@ -20126,21 +20126,21 @@ table.product-listing-table span.product-type:before {
   font-weight: 600;
   cursor: pointer;
   transition: color .25s ease, background-color .25s ease, border-color .25s ease, box-shadow .25s ease, opacity .25s ease;
-  border-radius: var(--btn-accent-brd-radius);
-  color: var(--btn-accent-color);
-  box-shadow: var(--btn-accent-box-shadow);
-  background-color: var(--btn-accent-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   #yith-wpv-abuse:hover {
     text-decoration: none; }
   #yith-wpv-abuse:focus {
     outline: none; }
   #yith-wpv-abuse:hover {
-    color: var(--btn-accent-color-hover);
-    box-shadow: var(--btn-accent-box-shadow-hover);
-    background-color: var(--btn-accent-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   #yith-wpv-abuse:active {
-    box-shadow: var(--btn-accent-box-shadow-active);
-    bottom: var(--btn-accent-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .yith-wpv-abuse-report-title {
   margin-bottom: 20px;
@@ -20431,17 +20431,17 @@ form.woocommerce-currency-switcher-form .dd-pointer-up.dd-pointer-down {
   font-weight: 600; }
 
 .yith-ywraq-add-to-quote .yith-ywraq-add-button .button.add-request-quote-button {
-  border-radius: var(--btn-shop-brd-radius);
-  color: var(--btn-shop-color);
-  box-shadow: var(--btn-shop-box-shadow);
-  background-color: var(--btn-shop-bgcolor); }
+  border-radius: var(--btn-accented-brd-radius);
+  color: var(--btn-accented-color);
+  box-shadow: var(--btn-accented-box-shadow);
+  background-color: var(--btn-accented-bgcolor); }
   .yith-ywraq-add-to-quote .yith-ywraq-add-button .button.add-request-quote-button:hover {
-    color: var(--btn-shop-color-hover);
-    box-shadow: var(--btn-shop-box-shadow-hover);
-    background-color: var(--btn-shop-bgcolor-hover); }
+    color: var(--btn-accented-color-hover);
+    box-shadow: var(--btn-accented-box-shadow-hover);
+    background-color: var(--btn-accented-bgcolor-hover); }
   .yith-ywraq-add-to-quote .yith-ywraq-add-button .button.add-request-quote-button:active {
-    box-shadow: var(--btn-shop-box-shadow-active);
-    bottom: var(--btn-shop-bottom-active); }
+    box-shadow: var(--btn-accented-box-shadow-active);
+    bottom: var(--btn-accented-bottom-active); }
 
 .yith_ywraq_add_item_product_message {
   line-height: 40px; }

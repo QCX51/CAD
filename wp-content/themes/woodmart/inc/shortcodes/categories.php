@@ -284,7 +284,7 @@ if( ! function_exists( 'woodmart_shortcode_categories' ) ) {
 				?>
 				<div class="<?php echo esc_attr( $extra_wrapper_classes ); ?>">
 					<div id="<?php echo esc_attr( $carousel_id ); ?>" class="products woocommerce wd-carousel-container <?php echo esc_attr( $carousel_classes ); ?> <?php echo esc_attr( $extra_class ); ?>" <?php echo woodmart_get_owl_attributes( $parsed_atts ); ?>>
-						<div class="owl-carousel carousel-items <?php echo woodmart_owl_items_per_slide( $slides_per_view, array(), 'product', false, $parsed_atts['custom_sizes'] ); ?>">
+						<div class="owl-carousel wd-owl carousel-items <?php echo woodmart_owl_items_per_slide( $slides_per_view, array(), 'product', false, $parsed_atts['custom_sizes'] ); ?>">
 							<?php foreach ( $product_categories as $category ): ?>
 								<?php
 								wc_get_template( 'content-product-cat.php', array(

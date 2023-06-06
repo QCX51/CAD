@@ -47,6 +47,8 @@
 				image_sizes = sizesOrig;
 				$this.removeClass('wd-active');
 				product.removeClass('product-swatched');
+
+				product.trigger( 'wdImagesGalleryInLoopOn', product );
 			} else {
 				$this.parent().find('.wd-active').removeClass('wd-active');
 				$this.addClass('wd-active');
@@ -54,6 +56,8 @@
 				src = imageSrc;
 				srcset = imageSrcset;
 				image_sizes = imageSizes;
+
+				product.trigger( 'wdImagesGalleryInLoopOff', product );
 			}
 
 			if (image.attr('src') === src) {

@@ -57,6 +57,8 @@ class Main extends Singleton {
 				'type'        => 'switcher',
 				'section'     => 'shop_section',
 				'default'     => '1',
+				'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+				'off-text'    => esc_html__( 'No', 'woodmart' ),
 				'priority'    => 111,
 			)
 		);
@@ -134,7 +136,7 @@ class Main extends Singleton {
 				't_tab'    => array(
 					'id'   => 'bought_together_column_tabs',
 					'tab'  => esc_html__( 'Tablet', 'woodmart' ),
-					'icon' => 'xts-i-phone',
+					'icon' => 'xts-i-tablet',
 				),
 				'priority' => 113,
 			)
@@ -175,7 +177,7 @@ class Main extends Singleton {
 			array(
 				'id'        => 'bought_together_form_width',
 				'name'      => esc_html__( 'Form width', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'bought-together-form-width.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'bought-together-form-width.mp4" autoplay loop muted></video>',
 				'group'     => esc_html__( 'Frequently bought together', 'woodmart' ),
 				'type'      => 'responsive_range',
 				'section'   => 'shop_section',

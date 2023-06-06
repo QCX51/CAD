@@ -5,12 +5,8 @@
 * ------------------------------------------------------------------------------------------------
 */
 
-if( ! function_exists( 'woodmart_vc_shortcode_categories' ) ) {
-	function woodmart_vc_shortcode_categories() {
-		if ( ! shortcode_exists( 'woodmart_categories' ) ) {
-			return;
-		}
-
+if( ! function_exists( 'woodmart_get_vc_shortcode_categories' ) ) {
+	function woodmart_get_vc_shortcode_categories() {
 		$order_by_values = array(
 			'',
 			esc_html__( 'Date', 'woodmart' ) => 'date',
@@ -31,13 +27,12 @@ if( ! function_exists( 'woodmart_vc_shortcode_categories' ) ) {
 			array(
 				'title'    => esc_html__( 'Title typography', 'woodmart' ),
 				'key'      => 'title_typography',
-				'selector' => '{{WRAPPER}} div.product-category .wd-entities-title',
+				'selector' => '{{WRAPPER}} div.product-category .wd-entities-title, {{WRAPPER}} .wd-nav-product-cat>li>a',
 				'group'    => esc_html__( 'Style', 'woodmart' ),
 			)
 		);
 
-		vc_map(
-			array(
+		return array(
 				'name'        => esc_html__( 'Product categories', 'woodmart' ),
 				'base'        => 'woodmart_categories',
 				'category'    => woodmart_get_tab_title_category_for_wpb( esc_html__( 'Theme elements', 'woodmart' ) ),
@@ -45,8 +40,8 @@ if( ! function_exists( 'woodmart_vc_shortcode_categories' ) ) {
 				'icon'        => WOODMART_ASSETS . '/images/vc-icon/product-categories.svg',
 				'params'      => array(
 					/**
-					* Data settings
-					*/
+					 * Data settings
+					 */
 					array(
 						'group'      => esc_html__( 'Content', 'woodmart' ),
 						'type'       => 'woodmart_css_id',
@@ -188,11 +183,11 @@ if( ! function_exists( 'woodmart_vc_shortcode_categories' ) ) {
 						'value'            => $order_by_values,
 						'save_always'      => true,
 						'hint'             => sprintf( wp_kses(  __( 'Select how to sort retrieved categories. More at %s.', 'woodmart' ), array(
-								'a' => array(
-									'href'   => array(),
-									'target' => array()
-								)
-							)), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>' ),
+							'a' => array(
+								'href'   => array(),
+								'target' => array()
+							)
+						)), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>' ),
 						'dependency'       => array(
 							'element' => 'data_source',
 							'value'   => array( 'custom_query' ),
@@ -207,11 +202,11 @@ if( ! function_exists( 'woodmart_vc_shortcode_categories' ) ) {
 						'value'            => $order_way_values,
 						'save_always'      => true,
 						'hint'             => sprintf( wp_kses(  __( 'Designates the ascending or descending order. More at %s.', 'woodmart' ), array(
-								'a' => array(
-									'href' => array(),
-									'target' => array()
-								)
-							)), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>' ),
+							'a' => array(
+								'href' => array(),
+								'target' => array()
+							)
+						)), '<a href="http://codex.wordpress.org/Class_Reference/WP_Query#Order_.26_Orderby_Parameters" target="_blank">WordPress codex page</a>' ),
 						'dependency'       => array(
 							'element' => 'data_source',
 							'value'   => array( 'custom_query' ),
@@ -526,8 +521,8 @@ if( ! function_exists( 'woodmart_vc_shortcode_categories' ) ) {
 					$title_typography['line_height'],
 
 					/**
-					* Layout
-					*/
+					 * Layout
+					 */
 					array(
 						'title'      => esc_html__( 'Layout', 'woodmart' ),
 						'group'      => esc_html__( 'Style', 'woodmart' ),
@@ -601,8 +596,8 @@ if( ! function_exists( 'woodmart_vc_shortcode_categories' ) ) {
 						'edit_field_class' => 'vc_col-sm-6 vc_column',
 					),
 					/**
-					* Carousel
-					*/
+					 * Carousel
+					 */
 					array(
 						'title'      => esc_html__( 'Carousel', 'woodmart' ),
 						'group'      => esc_html__( 'Style', 'woodmart' ),
@@ -783,8 +778,8 @@ if( ! function_exists( 'woodmart_vc_shortcode_categories' ) ) {
 						'edit_field_class' => 'vc_col-sm-6 vc_column',
 					),
 					/**
-					* Extra
-					*/
+					 * Extra
+					 */
 					array(
 						'title'      => esc_html__( 'Extra options', 'woodmart' ),
 						'group'      => esc_html__( 'Style', 'woodmart' ),
@@ -841,10 +836,8 @@ if( ! function_exists( 'woodmart_vc_shortcode_categories' ) ) {
 					woodmart_get_responsive_dependency_width_map( 'width_mobile' ),
 					woodmart_get_responsive_dependency_width_map( 'custom_width_mobile' ),
 				)
-			)
-		);
+			);
 	}
-	add_action( 'vc_before_init', 'woodmart_vc_shortcode_categories' );
 }
 
 //Filters For autocomplete param:

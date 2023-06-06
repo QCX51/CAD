@@ -112,16 +112,17 @@ class Archive_Products extends Widget_Base {
 				'label'     => esc_html__( 'Hover on product', 'woodmart' ),
 				'type'      => Controls_Manager::SELECT,
 				'options'   => array(
-					'inherit'  => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
-					'info-alt' => esc_html__( 'Full info on hover', 'woodmart' ),
-					'info'     => esc_html__( 'Full info on image', 'woodmart' ),
-					'alt'      => esc_html__( 'Icons and "add to cart" on hover', 'woodmart' ),
-					'icons'    => esc_html__( 'Icons on hover', 'woodmart' ),
-					'quick'    => esc_html__( 'Quick', 'woodmart' ),
-					'button'   => esc_html__( 'Show button on hover on image', 'woodmart' ),
-					'base'     => esc_html__( 'Show summary on hover', 'woodmart' ),
-					'standard' => esc_html__( 'Standard button', 'woodmart' ),
-					'tiled'    => esc_html__( 'Tiled', 'woodmart' ),
+					'inherit'   => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'info-alt'  => esc_html__( 'Full info on hover', 'woodmart' ),
+					'info'      => esc_html__( 'Full info on image', 'woodmart' ),
+					'alt'       => esc_html__( 'Icons and "add to cart" on hover', 'woodmart' ),
+					'icons'     => esc_html__( 'Icons on hover', 'woodmart' ),
+					'quick'     => esc_html__( 'Quick', 'woodmart' ),
+					'button'    => esc_html__( 'Show button on hover on image', 'woodmart' ),
+					'base'      => esc_html__( 'Show summary on hover', 'woodmart' ),
+					'standard'  => esc_html__( 'Standard button', 'woodmart' ),
+					'tiled'     => esc_html__( 'Tiled', 'woodmart' ),
+					'fw-button' => esc_html__( 'Full width button', 'woodmart' ),
 				),
 				'default'   => 'inherit',
 				'condition' => array(
@@ -185,38 +186,6 @@ class Archive_Products extends Widget_Base {
 		);
 
 		$this->add_control(
-			'products_bordered_grid',
-			array(
-				'label'       => esc_html__( 'Bordered grid', 'woodmart' ),
-				'description' => esc_html__( 'Add borders between the products in your grid', 'woodmart' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
-					'enable'  => esc_html__( 'Enable', 'woodmart' ),
-					'disable' => esc_html__( 'Disable', 'woodmart' ),
-				),
-				'default' => 'inherit',
-			)
-		);
-
-		$this->add_control(
-			'products_bordered_grid_style',
-			array(
-				'label'     => esc_html__( 'Bordered grid style', 'woodmart' ),
-				'type'      => Controls_Manager::SELECT,
-				'options'   => array(
-					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
-					'outside' => esc_html__( 'Outside', 'woodmart' ),
-					'inside'  => esc_html__( 'inside', 'woodmart' ),
-				),
-				'condition' => array(
-					'products_bordered_grid' => array( 'enable' ),
-				),
-				'default'   => 'inherit',
-			)
-		);
-
-		$this->add_control(
 			'img_size',
 			array(
 				'label'   => esc_html__( 'Image size', 'woodmart' ),
@@ -239,6 +208,110 @@ class Archive_Products extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+		/**
+		 * Products design settings.
+		 */
+		$this->start_controls_section(
+			'products_design_style_section',
+			array(
+				'label' => esc_html__( 'Products design', 'woodmart' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'products_color_scheme',
+			array(
+				'label'        => esc_html__( 'Products color scheme', 'woodmart' ),
+				'type'         => Controls_Manager::SELECT,
+				'default'      => 'inherit',
+				'options'      => array(
+					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'default' => esc_html__( 'Default', 'woodmart' ),
+					'dark'    => esc_html__( 'Dark', 'woodmart' ),
+					'light'   => esc_html__( 'Light', 'woodmart' ),
+				),
+			)
+		);
+
+		$this->add_control(
+			'products_bordered_grid',
+			array(
+				'label'       => esc_html__( 'Bordered grid', 'woodmart' ),
+				'description' => esc_html__( 'Add borders between the products in your grid', 'woodmart' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => array(
+					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'enable'  => esc_html__( 'Enable', 'woodmart' ),
+					'disable' => esc_html__( 'Disable', 'woodmart' ),
+				),
+				'default' => 'inherit',
+			)
+		);
+
+		$this->add_control(
+			'products_bordered_grid_style',
+			array(
+				'label'     => esc_html__( 'Bordered grid style', 'woodmart' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'outside' => esc_html__( 'Outside', 'woodmart' ),
+					'inside'  => esc_html__( 'Inside', 'woodmart' ),
+				),
+				'condition' => array(
+					'products_bordered_grid' => array( 'enable' ),
+				),
+				'default'   => 'inherit',
+			)
+		);
+
+		$this->add_control(
+			'products_with_background',
+			array(
+				'label'       => esc_html__( 'Products background', 'woodmart' ),
+				'description' => esc_html__( 'Add a background to the products in your grid.', 'woodmart' ),
+				'type'        => Controls_Manager::SELECT,
+				'options'     => array(
+					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'yes'     => esc_html__( 'Yes', 'woodmart' ),
+					'no'      => esc_html__( 'No', 'woodmart' ),
+				),
+				'default'     => 'inherit',
+			)
+		);
+
+		$this->add_control(
+			'products_background',
+			array(
+				'label'     => esc_html__( 'Custom background color', 'woodmart' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .wd-products-with-bg, {{WRAPPER}} .wd-products-with-bg .product-grid-item' => '--wd-prod-bg:{{VALUE}}; --wd-bordered-bg:{{VALUE}};',
+				),
+				'condition' => array(
+					'products_with_background' => array( 'yes' ),
+				),
+			)
+		);
+
+		$this->add_control(
+			'products_shadow',
+			array(
+				'label'        => esc_html__( 'Products shadow', 'woodmart' ),
+				'description'  => esc_html__( 'Add a shadow to products if the initial product style did not have one.', 'woodmart' ),
+				'type'         => Controls_Manager::SELECT,
+				'options'      => array(
+					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'yes'     => esc_html__( 'Yes', 'woodmart' ),
+					'no'      => esc_html__( 'No', 'woodmart' ),
+				),
+				'default'      => 'inherit',
+			)
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -248,24 +321,39 @@ class Archive_Products extends Widget_Base {
 		$settings = wp_parse_args(
 			$this->get_settings_for_display(),
 			array(
-				'products_view'           => 'inherit',
-				'products_columns'        => 'inherit',
-				'products_columns_tablet' => 'inherit',
-				'products_columns_mobile' => 'inherit',
-				'products_spacing'        => 'inherit',
-				'shop_pagination'         => 'inherit',
-				'product_hover'           => 'inherit',
-				'products_bordered_grid'  => 'inherit',
-				'img_size'                => '',
-				'img_size_custom'         => '',
+				'products_view'            => 'inherit',
+				'products_columns'         => 'inherit',
+				'products_columns_tablet'  => 'inherit',
+				'products_columns_mobile'  => 'inherit',
+				'products_spacing'         => 'inherit',
+				'shop_pagination'          => 'inherit',
+				'product_hover'            => 'inherit',
+				'products_bordered_grid'   => 'inherit',
+				'img_size'                 => '',
+				'img_size_custom'          => '',
+				'products_color_scheme'    => 'inherit',
+				'products_with_background' => 'inherit',
+				'products_shadow'          => 'inherit',
 			)
 		);
 
-		if ( ! empty( $settings['img_size'] ) && 'custom' !== $settings['img_size'] ) {
+		if ( 'yes' === $settings['products_with_background'] ) {
+			$products_with_background = '1';
+		} else if ( 'no' === $settings['products_with_background'] ) {
+			$products_with_background = '0';
+		}
+
+		if ( 'yes' === $settings['products_shadow'] ) {
+			$products_shadow = '1';
+		} else if ( 'no' === $settings['products_shadow'] ) {
+			$products_shadow = '0';
+		}
+
+		if ( ! empty( $settings['img_size'] ) ) {
 			woodmart_set_loop_prop( 'img_size', $settings['img_size'] );
 		}
 
-		if ( isset( $settings['img_size_custom']['width'] ) && ! empty( $settings['img_size_custom']['width'] ) ) {
+		if ( ! empty( $settings['img_size_custom']['width'] ) || ! empty( $settings['img_size_custom']['height'] ) ) {
 			woodmart_set_loop_prop( 'img_size_custom', $settings['img_size_custom'] );
 		}
 
@@ -309,10 +397,22 @@ class Archive_Products extends Widget_Base {
 			woodmart_set_loop_prop( 'products_bordered_grid_style', $settings['products_bordered_grid_style'] );
 		}
 
+		if ( $settings['products_color_scheme'] && 'inherit' !== $settings['products_color_scheme'] ) {
+			woodmart_set_loop_prop( 'products_color_scheme', $settings['products_color_scheme'] );
+		}
+
+		if ( isset( $products_with_background ) ) {
+			woodmart_set_loop_prop( 'products_with_background', $products_with_background );
+		}
+
+		if ( isset( $products_shadow ) ) {
+			woodmart_set_loop_prop( 'products_shadow', $products_shadow );
+		}
+
 		do_action( 'woodmart_woocommerce_main_loop' );
 
 		Main::restore_preview();
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Archive_Products() );
+Plugin::instance()->widgets_manager->register( new Archive_Products() );

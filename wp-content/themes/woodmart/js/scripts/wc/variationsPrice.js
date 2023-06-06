@@ -15,7 +15,12 @@
 
 		$('.variations_form').each(function() {
 			var $form = $(this);
-			var $price = $form.parents('.site-content').find(' p.price');
+			var $price = $form.parent().find('> .price, > div > .price, > .price > .price');
+
+			if ( $('.site-content').hasClass('wd-builder-on') ) {
+				$price = $form.parents('.single-product-page').find('.wd-single-price .price');
+			}
+
 			var priceOriginalHtml = $price.html();
 
 			$form.on('show_variation', function(e, variation) {

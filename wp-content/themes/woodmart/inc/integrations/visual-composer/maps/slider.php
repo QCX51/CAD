@@ -5,18 +5,14 @@
 * ------------------------------------------------------------------------------------------------
 */
 
-if( ! function_exists( 'woodmart_vc_map_slider' ) ) {
-	function woodmart_vc_map_slider() {		
-		if ( ! shortcode_exists( 'woodmart_slider' ) ) {
-			return;
-		}
-
-		vc_map( array(
+if ( ! function_exists( 'woodmart_get_vc_map_slider' ) ) {
+	function woodmart_get_vc_map_slider() {
+		return array(
 			'name' => esc_html__( 'Slider', 'woodmart' ),
 			'base' => 'woodmart_slider',
 			'category' => woodmart_get_tab_title_category_for_wpb( esc_html__( 'Theme elements', 'woodmart' ) ),
 			'description' => esc_html__( 'WoodMart theme slider', 'woodmart' ),
-        	'icon' => WOODMART_ASSETS . '/images/vc-icon/slider.svg',
+			'icon' => WOODMART_ASSETS . '/images/vc-icon/slider.svg',
 			'params' => array(
 				array(
 					'type' => 'woodmart_dropdown',
@@ -31,9 +27,8 @@ if( ! function_exists( 'woodmart_vc_map_slider' ) ) {
 					'hint' => esc_html__( 'If you wish to style particular content element differently, then use this field to add a class name and then refer to it in your css file.', 'woodmart' )
 				)
 			),
-		) );
+		);
 	}
-	add_action( 'vc_before_init', 'woodmart_vc_map_slider' );
 }
 
 if( ! function_exists( 'woodmart_get_sliders_for_vc' ) ) {

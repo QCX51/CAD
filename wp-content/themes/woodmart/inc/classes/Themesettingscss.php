@@ -71,9 +71,9 @@ class WOODMART_Themesettingscss {
 			$options->setup_globals();
 		}
 
-		$css  = $options->get_css_output( $this->is_preset_active() );
+		$css  = $this->get_icons_font_css();
+		$css .= $options->get_css_output( $this->is_preset_active() );
 		$css .= $this->get_theme_settings_css();
-		$css .= $this->get_icons_font_css();
 		$css .= $this->get_custom_fonts_css();
 		$css .= $this->get_custom_css();
 
@@ -322,31 +322,42 @@ class WOODMART_Themesettingscss {
 	 * @return string
 	 */
 	public function get_icons_font_css() {
-		$output                = '';
-		$url                   = woodmart_remove_https( WOODMART_THEME_DIR );
-		$current_theme_version = woodmart_get_theme_info( 'Version' );
+		$output    = '';
+		$icon_font = woodmart_get_opt( 'icon_font', array( 'font' => '1', 'weight' => '400' ) );
 
-		$font_display = woodmart_get_opt( 'icons_font_display' );
+		$font_display = woodmart_get_opt( 'icons_font_display', 'disable' );
 
-		if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'icons_font_display' ) ) ) {
-			if ( apply_filters( 'woodmart_old_icon_font_style', false ) ) {
-				$output .= '@font-face {' . "\n";
-				$output .= "\t" . 'font-weight: normal;' . "\n";
-				$output .= "\t" . 'font-style: normal;' . "\n";
-				$output .= "\t" . 'font-family: "woodmart-font";' . "\n";
-				$output .= "\t" . 'src: url("' . $url . '/fonts/woodmart-font.eot?v=' . $current_theme_version . '");' . "\n";
-				$output .= "\t" . 'src: url("' . $url . '/fonts/woodmart-font.eot?#iefix&v=' . $current_theme_version . '") format("embedded-opentype"),' . "\n";
-				$output .= "\t" . 'url("' . $url . '/fonts/woodmart-font.woff?v=' . $current_theme_version . '") format("woff"),' . "\n";
-				$output .= "\t" . 'url("' . $url . '/fonts/woodmart-font.woff2?v=' . $current_theme_version . '") format("woff2"),' . "\n";
-				$output .= "\t" . 'url("' . $url . '/fonts/woodmart-font.ttf?v=' . $current_theme_version . '") format("truetype"),' . "\n";
-				$output .= "\t" . 'url("' . $url . '/fonts/woodmart-font.svg?v=' . $current_theme_version . '#woodmart-font") format("svg");' . "\n";
-			} else {
-				$output .= '@font-face {' . "\n";
-				$output .= "\t" . 'font-weight: normal;' . "\n";
-				$output .= "\t" . 'font-style: normal;' . "\n";
-				$output .= "\t" . 'font-family: "woodmart-font";' . "\n";
-				$output .= "\t" . 'src: url("' . $url . '/fonts/woodmart-font.woff2?v=' . $current_theme_version . '") format("woff2");' . "\n";
+		if ( ! $this->is_preset_active() || ( $this->is_preset_active() && ( woodmart_is_opt_changed( 'icons_font_display' ) || woodmart_is_opt_changed( 'icon_font' ) ) ) ) {
+			$icon_font_name = 'woodmart-font-';
+
+			if ( ! empty( $icon_font['font'] ) ) {
+				$icon_font_name .= $icon_font['font'];
 			}
+
+			if ( ! empty( $icon_font['weight'] ) ) {
+				$icon_font_name .= '-' . $icon_font['weight'];
+			}
+			$output .= '@font-face {' . "\n";
+			$output .= "\t" . 'font-weight: normal;' . "\n";
+			$output .= "\t" . 'font-style: normal;' . "\n";
+			$output .= "\t" . 'font-family: "woodmart-font";' . "\n";
+			$output .= "\t" . 'src: url("' . woodmart_remove_https( WOODMART_THEME_DIR . '/fonts/' . $icon_font_name . '.woff2' ) . '?v=' . woodmart_get_theme_info( 'Version' ) . '") format("woff2");' . "\n";
+
+			if ( 'disable' !== $font_display ) {
+				$output .= "\t" . 'font-display:' . $font_display . ';' . "\n";
+			}
+
+			$output .= '}' . "\n\n";
+		}
+
+		$styles_always = woodmart_get_opt( 'styles_always_use' );
+
+		if ( ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'styles_always_use' ) ) ) && $styles_always && is_array( $styles_always ) && in_array( 'base-deprecated', $styles_always, true ) ) {
+			$output .= '@font-face {' . "\n";
+			$output .= "\t" . 'font-weight: normal;' . "\n";
+			$output .= "\t" . 'font-style: normal;' . "\n";
+			$output .= "\t" . 'font-family: "woodmart-font-deprecated";' . "\n";
+			$output .= "\t" . 'src: url("' . woodmart_remove_https( WOODMART_THEME_DIR . '/fonts/woodmart-font-deprecated.woff2' ) . '?v=' . woodmart_get_theme_info( 'Version' ) . '") format("woff2");' . "\n";
 
 			if ( 'disable' !== $font_display ) {
 				$output .= "\t" . 'font-display:' . $font_display . ';' . "\n";
@@ -429,18 +440,27 @@ class WOODMART_Themesettingscss {
 
 		// Default button.
 		$default_btn_style       = woodmart_get_opt( 'btns_default_style' );
-		$default_btn_color       = 'light' === woodmart_get_opt( 'btns_default_color_scheme' ) ? '#fff' : '#333';
-		$default_btn_color_hover = 'light' === woodmart_get_opt( 'btns_default_color_scheme_hover' ) ? '#fff' : '#333';
+		$default_btn_color       = '';
+		$default_btn_color_hover = '';
 
-		// Shop button.
-		$shop_btn_style       = woodmart_get_opt( 'btns_shop_style' );
-		$shop_btn_color       = 'light' === woodmart_get_opt( 'btns_shop_color_scheme' ) ? '#fff' : '#333';
-		$shop_btn_color_hover = 'light' === woodmart_get_opt( 'btns_shop_color_scheme_hover' ) ? '#fff' : '#333';
+		if ( 'custom' !== woodmart_get_opt( 'btns_default_color_scheme' ) ) {
+			$default_btn_color = 'light' === woodmart_get_opt( 'btns_default_color_scheme' ) ? '#fff' : '#333';
+		}
+		if ( 'custom' !== woodmart_get_opt( 'btns_default_color_scheme_hover' ) ) {
+			$default_btn_color_hover = 'light' === woodmart_get_opt( 'btns_default_color_scheme_hover' ) ? '#fff' : '#333';
+		}
 
 		// Accent button.
-		$accent_btn_style       = woodmart_get_opt( 'btns_accent_style' );
-		$accent_btn_color       = 'light' === woodmart_get_opt( 'btns_accent_color_scheme' ) ? '#fff' : '#333';
-		$accent_btn_color_hover = 'light' === woodmart_get_opt( 'btns_accent_color_scheme_hover' ) ? '#fff' : '#333';
+		$accent_btn_style       = woodmart_get_opt( 'btns_shop_style' );
+		$accent_btn_color       = '';
+		$accent_btn_color_hover = '';
+
+		if ( 'custom' !== woodmart_get_opt( 'btns_shop_color_scheme' ) ) {
+			$accent_btn_color = 'light' === woodmart_get_opt( 'btns_shop_color_scheme' ) ? '#fff' : '#333';
+		}
+		if ( 'custom' !== woodmart_get_opt( 'btns_shop_color_scheme_hover' ) ) {
+			$accent_btn_color_hover = 'light' === woodmart_get_opt( 'btns_shop_color_scheme_hover' ) ? '#fff' : '#333';
+		}
 
 		// Forms.
 		$form_style = woodmart_get_opt( 'form_fields_style' );
@@ -469,7 +489,7 @@ class WOODMART_Themesettingscss {
 		ob_start();
 		// phpcs:disable
 		?>
-<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && ( woodmart_is_opt_changed( 'form_fields_style' ) || woodmart_is_opt_changed( 'form_border_width' ) || woodmart_is_opt_changed( 'btns_default_color_scheme' ) || woodmart_is_opt_changed( 'btns_default_color_scheme_hover' ) || woodmart_is_opt_changed( 'btns_shop_color_scheme' ) || woodmart_is_opt_changed( 'btns_shop_color_scheme_hover' ) || woodmart_is_opt_changed( 'btns_accent_color_scheme' ) || woodmart_is_opt_changed( 'btns_accent_color_scheme_hover' ) || woodmart_is_opt_changed( 'btns_default_style' ) || woodmart_is_opt_changed( 'btns_shop_style' ) || woodmart_is_opt_changed( 'btns_accent_style' ) || woodmart_is_opt_changed( 'sticky_add_to_cart_height_desktop' ) ) ) ) : ?>
+<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && ( woodmart_is_opt_changed( 'form_fields_style' ) || woodmart_is_opt_changed( 'form_border_width' ) || woodmart_is_opt_changed( 'btns_default_color_scheme' ) || woodmart_is_opt_changed( 'btns_default_color_scheme_hover' ) || woodmart_is_opt_changed( 'btns_shop_color_scheme' ) || woodmart_is_opt_changed( 'btns_shop_color_scheme_hover' ) || woodmart_is_opt_changed( 'btns_default_style' ) || woodmart_is_opt_changed( 'btns_shop_style' ) || woodmart_is_opt_changed( 'sticky_add_to_cart_height_desktop' ) || woodmart_is_opt_changed( 'rounding_size' ) ) ) ) : ?>
 	:root{
 		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'form_fields_style' ) ) ) : ?>
 			<?php if ( 'rounded' === $form_style ) : ?>
@@ -489,28 +509,20 @@ class WOODMART_Themesettingscss {
 			--wd-form-brd-width: <?php echo esc_attr( $form_width ); ?>px;
 		<?php endif; ?>
 
-		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_default_color_scheme' ) ) ) : ?>
+		<?php if ( $default_btn_color && ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_default_color_scheme' ) ) ) ) : ?>
 			--btn-default-color: <?php echo esc_attr( $default_btn_color ) ?>;
 		<?php endif; ?>
 
-		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_default_color_scheme_hover' ) ) ) : ?>
+		<?php if ( $default_btn_color_hover && ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_default_color_scheme_hover' ) ) ) ) : ?>
 			--btn-default-color-hover: <?php echo esc_attr( $default_btn_color_hover ) ?>;
 		<?php endif; ?>
 
-		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_shop_color_scheme' ) ) ) : ?>
-			--btn-shop-color: <?php echo esc_attr( $shop_btn_color ) ?>;
+		<?php if ( $accent_btn_color && ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_shop_color_scheme' ) ) ) ) : ?>
+			--btn-accented-color: <?php echo esc_attr( $accent_btn_color ) ?>;
 		<?php endif; ?>
 
-		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_shop_color_scheme_hover' ) ) ) : ?>
-			--btn-shop-color-hover: <?php echo esc_attr( $shop_btn_color_hover ) ?>;
-		<?php endif; ?>
-
-		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_accent_color_scheme' ) ) ) : ?>
-			--btn-accent-color: <?php echo esc_attr( $accent_btn_color ) ?>;
-		<?php endif; ?>
-
-		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_accent_color_scheme_hover' ) ) ) : ?>
-			--btn-accent-color-hover: <?php echo esc_attr( $accent_btn_color_hover ) ?>;
+		<?php if ( $accent_btn_color_hover && ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_shop_color_scheme_hover' ) ) ) ) : ?>
+			--btn-accented-color-hover: <?php echo esc_attr( $accent_btn_color_hover ) ?>;
 		<?php endif; ?>
 
 		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_default_style' ) ) ) : ?>
@@ -543,60 +555,31 @@ class WOODMART_Themesettingscss {
 		<?php endif; ?>
 
 		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_shop_style' ) ) ) : ?>
-			<?php if ( 'flat' === $shop_btn_style ) : ?>
-				--btn-shop-brd-radius: 0.001px;
-				--btn-shop-box-shadow: none;
-				--btn-shop-box-shadow-hover: none;
-				--btn-shop-box-shadow-active: none;
-				--btn-shop-bottom: 0px;
-			<?php endif; ?>
-
-			<?php if ( '3d' === $shop_btn_style ) : ?>
-				--btn-shop-bottom-active: -1px;
-				--btn-shop-brd-radius: 0.001px;
-				--btn-shop-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .15);
-				--btn-shop-box-shadow-hover: inset 0 -2px 0 rgba(0, 0, 0, .15);
-			<?php endif; ?>
-
-			<?php if ( 'rounded' === $shop_btn_style ) : ?>
-				--btn-shop-brd-radius: 35px;
-				--btn-shop-box-shadow: none;
-				--btn-shop-box-shadow-hover: none;
-			<?php endif; ?>
-
-			<?php if ( 'semi-rounded' === $shop_btn_style ) : ?>
-				--btn-shop-brd-radius: 5px;
-				--btn-shop-box-shadow: none;
-				--btn-shop-box-shadow-hover: none;
-			<?php endif; ?>
-		<?php endif; ?>
-
-		<?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'btns_accent_style' ) ) ) : ?>
 			<?php if ( 'flat' === $accent_btn_style ) : ?>
-				--btn-accent-brd-radius: 0px;
-				--btn-accent-box-shadow: none;
-				--btn-accent-box-shadow-hover: none;
-				--btn-accent-box-shadow-active: none;
-				--btn-accent-bottom: 0px;
+				--btn-accented-brd-radius: 0px;
+				--btn-accented-box-shadow: none;
+				--btn-accented-box-shadow-hover: none;
+				--btn-accented-box-shadow-active: none;
+				--btn-accented-bottom: 0px;
 			<?php endif; ?>
 
 			<?php if ( '3d' === $accent_btn_style ) : ?>
-				--btn-accent-bottom-active: -1px;
-				--btn-accent-brd-radius: 0px;
-				--btn-accent-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .15);
-				--btn-accent-box-shadow-hover: inset 0 -2px 0 rgba(0, 0, 0, .15);
+				--btn-accented-bottom-active: -1px;
+				--btn-accented-brd-radius: 0px;
+				--btn-accented-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .15);
+				--btn-accented-box-shadow-hover: inset 0 -2px 0 rgba(0, 0, 0, .15);
 			<?php endif; ?>
 
 			<?php if ( 'rounded' === $accent_btn_style ) : ?>
-				--btn-accent-brd-radius: 35px;
-				--btn-accent-box-shadow: none;
-				--btn-accent-box-shadow-hover: none;
+				--btn-accented-brd-radius: 35px;
+				--btn-accented-box-shadow: none;
+				--btn-accented-box-shadow-hover: none;
 			<?php endif; ?>
 
 			<?php if ( 'semi-rounded' === $accent_btn_style ) : ?>
-				--btn-accent-brd-radius: 5px;
-				--btn-accent-box-shadow: none;
-				--btn-accent-box-shadow-hover: none;
+				--btn-accented-brd-radius: 5px;
+				--btn-accented-box-shadow: none;
+				--btn-accented-box-shadow-hover: none;
 			<?php endif; ?>
 		<?php endif; ?>
 
@@ -645,36 +628,19 @@ class WOODMART_Themesettingscss {
 		}
 
 		:root{
-			--wd-container-width: <?php echo esc_html( $site_width ); ?>px;
+			--wd-container-w: <?php echo esc_html( $site_width ); ?>px;
 		}
 	<?php endif; ?>
 
 	<?php if ( $site_width && 'wpb' === woodmart_get_current_page_builder() ): ?>
 		@media (min-width: <?php echo esc_html( $site_width ); ?>px) {
-			[data-vc-full-width]:not([data-vc-stretch-content]) {
-				padding-left: calc((100vw - <?php echo esc_html( $site_width ); ?>px - var(--wd-scroll-w)) / 2);
-				padding-right: calc((100vw - <?php echo esc_html( $site_width ); ?>px - var(--wd-scroll-w)) / 2);
+			[data-vc-full-width]:not([data-vc-stretch-content]),
+			:is(.vc_section, .vc_row).wd-section-stretch {
+				padding-left: calc((100vw - <?php echo esc_html( $site_width ); ?>px - var(--wd-sticky-nav-w) - var(--wd-scroll-w)) / 2);
+				padding-right: calc((100vw - <?php echo esc_html( $site_width ); ?>px - var(--wd-sticky-nav-w) - var(--wd-scroll-w)) / 2);
 			}
 		}
 	<?php elseif ( $site_width && 'enabled' === woodmart_get_opt( 'negative_gap' ) ) : ?>
-		.elementor-section.wd-section-stretch > .elementor-column-gap-no {
-			max-width: <?php echo esc_html( $site_width - 30 ); ?>px;
-		}
-		.elementor-section.wd-section-stretch > .elementor-column-gap-narrow {
-			max-width: <?php echo esc_html( $site_width - 30 + 10); ?>px;
-		}
-		.elementor-section.wd-section-stretch > .elementor-column-gap-default {
-			max-width: <?php echo esc_html( $site_width - 30 + 20); ?>px;
-		}
-		.elementor-section.wd-section-stretch > .elementor-column-gap-extended {
-			max-width: <?php echo esc_html( $site_width - 30 + 30); ?>px;
-		}
-		.elementor-section.wd-section-stretch > .elementor-column-gap-wide {
-			max-width: <?php echo esc_html( $site_width - 30 + 40); ?>px;
-		}
-		.elementor-section.wd-section-stretch > .elementor-column-gap-wider {
-			max-width: <?php echo esc_html( $site_width - 30 + 60); ?>px;
-		}
 		@media (min-width: <?php echo esc_html( $site_width + 17 ); ?>px) {
 			.platform-Windows .wd-section-stretch > .elementor-container {
 				margin-left: auto;
@@ -716,18 +682,12 @@ class WOODMART_Themesettingscss {
 
 <?php if ( ! $this->is_preset_active() || ( $this->is_preset_active() && woodmart_is_opt_changed( 'header_banner' ) ) ) : ?>
 	<?php if ( woodmart_get_opt( 'header_banner' ) ) : ?>
-		.header-banner {
-			height: <?php echo esc_html( $header_banner_height ); ?>px;
-		}
-		body.header-banner-display .website-wrapper {
-			margin-top:<?php echo esc_html( $header_banner_height ); ?>px;
+		:root {
+			--wd-header-banner-h: <?php echo esc_html( $header_banner_height ); ?>px;
 		}
 		@media (max-width: 1024px) {
-			.header-banner {
-				height: <?php echo esc_html( $header_banner_height_mobile ); ?>px;
-			}
-			body.header-banner-display .website-wrapper {
-				margin-top:<?php echo esc_html( $header_banner_height_mobile ); ?>px;
+			:root {
+				--wd-header-banner-h: <?php echo esc_html( $header_banner_height_mobile ); ?>px;
 			}
 		}
 	<?php endif; ?>

@@ -197,33 +197,6 @@ class Social extends Widget_Base {
 		);
 
 		$this->add_control(
-			'size',
-			array(
-				'label'   => esc_html__( 'Size', 'woodmart' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'default' => esc_html__( 'Default (18px)', 'woodmart' ),
-					'small'   => esc_html__( 'Small (14px)', 'woodmart' ),
-					'large'   => esc_html__( 'Large (22px)', 'woodmart' ),
-				),
-				'default' => 'default',
-			)
-		);
-
-		$this->add_control(
-			'color',
-			array(
-				'label'   => esc_html__( 'Color', 'woodmart' ),
-				'type'    => Controls_Manager::SELECT,
-				'options' => array(
-					'dark'  => esc_html__( 'Dark', 'woodmart' ),
-					'light' => esc_html__( 'Light', 'woodmart' ),
-				),
-				'default' => 'dark',
-			)
-		);
-
-		$this->add_control(
 			'style',
 			array(
 				'label'   => esc_html__( 'Style', 'woodmart' ),
@@ -249,6 +222,33 @@ class Social extends Widget_Base {
 					'square' => esc_html__( 'Square', 'woodmart' ),
 				),
 				'default' => 'circle',
+			)
+		);
+
+		$this->add_control(
+			'size',
+			array(
+				'label'   => esc_html__( 'Size', 'woodmart' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => array(
+					'default' => esc_html__( 'Default (18px)', 'woodmart' ),
+					'small'   => esc_html__( 'Small (14px)', 'woodmart' ),
+					'large'   => esc_html__( 'Large (22px)', 'woodmart' ),
+				),
+				'default' => 'default',
+			)
+		);
+
+		$this->add_control(
+			'color',
+			array(
+				'label'   => esc_html__( 'Color', 'woodmart' ),
+				'type'    => Controls_Manager::SELECT,
+				'options' => array(
+					'dark'  => esc_html__( 'Dark', 'woodmart' ),
+					'light' => esc_html__( 'Light', 'woodmart' ),
+				),
+				'default' => 'dark',
 			)
 		);
 
@@ -323,4 +323,4 @@ class Social extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Social() );
+Plugin::instance()->widgets_manager->register( new Social() );

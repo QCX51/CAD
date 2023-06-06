@@ -2,6 +2,8 @@
 	var $panel = $('#vc_ui-panel-edit-element');
 	// Dependency.
 	$panel.on('vcPanel.shown', function() {
+		$panel.find('.wpb_edit_form_elements').addClass('xts-loaded');
+
 		var $fieldValue = $('.vc_shortcode-param .wpb_vc_param_value');
 
 		$fieldValue.on('change', function() {

@@ -5,27 +5,23 @@
 * ------------------------------------------------------------------------------------------------
 */
 
-if( ! function_exists( 'woodmart_vc_map_gallery' ) ) {
-	function woodmart_vc_map_gallery() {
-		if ( ! shortcode_exists( 'woodmart_gallery' ) ) {
-			return;
-		}
-
-		vc_map( array(
+if ( ! function_exists( 'woodmart_get_vc_map_gallery' ) ) {
+	function woodmart_get_vc_map_gallery() {
+		return array(
 			'name' => esc_html__( 'Images gallery', 'woodmart' ),
 			'base' => 'woodmart_gallery',
 			'class' => '',
 			'category' => function_exists( 'woodmart_get_tab_title_category_for_wpb' ) ? woodmart_get_tab_title_category_for_wpb( esc_html__( 'Theme elements', 'woodmart' ) ) : esc_html__( 'Theme elements', 'woodmart' ),
 			'description' => esc_html__( 'Images grid/carousel', 'woodmart' ),
-        	'icon' => WOODMART_ASSETS . '/images/vc-icon/images-gallery.svg',
+			'icon' => WOODMART_ASSETS . '/images/vc-icon/images-gallery.svg',
 			'params' => array(
 				array(
 					'param_name' => 'woodmart_css_id',
 					'type'       => 'woodmart_css_id',
 				),
 				/**
-				* Images
-				*/
+				 * Images
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -117,8 +113,8 @@ if( ! function_exists( 'woodmart_vc_map_gallery' ) ) {
 					'generate_zero' => true,
 				),
 				/**
-				* Layout
-				*/
+				 * Layout
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -244,7 +240,7 @@ if( ! function_exists( 'woodmart_vc_map_gallery' ) ) {
 					'type' => 'woodmart_image_select',
 					'heading' => esc_html__( 'Horizontal  align', 'woodmart' ),
 					'param_name' => 'horizontal_align',
-				    'value' => array( 
+					'value' => array(
 						esc_html__( 'Left', 'woodmart' ) => 'left',
 						esc_html__( 'Center', 'woodmart' ) => 'center',
 						esc_html__( 'Right', 'woodmart' ) => 'right',
@@ -266,7 +262,7 @@ if( ! function_exists( 'woodmart_vc_map_gallery' ) ) {
 					'type' => 'woodmart_image_select',
 					'heading' => esc_html__( 'Vertical align', 'woodmart' ),
 					'param_name' => 'vertical_align',
-				    'value' => array( 
+					'value' => array(
 						esc_html__( 'Top', 'woodmart' ) => 'top',
 						esc_html__( 'Middle', 'woodmart' ) => 'middle',
 						esc_html__( 'Bottom', 'woodmart' ) => 'bottom',
@@ -285,8 +281,8 @@ if( ! function_exists( 'woodmart_vc_map_gallery' ) ) {
 					),
 				),
 				/**
-				* Carousel
-				*/
+				 * Carousel
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -474,7 +470,7 @@ if( ! function_exists( 'woodmart_vc_map_gallery' ) ) {
 					'edit_field_class' => 'vc_col-sm-6 vc_column',
 				),
 
-                array(
+				array(
 					'type' => 'woodmart_switch',
 					'heading' => esc_html__( 'Center mode', 'woodmart' ),
 					'param_name' => 'center_mode',
@@ -488,8 +484,8 @@ if( ! function_exists( 'woodmart_vc_map_gallery' ) ) {
 					),
 				),
 				/**
-				* Click action
-				*/
+				 * Click action
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -545,8 +541,8 @@ if( ! function_exists( 'woodmart_vc_map_gallery' ) ) {
 					),
 				),
 				/**
-				* Extra
-				*/
+				 * Extra
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -597,7 +593,6 @@ if( ! function_exists( 'woodmart_vc_map_gallery' ) ) {
 				),
 				function_exists( 'woodmart_get_vc_responsive_spacing_map' ) ? woodmart_get_vc_responsive_spacing_map() : '',
 			)
-		) );
+		);
 	}
-	add_action( 'vc_before_init', 'woodmart_vc_map_gallery' );
 }

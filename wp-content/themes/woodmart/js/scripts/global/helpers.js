@@ -46,7 +46,7 @@ var woodmartThemeModule = {};
 		var counter = 0;
 		var timeout = false;
 
-		if (0 === $links.length || 'yes' === woodmart_settings.combined_css) {
+		if (0 === $links.length) {
 			callback(html);
 			return;
 		}
@@ -59,7 +59,7 @@ var woodmartThemeModule = {};
 		}, 500);
 
 		$links.each(function() {
-			if ($(this).attr('id').indexOf('theme_settings_') !== -1) {
+			if ( 'undefined' !== typeof $(this).attr('id') && $(this).attr('id').indexOf('theme_settings_') !== -1) {
 				$('head').find('link[id*="theme_settings_"]:not([id*="theme_settings_default"])').remove();
 			}
 		});
@@ -68,6 +68,11 @@ var woodmartThemeModule = {};
 			var $link = $(this);
 			var id = $link.attr('id');
 			var href = $link.attr('href');
+
+			if ( 'undefined' === typeof id ) {
+				return;
+			}
+
 			var isThemeSettings = id.indexOf('theme_settings_') !== -1;
 			var isThemeSettingsDefault = id.indexOf('theme_settings_default') !== -1;
 
@@ -130,13 +135,6 @@ var woodmartThemeModule = {};
 		});
 	};
 
-	woodmartThemeModule.wdElementorAddAction('frontend/element_ready/section', function($wrapper) {
-		$wrapper.removeClass('wd-animated');
-		$wrapper.data('wd-waypoint', '');
-		$wrapper.removeClass('wd-anim-ready');
-		woodmartThemeModule.$document.trigger('wdElementorSectionReady');
-	});
-
 	woodmartThemeModule.wdElementorAddAction('frontend/element_ready/global', function($wrapper) {
 		if ($wrapper.attr('style') && $wrapper.attr('style').indexOf('transform:translate3d') === 0 && !$wrapper.hasClass('wd-parallax-on-scroll')) {
 			$wrapper.attr('style', '');
@@ -147,17 +145,22 @@ var woodmartThemeModule = {};
 		woodmartThemeModule.$document.trigger('wdElementorGlobalReady');
 	});
 
-	woodmartThemeModule.wdElementorAddAction('frontend/element_ready/column', function($wrapper) {
-		if ($wrapper.attr('style') && $wrapper.attr('style').indexOf('transform:translate3d') === 0 && !$wrapper.hasClass('wd-parallax-on-scroll')) {
-			$wrapper.attr('style', '');
-		}
-		$wrapper.removeClass('wd-animated');
-		$wrapper.data('wd-waypoint', '');
-		$wrapper.removeClass('wd-anim-ready');
+	$.each([
+		'frontend/element_ready/column',
+		'frontend/element_ready/container'
+	], function(index, value) {
+		woodmartThemeModule.wdElementorAddAction(value, function($wrapper) {
+			if ($wrapper.attr('style') && $wrapper.attr('style').indexOf('transform:translate3d') === 0 && !$wrapper.hasClass('wd-parallax-on-scroll')) {
+				$wrapper.attr('style', '');
+			}
+			$wrapper.removeClass('wd-animated');
+			$wrapper.data('wd-waypoint', '');
+			$wrapper.removeClass('wd-anim-ready');
 
-		setTimeout(function() {
-			woodmartThemeModule.$document.trigger('wdElementorColumnReady');
-		}, 100);
+			setTimeout(function() {
+				woodmartThemeModule.$document.trigger('wdElementorColumnReady');
+			}, 100);
+		});
 	});
 
 	woodmartThemeModule.setupMainCarouselArg = function() {
@@ -176,7 +179,7 @@ var woodmartThemeModule = {};
 			loop           : woodmart_settings.product_slider_autoplay,
 			center         : woodmartThemeModule.$mainCarouselWrapper.hasClass('thumbs-position-centered'),
 			startPosition  : woodmartThemeModule.$mainCarouselWrapper.hasClass('thumbs-position-centered') ? woodmart_settings.centered_gallery_start : 0,
-			dots           : woodmart_settings.product_slider_dots === 'yes',
+			dots           : 'yes' === woodmart_settings.product_slider_dots || woodmartThemeModule.$mainCarouselWrapper.find('.woocommerce-product-gallery__wrapper').data('hide_pagination_control') && 'yes' !== woodmartThemeModule.$mainCarouselWrapper.find('.woocommerce-product-gallery__wrapper').data('hide_pagination_control'),
 			nav            : true,
 			autoHeight     : woodmart_settings.product_slider_auto_height === 'yes',
 			navText        : false,
@@ -189,33 +192,61 @@ var woodmartThemeModule = {};
 
 	woodmartThemeModule.shopLoadMoreBtn = '.wd-products-load-more.load-on-scroll';
 
-
-
 	woodmartThemeModule.$window.on('elementor/frontend/init', function() {
 		if (!elementorFrontend.isEditMode()) {
 			return;
 		}
 
 		if ('enabled' === woodmart_settings.elementor_no_gap) {
-			elementorFrontend.hooks.addAction('frontend/element_ready/section', function($wrapper) {
-				var cid = $wrapper.data('model-cid');
-
-				if (typeof elementorFrontend.config.elements.data[cid] !== 'undefined') {
-					var size = elementorFrontend.config.elements.data[cid].attributes.content_width.size;
-
-					if (!size) {
-						$wrapper.addClass('wd-negative-gap');
+			$.each([
+				'frontend/element_ready/section',
+				'frontend/element_ready/container'
+			], function(index, value) {
+				woodmartThemeModule.wdElementorAddAction(value, function($wrapper) {
+					if ($wrapper.attr('style') && $wrapper.attr('style').indexOf('transform:translate3d') === 0 && !$wrapper.hasClass('wd-parallax-on-scroll')) {
+						$wrapper.attr('style', '');
 					}
-				}
+
+					$wrapper.removeClass('wd-animated');
+					$wrapper.data('wd-waypoint', '');
+					$wrapper.removeClass('wd-anim-ready');
+					woodmartThemeModule.$document.trigger('wdElementorSectionReady');
+				});
+
+				elementorFrontend.hooks.addAction(value, function($wrapper) {
+					var cid = $wrapper.data('model-cid');
+
+					if (typeof elementorFrontend.config.elements.data[cid] !== 'undefined') {
+						var size = '';
+
+						if ('undefined' !== typeof elementorFrontend.config.elements.data[cid].attributes.elType) {
+							if ('container' === elementorFrontend.config.elements.data[cid].attributes.elType) {
+								size = elementorFrontend.config.elements.data[cid].attributes.boxed_width.size;
+							} else if ('section' === elementorFrontend.config.elements.data[cid].attributes.elType) {
+								size = elementorFrontend.config.elements.data[cid].attributes.content_width.size;
+							}
+						}
+
+						if (!size) {
+							$wrapper.addClass('wd-negative-gap');
+						}
+					}
+				});
 			});
 
-			elementor.channels.editor.on('change:section', function(view) {
+			elementor.channels.editor.on('change:section change:container', function(view) {
 				var changed = view.elementSettingsModel.changed;
+				if (typeof changed.content_width !== 'undefined' || typeof changed.boxed_width !== 'undefined') {
+					var size = [];
 
-				if (typeof changed.content_width !== 'undefined') {
+					if ( typeof changed.content_width !== 'undefined' ) {
+						size = changed.content_width.size;
+					} else if ( typeof changed.boxed_width !== 'undefined' ) {
+						size = changed.boxed_width.size
+					}
+
 					var sectionId = view._parent.model.id;
 					var $section = $('.elementor-element-' + sectionId);
-					var size = changed.content_width.size;
 
 					if (size) {
 						$section.removeClass('wd-negative-gap');
@@ -234,6 +265,10 @@ var woodmartThemeModule = {};
 			$('.wd-preloader').remove();
 		}, 200);
 	});
+
+	woodmartThemeModule.googleMapsCallback = function () {
+		return '';
+	};
 })(jQuery);
 
 window.onload = function() {

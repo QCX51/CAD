@@ -81,6 +81,7 @@ class NMI_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 		$width         = get_post_meta( $item_id, '_menu_item_width', true );
 		$icon          = get_post_meta( $item_id, '_menu_item_icon', true );
 		$height        = get_post_meta( $item_id, '_menu_item_height', true );
+		$scroll        = get_post_meta( $item_id, '_menu_item_scroll', true );
 		$event         = get_post_meta( $item_id, '_menu_item_event', true );
 		$label         = get_post_meta( $item_id, '_menu_item_label', true );
 		$label_text    = get_post_meta( $item_id, '_menu_item_label-text', true );
@@ -98,6 +99,7 @@ class NMI_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 					<select id="edit-menu-item-design-<?php echo esc_attr( $item_id ); ?>" data-field="nmi-design" class="widefat" name="menu-item-design[<?php echo esc_attr( $item_id ); ?>]">
 						<option value="default" <?php selected( $design, 'default' ); ?>><?php esc_html_e( 'Default', 'woodmart' ); ?></option>
 						<option value="full-width" <?php selected( $design, 'full-width' ); ?>><?php esc_html_e( 'Full width', 'woodmart' ); ?></option>
+						<option value="full-height" <?php selected( $design, 'full-height' ); ?>><?php esc_html_e( 'Full height', 'woodmart' ); ?></option>
 						<option value="sized" <?php selected( $design, 'sized' ); ?>><?php esc_html_e( 'Set sizes', 'woodmart' ); ?></option>
 						<option value="aside" <?php selected( $design, 'aside' ); ?>><?php esc_html_e( 'Aside', 'woodmart' ); ?></option>
 					</select>
@@ -122,6 +124,15 @@ class NMI_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 				<label for="edit-menu-item-height-<?php echo esc_attr( $item_id ); ?>">
 					<?php esc_html_e( 'Dropdown height', 'woodmart' ); ?><br>
 					<input type="number" id="edit-menu-item-height-<?php echo esc_attr( $item_id ); ?>" class="widefat" name="menu-item-height[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $height ); ?>">
+				</label>
+			</p>
+			<p class="description description-wide nmi-scroll">
+				<label for="edit-menu-item-scroll-<?php echo esc_attr( $item_id ); ?>">
+					<span class="xts-menu-title"><?php esc_html_e( 'Enable scroll', 'woodmart' ); ?><span class="xts-hint"><span class="xts-tooltip xts-top"><?php esc_html_e( 'Select "Yes" to limit the dropdown height to the value specified in the "Dropdown height" input. If "No" the "Dropdown height" will specify only the minimum height and the real dropdown height will depend on the actual height of the content.', 'woodmart' ); ?></span></span></span><br>
+					<select id="edit-menu-item-scroll-<?php echo esc_attr( $item_id ); ?>" class="widefat" name="menu-item-scroll[<?php echo esc_attr( $item_id ); ?>]">
+						<option value="no" <?php selected( $scroll, 'no' ); ?>><?php esc_html_e( 'No', 'woodmart' ); ?></option>
+						<option value="yes" <?php selected( $scroll, 'yes' ); ?>><?php esc_html_e( 'Yes', 'woodmart' ); ?></option>
+					</select>
 				</label>
 			</p>
 			<p class="description description-wide nmi-block">
@@ -233,7 +244,7 @@ class NMI_Walker_Nav_Menu_Edit extends Walker_Nav_Menu_Edit {
 					<?php esc_html_e( 'Icon name (from FontAwesome set)', 'woodmart' ); ?><br>
 					<input type="text" id="edit-menu-item-icon-<?php echo esc_attr( $item_id ); ?>" class="widefat" name="menu-item-icon[<?php echo esc_attr( $item_id ); ?>]" value="<?php echo esc_attr( $icon ); ?>">
 				</label>
-				<span class="description"><?php esc_html_e( 'The name of icon from Font Awesome 5 list. For example:', 'woodmart' ); ?> <code>envelope-open fas</code></span>
+				<span class="description"><?php esc_html_e( 'The name of icon from Font Awesome 5 list.', 'woodmart' ); ?><br><?php esc_html_e( 'For example:', 'woodmart' ); ?> <code>envelope-open fas</code></span>
 			</p>
 
 			<h4 class="description-wide"><?php esc_html_e( 'Page anchor (for one-page menu)', 'woodmart' ); ?></h4>

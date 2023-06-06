@@ -43,7 +43,7 @@ if ( 'list' === $current_view ) {
 	$class .= ' grid-columns-' . woodmart_loop_prop( 'products_columns' );
 }
 
-if ( ( woodmart_loop_prop( 'products_bordered_grid' ) && 'enable' === woodmart_loop_prop( 'products_bordered_grid' ) ) || ( ! woodmart_loop_prop( 'products_bordered_grid' ) && woodmart_get_opt( 'products_bordered_grid' ) ) ) {
+if ( ( woodmart_loop_prop( 'products_bordered_grid' ) || 'enable' === woodmart_loop_prop( 'products_bordered_grid' ) ) && 'disable' !== woodmart_loop_prop( 'products_bordered_grid' ) ) {
 	woodmart_enqueue_inline_style( 'bordered-product' );
 
 	if ( 'outside' === woodmart_loop_prop( 'products_bordered_grid_style' ) ) {
@@ -54,8 +54,13 @@ if ( ( woodmart_loop_prop( 'products_bordered_grid' ) && 'enable' === woodmart_l
 }
 
 if ( woodmart_get_opt( 'quick_shop_variable' ) ) {
-	woodmart_enqueue_js_script( 'quick-shop' );
-	woodmart_enqueue_js_script( 'swatches-variations' );
+	if ( 'variation_form' === woodmart_get_opt( 'quick_shop_variable_type', 'select_options' ) ) {
+		woodmart_enqueue_js_script( 'quick-shop-with-form' );
+	} else {
+		woodmart_enqueue_js_script( 'quick-shop' );
+		woodmart_enqueue_js_script( 'swatches-variations' );
+	}
+
 	woodmart_enqueue_js_script( 'add-to-cart-all-types' );
 	wp_enqueue_script( 'wc-add-to-cart-variation' );
 }
@@ -130,6 +135,22 @@ if ( ( woodmart_loop_prop( 'stretch_product_desktop' ) || woodmart_loop_prop( 's
 }
 
 $class .= ' align-items-start';
+
+if ( 'default' !== woodmart_loop_prop(  'products_color_scheme', 'default' ) && ( woodmart_loop_prop( 'products_bordered_grid' ) || 'enable' === woodmart_loop_prop( 'products_bordered_grid' ) ) && 'disable' !== woodmart_loop_prop( 'products_bordered_grid' ) && 'outside' === woodmart_loop_prop( 'products_bordered_grid_style' ) ) {
+	$class .= ' wd-bordered-' . woodmart_loop_prop(  'products_color_scheme' );
+}
+
+if ( woodmart_loop_prop( 'products_with_background' ) ) {
+	woodmart_enqueue_inline_style( 'woo-opt-products-bg' );
+
+	$class .= ' wd-products-with-bg';
+}
+
+if ( woodmart_loop_prop( 'products_shadow' ) ) {
+	woodmart_enqueue_inline_style( 'woo-opt-products-shadow' );
+
+	$class .= ' wd-products-with-shadow';
+}
 
 ?>
 

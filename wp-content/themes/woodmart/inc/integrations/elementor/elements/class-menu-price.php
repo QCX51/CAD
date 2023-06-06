@@ -248,4 +248,4 @@ class Menu_Price extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Menu_Price() );
+Plugin::instance()->widgets_manager->register( new Menu_Price() );

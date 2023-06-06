@@ -530,4 +530,4 @@ class Timeline extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Timeline() );
+Plugin::instance()->widgets_manager->register( new Timeline() );

@@ -1,17 +1,17 @@
 <?php if ( ! defined( 'WOODMART_THEME_DIR' ) ) exit( 'No direct script access allowed' );
 
 /**
-* ------------------------------------------------------------------------------------------------
-* Portfolio shortcode
-* ------------------------------------------------------------------------------------------------
-*/
+ * ------------------------------------------------------------------------------------------------
+ * Portfolio shortcode
+ * ------------------------------------------------------------------------------------------------
+ */
 
 if( ! function_exists( 'woodmart_shortcode_portfolio' ) ) {
 	function woodmart_shortcode_portfolio( $atts ) {
 		if ( ! woodmart_get_opt( 'portfolio', '1' ) ) {
 			return;
 		}
-		
+
 		$output = $el_class = '';
 		$parsed_atts = shortcode_atts( array(
 			'posts_per_page' => woodmart_get_opt( 'portoflio_per_page' ),
@@ -58,17 +58,18 @@ if( ! function_exists( 'woodmart_shortcode_portfolio' ) ) {
 		}
 
 		$args = array(
-			'post_type' => 'portfolio',
+			'post_type'      => 'portfolio',
+			'post_status'    => 'publish',
 			'posts_per_page' => $posts_per_page,
-			'orderby' => $orderby,
-			'order' => $order,
-			'paged' => $paged
+			'orderby'        => $orderby,
+			'order'          => $order,
+			'paged'          => $paged
 		);
 
 		if( $s ) {
 			$args['s'] = $s;
 		}
- 
+
 		if( get_query_var('project-cat') != '' ) {
 			$args['tax_query'] = array(
 				array(
@@ -149,48 +150,48 @@ if( ! function_exists( 'woodmart_shortcode_portfolio' ) ) {
 		}
 
 		?>
-			<?php if ( $query->have_posts() ) : ?>
-				<?php if ( ! $is_ajax ): ?>
-					<?php if ( ! is_tax() && $filters && ! $s && $layout != 'carousel' ): ?>
-						<?php woodmart_portfolio_filters( $categories, $filters_type ); ?>
-					<?php endif ?>
-
-					<div class="<?php echo 'carousel' !== $layout ? 'masonry-container' : ''; ?> wd-portfolio-holder row wd-spacing-<?php echo esc_attr( $spacing ); ?>" data-atts="<?php echo esc_attr( $encoded_atts ); ?>" data-source="shortcode" data-paged="1">
+		<?php if ( $query->have_posts() ) : ?>
+			<?php if ( ! $is_ajax ): ?>
+				<?php if ( ! is_tax() && $filters && ! $s && $layout != 'carousel' ): ?>
+					<?php woodmart_portfolio_filters( $categories, $filters_type ); ?>
 				<?php endif ?>
-					<?php
 
-						while ( $query->have_posts() ) {
-							$query->the_post();
-							get_template_part( 'content', 'portfolio' );
-						}
+				<div class="<?php echo 'carousel' !== $layout ? 'masonry-container' : ''; ?> wd-portfolio-holder row wd-spacing-<?php echo esc_attr( $spacing ); ?>" data-atts="<?php echo esc_attr( $encoded_atts ); ?>" data-source="shortcode" data-paged="1">
+			<?php endif ?>
+			<?php
+
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				get_template_part( 'content', 'portfolio' );
+			}
+			?>
+
+			<?php if ( ! $is_ajax ): ?>
+				</div>
+				<?php
+				if ( $query->max_num_pages > 1 && !$is_ajax && $pagination != 'disable' && $layout != 'carousel' ) {
 					?>
-
-				<?php if ( ! $is_ajax ): ?>
+					<?php wp_enqueue_script( 'imagesloaded' ); ?>
+					<?php woodmart_enqueue_js_script( 'portfolio-load-more' ); ?>
+					<?php woodmart_enqueue_js_library( 'waypoints' ); ?>
+					<div class="wd-loop-footer portfolio-footer">
+						<?php if ( $pagination == 'infinit' || $pagination == 'load_more'): ?>
+							<?php woodmart_enqueue_inline_style( 'load-more-button' ); ?>
+							<a href="#" rel="nofollow noopener" class="btn wd-load-more wd-portfolio-load-more load-on-<?php echo 'load_more' === $pagination ? 'click' : 'scroll'; ?>"><span class="load-more-label"><?php esc_html_e('Load more projects', 'woodmart'); ?></span></a>
+							<div class="btn wd-load-more wd-load-more-loader"><span class="load-more-loading"><?php esc_html_e('Loading...', 'woodmart'); ?></span></div>
+						<?php else: ?>
+							<?php query_pagination( $query->max_num_pages ); ?>
+						<?php endif ?>
 					</div>
 					<?php
-						if ( $query->max_num_pages > 1 && !$is_ajax && $pagination != 'disable' && $layout != 'carousel' ) {
-							?>
-								<?php wp_enqueue_script( 'imagesloaded' ); ?>
-								<?php woodmart_enqueue_js_script( 'portfolio-load-more' ); ?>
-								<?php woodmart_enqueue_js_library( 'waypoints' ); ?>
-						        <div class="wd-loop-footer portfolio-footer">
-						            <?php if ( $pagination == 'infinit' || $pagination == 'load_more'): ?>
-							            <?php woodmart_enqueue_inline_style( 'load-more-button' ); ?>
-										<a href="#" rel="nofollow noopener" class="btn wd-load-more wd-portfolio-load-more load-on-<?php echo 'load_more' === $pagination ? 'click' : 'scroll'; ?>"><span class="load-more-label"><?php esc_html_e('Load more projects', 'woodmart'); ?></span></a>
-										<div class="btn wd-load-more wd-load-more-loader"><span class="load-more-loading"><?php esc_html_e('Loading...', 'woodmart'); ?></span></div>
-					                <?php else: ?>
-						                <?php query_pagination( $query->max_num_pages ); ?>
-						            <?php endif ?>
-						        </div>
-						    <?php
-						}
-					?>
+				}
+				?>
 
-				<?php endif ?>
+			<?php endif ?>
 
-			<?php elseif ( ! $is_ajax ) : ?>
-				<?php get_template_part( 'content', 'none' ); ?>
-			<?php endif; ?>
+		<?php elseif ( ! $is_ajax ) : ?>
+			<?php get_template_part( 'content', 'none' ); ?>
+		<?php endif; ?>
 		<?php
 
 		$output .= ob_get_clean();
@@ -200,15 +201,15 @@ if( ! function_exists( 'woodmart_shortcode_portfolio' ) ) {
 		}
 
 		wp_reset_postdata();
-		
+
 		woodmart_reset_loop();
 
-	    if( $is_ajax ) {
-	    	$output =  array(
-	    		'items' => $output,
-	    		'status' => ( $query->max_num_pages > $paged ) ? 'have-posts' : 'no-more-posts',
-	    	);
-	    }
+		if( $is_ajax ) {
+			$output =  array(
+				'items' => $output,
+				'status' => ( $query->max_num_pages > $paged ) ? 'have-posts' : 'no-more-posts',
+			);
+		}
 
 		return $output;
 	}

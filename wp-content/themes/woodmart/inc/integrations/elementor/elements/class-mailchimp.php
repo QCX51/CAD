@@ -406,5 +406,5 @@ class Mailchimp extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Mailchimp() );
+Plugin::instance()->widgets_manager->register( new Mailchimp() );
 

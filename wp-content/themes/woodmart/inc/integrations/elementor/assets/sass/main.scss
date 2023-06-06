@@ -14,6 +14,10 @@
 
 @import "elements/filters-area";
 
+@import "elements/stock-status";
+
+@import "elements/button";
+
 @import "elements/notices";
 
 // ------------------------------------------------------------------------------------------------
@@ -267,8 +271,13 @@ div[id*="elementor-panel-category-wd-"] {
 
 .elementor-html {
 
-	.wd-sticky-social {
+	.wd-sticky-social,
+	.wd-sticky-nav {
 		display: none;
+	}
+
+	.wd-sticky-nav-enabled {
+		--wd-sticky-nav-w: .001px;
 	}
 }
 
@@ -295,7 +304,7 @@ div[id*="elementor-panel-category-wd-"] {
 // ------------------------------------------------------------------------------------------------
 
 .xts-library-modal-btn {
-	margin-left: 5px;
+	// margin-left: 5px;
 	background-color: #0F4C81;
 	vertical-align: top;
 	font-size: 0 !important;

@@ -477,4 +477,4 @@ Follow our documentation <a href="https://xtemos.com/docs/woodmart/faq-guides/se
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Instagram() );
+Plugin::instance()->widgets_manager->register( new Instagram() );

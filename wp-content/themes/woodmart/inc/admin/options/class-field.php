@@ -248,14 +248,14 @@ abstract class Field {
 								</span>
 								<?php if ( ! empty( $this->args['status_description'] ) ) : ?>
 									<span class="xts-status-icon xts-i-help-question"></span>
-									<div class="xts-tooltip xts-top"><?php echo $this->args['status_description']; // phpcs:ignore ?></div>
+									<div class="xts-tooltip xts-top"><div class="xts-tooltip-inner"><?php echo $this->args['status_description']; // phpcs:ignore ?></div></div>
 								<?php endif; ?>
 							</div>
 						<?php endif; ?>
 
 						<?php if ( ! empty( $this->args['hint'] ) && woodmart_get_opt( 'white_label_theme_hints', true ) ) : ?>
 							<div class="xts-hint">
-								<div class="xts-tooltip xts-top"><?php echo $this->args['hint']; // phpcs:ignore ?></div>
+								<div class="xts-tooltip xts-top"><div class="xts-tooltip-inner"><?php echo $this->args['hint']; // phpcs:ignore ?></div></div>
 							</div>
 						<?php endif; ?>
 					</div>

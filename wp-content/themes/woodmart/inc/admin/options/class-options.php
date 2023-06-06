@@ -91,6 +91,7 @@ class Options extends Singleton {
 		'reset'            => 'XTS\Options\Controls\Reset',
 		'sorter'           => 'XTS\Options\Controls\Sorter',
 		'responsive_range' => 'XTS\Options\Controls\Responsive_Range',
+		'icons_font'       => 'XTS\Options\Controls\Icons_Font',
 	);
 
 	/**

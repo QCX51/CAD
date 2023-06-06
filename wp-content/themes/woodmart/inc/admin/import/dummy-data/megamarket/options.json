@@ -355,7 +355,7 @@
         "idle": "rgba(15,15,15,0.04)"
     },
     "blog_design": "meta-image",
-    "blog_style": "shadow",
+    "blog_style": "flat",
     "blog_columns": "3",
     "blog_spacing": "20",
     "blog_pagination": "load_more",

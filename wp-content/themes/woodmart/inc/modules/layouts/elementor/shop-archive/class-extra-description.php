@@ -131,4 +131,4 @@ class Extra_Description extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Extra_Description() );
+Plugin::instance()->widgets_manager->register( new Extra_Description() );

@@ -98,7 +98,7 @@ class Send_On_Sales_Products extends Singleton {
 
 					if ( $users_id ) {
 						foreach ( $users_id as $user_id ) {
-							if ( in_array( get_userdata( $user_id )->user_email, $unsubscribed_users, true ) || in_array( $products_on_sales, $products_on_sales[ $user_id ], true ) ) {
+							if ( in_array( get_userdata( $user_id )->user_email, $unsubscribed_users, true ) || ! empty( $products_on_sales[ $user_id ] ) && in_array( $products_on_sales, $products_on_sales[ $user_id ], true ) ) {
 								continue;
 							}
 
@@ -177,7 +177,8 @@ class Send_On_Sales_Products extends Singleton {
 
 		return $wpdb->get_col(
 			$wpdb->prepare(
-				"SELECT product_id FROM $wpdb->woodmart_products_table WHERE on_sale = 1",
+				"SELECT product_id FROM $wpdb->woodmart_products_table WHERE on_sale = %d",
+				1
 			)
 		);
 	}

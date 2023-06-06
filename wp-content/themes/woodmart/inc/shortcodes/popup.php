@@ -30,6 +30,9 @@ if ( ! function_exists( 'woodmart_shortcode_popup' ) ) {
 				'css_animation'         => 'none',
 				'el_class'              => '',
 				'content_class'         => '',
+				'icon_type'             => 'icon',
+				'image'                 => '',
+				'img_size'              => '25x25',
 				'icon_fontawesome'      => '',
 				'icon_openiconic'       => '',
 				'icon_typicons'         => '',
@@ -39,6 +42,7 @@ if ( ! function_exists( 'woodmart_shortcode_popup' ) ) {
 				'icon_material'         => '',
 				'icon_library'          => 'fontawesome',
 				'icon_position'         => 'right',
+				'css'                   => '',
 
 				'wd_animation'          => '',
 				'wd_animation_delay'    => '',

@@ -468,4 +468,4 @@ class Portfolio extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Portfolio() );
+Plugin::instance()->widgets_manager->register( new Portfolio() );

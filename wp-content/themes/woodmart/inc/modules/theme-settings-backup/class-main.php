@@ -393,7 +393,7 @@ class Main extends Singleton {
 			'presets' => $presets,
 		);
 
-		update_option( 'xts_backups_auto', $auto_backups );
+		update_option( 'xts_backups_auto', $auto_backups, false );
 	}
 }
 

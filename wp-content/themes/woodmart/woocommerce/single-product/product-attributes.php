@@ -17,6 +17,8 @@
  * @version 3.6.0
  */
 
+use XTS\Modules\Layouts\Global_Data as Builder_Data;
+
 defined( 'ABSPATH' ) || exit;
 
 if ( ! $product_attributes ) {
@@ -30,6 +32,19 @@ if ( ! $product_attributes ) {
 		$thumb_id       = get_option( 'woodmart_pa_' . $attribute_name . '_thumbnail' );
 		$image_size     = apply_filters( 'woodmart_product_attributes_table_image_size', 'thumbnail' );
 		$attribute_hint = get_option( 'woodmart_pa_' . $attribute_name . '_hint' );
+
+		if ( ! empty( Builder_Data::get_instance()->get_data( 'wd_product_attributes_include' ) ) || ! empty( Builder_Data::get_instance()->get_data( 'wd_product_attributes_exclude' ) ) ) {
+			$attributes_include     = Builder_Data::get_instance()->get_data( 'wd_product_attributes_include' );
+			$attributes_exclude     = Builder_Data::get_instance()->get_data( 'wd_product_attributes_exclude' );
+			$current_attribute_name = str_replace( 'attribute_pa_', 'pa_', $product_attribute_key );
+
+			if ( $attributes_include && ! in_array( $current_attribute_name, $attributes_include, true ) ) {
+				continue;
+			}
+			if ( $attributes_exclude && in_array( $current_attribute_name, $attributes_exclude, true ) ) {
+				continue;
+			}
+		}
 		?>
 
 		<tr class="woocommerce-product-attributes-item woocommerce-product-attributes-item--<?php echo esc_attr( $product_attribute_key ); ?>">

@@ -286,7 +286,7 @@ class Typography extends Field {
 									continue;
 								}
 
-								if ( ! isset( $selector['selector'] ) ) {
+								if ( ! isset( $selector['selector'] ) && ! isset( $selector['selector_var'] ) ) {
 									if ( $group ) {
 										echo '</optgroup>';
 									}
@@ -295,8 +295,9 @@ class Typography extends Field {
 									continue;
 								}
 
-								$selected = in_array( $id, $value['selector'], true ) ? ' selected="selected" ' : '';
-								echo '<option value="' . esc_attr( $id ) . '" ' . $selected . '>'; // phpcs:ignore
+								$attributes  = in_array( $id, $value['selector'], true ) ? ' selected="selected" ' : '';
+								$attributes .= ! empty( $selector['hint'] ) ? ' data-hint-src="' . $selector['hint'] : '';
+								echo '<option value="' . esc_attr( $id ) . '" ' . $attributes . '">'; // phpcs:ignore
 								echo esc_html( $selector['title'] );
 								echo '</option>';
 
@@ -545,7 +546,9 @@ class Typography extends Field {
 		$value     = isset( $typography[ $key ] ) ? $typography[ $key ] : '';
 
 		if ( 'color-hover' === $key ) {
-			$value = isset( $typography['color'] ) ? $typography['color'] : '';
+			$value = isset( $typography['hover']['color'] ) ? $typography['hover']['color'] : '';
+		} elseif ( 'background-hover' === $key ) {
+			$value = isset( $typography['hover']['background'] ) ? $typography['hover']['background'] : '';
 		}
 
 		if ( ! $value ) {
@@ -567,6 +570,8 @@ class Typography extends Field {
 
 		if ( isset( $this->args['selector_var'][ $key ] ) ) {
 			$output .= $this->args['selector_var'][ $key ] . ':' . $value . $suffix . ';' . "\n";
+		} elseif ( isset( $typography['selector_var'][ $key ] ) ) {
+			$output .= $typography['selector_var'][ $key ] . ':' . $value . $suffix . ';' . "\n";
 		}
 
 		return $output;
@@ -584,16 +589,34 @@ class Typography extends Field {
 			return '';
 		}
 
-		$value = $this->get_field_value();
+		$value  = $this->get_field_value();
+		$output = '';
 
-		if ( isset( $this->args['selector_var'] ) ) {
-			$output = ':root{' . "\n";
-		} else {
-			$output = '';
+		if ( empty( $this->args['selectors'] ) && ! empty( $this->args['callback'] ) ) {
+			$this->args['selectors'] = $this->args['callback']();
 		}
 
 		foreach ( $value as $i => $typography ) {
-			if ( ! isset( $this->args['selector_var'] ) ) {
+			if ( isset( $this->args['callback'] ) && ! empty( $typography['selector'] ) ) {
+				foreach ( $typography['selector'] as $key => $selector ) {
+					if ( ! empty( $this->args['selectors'][ $selector ]['selector_var'] ) ) {
+						$typography['selector_var'] = $this->args['selectors'][ $selector ]['selector_var'];
+
+						if ( isset( $typography['tablet'] ) && is_array( $typography['tablet'] ) ) {
+							$typography['tablet']['selector_var'] = $this->args['selectors'][ $selector ]['selector_var'];
+						}
+						if ( isset( $typography['mobile'] ) && is_array( $typography['mobile'] ) ) {
+							$typography['mobile']['selector_var'] = $this->args['selectors'][ $selector ]['selector_var'];
+						}
+
+						unset( $value[ $i ]['selector'][ $key ] );
+					}
+				}
+
+				if ( empty( $typography['selector_var'] ) ) {
+					continue;
+				}
+			} elseif ( ! isset( $this->args['selector_var'] ) ) {
 				continue;
 			}
 
@@ -634,30 +657,25 @@ class Typography extends Field {
 				$typography['hover']['color'] = $default['hover']['color'];
 			}
 
-			$output .= $this->generate_var_css_code( 'font-family', $typography );
-			$output .= $this->generate_var_css_code( 'font-weight', $typography );
-			$output .= $this->generate_var_css_code( 'text-transform', $typography );
-			$output .= $this->generate_var_css_code( 'color', $typography );
-			$output .= $this->generate_var_css_code( 'font-style', $typography );
-			$output .= $this->generate_var_css_code( 'font-size', $typography );
-			$output .= $this->generate_var_css_code( 'line-height', $typography );
+			if ( ! empty( $typography['font-family'] ) || ! empty( $typography['font-weight'] ) || ! empty( $typography['text-transform'] ) || ! empty( $typography['color'] ) || ! empty( $typography['font-style'] ) || ! empty( $typography['font-size'] ) || ! empty( $typography['line-height'] ) || ! empty( $typography['background'] ) || ! empty( $typography['hover']['color'] ) || ! empty( $typography['hover']['background'] ) ) {
+				$output .= ':root{' . "\n";
+				$output .= $this->generate_var_css_code( 'font-family', $typography );
+				$output .= $this->generate_var_css_code( 'font-weight', $typography );
+				$output .= $this->generate_var_css_code( 'text-transform', $typography );
+				$output .= $this->generate_var_css_code( 'color', $typography );
+				$output .= $this->generate_var_css_code( 'font-style', $typography );
+				$output .= $this->generate_var_css_code( 'font-size', $typography );
+				$output .= $this->generate_var_css_code( 'line-height', $typography );
+				$output .= $this->generate_var_css_code( 'background', $typography );
 
-			if ( isset( $typography['hover'] ) ) {
-				$output .= $this->generate_var_css_code( 'color-hover', $typography['hover'] );
-			}
+				if ( isset( $typography['hover'] ) ) {
+					$output .= $this->generate_var_css_code( 'color-hover', $typography );
+					$output .= $this->generate_var_css_code( 'background-hover', $typography );
+				}
 
-			Google_Fonts::add_google_font( $typography );
-		}
+				Google_Fonts::add_google_font( $typography );
 
-		if ( isset( $this->args['selector_var'] ) ) {
-			$output .= '}' . "\n";
-		} else {
-			$output .= '';
-		}
-
-		foreach ( $value as $i => $typography ) {
-			if ( ! isset( $this->args['selector_var'] ) ) {
-				continue;
+				$output .= '}' . "\n";
 			}
 
 			if ( isset( $typography['tablet'] ) && is_array( $typography['tablet'] ) ) {
@@ -678,7 +696,7 @@ class Typography extends Field {
 		}
 
 		foreach ( $value as $typography ) {
-			if ( ! isset( $typography['selector'] ) && $this->_is_multiple_field() || isset( $this->args['selector_var'] ) ) {
+			if ( empty( $typography['selector'] ) && $this->_is_multiple_field() || isset( $this->args['selector_var'] ) ) {
 				continue;
 			}
 
@@ -781,7 +799,7 @@ class Typography extends Field {
 			return '';
 		}
 
-		$code  = $query . '{' . "\n";
+		$code = $query . '{' . "\n";
 		if ( $root ) {
 			$code .= ':root{' . "\n";
 		}
@@ -876,14 +894,14 @@ class Typography extends Field {
 			return $selector_ids;
 		}
 
-		$selector  = array();
+		$selector = array();
 
 		if ( empty( $this->args['selectors'] ) && isset( $this->args['callback'] ) ) {
 			$this->args['selectors'] = $this->args['callback']();
 		}
 
 		foreach ( $selector_ids as $i => $id ) {
-			if ( ! isset( $this->args['selectors'][ $id ] ) ) {
+			if ( ! isset( $this->args['selectors'][ $id ] ) || ! isset( $this->args['selectors'][ $id ]['selector'] ) ) {
 				continue;
 			}
 

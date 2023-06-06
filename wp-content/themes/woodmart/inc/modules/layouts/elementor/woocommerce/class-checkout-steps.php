@@ -119,4 +119,4 @@ class Checkout_Steps extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Checkout_Steps() );
+Plugin::instance()->widgets_manager->register( new Checkout_Steps() );

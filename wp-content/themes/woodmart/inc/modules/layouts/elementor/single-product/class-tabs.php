@@ -395,6 +395,19 @@ class Tabs extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'accordion_hide_top_bottom_border',
+			array(
+				'label'     => esc_html__( 'Hide top & bottom border', 'woodmart' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'label_on'  => esc_html__( 'Yes', 'woodmart' ),
+				'label_off' => esc_html__( 'No', 'woodmart' ),
+				'condition' => array(
+					'accordion_style' => 'default',
+				),
+			)
+		);
+
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			array(
@@ -849,6 +862,68 @@ class Tabs extends Widget_Base {
 			)
 		);
 
+		$this->start_controls_tabs( 'additional_info_settings_tabs' );
+
+		$this->start_controls_tab(
+			'additional_info_name_tab',
+			array(
+				'label' => esc_html__( 'Name', 'woodmart' ),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'additional_info_name_typography',
+				'label'    => esc_html__( 'Name typography', 'woodmart' ),
+				'selector' => '{{WRAPPER}} .woocommerce-product-attributes-item__label',
+			)
+		);
+
+		$this->add_control(
+			'additional_info_name_color',
+			array(
+				'label'     => esc_html__( 'Name color', 'woodmart' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce-product-attributes-item__label' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'additional_info_term_tab',
+			array(
+				'label' => esc_html__( 'Term', 'woodmart' ),
+			)
+		);
+
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
+			array(
+				'name'     => 'additional_info_term_typography',
+				'label'    => esc_html__( 'Term typography', 'woodmart' ),
+				'selector' => '{{WRAPPER}} .woocommerce-product-attributes-item__value',
+			)
+		);
+
+		$this->add_control(
+			'additional_info_term_color',
+			array(
+				'label'     => esc_html__( 'Term color', 'woodmart' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .woocommerce-product-attributes-item__value' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
+
 		$this->end_controls_section();
 
 		$this->start_controls_section(
@@ -865,13 +940,28 @@ class Tabs extends Widget_Base {
 		$this->add_control(
 			'reviews_layout',
 			array(
-				'label'   => esc_html__( 'Layout', 'woodmart' ),
+				'label'   => esc_html__( 'Reviews section columns', 'woodmart' ),
 				'type'    => Controls_Manager::SELECT,
 				'options' => array(
 					'one-column' => esc_html__( 'One column', 'woodmart' ),
 					'two-column' => esc_html__( 'Two columns', 'woodmart' ),
 				),
 				'default' => 'one-column',
+			)
+		);
+
+		$this->add_responsive_control(
+			'reviews_columns',
+			array(
+				'label'          => esc_html__( 'Reviews columns', 'woodmart' ),
+				'type'           => Controls_Manager::SELECT,
+				'options'        => array(
+					'1' => esc_html__( '1', 'woodmart' ),
+					'2' => esc_html__( '2', 'woodmart' ),
+				),
+				'default'        => '1',
+				'tablet_default' => '1',
+				'mobile_default' => '1',
 			)
 		);
 
@@ -885,38 +975,48 @@ class Tabs extends Widget_Base {
 		$settings = wp_parse_args(
 			$this->get_settings_for_display(),
 			array(
-				'layout'                         => 'tabs',
-				'enable_additional_info'         => 'yes',
-				'enable_reviews'                 => 'yes',
-				'enable_description'             => 'yes',
-				'additional_info_style'          => 'bordered',
-				'additional_info_layout'         => 'list',
-				'reviews_layout'                 => 'one-column',
+				'layout'                           => 'tabs',
+				'enable_additional_info'           => 'yes',
+				'enable_reviews'                   => 'yes',
+				'enable_description'               => 'yes',
+				'additional_info_style'            => 'bordered',
+				'additional_info_layout'           => 'list',
+				'reviews_layout'                   => 'one-column',
+				'reviews_columns'                  => '1',
+				'reviews_columns_tablet'           => '1',
+				'reviews_columns_mobile'           => '1',
 
 				/**
 				 * Tabs Settings.
 				 */
-				'tabs_style'                     => 'default',
-				'tabs_title_text_color_scheme'   => 'inherit',
-				'tabs_alignment'                 => 'center',
-				'tabs_content_text_color_scheme' => 'inherit',
+				'tabs_style'                       => 'default',
+				'tabs_title_text_color_scheme'     => 'inherit',
+				'tabs_alignment'                   => 'center',
+				'tabs_content_text_color_scheme'   => 'inherit',
 
 				/**
 				 * Accordion Settings.
 				 */
-				'accordion_state'                => 'first',
-				'accordion_style'                => 'default',
-				'accordion_alignment'            => 'left',
+				'accordion_state'                  => 'first',
+				'accordion_style'                  => 'default',
+				'accordion_alignment'              => 'left',
+				'accordion_hide_top_bottom_border' => '',
 
 				/**
 				 * Opener Settings.
 				 */
-				'accordion_opener_alignment'     => 'left',
-				'accordion_opener_style'         => 'arrow',
+				'accordion_opener_alignment'       => 'left',
+				'accordion_opener_style'           => 'arrow',
 			)
 		);
 
 		$args = $this->get_template_args( $settings );
+
+		foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+			$key = 'reviews_columns' . ( 'desktop' === $device ? '' : '_' . $device );
+
+			Global_Data::get_instance()->set_data( $key, $this->get_settings_for_display( $key ) );
+		}
 
 		wp_enqueue_script( 'wc-single-product' );
 
@@ -938,6 +1038,7 @@ class Tabs extends Widget_Base {
 
 		if ( comments_open() ) {
 			woodmart_enqueue_inline_style( 'woo-single-prod-el-reviews' );
+			woodmart_enqueue_inline_style( 'woo-single-prod-el-reviews-' . woodmart_get_opt( 'reviews_style', 'style-1' ) );
 			woodmart_enqueue_js_script( 'woocommerce-comments' );
 		}
 
@@ -1023,6 +1124,10 @@ class Tabs extends Widget_Base {
 			$title_classes .= ' color-scheme-' . $settings['accordion_title_text_color_scheme'];
 		}
 
+		if ( 'yes' === $settings['accordion_hide_top_bottom_border'] ) {
+			$wrapper_classes .= ' wd-border-off';
+		}
+
 		return array(
 			'builder_accordion_classes' => $wrapper_classes,
 			'builder_state'             => $accordion_state,
@@ -1032,4 +1137,4 @@ class Tabs extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Tabs() );
+Plugin::instance()->widgets_manager->register( new Tabs() );

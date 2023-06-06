@@ -84,6 +84,8 @@ if( ! class_exists( 'WOODMART_HB_Backend' ) ) {
 					'Examples library' => __('Examples library', 'woodmart'),
 					'User headers' => __('User headers', 'woodmart'),
 					'Background image repeat' => __('Background image repeat', 'woodmart'),
+					'Background image' => __('Background image', 'woodmart'),
+					'Background color' => __('Background color', 'woodmart'),
 					'Inherit' => __('Inherit', 'woodmart'),
 					'No repeat' => __('No repeat', 'woodmart'),
 					'Repeat All' => __('Repeat All', 'woodmart'),
@@ -106,7 +108,7 @@ if( ! class_exists( 'WOODMART_HB_Backend' ) ) {
 					'Right center' => __('Right center', 'woodmart'),
 					'Right bottom' => __('Right bottom', 'woodmart'),
 					'Preview' => __('Preview', 'woodmart'),
-					'Width' => __('Width', 'woodmart'),
+					'Border Width' => __('Border Width', 'woodmart'),
 					'Style' => __('Style', 'woodmart'),
 					'Container' => __('Container', 'woodmart'),
 					'fullwidth' => __('fullwidth', 'woodmart'),
@@ -134,9 +136,12 @@ if( ! class_exists( 'WOODMART_HB_Backend' ) ) {
 					'Desktop layout' => __('Desktop layout', 'woodmart'),
 					'Mobile layout' => __('Mobile layout', 'woodmart'),
 					'Header is successfully saved.' => __('Header is successfully saved.', 'woodmart'),
+					'Header is successfully deleted.' => __('Header is successfully deleted.', 'woodmart'),
 					'Default header for all pages is changed.' => __('Default header for all pages is changed.', 'woodmart'),
 					'Configure' => __('Configure', 'woodmart'),
 					'settings' => __('settings', 'woodmart'),
+					'Hidden on desktop' => __('Hidden on desktop', 'woodmart'),
+					'Hidden on mobile' => __('Hidden on mobile', 'woodmart'),
 				)
 			) );
 

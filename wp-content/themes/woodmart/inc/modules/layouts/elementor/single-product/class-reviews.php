@@ -94,7 +94,7 @@ class Reviews extends Widget_Base {
 		$this->add_control(
 			'layout',
 			array(
-				'label'        => esc_html__( 'Layout', 'woodmart' ),
+				'label'        => esc_html__( 'Reviews section columns', 'woodmart' ),
 				'type'         => Controls_Manager::SELECT,
 				'options'      => array(
 					'one-column' => esc_html__( 'One column', 'woodmart' ),
@@ -105,6 +105,21 @@ class Reviews extends Widget_Base {
 			)
 		);
 
+		$this->add_responsive_control(
+			'reviews_columns',
+			array(
+				'label'        => esc_html__( 'Reviews columns', 'woodmart' ),
+				'type'         => Controls_Manager::SELECT,
+				'options'      => array(
+					'1' => esc_html__( '1', 'woodmart' ),
+					'2' => esc_html__( '2', 'woodmart' ),
+				),
+				'default'        => '1',
+				'tablet_default' => '1',
+				'mobile_default' => '1',
+			)
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -112,9 +127,16 @@ class Reviews extends Widget_Base {
 	 * Render the widget output on the frontend.
 	 */
 	protected function render() {
+		foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+			$key = 'reviews_columns' . ( 'desktop' === $device ? '' : '_' . $device );
+
+			Global_Data::get_instance()->set_data( $key, $this->get_settings_for_display( $key ) );
+		}
+
 		Main::setup_preview();
 
 		woodmart_enqueue_inline_style( 'woo-single-prod-el-reviews' );
+		woodmart_enqueue_inline_style( 'woo-single-prod-el-reviews-' . woodmart_get_opt( 'reviews_style', 'style-1' ) );
 		woodmart_enqueue_inline_style( 'mod-comments' );
 
 		comments_template();
@@ -123,4 +145,4 @@ class Reviews extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Reviews() );
+Plugin::instance()->widgets_manager->register( new Reviews() );

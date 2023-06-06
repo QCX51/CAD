@@ -67,6 +67,7 @@ if ( ! function_exists( 'woodmart_delay_js_exclusions' ) ) {
 				'imagesLoaded',
 				'ageVerify',
 				'magnific-popup',
+				'headerBuilder',
 			)
 		);
 	}
@@ -83,10 +84,10 @@ if ( ! function_exists( 'woodmart_rejected_uri_exclusions' ) ) {
 	function woodmart_rejected_uri_exclusions( $uris ) {
 		$urls = array();
 
-		if ( woodmart_get_opt( 'wishlist' ) ) {
+		if ( woodmart_get_opt( 'wishlist' ) && woodmart_get_opt( 'wishlist_page' ) ) {
 			$urls[] = woodmart_get_wishlist_page_url();
 		}
-		if ( woodmart_get_opt( 'compare' ) ) {
+		if ( woodmart_get_opt( 'compare' ) && woodmart_get_opt( 'compare_page' ) ) {
 			$urls[] = woodmart_get_compare_page_url();
 		}
 

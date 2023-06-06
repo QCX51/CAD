@@ -7,6 +7,7 @@
 
 namespace XTS\Modules;
 
+use WPBMap;
 use XTS\Modules\Compare\Ui;
 use XTS\Singleton;
 
@@ -129,7 +130,6 @@ class Compare extends Singleton {
 		wp_send_json(
 			array(
 				'count'     => $this->get_compare_count(),
-				'table'     => Ui::get_instance()->compare_page(),
 				'fragments' => apply_filters( 'woodmart_get_update_compare_fragments', array() ),
 			)
 		);
@@ -171,6 +171,10 @@ class Compare extends Singleton {
 		} else {
 			setcookie( $this->cookie_name, wp_json_encode( $products ), 0, COOKIEPATH, COOKIE_DOMAIN, woodmart_cookie_secure_param(), false );
 			$_COOKIE[ $this->cookie_name ] = wp_json_encode( $products );
+		}
+
+		if ( 'wpb' === woodmart_get_current_page_builder() && class_exists( 'WPBMap' ) ) {
+			WPBMap::addAllMappedShortcodes();
 		}
 
 		wp_send_json(

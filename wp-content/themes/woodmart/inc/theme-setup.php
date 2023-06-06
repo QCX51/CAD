@@ -33,24 +33,6 @@ if ( ! function_exists( 'woodmart_gallery_shortcode_add_scripts_styles' ) ) {
 
 	add_filter( 'gallery_style', 'woodmart_gallery_shortcode_add_scripts_styles' );
 }
-
-/**
- * ------------------------------------------------------------------------------------------------
- * Set up the content width value based on theme's design.
- * ------------------------------------------------------------------------------------------------
- */
-if( ! isset( $content_width ) ) {
-	$content_width = 1200;
-}
-
-
-/**
- * Make the theme available for translations.
- */
-$lang_dir = WOODMART_THEMEROOT . '/languages';
-load_theme_textdomain( 'woodmart', $lang_dir );
-
-
 /**
  * ------------------------------------------------------------------------------------------------
  * Set up theme default and register various supported features
@@ -104,6 +86,11 @@ if( ! function_exists( 'woodmart_theme_setup' ) ) {
 
 		add_editor_style( get_template_directory_uri() . '/css/editor-style.css' );
 
+		/**
+		 * Make the theme available for translations.
+		 */
+		$lang_dir = WOODMART_THEMEROOT . '/languages';
+		load_theme_textdomain( 'woodmart', $lang_dir );
 	}
 
 	add_action( 'after_setup_theme', 'woodmart_theme_setup' );
@@ -131,14 +118,15 @@ if( ! function_exists( 'woodmart_upload_mimes' ) ) {
 			$mimes['svg'] = 'image/svg+xml';
 			$mimes['svgz'] = 'image/svg+xml';
 		}
-		$mimes['woff'] = 'font/woff';
-		$mimes['woff2'] = 'font/woff2';
+//		$mimes['woff'] = 'font/woff';
+//		$mimes['woff2'] = 'font/woff2';
 		$mimes['ttf'] = 'font/ttf';
 		$mimes['eot'] = 'font/eot';
 		// $mimes['svg'] = 'font/svg';
-		// $mimes['woff'] = 'application/x-font-woff';
-		// $mimes['ttf'] = 'application/x-font-ttf';
-		// $mimes['eot'] = 'application/vnd.ms-fontobject';
+		$mimes['woff'] = 'application/x-font-woff';
+		$mimes['woff2'] = 'application/x-font-woff2';
+		//$mimes['ttf'] = 'application/x-font-ttf';
+		//$mimes['eot'] = 'application/vnd.ms-fontobject';
 		return $mimes;
 	}
 }
@@ -274,8 +262,8 @@ if( ! function_exists( 'woodmart_widget_init' ) ) {
 
 			$footer_classes = '';
 
-			if ( woodmart_get_opt( 'collapse_footer_widgets' ) && woodmart_get_opt( 'old_elements_classes' ) ) {
-				$footer_classes .= ' footer-widget-collapse';
+			if ( woodmart_get_opt( 'collapse_footer_widgets' ) ) {
+				$footer_classes .= woodmart_get_old_classes( ' footer-widget-collapse' );
 			}
 
 			$footer_config = woodmart_get_footer_config( $footer_layout );
@@ -413,7 +401,7 @@ if( ! function_exists( 'woodmart_register_required_plugins' ) ) {
 			);
 		}
 
-	    $config = array(
+	    $config = apply_filters( 'woodmart_tgmpa_configs_plugins', array(
 	        'default_path' => '',                      // Default absolute path to pre-packaged plugins.
 	        'menu'         => 'tgmpa-install-plugins', // Menu slug.
 	        'has_notices'  => true,                    // Show admin notices or not.
@@ -441,7 +429,8 @@ if( ! function_exists( 'woodmart_register_required_plugins' ) ) {
 	            'complete'                        => 'All plugins installed and activated successfully. %s', // %s = dashboard link.
 	            'nag_type'                        => 'updated' // Determines admin notice type - can only be 'updated', 'update-nag' or 'error'.
 	        )
-	    );
+	    )
+		);
 
 	    tgmpa( $plugins, $config );
 

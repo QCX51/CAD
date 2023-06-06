@@ -1,21 +1,23 @@
 /* global woodmart_settings */
 (function($) {
 	woodmartThemeModule.wishlist = function() {
-		var cookiesName = 'woodmart_wishlist_count';
+		var countCookiesName = 'woodmart_wishlist_count';
+		var productCookiesName = 'woodmart_wishlist_products';
 
 		if (woodmartThemeModule.$body.hasClass('logged-in')) {
-			cookiesName += '_logged';
+			countCookiesName += '_logged';
 		}
 
 		if (woodmart_settings.is_multisite) {
-			cookiesName += '_' + woodmart_settings.current_blog_id;
+			countCookiesName += '_' + woodmart_settings.current_blog_id;
+			productCookiesName += '_' + woodmart_settings.current_blog_id;
 		}
 
 		if ( typeof Cookies === 'undefined' ) {
 			return;
 		}
 
-		var cookie = Cookies.get(cookiesName);
+		var cookie = Cookies.get(countCookiesName);
 		var count = 0;
 
 		if ('undefined' !== typeof cookie) {
@@ -37,23 +39,55 @@
 
 			if (!$this.hasClass('added')) {
 				e.preventDefault();
+			} else {
+				return true;
 			}
 
 			var productId = $this.data('product-id');
 			var key = $this.data('key');
 
-			if ($this.hasClass('added')) {
-				return true;
+			if ( woodmartThemeModule.$body.hasClass('logged-in') || typeof Cookies === 'undefined' ) {
+				$this.addClass('loading');
+
+				if ( 'undefined' !== typeof woodmart_settings.wishlist_expanded && 'yes' === woodmart_settings.wishlist_expanded && 'disable' !== woodmart_settings.wishlist_show_popup && woodmartThemeModule.$body.hasClass('logged-in') ) {
+					woodmartThemeModule.$document.trigger('wdShowWishlistGroupPopup', [ productId, key ] );
+					return;
+				}
+
+				addProductWishlistAJAX( productId, '', key );
+			} else {
+				var products = {};
+				var wishlistCookies = Cookies.get(productCookiesName);
+
+				if ( 'undefined' !== typeof wishlistCookies && wishlistCookies ) {
+					var cookiesProducts = JSON.parse(wishlistCookies);
+
+					if ( Object.keys(cookiesProducts).length ) {
+						products = cookiesProducts;
+					}
+				}
+
+				products[ productId ] = {
+					'product_id' : productId
+				}
+
+				var count = Object.keys(products).length
+
+				updateCountWidget(count);
+
+				Cookies.set(productCookiesName, JSON.stringify(products), {
+					expires: 7,
+					path   : '/',
+					secure : woodmart_settings.cookie_secure_param
+				});
+				Cookies.set(countCookiesName, count, {
+					expires: 7,
+					path   : '/',
+					secure : woodmart_settings.cookie_secure_param
+				});
+
+				updateButton( $this );
 			}
-
-			$this.addClass('loading');
-
-			if ( 'undefined' !== typeof woodmart_settings.wishlist_expanded && 'yes' === woodmart_settings.wishlist_expanded && 'disable' !== woodmart_settings.wishlist_show_popup && woodmartThemeModule.$body.hasClass('logged-in') ) {
-				woodmartThemeModule.$document.trigger('wdShowWishlistGroupPopup', [ productId, key ] );
-				return;
-			}
-
-			addProductWishlistAJAX( productId, '', key );
 		});
 
 		woodmartThemeModule.$body.on('click', '.wd-wishlist-remove', function(e) {
@@ -68,14 +102,44 @@
 
 			$this.addClass('loading');
 
-			removeProductWishlistAJAX(
-				$this.data('product-id'),
-				groupId,
-				$this.parents('.wd-products-holder'),
-				function () {
-					$this.removeClass('loading');
+			if ( woodmartThemeModule.$body.hasClass('logged-in') || 'undefined' === typeof Cookies || 1 === $this.parents('.products.elements-grid').find('.product-grid-item').length ) {
+				removeProductWishlistAJAX(
+					$this.data('product-id'),
+					groupId,
+					$this.parents('.wd-products-holder'),
+					function () {
+						$this.removeClass('loading');
+					}
+				);
+			} else {
+				$this.parents('.product-grid-item').remove();
+
+				var wishlistCookies = Cookies.get(productCookiesName);
+				var products = {};
+
+				if ( 'undefined' !== typeof wishlistCookies && wishlistCookies ) {
+					products = JSON.parse(wishlistCookies);
+
+					if ( Object.keys(products).length ) {
+						delete products[$this.data('product-id')];
+					}
 				}
-			);
+
+				var count = Object.keys(products).length;
+
+				updateCountWidget( count );
+
+				Cookies.set(productCookiesName, JSON.stringify(products), {
+					expires: 7,
+					path   : '/',
+					secure : woodmart_settings.cookie_secure_param
+				});
+				Cookies.set(countCookiesName, count, {
+					expires: 7,
+					path   : '/',
+					secure : woodmart_settings.cookie_secure_param
+				});
+			}
 		});
 
 		woodmartThemeModule.$body.on('click', '.wd-wishlist-checkbox', function(e) {
@@ -211,7 +275,6 @@
 		// Add product in wishlist.
 		function addProductWishlistAJAX( productId, group, key, callback = '' ) {
 			var $this = $('a[data-product-id=' + productId + ']');
-			var addedText = $this.data('added-text');
 
 			$.ajax({
 				url     : woodmart_settings.ajaxurl,
@@ -225,24 +288,21 @@
 				method  : 'GET',
 				success : function(response) {
 					if (response) {
-						$this.addClass('added');
-
-						if (response.wishlist_content) {
-							updateWishlist(response);
-						}
-
-						if ($this.find('span').length > 0) {
-							$this.find('span').text(addedText);
-						} else {
-							$this.text(addedText);
+						if ( response.count ) {
+							updateCountWidget(response.count);
 						}
 
 						if (response.fragments) {
 							woodmartThemeModule.$document.trigger('wdWishlistSaveFragments', [response.fragments, response.hash]);
+
+							$.each( response.fragments, function( key, html ) {
+								woodmartThemeModule.removeDuplicatedStylesFromHTML(html, function(html) {
+									$( key ).replaceWith(html);
+								});
+							});
 						}
 
-						woodmartThemeModule.$document.trigger('added_to_wishlist');
-						woodmartThemeModule.$document.trigger('wdUpdateTooltip', $this);
+						updateButton( $this );
 					} else {
 						console.log('something wrong loading wishlist data ', response);
 					}
@@ -300,6 +360,21 @@
 					console.log('We cant remove from wishlist. Something wrong with AJAX response. Probably some PHP conflict.');
 				},
 			});
+		}
+
+		function updateButton( $button ) {
+			var addedText = $button.data('added-text');
+
+			if ($button.find('span').length > 0) {
+				$button.find('span').text(addedText);
+			} else {
+				$button.text(addedText);
+			}
+
+			$button.addClass('added');
+
+			woodmartThemeModule.$document.trigger('added_to_wishlist');
+			woodmartThemeModule.$document.trigger('wdUpdateTooltip', $button);
 		}
 	};
 

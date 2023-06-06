@@ -76,11 +76,13 @@
 
 		#wpbody-content {
 			position: relative;
+			// position: sticky;
+			// top: 32px;
 			padding-top: 151px;
 			// max-width: var(--xts-content-width);
 			width: calc(100% - 20px);
 
-			> *:not(div[class*="xts-"]):not(.wrap):not(#whb-header-builder) {
+			> *:not(div[class*="xts-"]):not(.wrap):not(#whb-header-builder):not([id*="screen-meta"]) {
 				display: none !important;
 			}
 
@@ -96,6 +98,25 @@
 			.wrap {
 				margin-right: 0;
 				margin-left: 0;
+			}
+
+			.xts-popup-opened & {
+				z-index: 9999;
+			}
+		}
+
+		#screen-meta {
+			margin: -20px -20px 20px -20px;
+			border-left: 0;
+			border-right: 0;
+			border-color: var(--xts-option-border-color);
+		}
+
+		#screen-meta-links {
+			margin: -21px 0 0 0;
+
+			.show-settings {
+				border-color: #E2E4E5;
 			}
 		}
 	}

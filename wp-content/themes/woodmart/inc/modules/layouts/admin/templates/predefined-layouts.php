@@ -17,7 +17,7 @@
 					<img src="<?php echo esc_url( WOODMART_THEME_DIR . '/inc/modules/layouts/admin/predefined/' . $layout_type . '/' . $layout . '/preview.jpg' ); ?>" alt="<?php echo esc_attr__( 'Layout preview', 'woodmart' ); ?>">
 					<?php if ( ! empty( $data['url'] ) ) : ?>
 						<div class="xts-import-preview-wrap">
-							<a href="<?php echo esc_url( $data['url'] ); ?>" class="xts-btn xts-color-white xts-import-item-preview xts-i-view" target="_blank">
+							<a href="<?php echo esc_url( $data['url'] ); ?>" class="xts-btn xts-color-primary xts-import-item-preview xts-i-view" target="_blank">
 								<?php esc_html_e( 'Live preview', 'woodmart' ); ?>
 							</a>
 						</div>

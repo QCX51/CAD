@@ -95,7 +95,7 @@ if ( ! function_exists( 'woodmart_elementor_instagram_template' ) ) {
 				$wrapper_classes .= ' disable-owl-mobile';
 			}
 
-			$pics_classes    .= ' owl-carousel ' . woodmart_owl_items_per_slide( $settings['per_row'], array(), false, false, $settings['custom_sizes'] );
+			$pics_classes    .= ' owl-carousel wd-owl ' . woodmart_owl_items_per_slide( $settings['per_row'], array(), false, false, $settings['custom_sizes'] );
 			$wrapper_classes .= ' wd-carousel-container';
 			$wrapper_classes .= ' wd-carousel-spacing-' . $settings['spacing_custom'];
 		} else {

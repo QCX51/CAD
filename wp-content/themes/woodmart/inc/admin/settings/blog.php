@@ -124,7 +124,7 @@ Options::add_field(
 	array(
 		'id'          => 'blog_style',
 		'name'        => esc_html__( 'Blog style', 'woodmart' ),
-		'description' => esc_html__( 'You can use flat style or add a shadow to your blog posts.', 'woodmart' ),
+		'description' => esc_html__( 'You can use flat style or add a background to your blog posts.', 'woodmart' ),
 		'group'       => esc_html__( 'Style', 'woodmart' ),
 		'type'        => 'buttons',
 		'section'     => 'blog_archive_section',
@@ -135,20 +135,34 @@ Options::add_field(
 				'hint'  => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'blog-style-flat.jpg" alt="">', 'woodmart' ), true ),
 			),
 			'shadow' => array(
-				'name'  => esc_html__( 'With shadow', 'woodmart' ),
+				'name'  => esc_html__( 'With background', 'woodmart' ),
 				'hint'  => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'blog-style-with-shadow.jpg" alt="">', 'woodmart' ), true ),
 				'value' => 'shadow',
 			),
 		),
-		'requires'    => array(
-			array(
-				'key'     => 'blog_design',
-				'compare' => 'not_equals',
-				'value'   => array( 'meta-image' ),
-			),
-		),
 		'default'     => 'shadow',
 		'priority'    => 20,
+	)
+);
+
+Options::add_field(
+	array(
+		'id'       => 'blog_with_shadow',
+		'name'     => esc_html__( 'Add shadow', 'woodmart' ),
+		'group'    => esc_html__( 'Style', 'woodmart' ),
+		'type'     => 'switcher',
+		'section'  => 'blog_archive_section',
+		'default'  => true,
+		'on-text'  => esc_html__( 'Yes', 'woodmart' ),
+		'off-text' => esc_html__( 'No', 'woodmart' ),
+		'requires' => array(
+			array(
+				'key'     => 'blog_style',
+				'compare' => 'equals',
+				'value'   => array( 'shadow' ),
+			),
+		),
+		'priority' => 21,
 	)
 );
 
@@ -358,7 +372,7 @@ Options::add_field(
 			),
 			'infinit'    => array(
 				'name'  => esc_html__( 'Infinit scrolling', 'woodmart' ),
-				'hint'  => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'blog-pagination-pagination-infinit.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'blog-pagination-pagination-infinit.mp4" autoplay loop muted></video>',
 				'value' => 'infinit',
 			),
 		),

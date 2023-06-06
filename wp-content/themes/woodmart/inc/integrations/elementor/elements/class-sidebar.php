@@ -133,4 +133,4 @@ class Sidebar extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Sidebar() );
+Plugin::instance()->widgets_manager->register( new Sidebar() );

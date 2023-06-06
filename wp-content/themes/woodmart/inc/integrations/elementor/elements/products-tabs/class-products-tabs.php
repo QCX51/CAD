@@ -1235,6 +1235,20 @@ class Products_Tabs extends Widget_Base {
 		);
 
 		$this->add_control(
+			'products_color_scheme',
+			array(
+				'label'        => esc_html__( 'Products color scheme', 'woodmart' ),
+				'type'         => Controls_Manager::SELECT,
+				'default'      => 'default',
+				'options'      => array(
+					'default' => esc_html__( 'Default', 'woodmart' ),
+					'dark'    => esc_html__( 'Dark', 'woodmart' ),
+					'light'   => esc_html__( 'Light', 'woodmart' ),
+				),
+			)
+		);
+
+		$this->add_control(
 			'products_bordered_grid',
 			[
 				'label'        => esc_html__( 'Bordered grid', 'woodmart' ),
@@ -1262,7 +1276,47 @@ class Products_Tabs extends Widget_Base {
 				'default' => 'outside',
 			)
 		);
-		
+
+		$this->add_control(
+			'products_with_background',
+			array(
+				'label'        => esc_html__( 'Products background', 'woodmart' ),
+				'description'  => esc_html__( 'Add a background to the products in your grid.', 'woodmart' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => '0',
+				'label_on'     => esc_html__( 'Yes', 'woodmart' ),
+				'label_off'    => esc_html__( 'No', 'woodmart' ),
+				'return_value' => '1',
+			)
+		);
+
+		$this->add_control(
+			'products_background',
+			array(
+				'label'     => esc_html__( 'Custom background color', 'woodmart' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .wd-products-with-bg, {{WRAPPER}} .wd-products-with-bg .product-grid-item' => '--wd-prod-bg:{{VALUE}}; --wd-bordered-bg:{{VALUE}};',
+				),
+				'condition' => array(
+					'products_with_background' => array( '1' ),
+				),
+			)
+		);
+
+		$this->add_control(
+			'products_shadow',
+			array(
+				'label'        => esc_html__( 'Products shadow', 'woodmart' ),
+				'description'  => esc_html__( 'Add a shadow to products if the initial product style did not have one.', 'woodmart' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => '0',
+				'label_on'     => esc_html__( 'Yes', 'woodmart' ),
+				'label_off'    => esc_html__( 'No', 'woodmart' ),
+				'return_value' => '1',
+			)
+		);
+
 		$this->add_control(
 			'product_quantity',
 			[
@@ -1276,6 +1330,78 @@ class Products_Tabs extends Widget_Base {
 				),
 			]
 		);
+
+		$this->add_control(
+			'grid_gallery',
+			array(
+				'label'       => esc_html__( 'Product gallery', 'woodmart' ),
+				'description' => esc_html__( 'Add the ability to view the product gallery on the products loop.', 'woodmart' ),
+				'type'        => Controls_Manager::SELECT,
+				'default'     => '',
+				'options'     => array(
+					''    => esc_html__( 'Inherit', 'woodmart' ),
+					'yes' => esc_html__( 'Yes', 'woodmart' ),
+					'no'  => esc_html__( 'No', 'woodmart' ),
+				),
+			)
+		);
+
+		$this->start_controls_tabs(
+			'grid_gallery_tabs',
+			array(
+				'condition' => array(
+					'grid_gallery' => array( 'yes' ),
+				),
+			)
+		);
+
+		$this->start_controls_tab(
+			'grid_gallery_desktop_tab',
+			array(
+				'label' => esc_html__( 'Desktop', 'woodmart' ),
+			)
+		);
+
+		$this->add_control(
+			'grid_gallery_control',
+			array(
+				'label'   => esc_html__( 'Product gallery controls', 'woodmart' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => array(
+					''       => esc_html__( 'Inherit', 'woodmart' ),
+					'arrows' => esc_html__( 'Arrows', 'woodmart' ),
+					'hover'  => esc_html__( 'Hover', 'woodmart' ),
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->start_controls_tab(
+			'grid_gallery_mobile_tab',
+			[
+				'label' => esc_html__( 'Mobile devices', 'woodmart' ),
+			]
+		);
+
+		$this->add_control(
+			'grid_gallery_enable_arrows',
+			array(
+				'label'   => esc_html__( 'Product gallery controls', 'woodmart' ),
+				'type'    => Controls_Manager::SELECT,
+				'default' => '',
+				'options' => array(
+					''       => esc_html__( 'Inherit', 'woodmart' ),
+					'none'   => esc_html__( 'None', 'woodmart' ),
+					'arrows' => esc_html__( 'Arrows', 'woodmart' ),
+				),
+			)
+		);
+
+		$this->end_controls_tab();
+
+		$this->end_controls_tabs();
 
 		$this->end_controls_section();
 
@@ -1320,4 +1446,4 @@ class Products_Tabs extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Products_Tabs() );
+Plugin::instance()->widgets_manager->register( new Products_Tabs() );

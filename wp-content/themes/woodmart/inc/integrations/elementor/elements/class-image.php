@@ -322,4 +322,4 @@ class Image extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Image() );
+Plugin::instance()->widgets_manager->register( new Image() );

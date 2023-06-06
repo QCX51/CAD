@@ -41,6 +41,10 @@ if ( ! function_exists( 'woodmart_shortcode_checkout_payment_methods' ) ) {
 
 		Main::setup_preview();
 
+		wc()->cart->calculate_fees();
+		wc()->cart->calculate_shipping();
+		wc()->cart->calculate_totals();
+
 		?>
 		<div class="wd-payment-methods wd-wpb<?php echo esc_attr( $wrapper_classes ); ?>">
 			<?php woocommerce_checkout_payment(); ?>

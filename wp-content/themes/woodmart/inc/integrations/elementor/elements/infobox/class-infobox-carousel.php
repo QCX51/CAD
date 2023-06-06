@@ -339,6 +339,32 @@ class Infobox_Carousel extends Widget_Base {
 		);
 
 		$this->add_control(
+			'image_vertical_alignment',
+			array(
+				'label'     => esc_html__( 'Vertical alignment', 'woodmart' ),
+				'type'      => 'wd_buttons',
+				'options'   => array(
+					'top'    => array(
+						'title' => esc_html__( 'Top', 'woodmart' ),
+						'image' => WOODMART_ASSETS_IMAGES . '/settings/infobox/vertical-position/top.png',
+					),
+					'middle' => array(
+						'title' => esc_html__( 'Middle', 'woodmart' ),
+						'image' => WOODMART_ASSETS_IMAGES . '/settings/infobox/vertical-position/middle.png',
+					),
+					'bottom' => array(
+						'title' => esc_html__( 'Bottom', 'woodmart' ),
+						'image' => WOODMART_ASSETS_IMAGES . '/settings/infobox/vertical-position/bottom.png',
+					),
+				),
+				'default'   => 'top',
+				'condition' => array(
+					'image_alignment' => array( 'left', 'right' ),
+				),
+			)
+		);
+
+		$this->add_control(
 			'title_size',
 			[
 				'label'   => esc_html__( 'Predefined size', 'woodmart' ),
@@ -1176,4 +1202,4 @@ class Infobox_Carousel extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Infobox_Carousel() );
+Plugin::instance()->widgets_manager->register( new Infobox_Carousel() );

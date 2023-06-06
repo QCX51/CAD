@@ -68,6 +68,7 @@ $xts-slider-height: 8px;
 
 		&:empty {
 			height: $xts-slider-height;
+			width: 100%;
 		}
 	}
 
@@ -268,6 +269,10 @@ $xts-slider-height: 8px;
 		border: 1px solid var(--xts-option-border-color) !important;
 		border-radius: var(--xts-option-border-radius);
 		background-color: #F8F8F8;
+
+		.xts-group & {
+			background-color: #FFF;
+		}
 	}
 
 	.rc-slider-step {

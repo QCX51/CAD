@@ -400,16 +400,16 @@ if ( ! function_exists( 'woodmart_fields_css_data_to_css' ) ) {
 								$result = str_replace( '{{SPREAD}}', $device_value['spread'], $result );
 								$result = str_replace( '{{COLOR}}', $device_value['color'], $result );
 							} elseif ( isset( $params['type'] ) && 'wd_dimensions' === $params['type'] ) {
-								if ( false !== stripos( $property, 'top' ) && ( $device_value['top'] || '0' === $device_value['top'] ) ) {
+								if ( false !== stripos( $property, '{{TOP}}' ) && ( $device_value['top'] || '0' === $device_value['top'] ) ) {
 									$result .= str_replace( '{{TOP}}', $device_value['top'], $property );
 								}
-								if ( false !== stripos( $property, 'right' ) && ( $device_value['right'] || '0' === $device_value['right'] ) ) {
+								if ( false !== stripos( $property, '{{RIGHT}}' ) && ( $device_value['right'] || '0' === $device_value['right'] ) ) {
 									$result .= str_replace( '{{RIGHT}}', $device_value['right'], $property );
 								}
-								if ( false !== stripos( $property, 'bottom' ) && ( $device_value['bottom'] || '0' === $device_value['bottom'] ) ) {
+								if ( false !== stripos( $property, '{{BOTTOM}}' ) && ( $device_value['bottom'] || '0' === $device_value['bottom'] ) ) {
 									$result .= str_replace( '{{BOTTOM}}', $device_value['bottom'], $property );
 								}
-								if ( false !== stripos( $property, 'left' ) && ( $device_value['left'] || '0' === $device_value['left'] ) ) {
+								if ( false !== stripos( $property, '{{LEFT}}' ) && ( $device_value['left'] || '0' === $device_value['left'] ) ) {
 									$result .= str_replace( '{{LEFT}}', $device_value['left'], $property );
 								}
 

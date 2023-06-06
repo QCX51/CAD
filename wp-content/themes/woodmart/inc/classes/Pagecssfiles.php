@@ -269,7 +269,7 @@ class WOODMART_Pagecssfiles {
 		$page_files = $this->page_css_files;
 		$localize   = array();
 
-		if ( woodmart_is_combined_needed( 'combined_css', false ) || ! $page_files ) {
+		if ( woodmart_is_combined_needed( 'combined_css' ) || ! $page_files ) {
 			wp_localize_script( 'woodmart-theme', 'woodmart_page_css', array() );
 
 			return;
@@ -304,14 +304,13 @@ class WOODMART_Pagecssfiles {
 	 * Enqueue page css files.
 	 *
 	 * @param string $key             File slug.
-	 * @param bool   $ignore_combined Ignore combine.
 	 */
 	public function enqueue_style( $key, $ignore_combined = false ) {
 		$config         = woodmart_get_config( 'css-files' );
 		$version        = woodmart_get_theme_info( 'Version' );
 		$styles_not_use = woodmart_get_opt( 'styles_not_use' );
 
-		if ( woodmart_is_combined_needed( 'combined_css', false ) && ! $ignore_combined || ! isset(  $config[ $key ] ) ) {
+		if ( woodmart_is_combined_needed( 'combined_css' ) && ! $ignore_combined || ! isset( $config[ $key ] ) ) {
 			return;
 		}
 
@@ -378,15 +377,13 @@ class WOODMART_Pagecssfiles {
 	 * Enqueue inline style by key.
 	 *
 	 * @param string $key             File slug.
-	 * @param bool   $ignore_combined Ignore combine.
 	 */
 	public function enqueue_inline_style( $key, $ignore_combined = false ) {
 		$config         = woodmart_get_config( 'css-files' );
 		$page_files     = $this->page_css_files;
 		$styles_not_use = woodmart_get_opt( 'styles_not_use' );
 
-		if ( ! isset( $config[ $key ] ) || in_array( $key, $page_files, true ) || (
-			woodmart_is_combined_needed( 'combined_css', false ) && ! $ignore_combined ) || isset( $GLOBALS['wd_page_css_ignore'] ) ) {
+		if ( ! isset( $config[ $key ] ) || in_array( $key, $page_files, true ) || ( woodmart_is_combined_needed( 'combined_css' ) && ! $ignore_combined ) || isset( $GLOBALS['wd_page_css_ignore'] ) ) {
 			return;
 		}
 

@@ -621,4 +621,4 @@ class Icon_List extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Icon_List() );
+Plugin::instance()->widgets_manager->register( new Icon_List() );

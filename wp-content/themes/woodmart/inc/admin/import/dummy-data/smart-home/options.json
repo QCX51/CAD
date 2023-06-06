@@ -138,5 +138,6 @@
     },
     "additional_tab_content_type": "html_block",
     "additional_tab_html_block": "242",
-    "portfolio_page": "150"
+    "portfolio_page": "150",
+    "rounding_size": "8"
 }

@@ -127,7 +127,7 @@ do_action( 'woocommerce_before_customer_login_form' ); ?>
 	<?php if ( $tabs ): ?>
 		<div class="col-12 col-md-6 col-register-text">
 
-			<div class="title wd-login-divider register-or<?php echo woodmart_get_old_classes( ' wood-login-divider' ); ?>"><span><?php esc_html_e( 'Or', 'woodmart' ); ?></span></div>
+			<p class="title wd-login-divider <?php echo woodmart_get_old_classes( ' wood-login-divider' ); ?>"><span><?php esc_html_e( 'Or', 'woodmart' ); ?></span></p>
 
 			<?php 
 				$reg_title = woodmart_get_opt( 'reg_title' ) ? woodmart_get_opt( 'reg_title' ) : esc_html__( 'Register', 'woocommerce' );

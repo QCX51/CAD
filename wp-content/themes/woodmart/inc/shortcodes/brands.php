@@ -73,7 +73,7 @@ if( ! function_exists( 'woodmart_shortcode_brands' ) ) {
 
 			$owl_atts = woodmart_get_owl_attributes( $parsed_atts );
 
-			$items_wrap_class .= ' owl-carousel ' . woodmart_owl_items_per_slide( $per_row, array(), false, false, $parsed_atts['custom_sizes'] );
+			$items_wrap_class .= ' owl-carousel wd-owl ' . woodmart_owl_items_per_slide( $per_row, array(), false, false, $parsed_atts['custom_sizes'] );
 			$class .= ' wd-carousel-container';
 			$class .= ' wd-carousel-spacing-0';
 			

@@ -13,6 +13,11 @@ $extra_class .= woodmart_get_old_classes( ' search-button' );
 
 $extra_class .= ' wd-display-' . $params['display'];
 
+if ( isset( $id ) ) {
+	$extra_class .= ' whb-' . $id;
+}
+
+
 $settings = whb_get_settings();
 
 if ( 'form' === $params['display'] || 'full-screen-2' === $params['display'] ) {
@@ -44,8 +49,20 @@ if ( 'form' === $params['display'] || 'full-screen-2' === $params['display'] ) {
 	return;
 }
 
+if ( ! empty( $params['style'] ) ) {
+	$extra_class .= ' wd-style-' . $params['style'];
+}
+
+if ( isset( $params['wrap_type'], $params['style'], $params['icon_design'] ) && 'icon_and_text' === $params['wrap_type'] && 'text' === $params['style'] && in_array( $params['icon_design'], array( '6', '7' ), true ) ) {
+	$extra_class .= ' wd-with-wrap';
+}
+
 if ( ! empty( $params['icon_design'] ) ) {
 	$extra_class .= ' wd-design-' . $params['icon_design'];
+}
+
+if ( '8' === $params['icon_design'] ) {
+	woodmart_enqueue_inline_style( 'mod-tools-design-8' );
 }
 
 woodmart_enqueue_js_script( 'mobile-search' );
@@ -54,12 +71,24 @@ woodmart_enqueue_js_script( 'mobile-search' );
 
 <div class="wd-header-search wd-tools-element wd-header-search-mobile<?php echo esc_attr( $extra_class ); ?>">
 	<a href="#" rel="nofollow noopener" aria-label="<?php esc_html_e( 'Search', 'woodmart' ); ?>">
-		<span class="wd-tools-icon<?php echo woodmart_get_old_classes( ' search-button-icon' ); ?>">
-			<?php
-			if ( $icon_type == 'custom' ) {
-				echo whb_get_custom_icon( $params['custom_icon'] );
-			}
-			?>
-		</span>
+		<?php if ( '8' === $params['icon_design'] || ( isset( $params['wrap_type'], $params['style'], $params['icon_design'] ) && 'icon_and_text' === $params['wrap_type'] && 'text' === $params['style'] && in_array( $params['icon_design'], array( '6', '7' ), true ) ) ) : ?>
+		<span class="wd-tools-inner">
+		<?php endif; ?>
+
+			<span class="wd-tools-icon<?php echo woodmart_get_old_classes( ' search-button-icon' ); ?>">
+				<?php
+					if ( $icon_type == 'custom' ) {
+						echo whb_get_custom_icon( $params['custom_icon'] );
+					}
+				?>
+			</span>
+
+			<span class="wd-tools-text">
+				<?php echo esc_html__( 'Search', 'woodmart' ); ?>
+			</span>
+
+		<?php if ( '8' === $params['icon_design'] || ( isset( $params['wrap_type'], $params['style'], $params['icon_design'] ) && 'icon_and_text' === $params['wrap_type'] && 'text' === $params['style'] && in_array( $params['icon_design'], array( '6', '7' ), true ) ) ) : ?>
+			</span>
+		<?php endif; ?>
 	</a>
 </div>

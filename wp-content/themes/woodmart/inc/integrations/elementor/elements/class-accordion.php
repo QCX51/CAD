@@ -266,6 +266,19 @@ class Accordion extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'hide_top_bottom_border',
+			array(
+				'label'     => esc_html__( 'Hide top & bottom border', 'woodmart' ),
+				'type'      => Controls_Manager::SWITCHER,
+				'label_on'  => esc_html__( 'Yes', 'woodmart' ),
+				'label_off' => esc_html__( 'No', 'woodmart' ),
+				'condition' => array(
+					'style' => 'default',
+				),
+			)
+		);
+
 		$this->add_group_control(
 			Group_Control_Box_Shadow::get_type(),
 			array(
@@ -522,6 +535,7 @@ class Accordion extends Widget_Base {
 			 */
 			'style'                     => 'default',
 			'state'                     => 'first',
+			'hide_top_bottom_border'    => '',
 
 			/**
 			 * Title Settings.
@@ -546,6 +560,10 @@ class Accordion extends Widget_Base {
 		woodmart_enqueue_inline_style( 'accordion' );
 
 		$wrapper_classes = ' wd-style-' . $settings['style'];
+
+		if ( 'yes' === $settings['hide_top_bottom_border'] ) {
+			$wrapper_classes .= ' wd-border-off';
+		}
 
 		$title_classes_wrapper  = ' text-' . $settings['title_text_alignment'];
 		$title_classes_wrapper .= ' wd-opener-pos-' . $settings['opener_alignment'];
@@ -646,4 +664,4 @@ class Accordion extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Accordion() );
+Plugin::instance()->widgets_manager->register( new Accordion() );

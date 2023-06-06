@@ -82,7 +82,7 @@ Options::add_section(
 		'id'       => 'general_search',
 		'parent'   => 'general_parent_section',
 		'name'     => esc_html__( 'Search', 'woodmart' ),
-		'priority' => 670,
+		'priority' => 70,
 		'icon'     => 'xts-i-home',
 	)
 );
@@ -185,10 +185,20 @@ Options::add_section(
 
 Options::add_section(
 	array(
+		'id'       => 'icons_fonts_section',
+		'parent'   => 'general_typography_section',
+		'name'     => esc_html__( 'Icons fonts', 'woodmart' ),
+		'priority' => 40,
+		'icon'     => 'xts-i-typography',
+	)
+);
+
+Options::add_section(
+	array(
 		'id'       => 'typekit_section',
 		'parent'   => 'general_typography_section',
 		'name'     => esc_html__( 'Adobe fonts', 'woodmart' ),
-		'priority' => 40,
+		'priority' => 50,
 		'icon'     => 'xts-i-typography',
 	)
 );
@@ -435,10 +445,28 @@ Options::add_section(
 
 Options::add_section(
 	array(
+		'id'       => 'cart_section',
+		'parent'   => 'general_shop_section',
+		'name'     => esc_html__( 'Cart', 'woodmart' ),
+		'priority' => 75,
+	)
+);
+
+Options::add_section(
+	array(
+		'id'       => 'checkout_section',
+		'parent'   => 'general_shop_section',
+		'name'     => esc_html__( 'Checkout', 'woodmart' ),
+		'priority' => 80,
+	)
+);
+
+Options::add_section(
+	array(
 		'id'       => 'thank_you_page_section',
 		'parent'   => 'general_shop_section',
 		'name'     => esc_html__( 'Thank you page', 'woodmart' ),
-		'priority' => 80,
+		'priority' => 85,
 		'icon'     => 'xts-i-cart',
 	)
 );

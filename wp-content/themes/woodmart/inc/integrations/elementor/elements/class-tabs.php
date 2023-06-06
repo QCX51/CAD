@@ -806,4 +806,4 @@ class Tabs extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Tabs() );
+Plugin::instance()->widgets_manager->register( new Tabs() );

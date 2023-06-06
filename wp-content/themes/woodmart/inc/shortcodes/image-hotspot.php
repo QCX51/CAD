@@ -89,7 +89,7 @@ if ( ! function_exists( 'woodmart_hotspot_shortcode' ) ) {
 		$left = ( isset( $position[0] ) && $position[0] ) ? $position[0] : '50';
 		$top = ( isset( $position[1] ) && $position[1] ) ? $position[1] : '50';
 
-		if ( $product_id && woodmart_woocommerce_installed() ) $product = wc_get_product( $product_id );
+		if ( $product_id && woodmart_woocommerce_installed() ) $product = wc_get_product( apply_filters( 'wpml_object_id', $product_id, 'product', true ) );
 
 		if ( $hotspot_type == 'product' && $product ) {
 			$rating_count = $product->get_rating_count();

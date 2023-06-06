@@ -18,7 +18,13 @@
 					do_action( 'woocommerce_before_shop_loop_item_title' );
 				?>
 			</a>
-			<?php woodmart_hover_image(); ?>
+
+			<?php
+			if ( 'no' === woodmart_loop_prop( 'grid_gallery' ) || ! woodmart_loop_prop( 'grid_gallery' ) ) {
+				woodmart_hover_image();
+			}
+			?>
+
 			<div class="wd-buttons wd-pos-r-t<?php echo woodmart_get_old_classes( ' woodmart-buttons' ); ?>">
 				<?php woodmart_enqueue_js_script( 'btns-tooltip' ); ?>
 				<?php woodmart_quick_view_btn( get_the_ID() ); ?>
@@ -27,7 +33,7 @@
 			</div>
 		</div>
 
-		<div class="product-list-content">
+		<div class="product-list-content wd-scroll">
 			<?php
 				/**
 				 * woocommerce_shop_loop_item_title hook

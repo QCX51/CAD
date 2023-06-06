@@ -1,9 +1,62 @@
-<?php if ( ! defined( 'WOODMART_THEME_DIR' ) ) {
+<?php
+	if ( ! defined( 'WOODMART_THEME_DIR' ) ) {
 	exit( 'No direct script access allowed' );
 }
 
 if ( 'new' !== woodmart_get_opt( 'variation_gallery_storage_method', 'old' ) ) {
 	return;
+}
+
+if ( ! function_exists( 'woodmart_export_variation_gallery' ) ) {
+	function woodmart_export_variation_gallery( $value, $meta, $product, $row ) {
+		if ( ! $value || 'wd_additional_variation_images_data' !== $meta->key ) {
+			return $value;
+		}
+
+		$image_ids  = explode( ',', $value );
+		$images_src = array();
+
+		foreach ( $image_ids as $image_id ) {
+			$src = wp_get_attachment_image_src( $image_id, 'full' );
+
+			if ( ! empty( $src[0] ) ) {
+				$images_src[] = $src[0];
+			}
+		}
+
+		if ( $image_ids ) {
+			return implode( ', ', $images_src );
+		}
+
+		return $value;
+	}
+
+	add_filter( 'woocommerce_product_export_meta_value', 'woodmart_export_variation_gallery', 10, 4 );
+}
+
+if ( ! function_exists( 'woodmart_importer_variation_gallery' ) ) {
+	function woodmart_importer_variation_gallery( $data ) {
+		if ( !empty( $data['meta:wd_additional_variation_images_data'] ) ) {
+			$images_url = explode( ', ', $data['meta:wd_additional_variation_images_data'] );
+			$images_id  = array();
+
+			foreach ( $images_url as $url ) {
+				$id = media_sideload_image( $url, 0, '', 'id' );
+
+				if ( ! is_wp_error( $id ) ) {
+					$images_id[] = $id;
+				}
+			}
+
+			if ( $images_id ) {
+				$data['meta:wd_additional_variation_images_data'] = implode( ',', $images_id );
+			}
+		}
+
+		return $data;
+	}
+
+	add_filter( 'woocommerce_product_importer_pre_expand_data', 'woodmart_importer_variation_gallery', 10, 1 );
 }
 
 if ( ! function_exists( 'woodmart_avi_save_images' ) ) {
@@ -75,7 +128,7 @@ if ( ! function_exists( 'woodmart_avi_admin_html' ) ) {
 							 height="<?php echo esc_attr( $attachment['url'][2] ); ?>" alt="variation image">
 						
 						<a href="#" class="delete woodmart-remove-variation-gallery-image">
-							<span class="dashicons dashicons-dismiss"></span>
+							<span class="xts-i-close"></span>
 						</a>
 					</li>
 				<?php endforeach; ?>
@@ -203,6 +256,6 @@ if ( ! function_exists( 'woodmart_avi_get_image_data' ) ) {
 
 		woodmart_lazy_loading_init();
 
-		return $output;
+		return apply_filters( 'woodmart_get_single_product_image_data', $output, $attachment_id, $main_image );
 	}
 }

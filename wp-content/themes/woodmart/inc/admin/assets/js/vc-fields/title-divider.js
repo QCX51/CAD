@@ -13,6 +13,11 @@
 
 		$('.vc_wrapper-param-type-woodmart_title_divider').each(function() {
 			var $divider = $(this);
+
+			if ( 'undefined' !== typeof $divider.data('param_settings') && 'undefined' !== typeof $divider.data('param_settings').without_group && $divider.data('param_settings').without_group ) {
+				return;
+			}
+
 			var $fields = $divider.nextUntil('.vc_wrapper-param-type-woodmart_title_divider, .vc_shortcode-param.woodmart-vc-no-wrap');
 			var $wrapper = $('<div class="woodmart-td-wrapper"></div>');
 			var $content = $('<div class="woodmart-td-content xts-group"></div>');

@@ -99,7 +99,7 @@ if ( ! function_exists( 'woodmart_shortcode_instagram' ) ) {
 				$class .= ' disable-owl-mobile';
 			}
 
-			$pics_classes .= ' owl-carousel ' . woodmart_owl_items_per_slide( $per_row, array(), false, false, $custom_sizes );
+			$pics_classes .= ' owl-carousel wd-owl ' . woodmart_owl_items_per_slide( $per_row, array(), false, false, $custom_sizes );
 			$class        .= ' wd-carousel-container';
 			$class        .= ' wd-carousel-spacing-' . $spacing_custom;
 		} else {
@@ -329,7 +329,7 @@ if ( ! function_exists( 'xts_insert_image_from_url' ) ) {
 		require_once ABSPATH . 'wp-admin/includes/image.php';
 
 		preg_match( '/[^\?]+\.(jpe?g|jpe|gif|png|webp)\b/i', $url, $matches );
-		$img_name = wp_basename( $matches[0] );
+		$img_name = wp_basename( $matches[0], '.' . $matches[1] );
 
 		$img_by_slug = woodmart_get_image_id_by_slug( $img_name );
 
@@ -341,6 +341,8 @@ if ( ! function_exists( 'xts_insert_image_from_url' ) ) {
 			if ( is_wp_error( $upload ) ) {
 				return $upload->get_error_message();
 			}
+
+			update_post_meta( $upload, '_woodmart_instagram_image_name', $img_name );
 
 			return $upload;
 		}
@@ -364,7 +366,20 @@ if ( ! function_exists( 'woodmart_get_image_id_by_slug' ) ) {
 
 		$args = array(
 			'post_type'      => 'attachment',
-			'name'           => sanitize_title( $slug ),
+			'posts_per_page' => 1,
+			'meta_key'       => '_woodmart_instagram_image_name',
+			'meta_value'     => $slug,
+		);
+
+		$post = get_posts( $args );
+
+		if ( $post ) {
+			return $post[0]->ID;
+		}
+
+		$args = array(
+			'post_type'      => 'attachment',
+			's'              => sanitize_title( $slug ),
 			'posts_per_page' => 1,
 		);
 

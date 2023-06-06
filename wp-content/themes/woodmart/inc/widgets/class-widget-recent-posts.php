@@ -25,6 +25,9 @@ if ( ! class_exists( 'WOODMART_Recent_Posts' ) ) {
 		// Output function
 
 		function widget( $args, $instance )	{
+			if ( $this->is_widget_preview() ) {
+				return;
+			}
 
 			extract($args);
 
@@ -78,7 +81,7 @@ if ( ! class_exists( 'WOODMART_Recent_Posts' ) ) {
 								<?php endif ?>
 							<?php endif ?>						
 							<div class="recent-posts-info">
-								<h5 class="wd-entities-title"><a href="<?php echo esc_url( get_permalink() ) ?>" title="<?php echo sprintf( esc_attr__( 'Permalink to %s', 'woodmart' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo esc_attr( get_the_title() ); ?></a></h5>
+								<div class="wd-entities-title title"><a href="<?php echo esc_url( get_permalink() ) ?>" title="<?php echo sprintf( esc_attr__( 'Permalink to %s', 'woodmart' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php echo esc_attr( get_the_title() ); ?></a></div>
 
 								<?php if ( $date ): ?>
 									<?php $date = get_the_date(); ?>

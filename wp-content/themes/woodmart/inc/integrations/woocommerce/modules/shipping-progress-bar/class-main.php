@@ -327,20 +327,6 @@ class Main extends Singleton {
 			$limit = woodmart_get_opt( 'shipping_progress_bar_amount' );
 		}
 
-		if ( defined( 'WOOCS_VERSION' ) ) {
-			global $WOOCS;
-
-			$limit *= $WOOCS->get_sign_rate( array( 'sign' => $WOOCS->current_currency ) );
-		} elseif ( class_exists( 'woocommerce_wpml' ) ) {
-			global $woocommerce_wpml;
-
-			$multi_currency = $woocommerce_wpml->get_multi_currency();
-
-			if ( ! empty( $multi_currency->prices ) && method_exists( $multi_currency->prices, 'convert_price_amount' ) ) {
-				$limit = $multi_currency->prices->convert_price_amount( $limit );
-			}
-		}
-
 		if ( $total && 'include' === woodmart_get_opt( 'shipping_progress_bar_include_coupon' ) && WC()->cart->get_coupons() ) {
 			foreach ( WC()->cart->get_coupons() as $coupon ) {
 				$total -= WC()->cart->get_coupon_discount_amount( $coupon->get_code(), WC()->cart->display_cart_ex_tax );
@@ -351,6 +337,8 @@ class Main extends Singleton {
 				}
 			}
 		}
+
+		$limit = apply_filters( 'woodmart_shipping_progress_bar_amount', $limit );
 
 		if ( $total < $limit && ! $free_shipping ) {
 			$percent = floor( ( $total / $limit ) * 100 );

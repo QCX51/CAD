@@ -14,6 +14,27 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'maintenance',
 		'default'     => false,
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 10,
+	)
+);
+
+Options::add_field(
+	array(
+		'id'          => 'maintenance_access_key',
+		'name'        => esc_html__( 'Access key for maintenance mode', 'woodmart' ),
+		'description' => esc_html__( 'You can pass a special GET parameter to suppress the maintenance mode. For example, https://website.com/?suppress_maintenance', 'woodmart' ),
+		'type'        => 'text_input',
+		'section'     => 'maintenance',
+		'requires'    => array(
+			array(
+				'key'     => 'maintenance_mode',
+				'compare' => 'equals',
+				'value'   => true,
+			),
+		),
+		'default'     => '',
+		'priority'    => 20,
 	)
 );

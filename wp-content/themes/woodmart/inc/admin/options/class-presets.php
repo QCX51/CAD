@@ -144,6 +144,7 @@ class Presets extends Singleton {
 						'taxonomy'   => '',
 						'custom'     => '',
 						'value_id'   => '',
+						'user_role'  => '',
 					)
 				);
 			}
@@ -560,6 +561,7 @@ class Presets extends Singleton {
 				'taxonomy'   => '',
 				'custom'     => '',
 				'value_id'   => '',
+				'user_role'  => '',
 			)
 		);
 
@@ -593,6 +595,8 @@ class Presets extends Singleton {
 				'is_rtl'         => 'Is RTL',
 			)
 		);
+
+		$user_roles = get_editable_roles();
 
 		$title = false;
 
@@ -636,6 +640,9 @@ class Presets extends Singleton {
 					</option>
 					<option value="custom" <?php selected( 'custom', $rule['type'] ); ?>>
 						<?php esc_html_e( 'Custom', 'woodmart' ); ?>
+					</option>
+					<option value="user_role" <?php selected( 'user_role', $rule['type'] ); ?>>
+						<?php esc_html_e( 'User role', 'woodmart' ); ?>
 					</option>
 				</select>
 			</div>
@@ -688,6 +695,16 @@ class Presets extends Singleton {
 							<?php echo esc_html( $title ); ?>
 						</option>
 					<?php endif; ?>
+				</select>
+			</div>
+
+			<div class="xts-condition-user-role<?php echo 'user_role' !== $rule['type'] ? ' xts-hidden' : ''; ?>">
+				<select id="user_role">
+					<?php foreach ( $user_roles as $user_role_id => $user_role ) : ?>
+						<option value="<?php echo esc_html( $user_role_id ); ?>" <?php selected( $user_role_id, $rule['user_role'] ); ?>>
+							<?php echo esc_html( $user_role['name'] ); ?>
+						</option>
+					<?php endforeach ?>
 				</select>
 			</div>
 
@@ -830,6 +847,10 @@ class Presets extends Singleton {
 								$is_active = 'equals' === $rule['comparison'] ? is_rtl() : ! is_rtl();
 								break;
 						}
+						break;
+					case 'user_role':
+						$condition = in_array( $rule['user_role'], woodmart_get_current_user_roles(), true );
+						$is_active = 'equals' === $rule['comparison'] ? $condition : ! $condition;
 						break;
 				}
 

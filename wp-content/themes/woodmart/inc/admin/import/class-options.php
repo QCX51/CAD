@@ -133,7 +133,6 @@ class Options {
 
 		// Set builder to WPB or Elementor.
 		$xts_woodmart_options['variation_gallery_storage_method'] = 'new';
-		$xts_woodmart_options['old_elements_classes']             = false;
 
 		// Merge new options with other existed ones.
 		$new_options = $new_options + $xts_woodmart_options;

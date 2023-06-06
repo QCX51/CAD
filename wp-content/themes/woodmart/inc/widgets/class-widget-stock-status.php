@@ -28,14 +28,14 @@ if ( ! class_exists( 'WOODMART_Stock_Status' ) ) {
 					'id'      => 'instock',
 					'type'    => 'checkbox',
 					'default' => 1,
-					'name'    => esc_html__( 'On Sale filter', 'woodmart' ),
+					'name'    => esc_html__( 'In Stock filter', 'woodmart' ),
 				),
 
 				array(
 					'id'      => 'onsale',
 					'type'    => 'checkbox',
 					'default' => 1,
-					'name'    => esc_html__( 'In Stock filter', 'woodmart' ),
+					'name'    => esc_html__( 'On Sale filter', 'woodmart' ),
 				),
 
 				array(
@@ -118,6 +118,10 @@ if ( ! class_exists( 'WOODMART_Stock_Status' ) ) {
 		}
 
 		function widget( $args, $instance ) {
+			if ( $this->is_widget_preview() ) {
+				return;
+			}
+
 			extract( $args );
 
 			echo wp_kses_post( $before_widget );

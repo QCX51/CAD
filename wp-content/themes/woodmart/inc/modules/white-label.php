@@ -20,7 +20,7 @@ if ( ! function_exists( 'woodmart_white_label' ) ) {
 			}
 
             .theme[aria-describedby="woodmart-action woodmart-name"] .theme-screenshot, .theme[aria-describedby="woodmart-child-action woodmart-child-name"] .theme-screenshot, .wd-woodmart-theme .screenshot, .theme[data-slug="woodmart"] .theme-screenshot, .theme[data-slug="woodmart-child"] .theme-screenshot {
-				background-image: url(<?php echo esc_url( wp_get_attachment_image_url( $screenshot_data['id'] ) ); ?>) !important;
+				background-image: url(<?php echo esc_url( wp_get_attachment_image_url( $screenshot_data['id'], 'full' ) ); ?>) !important;
 				background-repeat: no-repeat !important;
 				background-position: center center !important;
 				background-size: contain !important;

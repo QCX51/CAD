@@ -123,6 +123,12 @@ var woodmartOptions;
 					var $set   = $(this),
 					    $input = $set.find('input[type="hidden"]');
 
+					if ($set.hasClass('xts-field-inited')) {
+						return;
+					}
+
+					$set.addClass('xts-field-inited');
+
 					$set.on('click', '.xts-set-item', function() {
 						var $btn = $(this);
 						if ($btn.hasClass('xts-active')) {
@@ -196,7 +202,7 @@ var woodmartOptions;
 						}).on('select', function() { // it also has "open" and "close" events
 							var attachment = custom_uploader.state().get('selection').first().toJSON();
 							$inputID.val(attachment.id);
-							$inputURL.val(attachment.url);
+							$inputURL.val(attachment.url).trigger('change');
 							$preview.find('img').remove();
 							$previewInput.val(attachment.url);
 							$preview.prepend(
@@ -272,7 +278,7 @@ var woodmartOptions;
 										'<div data-attachment_id="' +
 										attachment.id + '"><img src="' +
 										attachment_image +
-										'"><a href="#" class="xts-remove"><span class="dashicons dashicons-dismiss"></span></a></div>');
+										'"><a href="#" class="xts-remove"><span class="xts-i-close"></span></a></div>');
 								}
 							});
 
@@ -869,11 +875,8 @@ var woodmartOptions;
 
 					fontFamilies.push(stdFonts);
 					fontFamilies.push(googleFonts);
-					$family.on('select change click mouseup mousedown', function() {
-						if ($family.hasClass('xts-field-inited')) {
-							return;
-						}
 
+					if ( ! $family.hasClass('xts-field-inited')) {
 						$family.addClass('xts-field-inited');
 
 						$family.empty();
@@ -919,13 +922,21 @@ var woodmartOptions;
 						);
 
 						$family.hide();
-						setTimeout(function() {
-							$family.select2('open');
-						}, 100);
-					});
+					}
 
 					// CSS selector multi select field
-					$selector.select2(select2Defaults).on(
+					$selector.select2({
+						width     : '100%',
+						theme     : 'xts',
+						allowClear: true,
+						templateSelection: function (state) {
+							if ( !state.id || !state.element || !$(state.element).data('hint-src') ) {
+								return state.text;
+							}
+
+							return $('<span>' + state.text + '</span>' + '<span class="xts-hint"><span class="xts-tooltip xts-top"><img data-src="' + $(state.element).data('hint-src') + '"></span></span>');
+						},
+					}).on(
 						'select2:select',
 						function(e) {
 							var val = e.params.data.id;
@@ -1346,24 +1357,32 @@ var woodmartOptions;
 			},
 
 			themeSettingsTooltips: function () {
-				$('.xts-hint').on('hover mouseover', function () {
-					var $this = $(this);
-					var $img = $this.find('img');
+				$(document).on('mouseenter mousemove', '.xts-hint:not(.xts-loaded)', function () {
+					var $wrapper = $(this);
+					var $attachment = $wrapper.find('img');
 
-					if (!$img.length || $this.hasClass('xts-loaded')) {
+					if ( ! $attachment.length ) {
+						$attachment = $wrapper.find('video');
+					}
+
+					if ( ! $attachment.length || $wrapper.hasClass('xts-loaded')) {
 						return;
 					}
 
-					$this.addClass('xts-loaded');
+					$wrapper.addClass('xts-loaded xts-loading');
 
-					$img.each( function () {
-						var $thisImg = $(this);
+					$attachment.each( function () {
+						var $this = $(this);
 
-						if ( $thisImg.attr('src') ) {
+						if ( $this.attr('src') ) {
 							return;
 						}
 
-						$thisImg.attr('src', $thisImg.data('src') );
+						$this.attr('src', $this.data('src') );
+					});
+
+					$attachment.on('load play', function () {
+						$wrapper.removeClass('xts-loading');
 					});
 				});
 			},
@@ -1548,6 +1567,46 @@ var woodmartOptions;
 						}
 					});
 				}
+			},
+
+			uploadIconControl: function () {
+				$('.xts-active-section .xts-icon-font-select, .xts-active-section .xts-icon-weight-select').on('change', function () {
+					var $wrapper = $(this).parents( '.xts-fields-group' );
+					var $preview = $wrapper.find('.xts-icons-preview');
+					var font = $wrapper.find('.xts-icon-font-select').val();
+					var weight = $wrapper.find('.xts-icon-weight-select').val();
+
+					if ( ! font || ! weight ) {
+						return;
+					}
+
+					$preview.addClass('xts-loading');
+					$wrapper.addClass('xts-loading');
+
+					$.ajax({
+						url     : woodmartConfig.ajaxUrl,
+						method  : 'GET',
+						data    : {
+							action  : 'woodmart_get_enqueue_custom_icon_fonts',
+							security: woodmartConfig.get_theme_settings_data_nonce,
+							font    : font,
+							weight  : weight,
+						},
+						dataType: 'json',
+						success : function(response) {
+							if ( response.enqueue ) {
+								$('style#wd-icon-font').replaceWith(response.enqueue);
+							}
+						},
+						error   : function() {
+							console.log('AJAX error');
+						},
+						complete: function() {
+							$preview.removeClass('xts-loading');
+							$wrapper.removeClass('xts-loading');
+						}
+					});
+				});
 			},
 
 			editorControl: function() {
@@ -1947,6 +2006,7 @@ var woodmartOptions;
 					setTimeout(function() {
 						woodmartOptionsAdmin.typographyControlInit();
 					});
+					woodmartOptionsAdmin.buttonsControl();
 					woodmartOptionsAdmin.selectControl(false);
 					woodmartOptionsAdmin.uploadControl(false);
 					woodmartOptionsAdmin.uploadListControl(false);
@@ -1955,6 +2015,7 @@ var woodmartOptions;
 					woodmartOptionsAdmin.switcherControl();
 					woodmartOptionsAdmin.rangeControl();
 					woodmartOptionsAdmin.responsiveRangeControl();
+					woodmartOptionsAdmin.uploadIconControl();
 				});
 			}
 		};

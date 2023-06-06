@@ -145,4 +145,4 @@ class Menu_Anchor extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Menu_Anchor() );
+Plugin::instance()->widgets_manager->register( new Menu_Anchor() );

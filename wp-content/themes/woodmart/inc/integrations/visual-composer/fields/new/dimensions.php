@@ -30,7 +30,7 @@ if ( ! function_exists( 'woodmart_get_dimensions_responsive_param' ) ) {
 
 		ob_start();
 		?>
-		<div class="wd-dimensions">
+		<div class="wd-dimensions-wrapp">
 			<?php if ( 1 < count( $settings['devices'] ) ) : ?>
 				<div class="wd-field-devices">
 					<?php foreach ( $settings['devices'] as $device => $device_settings ) : ?>
@@ -90,49 +90,51 @@ if ( ! function_exists( 'woodmart_render_dimension_responsive' ) ) {
 		}
 
 		?>
-		<div class="wd-dimension<?php echo esc_attr( $slider_classes ); ?>" data-device="<?php echo esc_attr( $device ); ?>" data-unit="<?php echo esc_attr( $device_settings['unit'] ); ?>">
-			<span class="wd-dimension-field-value">
-				<input type="number" id="wd-dimension-value-top" class="wd-dimension-field-value-display" data-id="top" value="<?php echo esc_attr( $device_settings['top'] ); ?>">
-				<label for="wd-dimension-value-top">
-					<?php esc_html_e( 'Top', 'woodmart' ); ?>
-				</label>
-			</span>
-			<span class="wd-dimension-field-value">
-				<input type="number" id="wd-dimension-value-right" class="wd-dimension-field-value-display" data-id="right" value="<?php echo esc_attr( $device_settings['right'] ); ?>">
-				<label for="wd-dimension-value-right">
-					<?php esc_html_e( 'Right', 'woodmart' ); ?>
-				</label>
-			</span>
-			<span class="wd-dimension-field-value">
-				<input type="number" id="wd-dimension-value-bottom" class="wd-dimension-field-value-display" data-id="bottom" value="<?php echo esc_attr( $device_settings['bottom'] ); ?>">
-				<label for="wd-dimension-value-bottom">
-					<?php esc_html_e( 'Bottom', 'woodmart' ); ?>
-				</label>
-			</span>
-			<span class="wd-dimension-field-value">
-				<input type="number" id="wd-dimension-value-left" class="wd-dimension-field-value-display" data-id="left" value="<?php echo esc_attr( $device_settings['left'] ); ?>">
-				<label for="wd-dimension-value-left">
-					<?php esc_html_e( 'Left', 'woodmart' ); ?>
-				</label>
-			</span>
+		<div class="wd-dimensions<?php echo esc_attr( $slider_classes ); ?>" data-device="<?php echo esc_attr( $device ); ?>" data-unit="<?php echo esc_attr( $device_settings['unit'] ); ?>">
+			<div class="wd-dimension">
+				<span class="wd-dimension-field-value">
+					<input type="number" id="wd-dimension-value-top" class="wd-dimension-field-value-display" data-id="top" value="<?php echo esc_attr( $device_settings['top'] ); ?>">
+					<label for="wd-dimension-value-top">
+						<?php esc_html_e( 'Top', 'woodmart' ); ?>
+					</label>
+				</span>
+				<span class="wd-dimension-field-value">
+					<input type="number" id="wd-dimension-value-right" class="wd-dimension-field-value-display" data-id="right" value="<?php echo esc_attr( $device_settings['right'] ); ?>">
+					<label for="wd-dimension-value-right">
+						<?php esc_html_e( 'Right', 'woodmart' ); ?>
+					</label>
+				</span>
+				<span class="wd-dimension-field-value">
+					<input type="number" id="wd-dimension-value-bottom" class="wd-dimension-field-value-display" data-id="bottom" value="<?php echo esc_attr( $device_settings['bottom'] ); ?>">
+					<label for="wd-dimension-value-bottom">
+						<?php esc_html_e( 'Bottom', 'woodmart' ); ?>
+					</label>
+				</span>
+				<span class="wd-dimension-field-value">
+					<input type="number" id="wd-dimension-value-left" class="wd-dimension-field-value-display" data-id="left" value="<?php echo esc_attr( $device_settings['left'] ); ?>">
+					<label for="wd-dimension-value-left">
+						<?php esc_html_e( 'Left', 'woodmart' ); ?>
+					</label>
+				</span>
+			</div>
 
 			<span class="xts-slider-units">
-				<?php foreach ( $settings['range'] as $unit => $value ) : ?>
-					<?php if ( '-' !== $unit ) : ?>
-						<?php
+			<?php foreach ( $settings['range'] as $unit => $value ) : ?>
+				<?php if ( '-' !== $unit ) : ?>
+					<?php
 
-						$unit_classes = '';
+					$unit_classes = '';
 
-						if ( $unit === $settings['devices'][ $device ]['unit'] ) {
-							$unit_classes .= ' xts-active';
-						}
-						?>
-						<span class="wd-dimension-unit-control wd-slider-unit-control<?php echo esc_attr( $unit_classes ); ?>" data-unit="<?php echo esc_attr( $unit ); ?>">
-							<?php echo esc_html( $unit ); ?>
-						</span>
-					<?php endif; ?>
-				<?php endforeach; ?>
-			</span>
+					if ( $unit === $settings['devices'][ $device ]['unit'] ) {
+						$unit_classes .= ' xts-active';
+					}
+					?>
+					<span class="wd-dimension-unit-control wd-slider-unit-control<?php echo esc_attr( $unit_classes ); ?>" data-unit="<?php echo esc_attr( $unit ); ?>">
+						<?php echo esc_html( $unit ); ?>
+					</span>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</span>
 		</div>
 		<?php
 		return ob_get_clean();

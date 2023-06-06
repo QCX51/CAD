@@ -59,7 +59,7 @@ if ( ! function_exists( 'woodmart_get_slider_responsive_param' ) ) {
 						?>
 
 						<span class="wd-device<?php echo esc_attr( $device_classes ); ?>" data-value="<?php echo esc_attr( $device ); ?>">
-							<span><?php echo esc_attr( $device ); ?></span>
+							<span><?php echo esc_attr( ucfirst( $device ) ); ?></span>
 						</span>
 					<?php endforeach; ?>
 				</div>

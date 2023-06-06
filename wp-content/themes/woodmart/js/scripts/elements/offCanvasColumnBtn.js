@@ -5,6 +5,7 @@
 
 	$.each([
 		'frontend/element_ready/column',
+		'frontend/element_ready/container',
 		'frontend/element_ready/wd_builder_off_canvas_column_btn.default'
 	], function(index, value) {
 		woodmartThemeModule.wdElementorAddAction(value, function() {
@@ -33,6 +34,7 @@
 
 				$colOffCanvas.addClass('wd-scroll wd-opened');
 				$closeSide.addClass('wd-close-side-opened');
+				$openButton.addClass('wd-opened');
 
 				$colOffCanvas.find(' .elementor-widget-wrap').first().addClass('wd-scroll-content');
 			});
@@ -44,9 +46,10 @@
 			offCanvassInit();
 		} else if ( $colOffCanvas.hasClass( 'wd-opened' ) ) {
 			$openButton.off('click');
-			$('.elementor-column').removeClass('wd-side-hidden wd-inited wd-scroll wd-opened wd-left wd-right');
+			$('.elementor-column, .e-con').removeClass('wd-side-hidden wd-inited wd-scroll wd-opened wd-left wd-right');
 			$('.wpb_column').removeClass('wd-side-hidden wd-inited wd-scroll wd-opened wd-left wd-right');
 			$closeSide.removeClass('wd-close-side-opened');
+			$openButton.removeClass('wd-opened');
 			$colOffCanvas.find(' .elementor-widget-wrap').first().removeClass('wd-scroll-content');
 			$colOffCanvas.find('.wd-heading').remove();
 		}
@@ -59,9 +62,12 @@
 			$('.wd-close-side, .close-side-widget').trigger('click');
 		});
 
-		woodmartThemeModule.$body.on('click touchstart', '.wd-close-side, .close-side-widget', function() {
+		woodmartThemeModule.$body.on('click touchstart', '.wd-close-side, .close-side-widget', function(e) {
+			e.preventDefault();
+
 			$colOffCanvas.removeClass('wd-opened');
 			$closeSide.removeClass('wd-close-side-opened');
+			$openButton.removeClass('wd-opened');
 		});
 	};
 

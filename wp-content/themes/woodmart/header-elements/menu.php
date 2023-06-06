@@ -16,6 +16,12 @@ if ( isset( $params['inline'] ) && $params['inline'] ) {
 	$classes = ' wd-inline';
 }
 
+if ( ! empty( $params['bg_overlay'] ) ) {
+	woodmart_enqueue_js_script( 'menu-overlay' );
+
+	$classes .= ' wd-with-overlay';
+}
+
 $classes .= woodmart_get_old_classes( ' navigation-style-' . $menu_style );
 ?>
 
@@ -30,6 +36,18 @@ $classes .= woodmart_get_old_classes( ' navigation-style-' . $menu_style );
 				'walker'     => new WOODMART_Mega_Menu_Walker(),
 			)
 		);
+	} elseif ( $params['menu_id'] ) {
+		?>
+		<span>
+			<?php esc_html_e( 'Wrong menu selected', 'woodmart' ); ?>
+		</span>
+		<?php
+	} else {
+		?>
+		<span>
+			<?php esc_html_e( 'Choose menu', 'woodmart' ); ?>
+		</span>
+		<?php
 	}
 	?>
 </div><!--END MAIN-NAV-->

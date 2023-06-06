@@ -32,7 +32,9 @@ class Range extends Field {
 				<div class="xts-range-slider"></div>
 				<input type="hidden" class="xts-range-value" data-start="<?php echo esc_attr( $this->get_field_value() ); ?>" data-min="<?php echo esc_attr( $this->args['min'] ); ?>" data-max="<?php echo esc_attr( $this->args['max'] ); ?>" data-step="<?php echo esc_attr( $this->args['step'] ); ?>" name="<?php echo esc_attr( $this->get_input_name() ); ?>" value="<?php echo esc_attr( $this->get_field_value() ); ?>">
 				<span class="xts-range-field-value-display"><span class="xts-range-field-value-text"></span></span>
-				<span class="xts-slider-units"><span class="wd-slider-unit-control xts-active"><?php echo esc_attr( $this->args['unit'] ); ?></span></span>
+				<?php if ( ! empty( $this->args['unit'] ) ) : ?>
+					<span class="xts-slider-units"><span class="wd-slider-unit-control xts-active"><?php echo esc_attr( $this->args['unit'] ); ?></span></span>
+				<?php endif; ?>
 			</div>
 		<?php
 	}

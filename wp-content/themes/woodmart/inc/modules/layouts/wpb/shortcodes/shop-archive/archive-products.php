@@ -29,9 +29,24 @@ if ( ! function_exists( 'woodmart_shortcode_shop_archive_products' ) ) {
 			'product_hover'                => 'inherit',
 			'products_bordered_grid'       => 'inherit',
 			'products_bordered_grid_style' => 'inherit',
+			'products_color_scheme'        => 'inherit',
+			'products_with_background'     => 'inherit',
+			'products_shadow'              => 'inherit',
 		);
 
 		$settings = wp_parse_args( $settings, $default_settings );
+
+		if ( 'yes' === $settings['products_with_background'] ) {
+			$products_with_background = '1';
+		} else if ( 'no' === $settings['products_with_background'] ) {
+			$products_with_background = '0';
+		}
+
+		if ( 'yes' === $settings['products_shadow'] ) {
+			$products_shadow = '1';
+		} else if ( 'no' === $settings['products_shadow'] ) {
+			$products_shadow = '0';
+		}
 
 		$wrapper_classes = apply_filters( 'vc_shortcodes_css_class', '', '', $settings );
 
@@ -81,6 +96,18 @@ if ( ! function_exists( 'woodmart_shortcode_shop_archive_products' ) ) {
 
 		if ( $settings['img_size'] ) {
 			woodmart_set_loop_prop( 'img_size', $settings['img_size'] );
+		}
+
+		if ( $settings['products_color_scheme'] && 'inherit' !== $settings['products_color_scheme'] ) {
+			woodmart_set_loop_prop( 'products_color_scheme', $settings['products_color_scheme'] );
+		}
+
+		if ( isset( $products_with_background ) ) {
+			woodmart_set_loop_prop( 'products_with_background', $products_with_background );
+		}
+
+		if ( isset( $products_shadow ) ) {
+			woodmart_set_loop_prop( 'products_shadow', $products_shadow );
 		}
 
 		ob_start();

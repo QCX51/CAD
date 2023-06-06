@@ -538,6 +538,12 @@ class Title extends Widget_Base {
 
 		woodmart_enqueue_inline_style( 'section-title' );
 
+		if ( in_array( $settings['style'], array( 'bordered', 'simple' ), true ) ) {
+			woodmart_enqueue_inline_style( 'section-title-style-simple-and-brd' );
+		} elseif ( in_array( $settings['style'], array( 'overlined', 'underlined', 'underlined-2' ), true ) ) {
+			woodmart_enqueue_inline_style( 'section-title-style-under-and-over' );
+		}
+
 		if ( isset( $settings['title_decoration_style'] ) && 'default' !== $settings['title_decoration_style'] ) {
 			woodmart_enqueue_inline_style( 'mod-highlighted-text' );
 		}
@@ -569,4 +575,4 @@ class Title extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Title() );
+Plugin::instance()->widgets_manager->register( new Title() );

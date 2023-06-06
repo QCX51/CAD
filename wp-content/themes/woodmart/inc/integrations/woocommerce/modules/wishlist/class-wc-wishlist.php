@@ -89,7 +89,7 @@ class WC_Wishlist {
 
 		Ui::get_instance();
 
-		add_action( 'init', array( $this, 'custom_rewrite_rule' ), 10, 0 );
+		add_action( 'init', array( $this, 'custom_rewrite_rule' ), 10 );
 
 		add_filter( 'query_vars', array( $this, 'add_query_vars' ) );
 	}
@@ -120,10 +120,12 @@ class WC_Wishlist {
 	 * @return void
 	 */
 	public function custom_rewrite_rule() {
-		$id = woodmart_get_opt( 'wishlist_page' );
-		add_rewrite_rule( '^wishlist/([^/]*)/page/([^/]*)?', 'index.php?page_id=' . ( (int) $id ) . '&wishlist_id=$matches[1]&paged=$matches[2]', 'top' );
-		add_rewrite_rule( '^wishlist/page/([^/]*)?', 'index.php?page_id=' . ( (int) $id ) . '&paged=$matches[1]', 'top' );
-		add_rewrite_rule( '^wishlist/([^/]*)/?', 'index.php?page_id=' . ( (int) $id ) . '&wishlist_id=$matches[1]', 'top' );
+		$id   = (int) woodmart_get_opt( 'wishlist_page' );
+		$slug = (string) get_post_field( 'post_name', $id );
+
+		add_rewrite_rule( '^' . $slug . '/([^/]*)/page/([^/]*)?', 'index.php?page_id=' . $id . '&wishlist_id=$matches[1]&paged=$matches[2]', 'top' );
+		add_rewrite_rule( '^' . $slug . '/page/([^/]*)?', 'index.php?page_id=' . $id . '&paged=$matches[1]', 'top' );
+		add_rewrite_rule( '^' . $slug . '/([^/]*)/?', 'index.php?page_id=' . $id . '&wishlist_id=$matches[1]', 'top' );
 	}
 
 	/**
@@ -187,11 +189,7 @@ class WC_Wishlist {
 
 		$wishlist->update_count_cookie();
 
-		add_filter( 'woodmart_is_ajax', '__return_false' );
-
-		$response['wishlist_content'] = Ui::get_instance()->wishlist_page_content( $wishlist );
-
-		echo wp_json_encode( $response );
+		wp_send_json( $response );
 
 		exit;
 	}
@@ -267,7 +265,7 @@ class WC_Wishlist {
 			'hash'             => apply_filters( 'woodmart_get_wishlist_hash', '' ),
 		);
 
-		echo wp_json_encode( $response );
+		wp_send_json( $response );
 
 		exit;
 	}
@@ -318,13 +316,14 @@ class WC_Wishlist {
 	 */
 	private function include_files() {
 		$files = array(
+			'functions',
 			'class-storage-interface',
 			'class-db-storage',
 			'class-cookies-storage',
 			'class-ui',
 			'class-wishlist',
 			'class-sends-about-products-wishlists',
-			'functions',
+			'backend/class-backend',
 		);
 
 		if ( woodmart_get_opt( 'wishlist_expanded' ) && is_user_logged_in() ) {

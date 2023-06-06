@@ -92,7 +92,9 @@ class Frontend extends Singleton {
 		}
 
 		foreach ( $fbt_products as $fbt_product ) {
-			$this->wfbt_products[ $fbt_product['id'] ] = $fbt_product;
+			$product_id = apply_filters( 'wpml_object_id', $fbt_product['id'], 'product', true );
+
+			$this->wfbt_products[ $product_id ] = array_merge( $fbt_product, array( 'id' => $product_id ) );
 		}
 
 		$this->main_product_id = (int) $main_product;
@@ -170,6 +172,12 @@ class Frontend extends Singleton {
 				continue;
 			}
 
+			foreach ( $wfbt_products as $key => $wfbt_product ) {
+				if ( ! empty( $wfbt_product['id'] ) ) {
+					$wfbt_products[ $key ]['id'] = apply_filters( 'wpml_object_id', $wfbt_product['id'], 'product', true );
+				}
+			}
+
 			$bundles_data[ $bundle->ID ] = $wfbt_products;
 		}
 
@@ -182,7 +190,10 @@ class Frontend extends Singleton {
 
 		add_filter( 'woocommerce_get_price_html', array( $this, 'update_product_price' ), 10, 2 );
 		add_filter( 'woodmart_product_label_output', array( $this, 'added_sale_label' ) );
+		add_filter( 'woocommerce_product_get_image_id', array( $this, 'update_variation_image' ) );
 		remove_action( 'woodmart_add_loop_btn', 'woocommerce_template_loop_add_to_cart', 10 );
+
+		woodmart_set_loop_prop( 'show_quick_shop', false );
 
 		if ( ! $settings['is_builder'] ) {
 			echo '<div class="container wd-fbt-wrap">';
@@ -198,13 +209,21 @@ class Frontend extends Singleton {
 			$this->subtotal_products_price = array();
 
 			foreach ( $wfbt_products as $wfbt_product ) {
-				if ( $this->main_product_id === (int) $wfbt_product['id'] ) {
+				if ( empty( $wfbt_product['id'] ) || $this->main_product_id === (int) $wfbt_product['id'] ) {
 					continue;
 				}
 
 				$current_product = wc_get_product( $wfbt_product['id'] );
 
+				if ( ! $current_product ) {
+					continue;
+				}
+
 				if ( 'variation' === $current_product->get_type() && $current_product->get_parent_id() && $this->main_product_id === $current_product->get_parent_id() ) {
+					continue;
+				}
+
+				if ( get_post_meta( $bundle_id, '_woodmart_show_checkbox', true ) && get_post_meta( $bundle_id, '_woodmart_hide_out_of_stock_product', true ) && ! $current_product->is_in_stock() ) {
 					continue;
 				}
 
@@ -220,6 +239,7 @@ class Frontend extends Singleton {
 
 		remove_filter( 'woocommerce_get_price_html', array( $this, 'update_product_price' ), 10, 2 );
 		remove_filter( 'woodmart_product_label_output', array( $this, 'added_sale_label' ) );
+		remove_filter( 'woocommerce_product_get_image_id', array( $this, 'update_variation_image' ) );
 
 		if ( woodmart_get_opt( 'catalog_mode' ) || ! is_user_logged_in() && woodmart_get_opt( 'login_prices' ) ) {
 			return;
@@ -311,12 +331,20 @@ class Frontend extends Singleton {
 			$product = wc_get_product( $this->main_product_id );
 		}
 
-		$fbt_count     = count( $this->subtotal_products_price );
-		$fbt_products  = array_column( $this->wfbt_products, 'id' );
-		$show_checkbox = get_post_meta( $this->bundle_id, '_woodmart_show_checkbox', true );
-		$classes       = '';
+		$fbt_count      = count( $this->subtotal_products_price );
+		$fbt_products   = array_column( $this->wfbt_products, 'id' );
+		$show_checkbox  = get_post_meta( $this->bundle_id, '_woodmart_show_checkbox', true );
+		$state_checkbox = get_post_meta( $this->bundle_id, '_woodmart_default_checkbox_state', true );
+		$classes        = '';
+		$button_classes = '';
 
 		array_unshift( $fbt_products, $product->get_id() );
+
+		if ( ! empty( $show_checkbox ) && 'uncheck' === $state_checkbox ) {
+			$classes        .= ' wd-checkbox-uncheck';
+			$button_classes .= ' wd-disabled';
+			$fbt_count       = 1;
+		}
 
 		if ( ! empty( $show_checkbox ) ) {
 			$classes .= ' wd-checkbox-on';
@@ -342,7 +370,18 @@ class Frontend extends Singleton {
 					<div class="wd-fbt-product wd-product-<?php echo esc_attr( $product_id ); ?>" data-id="<?php echo esc_attr( $product_id ); ?>">
 						<div class="wd-fbt-product-heading" for="wd-fbt-product-<?php echo esc_attr( $product_id ); ?>">
 							<?php if ( ! empty( $show_checkbox ) ) : ?>
-								<input type="checkbox" id="wd-fbt-product-<?php echo esc_attr( $product_id ); ?>" data-id="<?php echo esc_attr( $product_id ); ?>" checked<?php echo esc_attr( $product_id === $product->get_id() ? ' disabled' : '' ); ?>>
+								<?php
+								$checkbox_attr = '';
+
+								if ( $product_id === $product->get_id() || ! $state_checkbox || 'check' === $state_checkbox ) {
+									$checkbox_attr .= 'checked';
+								}
+								if ( $product_id === $product->get_id() ) {
+									$checkbox_attr .= ' disabled';
+								}
+
+								?>
+								<input type="checkbox" id="wd-fbt-product-<?php echo esc_attr( $product_id ); ?>" data-id="<?php echo esc_attr( $product_id ); ?>" <?php echo esc_attr( $checkbox_attr ); ?>>
 							<?php endif; ?>
 							<label for="wd-fbt-product-<?php echo esc_attr( $product_id ); ?>">
 								<span class="wd-entities-title title">
@@ -361,8 +400,13 @@ class Frontend extends Singleton {
 							<div class="wd-fbt-product-variation">
 								<select>
 									<?php foreach ( $current_product->get_children() as $variation_id ) : ?>
-										<?php $variation_product = wc_get_product( $variation_id ); ?>
-										<option value="<?php echo esc_attr( $variation_product->get_id() ); ?>"<?php echo esc_attr( $variation->get_id() === $variation_product->get_id() ? ' selected="selected"' : '' ); ?>>
+										<?php
+										$variation_product = wc_get_product( $variation_id );
+										$image_src         = wp_get_attachment_image_src( $variation_product->get_image_id(), 'woocommerce_thumbnail' );
+										$image_srcset      = wp_get_attachment_image_srcset( $variation_product->get_image_id(), 'woocommerce_thumbnail' );
+										?>
+
+										<option value="<?php echo esc_attr( $variation_product->get_id() ); ?>"<?php echo esc_attr( $variation->get_id() === $variation_product->get_id() ? ' selected="selected"' : '' ); ?> data-image-src="<?php echo esc_url( reset( $image_src ) ); ?>" data-image-srcset="<?php echo esc_attr( $image_srcset ); ?>">
 											<?php echo esc_html( wc_get_formatted_variation( $variation_product, true, false, false ) ); ?>
 										</option>
 									<?php endforeach; ?>
@@ -374,7 +418,13 @@ class Frontend extends Singleton {
 			</div>
 			<div class="wd-fbt-purchase">
 				<div class="price">
-					<?php echo wp_kses( $this->get_subtotal_bundle_price(), true ); ?>
+					<?php
+						if ( ! empty( $show_checkbox ) && 'uncheck' === $state_checkbox ) {
+							echo wp_kses( $product->get_price_html(), true );
+						} else {
+							echo wp_kses( $this->get_subtotal_bundle_price(), true );
+						}
+					?>
 				</div>
 				<div class="wd-fbt-desc">
 					<?php
@@ -384,7 +434,7 @@ class Frontend extends Singleton {
 					);
 					?>
 				</div>
-				<button class="wd-fbt-purchase-btn single_add_to_cart_button button" type="submit">
+				<button class="wd-fbt-purchase-btn single_add_to_cart_button button<?php echo esc_attr( $button_classes ); ?>" type="submit">
 					<?php esc_html_e( 'Add to cart', 'woodmart' ); ?>
 				</button>
 			</div>
@@ -409,17 +459,63 @@ class Frontend extends Singleton {
 		$new_price = array_sum( array_column( $this->subtotal_products_price, 'new' ) );
 
 		if ( $old_price <= $new_price ) {
-			return wc_price( $new_price ) . $product->get_price_suffix();
+			return wc_price( $new_price ) . $this->get_product_price_suffix();
 		}
 
-		return wc_format_sale_price( $old_price, $new_price ) . $product->get_price_suffix();
+		return wc_format_sale_price( $old_price, $new_price ) . $this->get_product_price_suffix();
+	}
+
+	/**
+	 * Get products price suffix.
+	 *
+	 * @return mixed|null
+	 */
+	private function get_product_price_suffix() {
+		global $product;
+
+		if ( ! $product ) {
+			$product = wc_get_product( $this->main_product_id );
+		}
+
+		$html              = '';
+		$suffix            = get_option( 'woocommerce_price_display_suffix' );
+		$sum_including_tax = 0;
+		$sum_excluding_tax = 0;
+
+		if ( $suffix && wc_tax_enabled() ) {
+			foreach ( $this->wfbt_products as $product_id => $product_settings ) {
+				$current_product = wc_get_product( $product_id );
+
+				if ( 'taxable' !== $current_product->get_tax_status() ) {
+					continue;
+				}
+
+				$discount  = $this->get_discount_product_bundle( $product_id );
+				$old_price = (float) wc_get_price_to_display( $current_product, array( 'price' => $current_product->get_price() ) );
+
+				$new_price          = $old_price - ( ( $old_price / 100 ) * $discount );
+				$sum_including_tax += (float) wc_get_price_including_tax( $current_product, array( 'price' => $new_price ) );
+				$sum_excluding_tax += (float) wc_get_price_excluding_tax( $current_product, array( 'price' => $new_price ) );
+			}
+
+			if ( $sum_including_tax || $sum_excluding_tax ) {
+				$replacements = array(
+					'{price_including_tax}' => wc_price( $sum_including_tax ),
+					'{price_excluding_tax}' => wc_price( $sum_excluding_tax ),
+				);
+
+				$html = str_replace( array_keys( $replacements ), array_values( $replacements ), ' <small class="woocommerce-price-suffix">' . wp_kses_post( $suffix ) . '</small>' );
+			}
+		}
+
+		return apply_filters( 'woocommerce_get_price_suffix', $html, $product, array_sum( array_column( $this->subtotal_products_price, 'new' ) ), 1 );
 	}
 
 	/**
 	 * Update product price.
 	 *
-	 * @param string     $price Product price HTML.
-	 * @param WC_Product $product Product data.
+	 * @param string $price Product price HTML.
+	 * @param object $product Product data.
 	 *
 	 * @return string
 	 */
@@ -433,15 +529,7 @@ class Frontend extends Singleton {
 
 		$discount = $this->get_discount_product_bundle( $product_id );
 
-		if ( 'variable' === $product->get_type() ) {
-			$old_price = (float) wc_get_price_to_display( $product, array( 'price' => $product->get_variation_regular_price() ) );
-		} else {
-			$old_price = (float) wc_get_price_to_display( $product, array( 'price' => $product->get_regular_price() ) );
-		}
-
-		if ( ( ! $discount || 100 <= $discount ) && $product->is_on_sale() ) {
-			$old_price = (float) wc_get_price_to_display( $product, array( 'price' => $product->get_price() ) );
-		}
+		$old_price = (float) $product->get_price();
 
 		$this->subtotal_products_price[ $product_id ]['old'] = $old_price;
 
@@ -461,23 +549,23 @@ class Frontend extends Singleton {
 			if ( empty( $prices['price'] ) ) {
 				return $price;
 			} else {
-				$min_reg_price = (float) wc_get_price_to_display( $product, array( 'price' => current( $prices['regular_price'] ) ) );
-				$max_reg_price = (float) wc_get_price_to_display( $product, array( 'price' => end( $prices['regular_price'] ) ) );
+				$min_price = (float) current( $prices['price'] );
+				$max_price = (float) end( $prices['price'] );
 
-				$min_reg_price = $min_reg_price - ( ( $min_reg_price / 100 ) * $discount );
-				$max_reg_price = $max_reg_price - ( ( $max_reg_price / 100 ) * $discount );
+				$min_price = $min_price - ( ( $min_price / 100 ) * $discount );
+				$max_price = $max_price - ( ( $max_price / 100 ) * $discount );
 
-				if ( $min_reg_price !== $max_reg_price ) {
-					$price = wc_format_price_range( $min_reg_price, $max_reg_price );
+				if ( $min_price !== $max_price ) {
+					$price = wc_format_price_range( $min_price, $max_price );
 				} else {
-					$price = wc_format_sale_price( wc_price( end( $prices['regular_price'] ) ), wc_price( $min_reg_price ) );
+					$price = wc_format_sale_price( wc_price( end( $prices['regular_price'] ) ), wc_price( $min_price ) );
 				}
 
 				return $price . $product->get_price_suffix();
 			}
 		}
 
-		return wc_format_sale_price( $old_price, $new_price ) . $product->get_price_suffix();
+		return wc_format_sale_price( $product->get_regular_price(), $new_price ) . $product->get_price_suffix();
 	}
 
 	/**
@@ -501,6 +589,33 @@ class Frontend extends Singleton {
 
 		if ( ! $discount || 100 <= $discount ) {
 			return $content;
+		}
+
+		if ( $product->is_on_sale() ) {
+			$percentage = 0;
+
+			if ( 'variable' === $product->get_type() ) {
+				$available_variations = $product->get_variation_prices();
+				$max_percentage       = 0;
+
+				foreach ( $available_variations['regular_price'] as $key => $regular_price ) {
+					$sale_price = $available_variations['sale_price'][ $key ];
+
+					if ( $sale_price < $regular_price ) {
+						$percentage = round( ( ( (float) $regular_price - (float) $sale_price ) / (float) $regular_price ) * 100 );
+
+						if ( $percentage > $max_percentage ) {
+							$max_percentage = $percentage;
+						}
+					}
+				}
+
+				$percentage = $max_percentage;
+			} elseif ( in_array( $product->get_type(), array( 'simple', 'external', 'variation' ), true ) ) {
+				$percentage = round( ( ( (float) $product->get_regular_price() - (float) $product->get_sale_price() ) / (float) $product->get_regular_price() ) * 100 );
+			}
+
+			$discount += (int) $percentage;
 		}
 
 		$label = '<span class="onsale product-label wd-fbt-sale-label">' . sprintf( _x( '-%d%%', 'sale percentage', 'woodmart' ), $discount ) . '</span>';
@@ -559,6 +674,29 @@ class Frontend extends Singleton {
 		}
 
 		return current( $product->get_children() );
+	}
+
+	/**
+	 * Update main image for variable product.
+	 *
+	 * @param integer $image_id Product image ID.
+	 * @return string
+	 */
+	public function update_variation_image( $image_id ) {
+		global $product;
+
+		if ( 'variable' !== $product->get_type() ) {
+			return $image_id;
+		}
+
+		$variation_id      = $this->get_default_variation_product_id( $product );
+		$variation_product = wc_get_product( $variation_id );
+
+		if ( ! $variation_product || ! $variation_product->get_image_id( 'edit' ) ) {
+			return $image_id;
+		}
+
+		return $variation_product->get_image_id( 'edit' );
 	}
 }
 

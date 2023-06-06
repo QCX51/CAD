@@ -93,7 +93,7 @@ class WOODMART_HB_Styles {
 
 		if ( isset( $el['params'] ) && $el['params'] ) {
 			foreach ( $el['params'] as $params ) {
-				if ( empty( $params['selectors'] ) || empty( $params['value'] ) ) {
+				if ( empty( $params['selectors'] ) || ( isset( $params['generate_zero'] ) && '' === $params['value'] ) || ( ! isset( $params['generate_zero'] ) && empty( $params['value'] ) ) || ! $this->check_dependencies( $params['id'] , $el ) ) {
 					continue;
 				}
 
@@ -245,6 +245,22 @@ class WOODMART_HB_Styles {
 		ob_start();
 
 		?>
+:root{
+	--wd-top-bar-h: <?php echo esc_html( ! $options['top-bar']['hide_desktop'] && $options['top-bar']['height'] ? $options['top-bar']['height'] : 0.001 ); ?>px;
+	--wd-top-bar-sm-h: <?php echo esc_html( ! $options['top-bar']['hide_mobile'] && $options['top-bar']['mobile_height'] ? $options['top-bar']['mobile_height'] : 0.001 ); ?>px;
+	--wd-top-bar-sticky-h: <?php echo esc_html( ! $sticky_clone && $options['top-bar']['sticky'] && $options['top-bar']['sticky_height'] ? $options['top-bar']['sticky_height'] : 0.001 ); ?>px;
+
+	--wd-header-general-h: <?php echo esc_html( ! $options['general-header']['hide_desktop'] && $options['general-header']['height'] ? $options['general-header']['height'] : 0.001 ); ?>px;
+	--wd-header-general-sm-h: <?php echo esc_html( ! $options['general-header']['hide_mobile'] && $options['general-header']['mobile_height'] ? $options['general-header']['mobile_height'] : 0.001 ); ?>px;
+	--wd-header-general-sticky-h: <?php echo esc_html( ! $sticky_clone && $options['general-header']['sticky'] && $options['general-header']['sticky_height'] ? $options['general-header']['sticky_height'] : 0.001 ); ?>px;
+
+	--wd-header-bottom-h: <?php echo esc_html( ! $options['header-bottom']['hide_desktop'] && $options['header-bottom']['height'] ? $options['header-bottom']['height'] : 0.001 ); ?>px;
+	--wd-header-bottom-sm-h: <?php echo esc_html( ! $options['header-bottom']['hide_mobile'] && $options['header-bottom']['mobile_height'] ? $options['header-bottom']['mobile_height'] : 0.001 ); ?>px;
+	--wd-header-bottom-sticky-h: <?php echo esc_html( ! $sticky_clone && $options['header-bottom']['sticky'] && $options['header-bottom']['sticky_height'] ? $options['header-bottom']['sticky_height'] : 0.001 ); ?>px;
+
+	--wd-header-clone-h: <?php echo esc_html( $sticky_clone ? $options['sticky_height'] : 0.001 ); ?>px;
+}
+
 <?php if ( ! $options['top-bar']['hide_desktop'] ) : ?>
 <?php // DROPDOWN ALIGN BOTTOM IN TOP BAR. ?>
 .whb-top-bar .wd-dropdown {
@@ -450,5 +466,45 @@ class WOODMART_HB_Styles {
 		<?php
 
 		return ob_get_clean();
+	}
+
+	/**
+	 * Check whether dependencies for a specific option in the specified element are fulfilled.
+	 *
+	 * @param  string $option_id - The id of the dependency option to check.
+	 * @param  array $el - List of settings for this item.
+	 * @return bool - return true if all dependencies for this option have been met, or the no dependencies option.
+	 */
+	private function check_dependencies( $option_id, $el ) {
+		$res = array();
+
+		if ( ! isset( $el['params'][ $option_id ]['requires'] ) ) {
+			return true;
+		}
+
+		foreach ( $el['params'][ $option_id ]['requires'] as $require_option => $require_condition ) {
+			if ( is_array( $require_condition['value'] ) ) {
+				foreach ( $require_condition['value'] as $require_condition_value ) {
+					if ( 'equal' === $require_condition['comparison'] ) {
+						if ( $el['params'][ $require_option ]['value'] === $require_condition_value ) {
+							$res[ $require_option ] = true;
+							break;
+						} else {
+							$res[ $require_option ] = false;
+						}
+					} else {
+						$res[ $require_option ] = $el['params'][ $require_option ]['value'] !== $require_condition_value;
+					}
+				}
+			} else {
+				if ( 'equal' === $require_condition['comparison'] ) {
+					$res[ $require_option ] = $el['params'][ $require_option ]['value'] === $require_condition['value'];
+				} else {
+					$res[ $require_option ] = $el['params'][ $require_option ]['value'] !== $require_condition['value'];
+				}
+			}
+		}
+
+		return ! in_array( false, $res );
 	}
 }

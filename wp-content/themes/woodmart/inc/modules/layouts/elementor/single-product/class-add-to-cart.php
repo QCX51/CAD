@@ -315,6 +315,41 @@ class Add_To_Cart extends Widget_Base {
 		$this->end_controls_tabs();
 
 		$this->end_controls_section();
+
+		$this->start_controls_section(
+			'stock_status_style_section',
+			array(
+				'label' => esc_html__( 'Stock status', 'woodmart' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'enable_stock_status',
+			array(
+				'label'        => esc_html__( 'Enable stock status', 'woodmart' ),
+				'description'  => esc_html__( 'If "NO" stock status will be removed.', 'woodmart' ),
+				'type'         => Controls_Manager::SWITCHER,
+				'default'      => 'yes',
+				'label_on'     => esc_html__( 'Yes', 'woodmart' ),
+				'label_off'    => esc_html__( 'No', 'woodmart' ),
+				'return_value' => 'yes',
+			)
+		);
+
+		$this->add_control(
+			'stock_status_css_classes',
+			array(
+				'type'         => 'wd_css_class',
+				'default'      => 'wd-stock-status-off',
+				'prefix_class' => '',
+				'condition' => array(
+					'enable_stock_status!' => array( 'yes' ),
+				),
+			)
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -328,6 +363,7 @@ class Add_To_Cart extends Widget_Base {
 			'label_position'               => 'side',
 			'label_position_mobile'        => 'side',
 			'product_id'                   => false,
+			'enable_stock_status'          => 'yes',
 		);
 
 		$settings = wp_parse_args( $this->get_settings_for_display(), $default_settings );
@@ -358,4 +394,4 @@ class Add_To_Cart extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Add_To_Cart() );
+Plugin::instance()->widgets_manager->register( new Add_To_Cart() );

@@ -141,6 +141,10 @@ if( ! function_exists( 'woodmart_quick_view_btn' ) ) {
 		wp_enqueue_script( 'wc-add-to-cart-variation' );
 		wp_enqueue_script( 'imagesloaded' );
 
+		if ( woodmart_get_opt( 'single_product_swatches_limit' ) ) {
+			woodmart_enqueue_js_script( 'swatches-limit' );
+		}
+
 		?>
 		<div class="quick-view wd-action-btn wd-style-icon wd-quick-view-icon<?php echo woodmart_get_old_classes( ' wd-quick-view-btn' ); ?>">
 			<a

@@ -10,15 +10,21 @@ do_action( 'woocommerce_before_shop_loop_item' );
 		<a href="<?php echo esc_url( get_permalink() ); ?>" class="product-image-link">
 			<?php
 			/**
-			 * woocommerce_before_shop_loop_item_title hook
+			 * Hook woocommerce_before_shop_loop_item_title.
 			 *
+			 * @hooked woodmart_template_loop_product_thumbnails_gallery - 5
 			 * @hooked woocommerce_show_product_loop_sale_flash - 10
 			 * @hooked woodmart_template_loop_product_thumbnail - 10
 			 */
 			do_action( 'woocommerce_before_shop_loop_item_title' );
 			?>
 		</a>
-		<?php woodmart_hover_image(); ?>
+
+		<?php
+		if ( 'no' === woodmart_loop_prop( 'grid_gallery' ) || ! woodmart_loop_prop( 'grid_gallery' ) ) {
+			woodmart_hover_image();
+		}
+		?>
 
 		<div class="wd-add-btn wd-add-btn-replace<?php echo woodmart_get_old_classes( ' woodmart-add-btn' ); ?>">
 			<?php do_action( 'woodmart_add_loop_btn' ); ?>

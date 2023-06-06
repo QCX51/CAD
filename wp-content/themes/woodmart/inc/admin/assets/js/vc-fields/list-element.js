@@ -7,7 +7,7 @@
 		var $editor = $('#vc_ui-panel-edit-element');
 
 		$editor.on('vcPanel.shown', function() {
-			if ($editor.attr('data-vc-shortcode') != 'woodmart_list') {
+			if ($editor.attr('data-vc-shortcode') != 'woodmart_list' && $editor.attr('data-vc-shortcode') != 'woodmart_table_row') {
 				return;
 			}
 

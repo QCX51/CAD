@@ -74,6 +74,10 @@
 				return;
 			}
 
+			if ( $(event.target).is('.wd-close-search a') ) {
+				event.preventDefault();
+			}
+
 			if (isOpened()) {
 				closeWidget();
 			}
@@ -87,7 +91,7 @@
 		};
 
 		var closeWidget = function() {
-			woodmartThemeModule.$body.removeClass('wd-search-opened');
+			$('html').removeClass('wd-search-opened');
 			$searchWrapper.removeClass('wd-opened');
 			setTimeout( function () {
 				$searchWrapper.removeClass('wd-searched');
@@ -120,7 +124,7 @@
 		var openWidget = function($wrapper) {
 			// Close by esc
 			woodmartThemeModule.$body.on('keyup', closeByEsc);
-			woodmartThemeModule.$body.addClass('wd-search-opened');
+			$('html').addClass('wd-search-opened');
 
 			$wrapper.addClass('wd-opened');
 
@@ -138,7 +142,7 @@
 		};
 
 		var isOpened = function() {
-			return woodmartThemeModule.$body.hasClass('wd-search-opened');
+			return $('html').hasClass('wd-search-opened');
 		};
 	};
 

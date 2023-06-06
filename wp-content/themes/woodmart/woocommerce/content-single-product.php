@@ -61,8 +61,7 @@ if ( '4' === $image_width || '5' === $image_width ) {
 
 if ( '5' === $image_width ) {
 	if ( 'wpb' === woodmart_get_current_page_builder() ) {
-		$product_images_class .= ' vc_row vc_row-fluid vc_row-no-padding';
-		$product_images_attr = 'data-vc-full-width="true" data-vc-full-width-init="true" data-vc-stretch-content="true"';
+		$product_images_class .= ' vc_row vc_row-fluid wd-section-stretch-content-no-pd';
 	} else {
 		$product_images_class .= ' wd-section-stretch-content';
 	}
@@ -159,7 +158,7 @@ if ( (bool) woodmart_get_opt( 'product_sticky' ) || woodmart_get_opt( 'product_s
 						<div class="vc_row-full-width"></div>
 					<?php endif ?>
 					<div class="<?php echo esc_attr( $product_summary_class ); ?> summary entry-summary">
-						<div class="summary-inner">
+						<div class="summary-inner set-mb-l reset-last-child">
 							<?php if ( ( ( $product_design == 'default' && ( $breadcrumbs_position == 'default' || empty( $breadcrumbs_position ) ) ) || $breadcrumbs_position == 'summary' ) && ( woodmart_get_opt( 'product_page_breadcrumbs', '1' ) || woodmart_get_opt( 'products_nav' ) ) ): ?>
 								<div class="single-breadcrumbs-wrapper">
 									<div class="single-breadcrumbs">

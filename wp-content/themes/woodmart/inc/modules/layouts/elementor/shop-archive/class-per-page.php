@@ -127,4 +127,4 @@ class Per_Page extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Per_Page() );
+Plugin::instance()->widgets_manager->register( new Per_Page() );

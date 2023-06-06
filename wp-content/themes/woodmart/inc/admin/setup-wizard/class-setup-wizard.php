@@ -50,6 +50,8 @@ class Setup_Wizard extends Singleton {
 		}
 
 		add_action( 'admin_init', array( $this, 'theme_activation_redirect' ) );
+
+		add_filter( 'leadin_impact_code', array( $this, 'get_hubspot_affiliate_code' ) );
 	}
 
 	/**
@@ -64,6 +66,13 @@ class Setup_Wizard extends Singleton {
 		remove_action( 'network_admin_menu', 'vc_network_menu_page_build' );
 		remove_action( 'vc_activation_hook', 'vc_page_welcome_set_redirect' );
 		remove_action( 'admin_init', 'vc_page_welcome_redirect' );
+	}
+
+	/**
+	 * Hubspot affiliate.
+	 */
+	public function get_hubspot_affiliate_code() {
+		return '7m0A9V';
 	}
 
 	/**

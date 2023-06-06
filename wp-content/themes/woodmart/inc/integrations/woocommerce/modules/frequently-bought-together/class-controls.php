@@ -63,6 +63,7 @@ class Controls extends Singleton {
 					'type' => 'number',
 					'min'  => '0',
 					'max'  => '100',
+					'step' => '0.01',
 				),
 				'section'     => 'general',
 				'priority'    => 20,
@@ -103,7 +104,60 @@ class Controls extends Singleton {
 				'type'        => 'switcher',
 				'section'     => 'general',
 				'default'     => true,
+				'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+				'off-text'    => esc_html__( 'No', 'woodmart' ),
 				'priority'    => 40,
+				'class'       => 'xts-col-6',
+			)
+		);
+
+		$metabox->add_field(
+			array(
+				'id'       => '_woodmart_default_checkbox_state',
+				'name'     => esc_html__( 'Default checkbox state', 'woodmart' ),
+				'group'    => esc_html__( 'Settings', 'woodmart' ),
+				'type'     => 'buttons',
+				'section'  => 'general',
+				'options'  => array(
+					'check'   => array(
+						'name'  => esc_html__( 'Check', 'woodmart' ),
+						'value' => 'check',
+					),
+					'uncheck' => array(
+						'name'  => esc_html__( 'Uncheck', 'woodmart' ),
+						'value' => 'uncheck',
+					),
+				),
+				'default'  => 'check',
+				'requires' => array(
+					array(
+						'key'     => '_woodmart_show_checkbox',
+						'compare' => 'equals',
+						'value'   => true,
+					),
+				),
+				'priority' => 50,
+				'class'    => 'xts-col-6',
+			)
+		);
+
+		$metabox->add_field(
+			array(
+				'id'       => '_woodmart_hide_out_of_stock_product',
+				'name'     => esc_html__( 'Hide out of stock product', 'woodmart' ),
+				'group'    => esc_html__( 'Settings', 'woodmart' ),
+				'type'     => 'switcher',
+				'section'  => 'general',
+				'on-text'  => esc_html__( 'Yes', 'woodmart' ),
+				'off-text' => esc_html__( 'No', 'woodmart' ),
+				'priority' => 60,
+				'requires' => array(
+					array(
+						'key'     => '_woodmart_show_checkbox',
+						'compare' => 'equals',
+						'value'   => true,
+					),
+				),
 			)
 		);
 	}

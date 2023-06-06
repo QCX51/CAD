@@ -593,4 +593,4 @@ class Blog extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Blog() );
+Plugin::instance()->widgets_manager->register( new Blog() );

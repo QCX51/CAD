@@ -330,4 +330,4 @@ class Products_Widget extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Products_Widget() );
+Plugin::instance()->widgets_manager->register( new Products_Widget() );

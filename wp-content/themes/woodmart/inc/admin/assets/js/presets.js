@@ -28,7 +28,8 @@
 						post_type : $condition.find('.xts-condition-post-type select').val(),
 						taxonomy  : $condition.find('.xts-condition-taxonomy select').val(),
 						custom    : $condition.find('.xts-condition-custom select').val(),
-						value_id  : $condition.find('.xts-condition-value-id').val()
+						value_id  : $condition.find('.xts-condition-value-id').val(),
+						user_role : $condition.find('.xts-condition-user-role select').val()
 					});
 				});
 
@@ -82,6 +83,7 @@
 				var $taxonomy = $condition.find('.xts-condition-taxonomy');
 				var $custom = $condition.find('.xts-condition-custom');
 				var $valueID = $condition.find('.xts-condition-value-wrapper');
+				var $userRole = $condition.find('.xts-condition-user-role');
 				var type = $type.val();
 
 				switch (type) {
@@ -90,12 +92,14 @@
 						$taxonomy.addClass('xts-hidden');
 						$custom.addClass('xts-hidden');
 						$valueID.addClass('xts-hidden');
+						$userRole.addClass('xts-hidden');
 						break;
 					case 'taxonomy':
 						$postType.addClass('xts-hidden');
 						$taxonomy.removeClass('xts-hidden');
 						$custom.addClass('xts-hidden');
 						$valueID.addClass('xts-hidden');
+						$userRole.addClass('xts-hidden');
 						break;
 					case 'post_id':
 					case 'term_id':
@@ -104,12 +108,21 @@
 						$taxonomy.addClass('xts-hidden');
 						$custom.addClass('xts-hidden');
 						$valueID.removeClass('xts-hidden');
+						$userRole.addClass('xts-hidden');
 						break;
 					case 'custom':
 						$postType.addClass('xts-hidden');
 						$taxonomy.addClass('xts-hidden');
 						$custom.removeClass('xts-hidden');
 						$valueID.addClass('xts-hidden');
+						$userRole.addClass('xts-hidden');
+						break;
+					case 'user_role':
+						$postType.addClass('xts-hidden');
+						$taxonomy.addClass('xts-hidden');
+						$custom.addClass('xts-hidden');
+						$valueID.addClass('xts-hidden');
+						$userRole.removeClass('xts-hidden');
 						break;
 
 					case '':
@@ -117,6 +130,7 @@
 						$taxonomy.addClass('xts-hidden');
 						$custom.addClass('xts-hidden');
 						$valueID.addClass('xts-hidden');
+						$userRole.addClass('xts-hidden');
 						break;
 				}
 			});

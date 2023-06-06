@@ -64,4 +64,37 @@
 		}
 	}
 
+	#wp-admin-bar-xts_dashboard_external {
+		
+		> li {
+
+			> a {
+				display: flex !important;
+				align-items: center;
+			}
+		}
+	}
+
+	//**** PATCHER COUNT ****//
+
+	#wp-admin-bar-xts_patcher {
+
+		.xts-patcher-counter {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin-inline-start: 5px;
+			padding: 3px 6px;
+			border-radius: 9px;
+			background-color: var(--xts-warning-color, #FA5757);
+			color: #FFF;
+			font-size: 11px;
+
+			.patcher-count {
+				font-size: inherit;
+				line-height: 1;
+			}
+		}
+	}
+
 } // END IF

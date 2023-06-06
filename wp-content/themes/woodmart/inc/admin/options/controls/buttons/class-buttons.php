@@ -70,7 +70,7 @@ class Buttons extends Field {
 	 */
 	public function render_control() {
 		if ( empty( $this->_options ) ) {
-			echo 'Options for this field are not provided in the map function.';
+			echo esc_html__( 'Options for this field are not provided in the map function.', 'woodmart' );
 			return;
 		}
 
@@ -95,7 +95,7 @@ class Buttons extends Field {
 
 						<?php if ( ! empty( $option['hint'] ) && woodmart_get_opt( 'white_label_theme_hints', true ) ) : ?>
 							<div class="xts-hint">
-								<div class="xts-tooltip xts-top"><?php echo $option['hint']; // phpcs:ignore ?></div>
+								<div class="xts-tooltip xts-top"><div class="xts-tooltip-inner"><?php echo $option['hint']; // phpcs:ignore ?></div></div>
 							</div>
 						<?php endif; ?>
 					</div>

@@ -51,7 +51,7 @@ class Query extends Singleton {
 		global $wpdb;
 
 		if ( ! empty( $query->query_vars['woodmart_single_variations_filter'] ) ) {
-			if ( woodmart_get_opt( 'hide_variation_parent' ) ) {
+			if ( woodmart_get_opt( 'hide_variation_parent' ) && ( ! woodmart_get_opt( 'wishlist_page' ) || get_queried_object_id() !== (int) woodmart_get_opt( 'wishlist_page' ) && empty( $_POST['atts']['is_wishlist'] ) ) ) { //phpcs:ignore
 				$clauses['where'] .= " AND 0 = (select count(*) as totalpart from {$wpdb->posts} as posts where posts.post_parent = {$wpdb->posts}.ID and posts.post_type = 'product_variation' ) ";
 			}
 
@@ -71,6 +71,13 @@ class Query extends Singleton {
 					$clauses['where'] = implode( ') temp )', $data_requests );
 				}
 			}
+
+			$clauses['where'] .= " AND {$wpdb->posts}.ID NOT IN (
+			    SELECT {$wpdb->posts}.ID
+			    FROM {$wpdb->posts}
+			    left JOIN {$wpdb->postmeta} ON ({$wpdb->posts}.ID = {$wpdb->postmeta}.post_id)
+			    WHERE $wpdb->postmeta.meta_key = '_wd_show_variation' AND $wpdb->postmeta.meta_value = 'no'
+			)";
 		}
 
 		return $clauses;
@@ -96,9 +103,10 @@ class Query extends Singleton {
 	 * @return void
 	 */
 	public function add_variations_to_product_query( $query ) {
-		if ( ( is_admin() && ( ! isset( $_REQUEST['action'] ) ) ) || isset( $query->query['product'] ) ) { //phpcs:ignore
+		if ( ( is_admin() && ( ! isset( $_REQUEST['action'] ) ) ) || isset( $query->query['product'] ) || ! empty( $query->query['wd_show_variable_products'] ) ) { //phpcs:ignore
 			return;
 		}
+
 		global $pagenow;
 
 		$post_type = array_filter( (array) $query->get( 'post_type' ) );

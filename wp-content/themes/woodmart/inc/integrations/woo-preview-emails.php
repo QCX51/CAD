@@ -23,7 +23,13 @@ if ( ! function_exists( 'woodmart_woo_preview_update_order' ) ) {
 	 * @return bool|void
 	 */
 	function woodmart_woo_preview_update_order( $additional_data, $index, $order_id, $current_email ) {
-		if ( 'woodmart_wishlist_back_in_stock' === $index || 'woodmart_wishlist_on_sale_products' === $index ) {
+		$emails_list = array(
+			'woodmart_wishlist_back_in_stock',
+			'woodmart_wishlist_on_sale_products',
+			'woodmart_promotional_email',
+		);
+
+		if ( in_array( $index, $emails_list, true ) ) {
 			return true;
 		}
 
@@ -99,6 +105,24 @@ if ( ! function_exists( 'woodmart_woo_preview_order_trigger' ) ) {
 			}
 
 			do_action( 'woodmart_send_on_sale_products_mail', $user_id, $products_on_sales );
+		} elseif ( 'woodmart_promotional_email' === $current_email->id ) {
+			$products_for_promotion = array();
+			$args                   = array(
+				'posts_per_page' => 4,
+				'post_type'      => 'product',
+				'orderby'        => 'rand',
+			);
+			$query                  = new WP_Query( $args );
+
+			if ( ! isset( $query->posts ) ) {
+				return;
+			}
+
+			foreach ( $query->posts as $post ) {
+				$products_for_promotion[ $user_id ][] = $post->ID;
+			}
+
+			do_action( 'woodmart_send_promotional_mail', $user_id, $products_for_promotion[ $user_id ], '', '' );
 		}
 	}
 

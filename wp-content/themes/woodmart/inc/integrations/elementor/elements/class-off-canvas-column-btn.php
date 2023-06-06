@@ -76,6 +76,7 @@ class Off_Canvas_Column_Btn extends Widget_Base {
 	 * Register the widget controls.
 	 */
 	protected function register_controls() {
+		$sticky_key = woodmart_is_elementor_pro_installed() ? 'wd_sticky' : 'sticky';
 		/**
 		 * Content tab
 		 */
@@ -101,7 +102,7 @@ class Off_Canvas_Column_Btn extends Widget_Base {
 		);
 
 		$this->add_control(
-			'sticky',
+			$sticky_key,
 			array(
 				'label'        => esc_html__( 'Sticky', 'woodmart' ),
 				'description'  => esc_html__( 'Make the off canvas sidebar button sticky.', 'woodmart' ),
@@ -178,6 +179,7 @@ class Off_Canvas_Column_Btn extends Widget_Base {
 				'icon_type'   => 'default',
 				'icon'        => array(),
 				'sticky'      => '',
+				'wd_sticky'   => '',
 			)
 		);
 		woodmart_enqueue_js_script( 'off-canvas-colum-btn' );
@@ -222,7 +224,7 @@ class Off_Canvas_Column_Btn extends Widget_Base {
 			}
 		}
 
-		if ( 'yes' === $settings['sticky'] ) {
+		if ( 'yes' === $settings['sticky'] || 'yes' === $settings['wd_sticky'] ) {
 			woodmart_enqueue_inline_style( 'mod-sticky-sidebar-opener' );
 		}
 
@@ -240,7 +242,7 @@ class Off_Canvas_Column_Btn extends Widget_Base {
 			</a>
 		</div>
 
-		<?php if ( 'yes' === $settings['sticky'] ) : ?>
+		<?php if ( 'yes' === $settings['sticky'] || 'yes' === $settings['wd_sticky'] ) : ?>
 			<div class="wd-sidebar-opener wd-action-btn wd-style-icon<?php echo esc_html( $sticky_off_canvas_classes ); ?>">
 				<a href="#" rel="nofollow">
 					<?php if ( ! empty( $icon_output ) ) : ?>
@@ -255,4 +257,4 @@ class Off_Canvas_Column_Btn extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Off_Canvas_Column_Btn() );
+Plugin::instance()->widgets_manager->register( new Off_Canvas_Column_Btn() );

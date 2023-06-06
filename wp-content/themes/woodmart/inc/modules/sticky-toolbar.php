@@ -114,7 +114,7 @@ if ( ! function_exists( 'woodmart_sticky_toolbar_template' ) ) {
 	 * @since 3.6
 	 */
 	function woodmart_sticky_toolbar_template() {
-		if ( woodmart_get_opt( 'maintenance_mode' ) && ! is_user_logged_in() ) {
+		if ( woodmart_is_maintenance_active() ) {
 			return;
 		}
 
@@ -246,12 +246,17 @@ if ( ! function_exists( 'woodmart_sticky_toolbar_cart_template' ) ) {
 			return;
 		}
 
-		$settings = whb_get_settings();
-		$opener   = false;
-		$classes  = '';
+		$settings     = whb_get_settings();
+		$opener       = false;
+		$classes      = '';
+		$icon_classes = ' wd-icon-alt';
 
 		if ( isset( $settings['cart']['position'] ) ) {
 			$opener = $settings['cart']['position'] == 'side';
+		}
+
+		if ( ! empty( $settings['cart']['icon_type'] ) && 'cart' === $settings['cart']['icon_type'] ) {
+			$icon_classes = '';
 		}
 
 		if ( $opener ) {
@@ -267,7 +272,7 @@ if ( ! function_exists( 'woodmart_sticky_toolbar_cart_template' ) ) {
 		?>
 		<div class="wd-header-cart wd-tools-element wd-design-5<?php echo esc_attr( $classes ); ?>" title="<?php echo esc_attr__( 'My cart', 'woodmart' ); ?>">
 			<a href="<?php echo esc_url( wc_get_cart_url() ); ?>">
-				<span class="wd-tools-icon wd-icon-alt">
+				<span class="wd-tools-icon<?php echo esc_attr( $icon_classes ); ?>">
 					<?php woodmart_cart_count(); ?>
 				</span>
 				<span class="wd-toolbar-label">

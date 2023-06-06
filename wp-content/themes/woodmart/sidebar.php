@@ -23,9 +23,9 @@ if ( strstr( $sidebar_class, 'col-lg-0' ) ) {
 
 <aside class="sidebar-container <?php echo esc_attr( $sidebar_class ); ?> area-<?php echo esc_attr( $sidebar_name ); ?>">
 	<?php if ( woodmart_get_opt( 'shop_hide_sidebar' ) || woodmart_get_opt( 'shop_hide_sidebar_tablet' ) || woodmart_get_opt( 'shop_hide_sidebar_desktop' ) || woodmart_get_opt( 'hide_main_sidebar_mobile' ) ) : ?>
-		<div class="wd-heading widget-heading">
+		<div class="wd-heading">
 			<div class="close-side-widget wd-action-btn wd-style-text wd-cross-icon">
-				<a href="#" rel="nofollow noopener"><?php esc_html_e( 'close', 'woodmart' ); ?></a>
+				<a href="#" rel="nofollow noopener"><?php esc_html_e( 'Close', 'woodmart' ); ?></a>
 			</div>
 		</div>
 	<?php endif; ?>

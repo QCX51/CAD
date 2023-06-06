@@ -107,6 +107,7 @@ class Process {
 			if ( 'base' === $this->type ) {
 				$import_after->set_menu_locations();
 				$import_after->set_blog_page();
+				$import_after->set_shop_page();
 				$import_after->enable_wpb_on_custom_post_types();
 				$import_after->enable_elementor_on_custom_post_types();
 				$import_after->show_all_fields_menu();

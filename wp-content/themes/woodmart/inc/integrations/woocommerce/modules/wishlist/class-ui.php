@@ -154,7 +154,7 @@ class Ui extends Singleton {
 			<?php return; ?>
 		<?php endif; ?>
 
-		<?php if ( is_user_logged_in() && $this->is_editable() && apply_filters( 'woodmart_my_account_wishlist', true ) ) : ?>
+		<?php if ( woodmart_woocommerce_installed() && is_user_logged_in() && $this->is_editable() && apply_filters( 'woodmart_my_account_wishlist', true ) ) : ?>
 			<?php do_action( 'woocommerce_account_navigation' ); ?>
 		<?php endif; ?>
 
@@ -215,8 +215,11 @@ class Ui extends Singleton {
 			'products_masonry'             => woodmart_get_opt( 'products_masonry' ) ? 'enable' : 'disable',
 			'products_different_sizes'     => woodmart_get_opt( 'products_different_sizes' ) ? 'enable' : 'disable',
 			'query_post_type'              => array( 'product', 'product_variation' ),
-			'products_bordered_grid'       => woodmart_get_opt( 'products_bordered_grid' ),
+			'products_bordered_grid'       => woodmart_get_opt( 'products_bordered_grid', 0 ),
 			'products_bordered_grid_style' => woodmart_get_opt( 'products_bordered_grid_style' ),
+			'products_with_background'     => woodmart_get_opt( 'products_with_background', 0 ),
+			'products_shadow'              => woodmart_get_opt( 'products_shadow', 0 ),
+			'products_color_scheme'        => woodmart_get_opt( 'products_color_scheme', 'default' ),
 			'is_wishlist'                  => 'yes',
 		);
 
@@ -466,6 +469,7 @@ class Ui extends Singleton {
 		$added        = false;
 		$link_classes = '';
 		$text         = esc_html__( 'Add to wishlist', 'woodmart' );
+		$product_id   = apply_filters( 'wpml_object_id', get_the_ID(), 'product', true, apply_filters( 'wpml_default_language', null ) );
 
 		if ( $this->wishlist && $this->wishlist->get_all() && woodmart_get_opt( 'wishlist_save_button_state', '0' ) ) {
 			$products = $this->wishlist->get_all();
@@ -485,7 +489,7 @@ class Ui extends Singleton {
 
 		?>
 			<div class="wd-wishlist-btn <?php echo esc_attr( $classes ); ?>">
-				<a class="<?php echo esc_attr( $link_classes ); ?>" href="<?php echo esc_url( woodmart_get_wishlist_page_url() ); ?>" data-key="<?php echo esc_attr( wp_create_nonce( 'woodmart-wishlist-add' ) ); ?>" data-product-id="<?php echo esc_attr( get_the_ID() ); ?>" rel="nofollow" data-added-text="<?php esc_html_e( 'Browse Wishlist', 'woodmart' ); ?>">
+				<a class="<?php echo esc_attr( $link_classes ); ?>" href="<?php echo esc_url( woodmart_get_wishlist_page_url() ); ?>" data-key="<?php echo esc_attr( wp_create_nonce( 'woodmart-wishlist-add' ) ); ?>" data-product-id="<?php echo esc_attr( $product_id ); ?>" rel="nofollow" data-added-text="<?php esc_html_e( 'Browse Wishlist', 'woodmart' ); ?>">
 					<span><?php echo esc_html( $text ); ?></span>
 				</a>
 			</div>

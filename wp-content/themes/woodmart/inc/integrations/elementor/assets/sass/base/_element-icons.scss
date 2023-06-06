@@ -237,6 +237,14 @@
 	background-image: url(../../../../admin/assets/images/vc-icon/off-canvas-column-button.svg);
 }
 
+.wd-icon-table:before {
+	background-image: url(../../../../admin/assets/images/vc-icon/table.svg);
+}
+
+.wd-icon-open-street-map:before {
+	background-image: url(../../../../admin/assets/images/vc-icon/open-street-map.svg);
+}
+
 // Single product.
 
 .wd-icon-sp-title:before {
@@ -349,6 +357,10 @@
 
 .wd-icon-sp-linked-variations:before {
 	background-image: url(../../../../admin/assets/images/vc-icon/sp-icons/sp-linked-variations.svg);
+}
+
+.wd-icon-sp-stock-progress-bar:before {
+	background-image: url(../../../../admin/assets/images/vc-icon/sp-icons/sp-stock-status.svg);
 }
 
 // Shop archive.

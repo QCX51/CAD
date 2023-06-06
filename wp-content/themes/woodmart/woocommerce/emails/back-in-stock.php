@@ -34,9 +34,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 		<tbody>
 		<?php foreach ( $product_lists as $product ) : ?>
 			<tr>
-				<td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?> vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; word-wrap:break-word;">
+				<td class="td" style="text-align:<?php echo esc_attr( $text_align ); ?> vertical-align: middle; font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; word-wrap:break-word; flex-wrap: wrap;">
 					<a href="<?php echo esc_url( $product->get_permalink() ); ?>" style="display: flex; align-items: center; border-bottom: none; text-decoration: none;">
-						<?php echo get_the_post_thumbnail( $product->get_id(), array( '70', '70' ), array( 'style' => 'margin-right: 15px' ) ); ?>
+						<?php echo get_the_post_thumbnail( $product->get_id(), array( '70', '70' ), array( 'style' => 'margin-right: 15px; max-width:70px;' ) ); ?>
 						<span>
 							<?php echo esc_html( $product->get_title() ); ?>
 						</span>

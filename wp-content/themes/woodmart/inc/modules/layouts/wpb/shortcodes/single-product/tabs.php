@@ -5,6 +5,7 @@
  * @package Woodmart
  */
 
+use XTS\Modules\Layouts\Global_Data;
 use XTS\Modules\Layouts\Main;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -26,6 +27,7 @@ if ( ! function_exists( 'woodmart_shortcode_single_product_tabs' ) ) {
 			'additional_info_style'             => 'bordered',
 			'additional_info_layout'            => 'list',
 			'reviews_layout'                    => 'one-column',
+			'reviews_columns'                   => '',
 			'css'                               => '',
 
 			/**
@@ -43,6 +45,7 @@ if ( ! function_exists( 'woodmart_shortcode_single_product_tabs' ) ) {
 			'accordion_style'                   => 'default',
 			'accordion_title_text_color_scheme' => 'inherit',
 			'accordion_alignment'               => 'left',
+			'accordion_hide_top_bottom_border'  => 'no',
 
 			/**
 			 * Opener Settings.
@@ -53,6 +56,17 @@ if ( ! function_exists( 'woodmart_shortcode_single_product_tabs' ) ) {
 		);
 
 		$settings = wp_parse_args( $settings, $default_settings );
+
+		foreach ( array( 'desktop', 'tablet', 'mobile' ) as $device ) {
+			$key   = 'reviews_columns' . ( 'desktop' === $device ? '' : '_' . $device );
+			$value = woodmart_vc_get_control_data( $settings['reviews_columns'], $device );
+
+			if ( ! $value ) {
+				$value = 1;
+			}
+
+			Global_Data::get_instance()->set_data( $key, $value );
+		}
 
 		$wrapper_classes = apply_filters( 'vc_shortcodes_css_class', '', '', $settings );
 
@@ -104,6 +118,10 @@ if ( ! function_exists( 'woodmart_shortcode_single_product_tabs' ) ) {
 				$title_classes .= ' color-scheme-' . $settings['accordion_title_text_color_scheme'];
 			}
 
+			if ( 'yes' === $settings['accordion_hide_top_bottom_border'] ) {
+				$accordion_classes .= ' wd-border-off';
+			}
+
 			$args = array(
 				'builder_accordion_classes' => $accordion_classes,
 				'builder_state'             => $accordion_state,
@@ -138,6 +156,7 @@ if ( ! function_exists( 'woodmart_shortcode_single_product_tabs' ) ) {
 
 		if ( comments_open() ) {
 			woodmart_enqueue_inline_style( 'woo-single-prod-el-reviews' );
+			woodmart_enqueue_inline_style( 'woo-single-prod-el-reviews-' . woodmart_get_opt( 'reviews_style', 'style-1' ) );
 			woodmart_enqueue_js_script( 'woocommerce-comments' );
 		}
 

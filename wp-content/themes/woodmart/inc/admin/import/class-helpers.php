@@ -24,10 +24,6 @@ class Helpers extends Singleton {
 	 */
 	public $links = array(
 		'uploads' => array(
-			'http://dummy.xtemos.com/woodmart2/wp-content/uploads/',
-			'https://dummy.xtemos.com/woodmart2/wp-content/uploads/',
-			'http://woodmart.xtemos.com/wp-content/uploads/',
-			'https://woodmart.xtemos.com/wp-content/uploads/',
 			'http://dummy.xtemos.com/woodmart2/elementor/wp-content/uploads/sites/2/',
 			'https://dummy.xtemos.com/woodmart2/elementor/wp-content/uploads/sites/2/',
 
@@ -40,14 +36,18 @@ class Helpers extends Singleton {
 			'https://dummy.xtemos.com/woodmart2/accessories-elementor/wp-content/uploads/sites/6/',
 			'http://dummy.xtemos.com/woodmart2/accessories/wp-content/uploads/sites/5/',
 			'https://dummy.xtemos.com/woodmart2/accessories/wp-content/uploads/sites/5/',
+
+			'http://dummy.xtemos.com/woodmart2/mega-electronics-elementor/wp-content/uploads/sites/8/',
+			'https://dummy.xtemos.com/woodmart2/mega-electronics-elementor/wp-content/uploads/sites/8/',
+			'http://dummy.xtemos.com/woodmart2/mega-electronics/wp-content/uploads/sites/7/',
+			'https://dummy.xtemos.com/woodmart2/mega-electronics/wp-content/uploads/sites/7/',
+
+			'http://dummy.xtemos.com/woodmart2/wp-content/uploads/',
+			'https://dummy.xtemos.com/woodmart2/wp-content/uploads/',
+			'http://woodmart.xtemos.com/wp-content/uploads/',
+			'https://woodmart.xtemos.com/wp-content/uploads/',
 		),
 		'simple'  => array(
-			'http://dummy.xtemos.com/woodmart2/elementor/',
-			'https://dummy.xtemos.com/woodmart2/elementor/',
-			'http://dummy.xtemos.com/woodmart2/',
-			'https://dummy.xtemos.com/woodmart2/',
-			'https://woodmart.xtemos.com/',
-			'http://woodmart.xtemos.com/',
 			'http://dummy.xtemos.com/woodmart2/megamarket-elementor/',
 			'https://dummy.xtemos.com/woodmart2/megamarket-elementor/',
 			'http://dummy.xtemos.com/woodmart2/megamarket/',
@@ -57,6 +57,18 @@ class Helpers extends Singleton {
 			'https://dummy.xtemos.com/woodmart2/accessories-elementor/',
 			'http://dummy.xtemos.com/woodmart2/accessories/',
 			'https://dummy.xtemos.com/woodmart2/accessories/',
+
+			'http://dummy.xtemos.com/woodmart2/mega-electronics-elementor/',
+			'https://dummy.xtemos.com/woodmart2/mega-electronics-elementor/',
+			'http://dummy.xtemos.com/woodmart2/mega-electronics/',
+			'https://dummy.xtemos.com/woodmart2/mega-electronics/',
+
+			'http://dummy.xtemos.com/woodmart2/elementor/',
+			'https://dummy.xtemos.com/woodmart2/elementor/',
+			'http://dummy.xtemos.com/woodmart2/',
+			'https://dummy.xtemos.com/woodmart2/',
+			'https://woodmart.xtemos.com/',
+			'http://woodmart.xtemos.com/',
 		),
 	);
 
@@ -208,6 +220,6 @@ class Helpers extends Singleton {
 	 * @return array
 	 */
 	public function get_base_version() {
-		return array( 'base', 'megamarket_base', 'accessories_base' );
+		return array( 'base', 'megamarket_base', 'accessories_base', 'mega-electronics_base' );
 	}
 }

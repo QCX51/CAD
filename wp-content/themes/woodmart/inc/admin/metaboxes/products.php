@@ -120,7 +120,7 @@ if ( ! function_exists( 'woodmart_register_product_metaboxes' ) ) {
 				'id'          => $woodmart_prefix . 'swatches_attribute',
 				'type'        => 'select',
 				'name'        => esc_html__( 'Grid swatch attribute to display', 'woodmart' ),
-				'hint'         => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'grid-swatch-attribute-to-display.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'grid-swatch-attribute-to-display.mp4" autoplay loop muted></video>',
 				'description' => esc_html__( 'Choose attribute that will be shown on products grid for this particular product', 'woodmart' ),
 				'section'     => 'product_general_section',
 				'options'     => $taxonomies_list,
@@ -136,7 +136,22 @@ if ( ! function_exists( 'woodmart_register_product_metaboxes' ) ) {
 				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'show-related-products.jpg" alt="">', 'woodmart' ), true ),
 				'description' => esc_html__( 'You can hide related products on this page', 'woodmart' ),
 				'section'     => 'product_general_section',
+				'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+				'off-text'    => esc_html__( 'No', 'woodmart' ),
 				'priority'    => 40,
+			)
+		);
+
+		$product_metabox->add_field(
+			array(
+				'id'       => $woodmart_prefix . 'exclude_show_single_variation',
+				'type'     => 'checkbox',
+				'name'     => esc_html__( 'Exclude variation products on grid', 'woodmart' ),
+				'section'  => 'product_general_section',
+				'on-text'  => esc_html__( 'Yes', 'woodmart' ),
+				'off-text' => esc_html__( 'No', 'woodmart' ),
+				'priority' => 45,
+				'class'    => 'xts-col-6',
 			)
 		);
 
@@ -145,7 +160,7 @@ if ( ! function_exists( 'woodmart_register_product_metaboxes' ) ) {
 				'id'          => $woodmart_prefix . 'product_video',
 				'type'        => 'text_input',
 				'name'        => esc_html__( 'Product video URL', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'product-video-url.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'product-video-url.mp4" autoplay loop muted></video>',
 				'description' => esc_html__( 'URL example: https://www.youtube.com/watch?v=LXb3EKWsInQ', 'woodmart' ),
 				'section'     => 'product_general_section',
 				'priority'    => 50,
@@ -430,6 +445,8 @@ if ( ! function_exists( 'woodmart_register_product_metaboxes' ) ) {
 				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'hide-tabs-headings.jpg" alt="">', 'woodmart' ), true ),
 				'description' => esc_html__( 'Description and Additional information', 'woodmart' ),
 				'section'     => 'tab_options_section',
+				'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+				'off-text'    => esc_html__( 'No', 'woodmart' ),
 				'priority'    => 10,
 			)
 		);

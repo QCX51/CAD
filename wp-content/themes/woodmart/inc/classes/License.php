@@ -67,6 +67,7 @@ class WOODMART_License {
 								</p>
 
 								<form action="" class="xts-form xts-activation-form" method="post">
+									<?php wp_nonce_field( 'xts-license-deactivation' ); ?>
 									<input type="hidden" name="purchase-code-deactivate" value="1"/>
 									<div class="xts-license-btn xts-deactivate-btn xts-i-close">
 										<input class="xts-btn xts-color-warning" type="submit" value="<?php esc_attr_e( 'Deactivate theme', 'woodmart' ); ?>" />
@@ -75,6 +76,7 @@ class WOODMART_License {
 							</div>
 						<?php else : ?>
 							<form action="" class="xts-form xts-activation-form" method="post">
+								<?php wp_nonce_field( 'xts-license-activation' ); ?>
 								<?php if ( ! woodmart_get_opt( 'white_label' ) ) : ?>
 									<label for="purchase-code"><?php esc_html_e( 'Purchase code', 'woodmart' ); ?> (<a href="https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-" target="_blank">Where can I get my purchase code?</a>)</label>
 								<?php endif; ?>
@@ -103,7 +105,7 @@ class WOODMART_License {
 									</label>
 
 									<div class="xts-hint">
-										<div class="xts-tooltip xts-top">
+										<div class="xts-tooltip xts-top xts-top-left">
 											<?php esc_html_e( 'To activate the theme and receive product support, you have to register your Envato purchase code on our site. This purchase code will be stored together with support expiration dates and your user data. This is required for us to provide you with product support and other customer services.', 'woodmart' ); ?>
 										</div>
 									</div>
@@ -132,6 +134,7 @@ class WOODMART_License {
 
 	public function process_form() {
 		if ( isset( $_POST['purchase-code-deactivate'] ) ) {
+			check_admin_referer( 'xts-license-deactivation' );
 			$this->deactivate();
 			$this->_notices->add_success( 'Theme license is successfully deactivated.' );
 			return;
@@ -145,6 +148,7 @@ class WOODMART_License {
 		if ( ! isset( $_POST['purchase-code'] ) || empty( $_POST['purchase-code'] ) ) {
 			return;
 		}
+		check_admin_referer( 'xts-license-activation' );
 
 		$code = sanitize_text_field( $_POST['purchase-code'] );
 

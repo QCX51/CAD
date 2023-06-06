@@ -44,7 +44,7 @@ if( ! function_exists( 'woodmart_product_brand' ) ) {
 
 		$classes .= woodmart_get_old_classes( ' woodmart-product-brands' );
 
-		echo '<div class="wd-product-brands set-mb-s'. esc_attr( $classes ) .'">';
+		echo '<div class="wd-product-brands'. esc_attr( $classes ) .'">';
 
 		?>
 		<?php if ( ! empty( $builder_label ) ) : ?>
@@ -78,11 +78,8 @@ if( ! function_exists( 'woodmart_product_brand' ) ) {
 				$content = '<img src="' . esc_url( $image ) . '" title="' . esc_attr( $brand->name ) . '" alt="' . esc_attr( $brand->name ) . '" ' . $attrs . '>';
 			}
 
-			$link_wrapper_classes = '';
-
-			if ( woodmart_get_opt( 'old_elements_classes' ) ) {
-				$link_wrapper_classes .= ' woodmart-product-brand';
-			}
+			$link_wrapper_classes  = '';
+			$link_wrapper_classes .= woodmart_get_old_classes( ' woodmart-product-brand' );
 
 			if ( ! empty( $link_wrapper_classes ) ) {
 				$link_wrapper_classes = sprintf( ' class=%s', $link_wrapper_classes );

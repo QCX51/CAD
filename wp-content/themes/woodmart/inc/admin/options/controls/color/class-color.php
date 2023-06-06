@@ -121,7 +121,7 @@ class Color extends Field {
 			$output .= '}' . "\n\n";
 		}
 
-		if ( isset( $this->args['selector_var'] ) || isset( $this->args['selector_hover_var'] ) ) {
+		if ( ( $idle || $hover ) && ( isset( $this->args['selector_var'] ) || isset( $this->args['selector_hover_var'] ) ) ) {
 			$output .= ':root{' . "\n";
 		}
 
@@ -133,8 +133,20 @@ class Color extends Field {
 			$output .= $this->args['selector_hover_var'] . ':' . $hover . ';' . "\n";
 		}
 
-		if ( isset( $this->args['selector_var'] ) || isset( $this->args['selector_hover_var'] ) ) {
+		if ( ( $idle || $hover ) && ( isset( $this->args['selector_var'] ) || isset( $this->args['selector_hover_var'] ) ) ) {
 			$output .= '}' . "\n";
+		}
+
+		if ( isset( $this->args['selectors'] ) && $idle ) {
+			foreach ( $this->args['selectors'] as $selector => $properties ) {
+				$output .= $selector . '{' . "\n";
+
+				foreach ( $properties as $property ) {
+					$output .= "\t" . str_replace( '{{VALUE}}', $idle, $property ) . "\n";
+				}
+
+				$output .= '}' . "\n\n";
+			}
 		}
 
 		return $output;

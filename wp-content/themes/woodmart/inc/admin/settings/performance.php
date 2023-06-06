@@ -17,68 +17,9 @@ Options::add_field(
 	)
 );
 
-Options::add_field(
-	array(
-		'id'          => 'old_elements_classes',
-		'name'        => esc_html__( 'Deprecated CSS classes from v5.x', 'woodmart' ),
-		'description' => esc_html__( 'Enable this option only if you have a lot of custom CSS written for 5.x version. If you don\'t have any custom CSS at all then just disable this option.', 'woodmart' ),
-		'type'        => 'switcher',
-		'section'     => 'performance_other',
-		'default'     => true,
-		'priority'    => 20,
-	)
-);
-
 /**
  * CSS.
  */
-Options::add_field(
-	array(
-		'id'                 => 'combined_css',
-		'name'               => esc_html__( 'Combine CSS files', 'woodmart' ),
-		'description'        => esc_html__( 'Load one CSS file that contains all theme styles. Not recommended if you want to reduce your page weight.', 'woodmart' ),
-		'group'              => esc_html__( 'General', 'woodmart' ),
-		'type'               => 'switcher',
-		'section'            => 'performance_css',
-		'default'            => false,
-		'priority'           => 10,
-		'class'              => 'xts-col-6',
-		'status'             => 'deprecated',
-		'status_description' => esc_html__( 'Should be always DISABLED. Enabling this option doesn’t improve anything and increases the page size.', 'woodmart' ),
-	)
-);
-
-Options::add_field(
-	array(
-		'id'                 => 'minified_css',
-		'name'               => esc_html__( 'Include minified CSS', 'woodmart' ),
-		'description'        => esc_html__( 'Minified versions of CSS files will be loaded. Works well with all caching and optimizations plugins.', 'woodmart' ),
-		'group'              => esc_html__( 'General', 'woodmart' ),
-		'type'               => 'switcher',
-		'section'            => 'performance_css',
-		'default'            => '1',
-		'priority'           => 20,
-		'class'              => 'xts-col-6',
-		'status'             => 'deprecated',
-		'status_description' => esc_html__( 'This option doesn’t work for small CSS files. And since our Combine CSS option is deprecated, this option is deprecated too. Note that small CSS parts are always minified by default.', 'woodmart' ),
-	)
-);
-
-Options::add_field(
-	array(
-		'id'                 => 'light_bootstrap_version',
-		'name'               => esc_html__( 'Light bootstrap grid version', 'woodmart' ),
-		'description'        => esc_html__( 'Clean bootstrap grid CSS from code that are not used by the theme.', 'woodmart' ),
-		'group'              => esc_html__( 'General', 'woodmart' ),
-		'type'               => 'switcher',
-		'section'            => 'performance_css',
-		'default'            => true,
-		'priority'           => 30,
-		'status'             => 'deprecated',
-		'status_description' => esc_html__( 'Should be always ENABLED.', 'woodmart' ),
-	)
-);
-
 Options::add_field(
 	array(
 		'id'          => 'disable_gutenberg_css',
@@ -88,6 +29,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'performance_css',
 		'default'     => false,
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 40,
 		'class'       => 'xts-col-6',
 	)
@@ -102,6 +45,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'performance_css',
 		'default'     => false,
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 50,
 		'class'       => 'xts-col-6',
 	)
@@ -146,49 +91,18 @@ Options::add_field(
 /**
  * JS
  */
-
-Options::add_field(
-	array(
-		'id'                 => 'combined_js',
-		'name'               => esc_html__( 'Combine JS files', 'woodmart' ),
-		'description'        => esc_html__( 'Load one JS file that contains all theme scripts and library initializations.', 'woodmart' ),
-		'group'              => esc_html__( 'General', 'woodmart' ),
-		'type'               => 'switcher',
-		'section'            => 'performance_js',
-		'status'             => 'deprecated',
-		'status_description' => esc_html__( 'Should be always DISABLED. Combining all theme files will lead to a larger page size. You need to use an additional plugin to combine all JS files that are loaded on your pages. For example WP Rocket.', 'woodmart' ),
-		'default'            => false,
-		'priority'           => 10,
-		'class'              => 'xts-col-6',
-	)
-);
-
-Options::add_field(
-	array(
-		'id'                 => 'minified_js',
-		'name'               => esc_html__( 'Include minified JS', 'woodmart' ),
-		'description'        => esc_html__( 'Minified versions of JS files will be loaded. Works well with all caching and optimizations plugins.', 'woodmart' ),
-		'group'              => esc_html__( 'General', 'woodmart' ),
-		'type'               => 'switcher',
-		'section'            => 'performance_js',
-		'status'             => 'deprecated',
-		'status_description' => esc_html__( 'Should be always ENABLED. This option will be removed soon and you will be able to load unminified JS files only when you enable Debug mode in WordPress.', 'woodmart' ),
-		'default'            => '1',
-		'priority'           => 20,
-		'class'              => 'xts-col-6',
-	)
-);
-
 Options::add_field(
 	array(
 		'id'          => 'disable_owl_mobile_devices',
 		'name'        => esc_html__( 'Disable OWL Carousel script on mobile devices', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'disable-owl-carousel.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'disable-owl-carousel.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Using native browser\'s scrolling feature on mobile devices may improve your page loading and performance on some devices. Desktop will be handled with OWL Carousel JS library.', 'woodmart' ),
 		'group'       => esc_html__( 'General', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'performance_js',
 		'default'     => false,
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 40,
 		'class'       => 'xts-col-6',
 	)
@@ -203,6 +117,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'performance_js',
 		'default'     => false,
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 45,
 		'class'    => 'xts-col-6',
 	)
@@ -361,7 +277,7 @@ Options::add_field(
 	array(
 		'id'          => 'lazy_loading',
 		'name'        => esc_html__( 'Lazy loading for images', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'lazy-loading-for-images.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'lazy-loading-for-images.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Enable this option to optimize your images loading on the website. They will be loaded only when user will scroll the page.', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'performance_lazy_loading',
@@ -397,12 +313,12 @@ Options::add_field(
 		'options'     => array(
 			'fade' => array(
 				'name'  => esc_html__( 'Fade', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'lazy-loading-appearance-effect-fade.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'lazy-loading-appearance-effect-fade.mp4" autoplay loop muted></video>',
 				'value' => 'fade',
 			),
 			'blur' => array(
 				'name'  => esc_html__( 'Blur', 'woodmart' ),
-				'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'lazy-loading-appearance-effect-blur.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'lazy-loading-appearance-effect-blur.mp4" autoplay loop muted></video>',
 				'value' => 'blur',
 			),
 			'none' => array(
@@ -423,6 +339,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'performance_lazy_loading',
 		'default'     => '1',
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 40,
 	)
 );
@@ -465,6 +383,20 @@ Options::add_field(
 	)
 );
 
+Options::add_field(
+	array(
+		'id'          => 'disable_wordpress_lazy_loading',
+		'name'        => esc_html__( 'Disable native WordPress lazy loading', 'woodmart' ),
+		'description' => esc_html__( 'This option will remove attribute loading=“lazy” from all images on your website.', 'woodmart' ),
+		'type'        => 'switcher',
+		'section'     => 'performance_lazy_loading',
+		'default'     => false,
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
+		'priority'    => 80,
+	)
+);
+
 /**
  * Plugins
  */
@@ -490,6 +422,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'plugins_section',
 		'default'     => true,
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 11,
 	)
 );
@@ -729,6 +663,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'fonts_section',
 		'default'     => false,
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 50,
 	)
 );
@@ -740,7 +676,7 @@ Options::add_field(
 	array(
 		'id'          => 'preloader',
 		'name'        => esc_html__( 'Preloader', 'woodmart' ),
-		'hint'        => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'preloader.gif" alt="">', 'woodmart' ), true ),
+		'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'preloader.mp4" autoplay loop muted></video>',
 		'description' => esc_html__( 'Enable preloader animation while loading your website content. Useful when you move all the CSS to the footer.', 'woodmart' ),
 		'type'        => 'switcher',
 		'section'     => 'preloader_section',

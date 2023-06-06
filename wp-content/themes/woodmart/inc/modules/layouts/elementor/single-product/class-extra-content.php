@@ -119,4 +119,4 @@ class Extra_Content extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Extra_Content() );
+Plugin::instance()->widgets_manager->register( new Extra_Content() );

@@ -154,4 +154,4 @@ class View_3d extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new View_3d() );
+Plugin::instance()->widgets_manager->register( new View_3d() );

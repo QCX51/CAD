@@ -5,12 +5,8 @@
 * ------------------------------------------------------------------------------------------------
 */
 
-if( ! function_exists( 'woodmart_vc_map_brands' ) ) {
-	function woodmart_vc_map_brands() {
-		if ( ! shortcode_exists( 'woodmart_brands' ) ) {
-			return;
-		}
-
+if( ! function_exists( 'woodmart_get_vc_map_brands' ) ) {
+	function woodmart_get_vc_map_brands() {
 		$order_by_values = array(
 			'',
 			esc_html__( 'Name', 'woodmart' ) => 'name',
@@ -27,13 +23,12 @@ if( ! function_exists( 'woodmart_vc_map_brands' ) ) {
 			esc_html__( 'Ascending', 'woodmart' ) => 'ASC',
 		);
 
-
-		vc_map( array(
+		return array(
 			'name' => esc_html__( 'Brands', 'woodmart' ),
 			'base' => 'woodmart_brands',
 			'category' => woodmart_get_tab_title_category_for_wpb( esc_html__( 'Theme elements', 'woodmart' ) ),
 			'description' => esc_html__( 'Brands carousel/grid', 'woodmart' ),
-        	'icon' => WOODMART_ASSETS . '/images/vc-icon/brands.svg',
+			'icon' => WOODMART_ASSETS . '/images/vc-icon/brands.svg',
 			'params' => array(
 				array(
 					'type' => 'woodmart_title_divider',
@@ -47,8 +42,8 @@ if( ! function_exists( 'woodmart_vc_map_brands' ) ) {
 					'param_name' => 'title'
 				),
 				/**
-				* Data settings
-				*/
+				 * Data settings
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -112,8 +107,8 @@ if( ! function_exists( 'woodmart_vc_map_brands' ) ) {
 					'edit_field_class' => 'vc_col-sm-6 vc_column',
 				),
 				/**
-				* Style
-				*/
+				 * Style
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -144,8 +139,8 @@ if( ! function_exists( 'woodmart_vc_map_brands' ) ) {
 					'edit_field_class' => 'vc_col-sm-6 vc_column',
 				),
 				/**
-				* Layout
-				*/
+				 * Layout
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
@@ -412,13 +407,17 @@ if( ! function_exists( 'woodmart_vc_map_brands' ) ) {
 					'edit_field_class' => 'vc_col-sm-6 vc_column',
 				),
 				/**
-				* Extra
-				*/
+				 * Extra
+				 */
 				array(
 					'type' => 'woodmart_title_divider',
 					'holder' => 'div',
 					'title' => esc_html__( 'Extra options', 'woodmart' ),
-					'param_name' => 'extra_divider'
+					'param_name' => 'extra_divider',
+					'dependency' => array(
+						'element' => 'style',
+						'value' => array( 'carousel' ),
+					),
 				),
 				array(
 					'type' => 'woodmart_switch',
@@ -435,10 +434,8 @@ if( ! function_exists( 'woodmart_vc_map_brands' ) ) {
 					),
 				),
 			)
-		) );
-
+		);
 	}
-	add_action( 'vc_before_init', 'woodmart_vc_map_brands' );
 }
 
 //Filters For autocomplete param:

@@ -178,4 +178,4 @@ class Woocommerce_Title extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Woocommerce_Title() );
+Plugin::instance()->widgets_manager->register( new Woocommerce_Title() );

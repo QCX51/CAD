@@ -152,6 +152,8 @@ class Main extends Singleton {
 						'value'   => true,
 					),
 				),
+				'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+				'off-text'    => esc_html__( 'No', 'woodmart' ),
 				'priority'    => 70,
 			)
 		);
@@ -277,8 +279,8 @@ class Main extends Singleton {
 		$keys = array(
 			'HTTP_CLIENT_IP',
 			'HTTP_X_REAL_IP',
-			'HTTP_X_FORWARDED_FOR',
 			'REMOTE_ADDR',
+			'HTTP_X_FORWARDED_FOR',
 		);
 
 		foreach ( $keys as $key ) {
@@ -324,7 +326,8 @@ class Main extends Singleton {
 	public function add_localized_settings( $localized ) {
 		if ( woodmart_get_opt( 'counter_visitor_enabled' ) && ( woodmart_get_opt( 'counter_visitor_ajax_update' ) || woodmart_get_opt( 'counter_visitor_live_mode' ) ) ) {
 			$localized['counter_visitor_live_duration'] = woodmart_get_opt( 'counter_visitor_live_duration', 10 ) * 1000;
-			$localized['counter_visitor_ajax_update']   = woodmart_get_opt( 'counter_visitor_ajax_update' ) ? 'yes' : 'no';
+			$localized['counter_visitor_ajax_update']   = woodmart_get_opt( 'counter_visitor_ajax_update' ) && ! woodmart_get_opt( 'counter_visitor_live_mode' ) ? 'yes' : 'no';
+			$localized['counter_visitor_live_mode']     = woodmart_get_opt( 'counter_visitor_live_mode' ) ? 'yes' : 'no';
 		}
 
 		return $localized;
@@ -353,10 +356,8 @@ class Main extends Singleton {
 
 		?>
 		<div class="wd-visits-count<?php echo esc_attr( $wrapper_classes ); ?>" data-product-id="<?php the_ID(); ?>">
-			<span class="wd-visits-count-number"><?php echo esc_html( $count ); // Must be in one line. ?></span>
-			<span class="wd-visits-count-msg">
-				<?php echo esc_html( _n( 'People watching this product now!', 'People watching this product now!', $count, 'woodmart' ) ); ?>
-			</span>
+			<span class="wd-visits-count-icon"></span><span class="wd-visits-count-number"><?php echo esc_html( $count ); // Must be in one line. ?></span>
+			<span class="wd-visits-count-msg"><?php echo esc_html( _n( 'People watching this product now!', 'People watching this product now!', $count, 'woodmart' ) ); ?></span>
 		</div>
 		<?php
 	}

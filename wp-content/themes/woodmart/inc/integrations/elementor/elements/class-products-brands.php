@@ -465,7 +465,7 @@ class Products_Brands extends Widget_Base {
 
 			$owl_attributes = woodmart_get_owl_attributes( $settings );
 
-			$this->add_render_attribute( 'items_wrapper', 'class', 'owl-carousel ' . woodmart_owl_items_per_slide( $settings['slides_per_view'], array(), false, false, $settings['custom_sizes'] ) );
+			$this->add_render_attribute( 'items_wrapper', 'class', 'owl-carousel wd-owl ' . woodmart_owl_items_per_slide( $settings['slides_per_view'], array(), false, false, $settings['custom_sizes'] ) );
 			$this->add_render_attribute( 'wrapper', 'class', 'wd-carousel-container' );
 			$this->add_render_attribute( 'wrapper', 'class', 'wd-carousel-spacing-0' );
 
@@ -569,4 +569,4 @@ class Products_Brands extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Products_Brands() );
+Plugin::instance()->widgets_manager->register( new Products_Brands() );

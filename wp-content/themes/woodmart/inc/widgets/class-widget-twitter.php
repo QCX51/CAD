@@ -25,6 +25,9 @@ if ( ! class_exists( 'WOODMART_Twitter' ) ) {
 		// Output function
 
 		function widget( $args, $instance )	{
+			if ( $this->is_widget_preview() ) {
+				return;
+			}
 
 			extract( $args );
 

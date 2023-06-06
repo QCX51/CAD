@@ -12,7 +12,7 @@
 		<div class="xts-table xts-odd">
 			<div class="xts-table-row">
 				<div>
-					<?php esc_html_e( 'Theme Name', 'xts-theme' ); ?>:
+					<?php esc_html_e( 'Theme Name', 'woodmart' ); ?>:
 				</div>
 				<div>
 					<?php if ( woodmart_get_opt( 'white_label', '0' ) ) : ?>
@@ -25,7 +25,7 @@
 
 			<div class="xts-table-row">
 				<div>
-					<?php esc_html_e( 'Theme Version', 'xts-theme' ); ?>:
+					<?php esc_html_e( 'Theme Version', 'woodmart' ); ?>:
 				</div>
 				<div>
 					<?php echo esc_html( WOODMART_VERSION ); ?>
@@ -34,7 +34,7 @@
 
 			<div class="xts-table-row">
 				<div>
-					<?php esc_html_e( 'WP Version', 'xts-theme' ); ?>:
+					<?php esc_html_e( 'WP Version', 'woodmart' ); ?>:
 				</div>
 				<div>
 					<?php echo esc_html( get_bloginfo( 'version' ) ); ?>
@@ -43,19 +43,19 @@
 
 			<div class="xts-table-row">
 				<div>
-					<?php esc_html_e( 'WP Multisite', 'xts-theme' ); ?>:
+					<?php esc_html_e( 'WP Multisite', 'woodmart' ); ?>:
 				</div>
 				<div>
-					<?php echo is_multisite() ? esc_html__( 'Yes', 'xts-theme' ) : esc_html__( 'No', 'xts-theme' ); ?>
+					<?php echo is_multisite() ? esc_html__( 'Yes', 'woodmart' ) : esc_html__( 'No', 'woodmart' ); ?>
 				</div>
 			</div>
 
 			<div class="xts-table-row">
 				<div>
-					<?php esc_html_e( 'WP Debug Mode', 'xts-theme' ); ?>:
+					<?php esc_html_e( 'WP Debug Mode', 'woodmart' ); ?>:
 				</div>
 				<div>
-					<?php echo defined( 'WP_DEBUG' ) && WP_DEBUG ? esc_html__( 'Enabled', 'xts-theme' ) : esc_html__( 'Disabled', 'xts-theme' ); ?>
+					<?php echo defined( 'WP_DEBUG' ) && WP_DEBUG ? esc_html__( 'Enabled', 'woodmart' ) : esc_html__( 'Disabled', 'woodmart' ); ?>
 				</div>
 			</div>
 		</div>
@@ -66,7 +66,7 @@
 
 			<div class="xts-table-row">
 				<div>
-					<?php esc_html_e( 'PHP Version', 'xts-theme' ); ?>:
+					<?php esc_html_e( 'PHP Version', 'woodmart' ); ?>:
 				</div>
 				<div>
 					<?php if ( version_compare( PHP_VERSION, '7.2', '<' ) ) : ?>
@@ -75,7 +75,7 @@
 								<?php echo esc_html( PHP_VERSION ); ?>
 							</span>
 							<span>
-								<?php esc_html_e( 'Minimum required PHP version 7.2', 'xts-theme' ); ?>
+								<?php esc_html_e( 'Minimum required PHP version 7.2', 'woodmart' ); ?>
 							</span>
 						</div>
 					<?php else : ?>
@@ -89,7 +89,7 @@
 					<div>
 						<?php $post_max_size = ini_get( 'post_max_size' ); ?>
 
-						<?php esc_html_e( 'PHP Post Max Size', 'xts-theme' ); ?>:
+						<?php esc_html_e( 'PHP Post Max Size', 'woodmart' ); ?>:
 					</div>
 
 					<div>
@@ -99,7 +99,7 @@
 									<?php echo esc_html( $post_max_size ); ?>
 								</span>
 								<span>
-									<?php esc_html_e( 'Minimum required value 64M.', 'xts-theme' ); ?>
+									<?php esc_html_e( 'Minimum required value 64M.', 'woodmart' ); ?>
 								</span>
 							</div>
 						<?php else : ?>
@@ -111,7 +111,7 @@
 				<div class="xts-table-row">
 					<div>
 						<?php $max_execution_time = ini_get( 'max_execution_time' ); ?>
-						<?php esc_html_e( 'PHP Time Limit', 'xts-theme' ); ?>:
+						<?php esc_html_e( 'PHP Time Limit', 'woodmart' ); ?>:
 					</div>
 
 					<div>
@@ -121,7 +121,7 @@
 									<?php echo esc_html( $max_execution_time ); ?>
 								</span>
 								<span>
-									<?php esc_html_e( 'Minimum required value 180.', 'xts-theme' ); ?>
+									<?php esc_html_e( 'Minimum required value 180.', 'woodmart' ); ?>
 								</span>
 							</div>
 						<?php else : ?>
@@ -133,7 +133,7 @@
 				<div class="xts-table-row">
 					<div>
 						<?php $max_input_vars = ini_get( 'max_input_vars' ); ?>
-						<?php esc_html_e( 'PHP Max Input Vars', 'xts-theme' ); ?>:
+						<?php esc_html_e( 'PHP Max Input Vars', 'woodmart' ); ?>:
 					</div>
 
 					<div>
@@ -143,7 +143,7 @@
 									<?php echo esc_html( $max_input_vars ); ?>
 								</span>
 								<span>
-									<?php esc_html_e( 'Minimum required value 10000.', 'xts-theme' ); ?>
+									<?php esc_html_e( 'Minimum required value 10000.', 'woodmart' ); ?>
 								</span>
 							</div>
 						<?php else : ?>
@@ -155,7 +155,7 @@
 				<div class="xts-table-row">
 					<div>
 						<?php $memory_limit = ini_get( 'memory_limit' ); ?>
-						<?php esc_html_e( 'PHP Memory Limit', 'xts-theme' ); ?>:
+						<?php esc_html_e( 'PHP Memory Limit', 'woodmart' ); ?>:
 					</div>
 
 					<div>
@@ -165,7 +165,7 @@
 									<?php echo esc_html( $memory_limit ); ?>
 								</span>
 								<span>
-									<?php esc_html_e( 'Minimum required value 128M.', 'xts-theme' ); ?>
+									<?php esc_html_e( 'Minimum required value 128M.', 'woodmart' ); ?>
 								</span>
 							</div>
 						<?php else : ?>
@@ -177,7 +177,7 @@
 				<div class="xts-table-row">
 					<div>
 						<?php $upload_max_filesize = ini_get( 'upload_max_filesize' ); ?>
-						<?php esc_html_e( 'PHP Upload Max Size', 'xts-theme' ); ?>:
+						<?php esc_html_e( 'PHP Upload Max Size', 'woodmart' ); ?>:
 					</div>
 					<div>
 
@@ -187,7 +187,7 @@
 									<?php echo esc_html( $upload_max_filesize ); ?>
 								</span>
 								<span>
-									<?php esc_html_e( 'Minimum required value 64M.', 'xts-theme' ); ?>
+									<?php esc_html_e( 'Minimum required value 64M.', 'woodmart' ); ?>
 								</span>
 							</div>
 						<?php else : ?>
@@ -198,15 +198,15 @@
 
 				<div class="xts-table-row">
 					<div>
-						<?php esc_html_e( 'PHP Function "file_get_content"', 'xts-theme' ); ?>:
+						<?php esc_html_e( 'PHP Function "file_get_content"', 'woodmart' ); ?>:
 					</div>
 					<div>
-						<?php if ( ! ini_get( 'allow_url_fopen' ) ) : ?>
+						<?php if ( ! ini_get( 'allow_url_fopen' ) || 'Off' === ini_get( 'allow_url_fopen' ) ) : ?>
 							<div class="xts-status-error">
-								<?php esc_html_e( 'Off', 'xts-theme' ); ?>
+								<?php esc_html_e( 'Off', 'woodmart' ); ?>
 							</div>
 						<?php else : ?>
-							<?php esc_html_e( 'On', 'xts-theme' ); ?>
+							<?php esc_html_e( 'On', 'woodmart' ); ?>
 						<?php endif; ?>
 					</div>
 				</div>
@@ -214,22 +214,22 @@
 
 			<div class="xts-table-row">
 				<div>
-					<?php esc_html_e( 'DOMDocument', 'xts-theme' ); ?>:
+					<?php esc_html_e( 'DOMDocument', 'woodmart' ); ?>:
 				</div>
 				<div>
 					<?php if ( ! class_exists( 'DOMDocument' ) ) : ?>
 						<div class="xts-status-error">
-							<?php esc_html_e( 'No', 'xts-theme' ); ?>
+							<?php esc_html_e( 'No', 'woodmart' ); ?>
 						</div>
 					<?php else : ?>
-						<?php esc_html_e( 'Yes', 'xts-theme' ); ?>
+						<?php esc_html_e( 'Yes', 'woodmart' ); ?>
 					<?php endif; ?>
 				</div>
 			</div>
 
 			<div class="xts-table-row">
 				<div>
-					<?php esc_html_e( 'Active Plugins', 'xts-theme' ); ?>:
+					<?php esc_html_e( 'Active Plugins', 'woodmart' ); ?>:
 				</div>
 				<div>
 					<?php if ( is_multisite() ) : ?>

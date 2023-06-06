@@ -158,5 +158,6 @@
         "attachment": "",
         "position": "center center"
     },
-    "portfolio_page": "150"
+    "portfolio_page": "150",
+    "rounding_size": "12"
 }

@@ -48,23 +48,9 @@ class Menu {
 			);
 		}
 
-		$shop_block = get_page_by_title( 'Menu shop', OBJECT, 'cms_block' );
-		$shop_meta  = array();
-
-		if ( ! is_null( $shop_block ) ) {
-			$shop_meta = array(
-				'block'  => $shop_block->ID,
-				'design' => 'full-width',
-			);
-		}
-
 		$this->add_menu_item_by_title( 'Home ' . $this->version, 1, 'main', $home_meta );
 		$this->add_menu_item_by_title( 'Home ' . $this->version, 1, 'mobile', $home_meta );
 		$this->add_menu_item_by_title( 'Home ' . $this->version, 1, 'left', $home_meta );
-
-		$this->add_menu_item_by_title( 'Shop', 2, 'main', $shop_meta );
-		$this->add_menu_item_by_title( 'Shop', 2, 'mobile', $shop_meta );
-		$this->add_menu_item_by_title( 'Shop', 2, 'left', $shop_meta );
 	}
 
 	/**

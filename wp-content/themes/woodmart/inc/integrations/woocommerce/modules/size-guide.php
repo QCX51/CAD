@@ -172,7 +172,7 @@ if ( ! function_exists( 'woodmart_sguide_display' ) ) {
 
 		if ( $sguide_post_id ) {
 			$sguide_post = get_post( $sguide_post_id );
-			$size_tables = get_post_meta( $sguide_post_id, 'woodmart_sguide' );
+			$size_tables = get_post_meta( $sguide_post_id, 'woodmart_sguide', true );
 
 			woodmart_sguide_display_table_template( $sguide_post, $size_tables, $args );
 		}
@@ -215,16 +215,14 @@ if ( ! function_exists( 'woodmart_sguide_display_table_template' ) ) {
 				<?php if ( 'show' === $show_table ) : ?>
 					<div class="responsive-table">
 						<table class="wd-sizeguide-table">
-							<?php foreach ( $size_tables as $table ) : ?>
-								<?php foreach ( $table as $row ) : ?>
-									<tr>
-										<?php foreach ( $row as $col ) : ?>
-											<td>
-												<?php echo esc_html( $col ); ?>
-											</td>
-										<?php endforeach; ?>
-									</tr>
-								<?php endforeach; ?>
+							<?php foreach ( $size_tables as $row ) : ?>
+								<tr>
+									<?php foreach ( $row as $col ) : ?>
+										<td>
+											<?php echo esc_html( $col ); ?>
+										</td>
+									<?php endforeach; ?>
+								</tr>
 							<?php endforeach; ?>
 						</table>
 					</div>
@@ -281,7 +279,8 @@ if( ! function_exists( 'woodmart_sguide_category_template' ) ) {
         $arg = array(
             'taxonomy'     => 'product_cat',
             'orderdby'     => 'name',
-            'hierarchical' => 1
+            'hierarchical' => 1,
+			'hide_empty'   => false,
         );
 
         $chosen_cats = get_post_meta( $post->ID, 'woodmart_chosen_cats' );

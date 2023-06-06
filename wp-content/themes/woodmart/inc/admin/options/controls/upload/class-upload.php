@@ -43,8 +43,8 @@ class Upload extends Field {
 				<?php endif ?>
 			</div>
 			<div class="xts-upload-btns">
-				<button class="xts-btn xts-upload-btn xts-i-import"><?php esc_html_e( 'Upload', 'woodmart' ); ?></button>
-				<button class="xts-btn xts-color-warning xts-remove-upload-btn xts-i-trash<?php echo ( ! empty( $value_url ) ) ? ' xts-active' : ''; ?>"><?php esc_html_e( 'Remove', 'woodmart' ); ?></button>
+				<a class="xts-btn xts-upload-btn xts-i-import"><?php esc_html_e( 'Upload', 'woodmart' ); ?></a>
+				<a class="xts-btn xts-color-warning xts-remove-upload-btn xts-i-trash<?php echo ( ! empty( $value_url ) ) ? ' xts-active' : ''; ?>"><?php esc_html_e( 'Remove', 'woodmart' ); ?></a>
 				<input type="hidden" class="xts-upload-input-url" name="<?php echo esc_attr( $url_input_name ); ?>" value="<?php echo esc_attr( $value_url ); ?>" />
 				<?php if ( 'array' === $type ) : ?>	
 					<input type="hidden" class="xts-upload-input-id" name="<?php echo esc_attr( $this->get_input_name( 'id' ) ); ?>" value="<?php echo esc_attr( $this->get_field_value( 'id' ) ); ?>" />

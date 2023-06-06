@@ -580,4 +580,4 @@ Helio X25 processor
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Pricing_Tables() );
+Plugin::instance()->widgets_manager->register( new Pricing_Tables() );

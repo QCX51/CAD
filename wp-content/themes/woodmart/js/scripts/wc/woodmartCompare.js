@@ -41,13 +41,40 @@
 		$body.on('click', '.wd-compare-btn a', function(e) {
 			var $this     = $(this),
 			    id        = $this.data('id'),
-			    addedText = $this.data('added-text');
+			    $widget = $('.wd-header-compare');
 
 			if ($this.hasClass('added')) {
 				return true;
 			}
 
 			e.preventDefault();
+
+			if ( ! $widget.find('.wd-dropdown-compare').length ) {
+				var products = [];
+				var productsCookies = Cookies.get(cookiesName);
+
+				if ( 'undefined' !== typeof productsCookies && productsCookies ) {
+					products = Object.values( JSON.parse(productsCookies) );
+				}
+
+				if ( ! products.length || -1 === products.indexOf(id.toString()) ) {
+					products.push( id.toString() );
+				}
+
+				var count = products.length;
+
+				updateCountWidget(count);
+
+				Cookies.set(cookiesName, JSON.stringify(products), {
+					expires: 7,
+					path   : '/',
+					secure : woodmart_settings.cookie_secure_param
+				});
+
+				updateButton( $this );
+
+				return;
+			}
 
 			$this.addClass('loading');
 
@@ -60,35 +87,31 @@
 				dataType: 'json',
 				method  : 'GET',
 				success : function(response) {
-					if (response.table) {
-						updateCompare(response);
-						woodmartThemeModule.$document.trigger('added_to_compare');
-						woodmartThemeModule.$document.trigger('wdUpdateTooltip', $this);
+					if ( response.count ) {
+						var $widget = $('.wd-header-compare');
 
-						if (response.fragments) {
-							$.each( response.fragments, function( key, value ) {
-								$( key ).replaceWith(value);
-							});
-
-							sessionStorage.setItem( cookiesName + '_fragments', JSON.stringify( response.fragments ) );
+						if ($widget.length > 0) {
+							$widget.find('.wd-tools-count').text(response.count);
 						}
+
+						updateButton( $this );
 					} else {
 						console.log('something wrong loading compare data ', response);
+					}
+
+					if (response.fragments) {
+						$.each( response.fragments, function( key, value ) {
+							$( key ).replaceWith(value);
+						});
+
+						sessionStorage.setItem( cookiesName + '_fragments', JSON.stringify( response.fragments ) );
 					}
 				},
 				error   : function() {
 					console.log('We cant add to compare. Something wrong with AJAX response. Probably some PHP conflict.');
 				},
 				complete: function() {
-					$this.removeClass('loading').addClass('added');
-
-					if ($this.find('span').length > 0) {
-						$this.find('span').text(addedText);
-					} else {
-						$this.text(addedText);
-					}
-
-					woodmartThemeModule.$document.trigger('wdUpdateTooltip', $this);
+					$this.removeClass('loading');
 				}
 			});
 		});
@@ -296,6 +319,29 @@
 					console.log('We cant remove product compare. Something wrong with AJAX response. Probably some PHP conflict.');
 				},
 			});
+		}
+
+		function updateButton( $button ) {
+			var addedText = $button.data('added-text');
+
+			if ($button.find('span').length > 0) {
+				$button.find('span').text(addedText);
+			} else {
+				$button.text(addedText);
+			}
+
+			$button.addClass('added');
+
+			woodmartThemeModule.$document.trigger('added_to_compare');
+			woodmartThemeModule.$document.trigger('wdUpdateTooltip', $button);
+		}
+
+		function updateCountWidget(count) {
+			var $widget = $('.wd-header-compare');
+
+			if ($widget.length > 0) {
+				$widget.find('.wd-tools-count').text(count);
+			}
 		}
 	};
 

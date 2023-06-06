@@ -10,6 +10,7 @@ namespace XTS\Modules\Layouts;
 use Elementor\Controls_Manager;
 use Elementor\Group_Control_Background;
 use Elementor\Group_Control_Box_Shadow;
+use Elementor\Group_Control_Typography;
 use Elementor\Plugin;
 use Elementor\Widget_Base;
 
@@ -85,12 +86,12 @@ class Payment_Methods extends Widget_Base {
 		 */
 
 		/**
-		 * General settings.
+		 * Payment title settings.
 		 */
 		$this->start_controls_section(
-			'general_style_section',
+			'payment_title_style_section',
 			array(
-				'label' => esc_html__( 'General', 'woodmart' ),
+				'label' => esc_html__( 'Payment title', 'woodmart' ),
 				'tab'   => Controls_Manager::TAB_STYLE,
 			)
 		);
@@ -104,19 +105,23 @@ class Payment_Methods extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'button_alignment',
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
 			array(
-				'label'        => esc_html__( 'Button alignment', 'woodmart' ),
-				'type'         => Controls_Manager::SELECT,
-				'options'      => array(
-					'left'       => esc_html__( 'Left', 'woodmart' ),
-					'center'     => esc_html__( 'Center', 'woodmart' ),
-					'right'      => esc_html__( 'Right', 'woodmart' ),
-					'full-width' => esc_html__( 'Full width', 'woodmart' ),
+				'name'     => 'title_typography',
+				'label'    => esc_html__( 'Typography', 'woodmart' ),
+				'selector' => '{{WRAPPER}} .payment_methods li > label',
+			)
+		);
+
+		$this->add_control(
+			'title_color',
+			array(
+				'label'     => esc_html__( 'Color', 'woodmart' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .payment_methods li > label' => 'color: {{VALUE}}',
 				),
-				'prefix_class' => 'wd-btn-align-',
-				'default'      => 'left',
 			)
 		);
 
@@ -133,15 +138,12 @@ class Payment_Methods extends Widget_Base {
 			)
 		);
 
-		$this->add_control(
-			'payment_description_background-color',
+		$this->add_group_control(
+			Group_Control_Typography::get_type(),
 			array(
-				'label'     => esc_html__( 'Background color', 'woodmart' ),
-				'type'      => Controls_Manager::COLOR,
-				'selectors' => array(
-					'{{WRAPPER}} .payment_box' => 'background-color: {{VALUE}}',
-					'{{WRAPPER}} .payment_box:before' => 'color: {{VALUE}}',
-				),
+				'name'     => 'description_typography',
+				'label'    => esc_html__( 'Typography', 'woodmart' ),
+				'selector' => '{{WRAPPER}} .payment_box',
 			)
 		);
 
@@ -152,6 +154,18 @@ class Payment_Methods extends Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} .payment_box' => 'color: {{VALUE}}',
+				),
+			)
+		);
+
+		$this->add_control(
+			'payment_description_background-color',
+			array(
+				'label'     => esc_html__( 'Background color', 'woodmart' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => array(
+					'{{WRAPPER}} .payment_box' => 'background-color: {{VALUE}}',
+					'{{WRAPPER}} .payment_box:before' => 'color: {{VALUE}}',
 				),
 			)
 		);
@@ -181,6 +195,35 @@ class Payment_Methods extends Widget_Base {
 		);
 
 		$this->end_controls_section();
+
+		/**
+		 * Button settings.
+		 */
+		$this->start_controls_section(
+			'general_style_section',
+			array(
+				'label' => esc_html__( 'Button', 'woodmart' ),
+				'tab'   => Controls_Manager::TAB_STYLE,
+			)
+		);
+
+		$this->add_control(
+			'button_alignment',
+			array(
+				'label'        => esc_html__( 'Button position', 'woodmart' ),
+				'type'         => Controls_Manager::SELECT,
+				'options'      => array(
+					'left'       => esc_html__( 'Left', 'woodmart' ),
+					'center'     => esc_html__( 'Center', 'woodmart' ),
+					'right'      => esc_html__( 'Right', 'woodmart' ),
+					'full-width' => esc_html__( 'Full width', 'woodmart' ),
+				),
+				'prefix_class' => 'wd-btn-align-',
+				'default'      => 'left',
+			)
+		);
+
+		$this->end_controls_section();
 	}
 
 	/**
@@ -191,8 +234,12 @@ class Payment_Methods extends Widget_Base {
 			return;
 		}
 
+		wc()->cart->calculate_fees();
+		wc()->cart->calculate_shipping();
+		wc()->cart->calculate_totals();
+
 		woocommerce_checkout_payment();
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Payment_Methods() );
+Plugin::instance()->widgets_manager->register( new Payment_Methods() );

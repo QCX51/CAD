@@ -31,6 +31,7 @@ if ( ! function_exists( 'woodmart_shortcode_single_product_add_to_cart' ) ) {
 			'width_tablet'          => '',
 			'width_mobile'          => '',
 			'product_id'            => false,
+			'enable_stock_status'   => 'yes',
 		);
 
 		$settings = wp_parse_args( $settings, $default_settings );
@@ -62,6 +63,10 @@ if ( ! function_exists( 'woodmart_shortcode_single_product_add_to_cart' ) ) {
 
 			remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation' );
 			add_action( 'woocommerce_before_variations_form', 'woocommerce_single_variation' );
+		}
+
+		if ( 'no' === $settings['enable_stock_status'] ) {
+			$wrapper_classes .=  ' wd-stock-status-off';
 		}
 
 		Builder::get_instance()->set_data( 'form_classes', $form_classes );

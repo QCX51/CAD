@@ -101,7 +101,7 @@ Then you need to have a section with an ID of "section-id" and this button click
 			'button_collapsible_content',
 			array(
 				'label'        => esc_html__( 'Use for collapsible content', 'woodmart' ),
-				'description'  => esc_html__( 'Enable this option when you place this button inside the column with the "Collapsible content" option turned on.', 'woodmart' ),
+				'description'  => esc_html__( 'Enable this option when you place this button inside the container with the "Collapsible content" option turned on.', 'woodmart' ),
 				'type'         => Controls_Manager::SWITCHER,
 				'default'      => '',
 				'label_on'     => esc_html__( 'Yes', 'woodmart' ),
@@ -190,8 +190,23 @@ if ( ! function_exists( 'woodmart_get_button_style_general_map' ) ) {
 					'inherit' => esc_html__( 'Inherit', 'woodmart' ),
 					'dark'    => esc_html__( 'Dark', 'woodmart' ),
 					'light'   => esc_html__( 'Light', 'woodmart' ),
+					'custom'  => esc_html__( 'Custom', 'woodmart' ),
 				],
 				'default' => 'inherit',
+			]
+		);
+
+		$element->add_control(
+			'custom_color_scheme',
+			[
+				'label'     => esc_html__( 'Custom text color', 'woodmart' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wd-button-wrapper a' => 'color: {{VALUE}};',
+				],
+				'condition' => array(
+					'color_scheme' => 'custom',
+				),
 			]
 		);
 
@@ -224,8 +239,23 @@ if ( ! function_exists( 'woodmart_get_button_style_general_map' ) ) {
 					'inherit' => esc_html__( 'Inherit', 'woodmart' ),
 					'dark'    => esc_html__( 'Dark', 'woodmart' ),
 					'light'   => esc_html__( 'Light', 'woodmart' ),
+					'custom'  => esc_html__( 'Custom', 'woodmart' ),
 				],
 				'default' => 'inherit',
+			]
+		);
+
+		$element->add_control(
+			'custom_color_scheme_hover',
+			[
+				'label'     => esc_html__( 'Custom text color on hover', 'woodmart' ),
+				'type'      => Controls_Manager::COLOR,
+				'selectors' => [
+					'{{WRAPPER}} .wd-button-wrapper:hover a' => 'color: {{VALUE}};',
+				],
+				'condition' => array(
+					'color_scheme_hover' => 'custom',
+				),
 			]
 		);
 

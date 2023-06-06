@@ -138,6 +138,42 @@ class Back_In_Stock_Email extends WC_Email {
 	}
 
 	/**
+	 * Admin Panel Options Processing.
+	 */
+	public function process_admin_options() {
+		$post_data = $this->get_post_data();
+
+		// Save templates.
+		if ( isset( $post_data['template_html_code'] ) ) {
+			$this->save_template( $post_data['template_html_code'], $this->template_html );
+		}
+		if ( isset( $post_data['template_plain_code'] ) ) {
+			$this->save_template( $post_data['template_plain_code'], $this->template_plain );
+		}
+
+		// Save regular options.
+		$this->init_settings();
+
+		$post_data = $this->get_post_data();
+
+		foreach ( $this->get_form_fields() as $key => $field ) {
+			if ( 'title' !== $this->get_field_type( $field ) ) {
+				try {
+					$this->settings[ $key ] = $this->get_field_value( $key, $field, $post_data );
+				} catch ( Exception $e ) {
+					$this->add_error( $e->getMessage() );
+				}
+			}
+		}
+
+		$option_key = $this->get_option_key();
+
+		do_action( 'woocommerce_update_option', array( 'id' => $option_key ) );
+
+		return update_option( $option_key, apply_filters( 'woocommerce_settings_api_sanitized_fields_' . $this->id, $this->settings ), false );
+	}
+
+	/**
 	 * Init fields that will store admin preferences
 	 *
 	 * @return void

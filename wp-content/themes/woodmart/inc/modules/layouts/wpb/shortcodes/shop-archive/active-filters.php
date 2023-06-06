@@ -43,7 +43,6 @@ if ( ! function_exists( 'woodmart_shortcode_shop_archive_active_filters' ) ) {
 			return '';
 		}
 
-		woodmart_enqueue_inline_style( 'woo-shop-el-active-filters' );
 		?>
 		<div class="wd-shop-active-filters wd-wpb<?php echo esc_attr( $wrapper_classes ); ?>">
 			<?php woodmart_get_active_filters(); ?>

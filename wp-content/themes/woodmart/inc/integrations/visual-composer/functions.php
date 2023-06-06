@@ -13,6 +13,20 @@ if ( ! defined( 'WOODMART_THEME_DIR' ) ) {
 // Features that add GLOBAL maps to WPB Composer
 // **********************************************************************//
 
+if ( ! function_exists( 'woodmart_vc_map' ) ) {
+	/**
+	 * Register element map.
+	 *
+	 * @param string          $tag Element tag.
+	 * @param callable-string $callback Map callback.
+	 *
+	 * @return void
+	 */
+	function woodmart_vc_map( $tag, $callback ) {
+		vc_lean_map( $tag, $callback );
+	}
+}
+
 if ( ! function_exists( 'woodmart_vc_row_custom_options' ) ) {
 	/**
 	 * Update custom params map to Default Row element in WPBakery.
@@ -21,6 +35,28 @@ if ( ! function_exists( 'woodmart_vc_row_custom_options' ) ) {
 	 */
 	function woodmart_vc_row_custom_options() {
 		$general_options = array(
+			/**
+			 * CSS ID Option.
+			 */
+			array(
+				'type'       => 'woodmart_css_id',
+				'param_name' => 'woodmart_css_id',
+			),
+			array(
+				'type' => 'dropdown',
+				'heading' => esc_html__( 'Row stretch CSS', 'woodmart' ),
+				'param_name' => 'woodmart_stretch_content',
+				'value' => array(
+					esc_html__( 'Default', 'woodmart' ) => '',
+					esc_html__( 'Stretch row', 'woodmart' ) => 'section-stretch',
+					esc_html__( 'Stretch row and content', 'woodmart' ) => 'section-stretch-content',
+					esc_html__( 'Stretch row and content (no paddings)', 'woodmart' ) => 'section-stretch-content-no-pd',
+				),
+				'description' => esc_html__( 'Enable this option instead of native WPBakery one to stretch row with CSS and not with JS.', 'woodmart' ),
+			),
+		);
+
+		$general_options_inner = array(
 			/**
 			 * CSS ID Option.
 			 */
@@ -300,7 +336,7 @@ if ( ! function_exists( 'woodmart_vc_row_custom_options' ) ) {
 		vc_add_params( 'vc_row', $design_options );
 		vc_add_params( 'vc_row', $advanced_options );
 
-		vc_add_params( 'vc_row_inner', $general_options );
+		vc_add_params( 'vc_row_inner', $general_options_inner );
 		vc_add_params( 'vc_row_inner', $design_options );
 		vc_add_params( 'vc_row_inner', $advanced_options );
 	}
@@ -885,6 +921,17 @@ if ( ! function_exists( 'woodmart_vc_section_custom_options' ) ) {
 			array(
 				'type'       => 'woodmart_css_id',
 				'param_name' => 'woodmart_css_id',
+			),
+			array(
+				'type'        => 'dropdown',
+				'heading'     => esc_html__( 'Section stretch CSS', 'woodmart' ),
+				'param_name'  => 'woodmart_stretch_content',
+				'value'       => array(
+					esc_html__( 'Default', 'woodmart' ) => '',
+					esc_html__( 'Stretch section', 'woodmart' ) => 'section-stretch',
+					esc_html__( 'Stretch section and content', 'woodmart' ) => 'section-stretch-content',
+				),
+				'description' => esc_html__( 'Enable this option instead of native WPBakery one to stretch section with CSS and not with JS.', 'woodmart' ),
 			),
 		);
 
@@ -1587,6 +1634,10 @@ if ( ! function_exists( 'woodmart_vc_extra_classes' ) ) {
 
 		if ( ! empty( $atts['woodmart_css_id'] ) ) {
 			$class .= ' wd-rs-' . $atts['woodmart_css_id'];
+		}
+
+		if ( ! empty( $atts['woodmart_stretch_content'] ) ) {
+			$class .= ' wd-' . $atts['woodmart_stretch_content'];
 		}
 
 		if ( isset( $atts['wd_hide_on_desktop'] ) && 'yes' === $atts['wd_hide_on_desktop'] ) {

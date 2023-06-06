@@ -288,4 +288,4 @@ class Text_Block extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Text_Block() );
+Plugin::instance()->widgets_manager->register( new Text_Block() );

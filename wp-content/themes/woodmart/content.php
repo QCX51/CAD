@@ -27,8 +27,18 @@ if( is_single() && !$is_shortcode ) {
 	}
 }
 
-if( ! is_single() || $is_shortcode && 'meta-image' !== $blog_design ) {
-	$classes[] = 'blog-style-' . woodmart_get_opt( 'blog_style' );
+if ( ! is_single() || $is_shortcode ) {
+	$blog_style = woodmart_get_opt( 'blog_style', 'shadow' );
+
+	if ( 'shadow' === $blog_style ) {
+		$classes[] = 'blog-style-bg';
+
+		if ( woodmart_get_opt( 'blog_with_shadow', true ) ) {
+			$classes[] = 'wd-add-shadow';
+		}
+	} else {
+		$classes[] = 'blog-style-' . $blog_style;
+	}
 }
 
 if( is_single() && !$is_shortcode ) {
@@ -102,7 +112,7 @@ $random = 'carousel-' . rand(100,999);
 
 					<figure id="<?php echo esc_attr( $random ); ?>" class="entry-thumbnail" <?php echo $owl_attr; ?>>
 						<?php if ( 'gallery' === get_post_format() && $gallery_slider && ! empty( $gallery['src'] ) ) : ?>
-							<div class="post-gallery-slider owl-carousel <?php echo woodmart_owl_items_per_slide( 1 ); ?>">
+							<div class="post-gallery-slider owl-carousel wd-owl <?php echo woodmart_owl_items_per_slide( 1 ); ?>">
 								<?php
 									foreach ($gallery['src'] as $src) {
 										if ( preg_match( "/data:image/is", $src ) ) {

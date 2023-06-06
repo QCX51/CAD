@@ -1159,4 +1159,4 @@ class Product_Filters extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Product_Filters() );
+Plugin::instance()->widgets_manager->register( new Product_Filters() );

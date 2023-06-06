@@ -16,7 +16,7 @@
 	<!-- 7. WordPress will then import each of the posts, pages, comments, categories, etc. -->
 	<!--    contained in this file into your site. -->
 
-	<!-- generator="WordPress/5.9.3" created="2022-06-10 09:16" -->
+	<!-- generator="WordPress/6.0.3" created="2023-02-09 15:15" -->
 <rss version="2.0"
 	xmlns:excerpt="http://wordpress.org/export/1.2/excerpt/"
 	xmlns:content="http://purl.org/rss/1.0/modules/content/"
@@ -29,7 +29,7 @@
 	<title>Megamarket elementor</title>
 	<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor</link>
 	<description>Just another WoodMart Dummy 2.0 Sites site</description>
-	<pubDate>Fri, 10 Jun 2022 09:16:28 +0000</pubDate>
+	<pubDate>Thu, 09 Feb 2023 15:15:14 +0000</pubDate>
 	<language>en-US</language>
 	<wp:wxr_version>1.2</wp:wxr_version>
 	<wp:base_site_url>http://dummy.xtemos.com/woodmart2/</wp:base_site_url>
@@ -880,10 +880,6 @@
 			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
 			<wp:meta_value><![CDATA[7]]></wp:meta_value>
 		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[wd_page_css_files]]></wp:meta_key>
-			<wp:meta_value><![CDATA[a:56:{i:0;s:19:"widget-price-filter";i:1;s:23:"woo-mod-shop-attributes";i:2;s:27:"widget-recent-post-comments";i:3;s:22:"widget-wd-recent-posts";i:4;s:10:"widget-nav";i:5;s:21:"widget-wd-layered-nav";i:6;s:31:"widget-layered-nav-stock-status";i:7;s:19:"widget-product-list";i:8;s:26:"widget-slider-price-filter";i:9;s:12:"wp-gutenberg";i:10;s:5:"wpcf7";i:11;s:16:"mc4wp-deprecated";i:12;s:5:"mc4wp";i:13;s:17:"revolution-slider";i:14;s:15:"base-deprecated";i:15;s:14:"elementor-base";i:16;s:16:"woocommerce-base";i:17;s:15:"mod-star-rating";i:18;s:18:"woo-el-track-order";i:19;s:13:"woo-gutenberg";i:20;s:25:"woo-opt-free-progress-bar";i:21;s:20:"woo-mod-progress-bar";i:22;s:21:"widget-active-filters";i:23;s:22:"woo-shop-opt-shop-ajax";i:24;s:16:"woo-shop-builder";i:25;s:23:"woo-mod-shop-attributes";i:26;s:11:"header-base";i:27;s:9:"mod-tools";i:28;s:20:"header-elements-base";i:29;s:16:"header-cart-side";i:30;s:16:"woo-mod-quantity";i:31;s:11:"header-cart";i:32;s:20:"widget-shopping-cart";i:33;s:15:"categories-loop";i:34;s:13:"section-title";i:35;s:13:"image-hotspot";i:36;s:20:"mod-more-description";i:37;s:6:"brands";i:38;s:19:"woo-prod-loop-small";i:39;s:12:"product-loop";i:40;s:24:"woo-mod-quantity-overlap";i:41;s:24:"woo-mod-swatches";i:42;s:16:"bordered-product";i:43;s:19:"woo-opt-title-limit";i:44;s:12:"owl-carousel";i:45;s:19:"collapsible-content";i:46;s:10:"text-block";i:47;s:11:"footer-base";i:48;s:8:"info-box";i:49;s:4:"list";i:50;s:12:"social-icons";i:51;s:10:"scroll-top";i:52;s:14:"wd-search-form";i:53;s:11:"promo-popup";i:54;s:9:"mfp-popup";i:55;s:14:"bottom-toolbar";}]]></wp:meta_value>
-		</wp:termmeta>
 		</wp:term>
 			<wp:term>
 			<wp:term_id>47</wp:term_id>
@@ -1203,6 +1199,10 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
 			<wp:meta_value><![CDATA[3]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[wd_page_css_files]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:71:{i:0;s:19:"widget-price-filter";i:1;s:23:"woo-mod-shop-attributes";i:2;s:27:"widget-recent-post-comments";i:3;s:22:"widget-wd-recent-posts";i:4;s:10:"widget-nav";i:5;s:21:"widget-wd-layered-nav";i:6;s:21:"woo-mod-swatches-base";i:7;s:23:"woo-mod-swatches-filter";i:8;s:31:"widget-layered-nav-stock-status";i:9;s:19:"widget-product-list";i:10;s:26:"widget-slider-price-filter";i:11;s:12:"wp-gutenberg";i:12;s:5:"wpcf7";i:13;s:5:"mc4wp";i:14;s:17:"revolution-slider";i:15;s:14:"elementor-base";i:16;s:16:"woocommerce-base";i:17;s:15:"mod-star-rating";i:18;s:18:"woo-el-track-order";i:19;s:13:"woo-gutenberg";i:20;s:25:"woo-opt-free-progress-bar";i:21;s:20:"woo-mod-progress-bar";i:22;s:21:"widget-active-filters";i:23;s:22:"woo-shop-opt-shop-ajax";i:24;s:16:"woo-shop-builder";i:25;s:23:"woo-mod-shop-attributes";i:26;s:11:"header-base";i:27;s:9:"mod-tools";i:28;s:20:"header-elements-base";i:29;s:16:"header-cart-side";i:30;s:16:"woo-mod-quantity";i:31;s:11:"header-cart";i:32;s:20:"widget-shopping-cart";i:33;s:30:"int-elem-opt-off-canvas-column";i:34;s:13:"filter-search";i:35;s:24:"woo-mod-swatches-style-1";i:36;s:24:"woo-mod-swatches-style-4";i:37;s:24:"el-off-canvas-column-btn";i:38;s:18:"off-canvas-sidebar";i:39;s:29:"woo-shop-el-products-per-page";i:40;s:25:"woo-shop-el-products-view";i:41;s:20:"woo-shop-el-order-by";i:42;s:13:"sticky-loader";i:43;s:16:"bordered-product";i:44;s:19:"woo-opt-title-limit";i:45;s:12:"product-loop";i:46;s:22:"product-loop-fw-button";i:47;s:23:"woo-mod-add-btn-replace";i:48;s:24:"woo-mod-quantity-overlap";i:49;s:20:"mod-more-description";i:50;s:23:"categories-loop-default";i:51;s:15:"categories-loop";i:52;s:20:"woo-opt-stretch-cont";i:53;s:22:"woo-mod-product-labels";i:54;s:27:"woo-mod-product-labels-rect";i:55;s:9:"mfp-popup";i:56;s:20:"woo-mod-stock-status";i:57;s:19:"woo-prod-loop-small";i:58;s:12:"owl-carousel";i:59;s:19:"collapsible-content";i:60;s:13:"section-title";i:61;s:10:"text-block";i:62;s:11:"footer-base";i:63;s:8:"info-box";i:64;s:4:"list";i:65;s:12:"social-icons";i:66;s:10:"scroll-top";i:67;s:14:"wd-search-form";i:68;s:11:"promo-popup";i:69;s:14:"bottom-toolbar";i:70;s:25:"mod-sticky-sidebar-opener";}]]></wp:meta_value>
 		</wp:termmeta>
 		</wp:term>
 			<wp:term>
@@ -1873,7 +1873,7 @@
 		</wp:termmeta>
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[wd_page_css_files]]></wp:meta_key>
-			<wp:meta_value><![CDATA[a:56:{i:0;s:19:"widget-price-filter";i:1;s:23:"woo-mod-shop-attributes";i:2;s:27:"widget-recent-post-comments";i:3;s:22:"widget-wd-recent-posts";i:4;s:10:"widget-nav";i:5;s:21:"widget-wd-layered-nav";i:6;s:31:"widget-layered-nav-stock-status";i:7;s:19:"widget-product-list";i:8;s:26:"widget-slider-price-filter";i:9;s:12:"wp-gutenberg";i:10;s:5:"wpcf7";i:11;s:16:"mc4wp-deprecated";i:12;s:5:"mc4wp";i:13;s:17:"revolution-slider";i:14;s:15:"base-deprecated";i:15;s:14:"elementor-base";i:16;s:16:"woocommerce-base";i:17;s:15:"mod-star-rating";i:18;s:18:"woo-el-track-order";i:19;s:13:"woo-gutenberg";i:20;s:25:"woo-opt-free-progress-bar";i:21;s:20:"woo-mod-progress-bar";i:22;s:21:"widget-active-filters";i:23;s:22:"woo-shop-opt-shop-ajax";i:24;s:16:"woo-shop-builder";i:25;s:23:"woo-mod-shop-attributes";i:26;s:11:"header-base";i:27;s:9:"mod-tools";i:28;s:20:"header-elements-base";i:29;s:16:"header-cart-side";i:30;s:16:"woo-mod-quantity";i:31;s:11:"header-cart";i:32;s:20:"widget-shopping-cart";i:33;s:15:"categories-loop";i:34;s:13:"section-title";i:35;s:6:"brands";i:36;s:13:"image-hotspot";i:37;s:20:"mod-more-description";i:38;s:19:"woo-prod-loop-small";i:39;s:12:"product-loop";i:40;s:24:"woo-mod-quantity-overlap";i:41;s:24:"woo-mod-swatches";i:42;s:16:"bordered-product";i:43;s:19:"woo-opt-title-limit";i:44;s:12:"owl-carousel";i:45;s:19:"collapsible-content";i:46;s:10:"text-block";i:47;s:11:"footer-base";i:48;s:8:"info-box";i:49;s:4:"list";i:50;s:12:"social-icons";i:51;s:10:"scroll-top";i:52;s:14:"wd-search-form";i:53;s:11:"promo-popup";i:54;s:9:"mfp-popup";i:55;s:14:"bottom-toolbar";}]]></wp:meta_value>
+			<wp:meta_value><![CDATA[a:55:{i:0;s:19:"widget-price-filter";i:1;s:23:"woo-mod-shop-attributes";i:2;s:27:"widget-recent-post-comments";i:3;s:22:"widget-wd-recent-posts";i:4;s:10:"widget-nav";i:5;s:21:"widget-wd-layered-nav";i:6;s:21:"woo-mod-swatches-base";i:7;s:23:"woo-mod-swatches-filter";i:8;s:31:"widget-layered-nav-stock-status";i:9;s:19:"widget-product-list";i:10;s:26:"widget-slider-price-filter";i:11;s:12:"wp-gutenberg";i:12;s:5:"wpcf7";i:13;s:5:"mc4wp";i:14;s:17:"revolution-slider";i:15;s:14:"elementor-base";i:16;s:16:"woocommerce-base";i:17;s:15:"mod-star-rating";i:18;s:18:"woo-el-track-order";i:19;s:13:"woo-gutenberg";i:20;s:25:"woo-opt-free-progress-bar";i:21;s:20:"woo-mod-progress-bar";i:22;s:21:"widget-active-filters";i:23;s:22:"woo-shop-opt-shop-ajax";i:24;s:16:"woo-shop-builder";i:25;s:23:"woo-mod-shop-attributes";i:26;s:11:"header-base";i:27;s:9:"mod-tools";i:28;s:20:"header-elements-base";i:29;s:16:"header-cart-side";i:30;s:16:"woo-mod-quantity";i:31;s:11:"header-cart";i:32;s:20:"widget-shopping-cart";i:33;s:15:"categories-loop";i:34;s:13:"section-title";i:35;s:6:"brands";i:36;s:13:"image-hotspot";i:37;s:20:"mod-more-description";i:38;s:19:"woo-prod-loop-small";i:39;s:12:"product-loop";i:40;s:24:"woo-mod-quantity-overlap";i:41;s:16:"bordered-product";i:42;s:19:"woo-opt-title-limit";i:43;s:12:"owl-carousel";i:44;s:19:"collapsible-content";i:45;s:10:"text-block";i:46;s:11:"footer-base";i:47;s:8:"info-box";i:48;s:4:"list";i:49;s:12:"social-icons";i:50;s:10:"scroll-top";i:51;s:14:"wd-search-form";i:52;s:11:"promo-popup";i:53;s:9:"mfp-popup";i:54;s:14:"bottom-toolbar";}]]></wp:meta_value>
 		</wp:termmeta>
 		</wp:term>
 			<wp:term>
@@ -1901,10 +1901,6 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
 			<wp:meta_value><![CDATA[5]]></wp:meta_value>
-		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[wd_page_css_files]]></wp:meta_key>
-			<wp:meta_value><![CDATA[a:70:{i:0;s:19:"widget-price-filter";i:1;s:23:"woo-mod-shop-attributes";i:2;s:27:"widget-recent-post-comments";i:3;s:22:"widget-wd-recent-posts";i:4;s:10:"widget-nav";i:5;s:21:"widget-wd-layered-nav";i:6;s:31:"widget-layered-nav-stock-status";i:7;s:19:"widget-product-list";i:8;s:26:"widget-slider-price-filter";i:9;s:12:"wp-gutenberg";i:10;s:5:"wpcf7";i:11;s:16:"mc4wp-deprecated";i:12;s:5:"mc4wp";i:13;s:17:"revolution-slider";i:14;s:15:"base-deprecated";i:15;s:14:"elementor-base";i:16;s:16:"woocommerce-base";i:17;s:15:"mod-star-rating";i:18;s:18:"woo-el-track-order";i:19;s:13:"woo-gutenberg";i:20;s:25:"woo-opt-free-progress-bar";i:21;s:20:"woo-mod-progress-bar";i:22;s:21:"widget-active-filters";i:23;s:22:"woo-shop-opt-shop-ajax";i:24;s:16:"woo-shop-builder";i:25;s:23:"woo-mod-shop-attributes";i:26;s:11:"header-base";i:27;s:9:"mod-tools";i:28;s:20:"header-elements-base";i:29;s:16:"header-cart-side";i:30;s:16:"woo-mod-quantity";i:31;s:11:"header-cart";i:32;s:20:"widget-shopping-cart";i:33;s:34:"woo-categories-loop-layout-masonry";i:34;s:15:"categories-loop";i:35;s:12:"owl-carousel";i:36;s:30:"int-elem-opt-off-canvas-column";i:37;s:13:"filter-search";i:38;s:24:"el-off-canvas-column-btn";i:39;s:18:"off-canvas-sidebar";i:40;s:29:"woo-shop-el-products-per-page";i:41;s:25:"woo-shop-el-products-view";i:42;s:20:"woo-shop-el-order-by";i:43;s:26:"woo-shop-el-active-filters";i:44;s:13:"sticky-loader";i:45;s:16:"bordered-product";i:46;s:19:"woo-opt-title-limit";i:47;s:12:"product-loop";i:48;s:22:"product-loop-fw-button";i:49;s:23:"woo-mod-add-btn-replace";i:50;s:24:"woo-mod-quantity-overlap";i:51;s:24:"woo-mod-swatches";i:52;s:20:"mod-more-description";i:53;s:23:"categories-loop-default";i:54;s:20:"woo-opt-stretch-cont";i:55;s:9:"mfp-popup";i:56;s:20:"woo-mod-stock-status";i:57;s:17:"add-to-cart-popup";i:58;s:19:"woo-prod-loop-small";i:59;s:19:"collapsible-content";i:60;s:13:"section-title";i:61;s:10:"text-block";i:62;s:11:"footer-base";i:63;s:8:"info-box";i:64;s:4:"list";i:65;s:12:"social-icons";i:66;s:10:"scroll-top";i:67;s:14:"wd-search-form";i:68;s:11:"promo-popup";i:69;s:14:"bottom-toolbar";}]]></wp:meta_value>
 		</wp:termmeta>
 		</wp:term>
 			<wp:term>
@@ -3116,6 +3112,10 @@
 		<wp:termmeta>
 			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
 			<wp:meta_value><![CDATA[1]]></wp:meta_value>
+		</wp:termmeta>
+		<wp:termmeta>
+			<wp:meta_key><![CDATA[wd_page_css_files]]></wp:meta_key>
+			<wp:meta_value><![CDATA[a:66:{i:0;s:19:"widget-price-filter";i:1;s:23:"woo-mod-shop-attributes";i:2;s:27:"widget-recent-post-comments";i:3;s:22:"widget-wd-recent-posts";i:4;s:10:"widget-nav";i:5;s:21:"widget-wd-layered-nav";i:6;s:21:"woo-mod-swatches-base";i:7;s:23:"woo-mod-swatches-filter";i:8;s:31:"widget-layered-nav-stock-status";i:9;s:19:"widget-product-list";i:10;s:26:"widget-slider-price-filter";i:11;s:12:"wp-gutenberg";i:12;s:5:"wpcf7";i:13;s:5:"mc4wp";i:14;s:17:"revolution-slider";i:15;s:14:"elementor-base";i:16;s:16:"woocommerce-base";i:17;s:15:"mod-star-rating";i:18;s:18:"woo-el-track-order";i:19;s:13:"woo-gutenberg";i:20;s:25:"woo-opt-free-progress-bar";i:21;s:20:"woo-mod-progress-bar";i:22;s:21:"widget-active-filters";i:23;s:22:"woo-shop-opt-shop-ajax";i:24;s:16:"woo-shop-builder";i:25;s:23:"woo-mod-shop-attributes";i:26;s:11:"header-base";i:27;s:9:"mod-tools";i:28;s:20:"header-elements-base";i:29;s:16:"header-cart-side";i:30;s:16:"woo-mod-quantity";i:31;s:11:"header-cart";i:32;s:20:"widget-shopping-cart";i:33;s:34:"woo-categories-loop-layout-masonry";i:34;s:15:"categories-loop";i:35;s:12:"owl-carousel";i:36;s:30:"int-elem-opt-off-canvas-column";i:37;s:13:"filter-search";i:38;s:24:"woo-mod-swatches-style-1";i:39;s:24:"woo-mod-swatches-style-4";i:40;s:24:"el-off-canvas-column-btn";i:41;s:18:"off-canvas-sidebar";i:42;s:29:"woo-shop-el-products-per-page";i:43;s:25:"woo-shop-el-products-view";i:44;s:20:"woo-shop-el-order-by";i:45;s:26:"woo-shop-el-active-filters";i:46;s:13:"sticky-loader";i:47;s:17:"wd-search-results";i:48;s:14:"wd-search-form";i:49;s:19:"woo-prod-loop-small";i:50;s:12:"product-loop";i:51;s:24:"woo-mod-quantity-overlap";i:52;s:16:"bordered-product";i:53;s:19:"woo-opt-title-limit";i:54;s:19:"collapsible-content";i:55;s:13:"section-title";i:56;s:10:"text-block";i:57;s:11:"footer-base";i:58;s:8:"info-box";i:59;s:4:"list";i:60;s:12:"social-icons";i:61;s:10:"scroll-top";i:62;s:11:"promo-popup";i:63;s:9:"mfp-popup";i:64;s:14:"bottom-toolbar";i:65;s:25:"mod-sticky-sidebar-opener";}]]></wp:meta_value>
 		</wp:termmeta>
 		</wp:term>
 			<wp:term>
@@ -5869,10 +5869,6 @@
 			<wp:meta_key><![CDATA[product_count_product_cat]]></wp:meta_key>
 			<wp:meta_value><![CDATA[5]]></wp:meta_value>
 		</wp:termmeta>
-		<wp:termmeta>
-			<wp:meta_key><![CDATA[wd_page_css_files]]></wp:meta_key>
-			<wp:meta_value><![CDATA[a:57:{i:0;s:19:"widget-price-filter";i:1;s:23:"woo-mod-shop-attributes";i:2;s:27:"widget-recent-post-comments";i:3;s:22:"widget-wd-recent-posts";i:4;s:10:"widget-nav";i:5;s:21:"widget-wd-layered-nav";i:6;s:31:"widget-layered-nav-stock-status";i:7;s:19:"widget-product-list";i:8;s:26:"widget-slider-price-filter";i:9;s:12:"wp-gutenberg";i:10;s:5:"wpcf7";i:11;s:16:"mc4wp-deprecated";i:12;s:5:"mc4wp";i:13;s:17:"revolution-slider";i:14;s:15:"base-deprecated";i:15;s:14:"elementor-base";i:16;s:16:"woocommerce-base";i:17;s:15:"mod-star-rating";i:18;s:18:"woo-el-track-order";i:19;s:13:"woo-gutenberg";i:20;s:25:"woo-opt-free-progress-bar";i:21;s:20:"woo-mod-progress-bar";i:22;s:21:"widget-active-filters";i:23;s:22:"woo-shop-opt-shop-ajax";i:24;s:16:"woo-shop-builder";i:25;s:23:"woo-mod-shop-attributes";i:26;s:11:"header-base";i:27;s:9:"mod-tools";i:28;s:20:"header-elements-base";i:29;s:16:"header-cart-side";i:30;s:16:"woo-mod-quantity";i:31;s:11:"header-cart";i:32;s:20:"widget-shopping-cart";i:33;s:6:"banner";i:34;s:15:"categories-loop";i:35;s:13:"section-title";i:36;s:13:"image-hotspot";i:37;s:20:"mod-more-description";i:38;s:6:"brands";i:39;s:19:"woo-prod-loop-small";i:40;s:12:"product-loop";i:41;s:24:"woo-mod-quantity-overlap";i:42;s:24:"woo-mod-swatches";i:43;s:16:"bordered-product";i:44;s:19:"woo-opt-title-limit";i:45;s:12:"owl-carousel";i:46;s:19:"collapsible-content";i:47;s:10:"text-block";i:48;s:11:"footer-base";i:49;s:8:"info-box";i:50;s:4:"list";i:51;s:12:"social-icons";i:52;s:10:"scroll-top";i:53;s:14:"wd-search-form";i:54;s:11:"promo-popup";i:55;s:9:"mfp-popup";i:56;s:14:"bottom-toolbar";}]]></wp:meta_value>
-		</wp:termmeta>
 		</wp:term>
 			<wp:term>
 			<wp:term_id>235</wp:term_id>
@@ -6837,7 +6833,7 @@
 	<wp:term><wp:term_id>299</wp:term_id><wp:term_taxonomy>nav_menu</wp:term_taxonomy><wp:term_slug><![CDATA[header-menu-right-megamarket]]></wp:term_slug><wp:term_name><![CDATA[Header menu right Megamarket]]></wp:term_name>
 </wp:term>
 
-	<generator>https://wordpress.org/?v=5.9.3</generator>
+	<generator>https://wordpress.org/?v=6.0.3</generator>
 
 					<item>
 					<title><![CDATA[Granite Wall Tile]]></title>
@@ -7015,7 +7011,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:16:{i:0;i:1654852334;i:1;i:1654852334;i:2;i:1654852334;i:3;i:1654852334;i:4;i:1654852334;i:5;i:1654852334;i:6;i:1654852334;i:7;i:1654852334;i:8;i:1654852334;i:9;i:1654852334;i:10;i:1654852334;i:11;i:1654852334;i:12;i:1654852334;i:13;i:1654852334;i:14;i:1654852334;i:15;i:1654852334;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:20:{i:0;i:1675580207;i:1;i:1675580207;i:2;i:1675580207;i:3;i:1675580207;i:4;i:1675580207;i:5;i:1675580207;i:6;i:1675580207;i:7;i:1675580207;i:8;i:1675580207;i:9;i:1675580207;i:10;i:1675580207;i:11;i:1675580207;i:12;i:1675580207;i:13;i:1675580207;i:14;i:1675580207;i:15;i:1675580207;i:16;i:1675580207;i:17;i:1675580207;i:18;i:1675580207;i:19;i:1675580207;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -7368,7 +7364,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:13:{i:0;i:1654852333;i:1;i:1654852333;i:2;i:1654852333;i:3;i:1654852333;i:4;i:1654852333;i:5;i:1654852333;i:6;i:1654852333;i:7;i:1654852333;i:8;i:1654852333;i:9;i:1654852333;i:10;i:1654852333;i:11;i:1654852333;i:12;i:1654852333;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:10:{i:0;i:1675620584;i:1;i:1675620584;i:2;i:1675620584;i:3;i:1675620584;i:4;i:1675620584;i:5;i:1675620584;i:6;i:1675620584;i:7;i:1675620584;i:8;i:1675620584;i:9;i:1675620584;}]]></wp:meta_value>
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
@@ -7539,7 +7535,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:13:{i:0;i:1654852346;i:1;i:1654852346;i:2;i:1654852346;i:3;i:1654852346;i:4;i:1654852346;i:5;i:1654852346;i:6;i:1654852346;i:7;i:1654852346;i:8;i:1654852346;i:9;i:1654852346;i:10;i:1654852346;i:11;i:1654852346;i:12;i:1654852346;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:14:{i:0;i:1675829479;i:1;i:1675829479;i:2;i:1675829479;i:3;i:1675829479;i:4;i:1675829479;i:5;i:1675829479;i:6;i:1675829479;i:7;i:1675829479;i:8;i:1675829479;i:9;i:1675829479;i:10;i:1675829479;i:11;i:1675829479;i:12;i:1675829479;i:13;i:1675829479;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -7580,8 +7576,8 @@ View Collection
 															<wp:post_id>983</wp:post_id>
 					<wp:post_date><![CDATA[2022-05-27 08:52:06]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-05-27 08:52:06]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 07:46:11]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 07:46:11]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-28 14:39:58]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-28 14:39:58]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[open]]></wp:comment_status>
 					<wp:post_name><![CDATA[ceramic-floor-tile]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -7629,7 +7625,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[_stock]]></wp:meta_key>
-							<wp:meta_value><![CDATA[250]]></wp:meta_value>
+							<wp:meta_value><![CDATA[249]]></wp:meta_value>
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[_stock_status]]></wp:meta_key>
@@ -7641,7 +7637,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[_product_version]]></wp:meta_key>
-							<wp:meta_value><![CDATA[6.5.1]]></wp:meta_value>
+							<wp:meta_value><![CDATA[7.1.0]]></wp:meta_value>
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[_price]]></wp:meta_key>
@@ -7713,7 +7709,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:11:{i:0;i:1654609856;i:1;i:1654609856;i:2;i:1654609856;i:3;i:1654609856;i:4;i:1654609856;i:5;i:1654609856;i:6;i:1654609856;i:7;i:1654609856;i:8;i:1654609856;i:9;i:1654609856;i:10;i:1654609856;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:14:{i:0;i:1675908761;i:1;i:1675908761;i:2;i:1675908761;i:3;i:1675908761;i:4;i:1675908761;i:5;i:1675908761;i:6;i:1675908761;i:7;i:1675908761;i:8;i:1675908761;i:9;i:1675908761;i:10;i:1675908761;i:11;i:1675908761;i:12;i:1675908761;i:13;i:1675908761;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -7879,7 +7875,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:18:{i:0;i:1654852346;i:1;i:1654852346;i:2;i:1654852346;i:3;i:1654852346;i:4;i:1654852346;i:5;i:1654852346;i:6;i:1654852346;i:7;i:1654852346;i:8;i:1654852346;i:9;i:1654852346;i:10;i:1654852346;i:11;i:1654852346;i:12;i:1654852346;i:13;i:1654852346;i:14;i:1654852346;i:15;i:1654852346;i:16;i:1654852346;i:17;i:1654852346;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:14:{i:0;i:1675884819;i:1;i:1675884819;i:2;i:1675884819;i:3;i:1675884819;i:4;i:1675884819;i:5;i:1675884819;i:6;i:1675884819;i:7;i:1675884819;i:8;i:1675884819;i:9;i:1675884819;i:10;i:1675884819;i:11;i:1675884819;i:12;i:1675884819;i:13;i:1675884819;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -8064,7 +8060,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:16:{i:0;i:1654852332;i:1;i:1654852332;i:2;i:1654852332;i:3;i:1654852332;i:4;i:1654852332;i:5;i:1654852332;i:6;i:1654852332;i:7;i:1654852332;i:8;i:1654852332;i:9;i:1654852332;i:10;i:1654852332;i:11;i:1654852332;i:12;i:1654852332;i:13;i:1654852332;i:14;i:1654852332;i:15;i:1654852332;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:19:{i:0;i:1675896014;i:1;i:1675896014;i:2;i:1675896014;i:3;i:1675896014;i:4;i:1675896014;i:5;i:1675896014;i:6;i:1675896014;i:7;i:1675896014;i:8;i:1675896014;i:9;i:1675896014;i:10;i:1675896014;i:11;i:1675896014;i:12;i:1675896014;i:13;i:1675896014;i:14;i:1675896014;i:15;i:1675896014;i:16;i:1675896014;i:17;i:1675896014;i:18;i:1675896014;}]]></wp:meta_value>
 						</wp:postmeta>
 												<wp:comment>
 							<wp:comment_id>5</wp:comment_id>
@@ -8253,7 +8249,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:12:{i:0;i:1654852328;i:1;i:1654852328;i:2;i:1654852328;i:3;i:1654852328;i:4;i:1654852328;i:5;i:1654852328;i:6;i:1654852328;i:7;i:1654852328;i:8;i:1654852328;i:9;i:1654852328;i:10;i:1654852328;i:11;i:1654852328;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:17:{i:0;i:1675453165;i:1;i:1675453165;i:2;i:1675453165;i:3;i:1675453165;i:4;i:1675453165;i:5;i:1675453165;i:6;i:1675453165;i:7;i:1675453165;i:8;i:1675453165;i:9;i:1675453165;i:10;i:1675453165;i:11;i:1675453165;i:12;i:1675453165;i:13;i:1675453165;i:14;i:1675453165;i:15;i:1675453165;i:16;i:1675453165;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -8424,7 +8420,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:18:{i:0;i:1654609863;i:1;i:1654609863;i:2;i:1654609863;i:3;i:1654609863;i:4;i:1654609863;i:5;i:1654609863;i:6;i:1654609863;i:7;i:1654609863;i:8;i:1654609863;i:9;i:1654609863;i:10;i:1654609863;i:11;i:1654609863;i:12;i:1654609863;i:13;i:1654609863;i:14;i:1654609863;i:15;i:1654609863;i:16;i:1654609863;i:17;i:1654609863;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:18:{i:0;i:1675891930;i:1;i:1675891930;i:2;i:1675891930;i:3;i:1675891930;i:4;i:1675891930;i:5;i:1675891930;i:6;i:1675891930;i:7;i:1675891930;i:8;i:1675891930;i:9;i:1675891930;i:10;i:1675891930;i:11;i:1675891930;i:12;i:1675891930;i:13;i:1675891930;i:14;i:1675891930;i:15;i:1675891930;i:16;i:1675891930;i:17;i:1675891930;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -8587,7 +8583,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:20:{i:0;i:1654852315;i:1;i:1654852315;i:2;i:1654852315;i:3;i:1654852315;i:4;i:1654852315;i:5;i:1654852315;i:6;i:1654852315;i:7;i:1654852315;i:8;i:1654852315;i:9;i:1654852315;i:10;i:1654852315;i:11;i:1654852315;i:12;i:1654852315;i:13;i:1654852315;i:14;i:1654852315;i:15;i:1654852315;i:16;i:1654852315;i:17;i:1654852315;i:18;i:1654852315;i:19;i:1654852315;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:17:{i:0;i:1675955357;i:1;i:1675955357;i:2;i:1675955357;i:3;i:1675955357;i:4;i:1675955357;i:5;i:1675955357;i:6;i:1675955357;i:7;i:1675955357;i:8;i:1675955357;i:9;i:1675955357;i:10;i:1675955357;i:11;i:1675955357;i:12;i:1675955357;i:13;i:1675955357;i:14;i:1675955357;i:15;i:1675955357;i:16;i:1675955357;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -8754,7 +8750,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:15:{i:0;i:1654852315;i:1;i:1654852315;i:2;i:1654852315;i:3;i:1654852315;i:4;i:1654852315;i:5;i:1654852315;i:6;i:1654852315;i:7;i:1654852315;i:8;i:1654852315;i:9;i:1654852315;i:10;i:1654852315;i:11;i:1654852315;i:12;i:1654852315;i:13;i:1654852315;i:14;i:1654852315;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:10:{i:0;i:1675955321;i:1;i:1675955321;i:2;i:1675955321;i:3;i:1675955321;i:4;i:1675955321;i:5;i:1675955321;i:6;i:1675955321;i:7;i:1675955321;i:8;i:1675955321;i:9;i:1675955321;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -8921,7 +8917,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:18:{i:0;i:1654852325;i:1;i:1654852325;i:2;i:1654852325;i:3;i:1654852325;i:4;i:1654852325;i:5;i:1654852325;i:6;i:1654852325;i:7;i:1654852325;i:8;i:1654852325;i:9;i:1654852325;i:10;i:1654852325;i:11;i:1654852325;i:12;i:1654852325;i:13;i:1654852325;i:14;i:1654852325;i:15;i:1654852325;i:16;i:1654852325;i:17;i:1654852325;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:15:{i:0;i:1675955368;i:1;i:1675955368;i:2;i:1675955368;i:3;i:1675955368;i:4;i:1675955368;i:5;i:1675955368;i:6;i:1675955368;i:7;i:1675955368;i:8;i:1675955368;i:9;i:1675955368;i:10;i:1675955368;i:11;i:1675955368;i:12;i:1675955368;i:13;i:1675955368;i:14;i:1675955368;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -9090,7 +9086,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:17:{i:0;i:1654852327;i:1;i:1654852327;i:2;i:1654852327;i:3;i:1654852327;i:4;i:1654852327;i:5;i:1654852327;i:6;i:1654852327;i:7;i:1654852327;i:8;i:1654852327;i:9;i:1654852327;i:10;i:1654852327;i:11;i:1654852327;i:12;i:1654852327;i:13;i:1654852327;i:14;i:1654852327;i:15;i:1654852327;i:16;i:1654852327;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:12:{i:0;i:1675748271;i:1;i:1675748271;i:2;i:1675748271;i:3;i:1675748271;i:4;i:1675748271;i:5;i:1675748271;i:6;i:1675748271;i:7;i:1675748271;i:8;i:1675748271;i:9;i:1675748271;i:10;i:1675748271;i:11;i:1675748271;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -9253,7 +9249,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:12:{i:0;i:1654852329;i:1;i:1654852329;i:2;i:1654852329;i:3;i:1654852329;i:4;i:1654852329;i:5;i:1654852329;i:6;i:1654852329;i:7;i:1654852329;i:8;i:1654852329;i:9;i:1654852329;i:10;i:1654852329;i:11;i:1654852329;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:20:{i:0;i:1675803911;i:1;i:1675803911;i:2;i:1675803911;i:3;i:1675803911;i:4;i:1675803911;i:5;i:1675803911;i:6;i:1675803911;i:7;i:1675803911;i:8;i:1675803911;i:9;i:1675803911;i:10;i:1675803911;i:11;i:1675803911;i:12;i:1675803911;i:13;i:1675803911;i:14;i:1675803911;i:15;i:1675803911;i:16;i:1675803911;i:17;i:1675803911;i:18;i:1675803911;i:19;i:1675803911;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -9420,7 +9416,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:15:{i:0;i:1654852350;i:1;i:1654852350;i:2;i:1654852350;i:3;i:1654852350;i:4;i:1654852350;i:5;i:1654852350;i:6;i:1654852350;i:7;i:1654852350;i:8;i:1654852350;i:9;i:1654852350;i:10;i:1654852350;i:11;i:1654852350;i:12;i:1654852350;i:13;i:1654852350;i:14;i:1654852350;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:10:{i:0;i:1675623277;i:1;i:1675623277;i:2;i:1675623277;i:3;i:1675623277;i:4;i:1675623277;i:5;i:1675623277;i:6;i:1675623277;i:7;i:1675623277;i:8;i:1675623277;i:9;i:1675623277;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -9602,7 +9598,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:11:{i:0;i:1654852345;i:1;i:1654852345;i:2;i:1654852345;i:3;i:1654852345;i:4;i:1654852345;i:5;i:1654852345;i:6;i:1654852345;i:7;i:1654852345;i:8;i:1654852345;i:9;i:1654852345;i:10;i:1654852345;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:18:{i:0;i:1675644580;i:1;i:1675644580;i:2;i:1675644580;i:3;i:1675644580;i:4;i:1675644580;i:5;i:1675644580;i:6;i:1675644580;i:7;i:1675644580;i:8;i:1675644580;i:9;i:1675644580;i:10;i:1675644580;i:11;i:1675644580;i:12;i:1675644580;i:13;i:1675644580;i:14;i:1675644580;i:15;i:1675644580;i:16;i:1675644580;i:17;i:1675644580;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -9663,8 +9659,8 @@ View Collection
 		<category domain="product_cat" nicename="childrens-chandeliers"><![CDATA[Children’s chandeliers]]></category>
 		<category domain="product_cat" nicename="childrens-table-lamps"><![CDATA[Children’s table lamps]]></category>
 		<category domain="product_cat" nicename="classic"><![CDATA[Classic]]></category>
-		<category domain="product_cat" nicename="decorative-lamps"><![CDATA[Decorative lamps]]></category>
 		<category domain="product_cat" nicename="decorative-lamps-table-lamps"><![CDATA[Decorative lamps]]></category>
+		<category domain="product_cat" nicename="decorative-lamps"><![CDATA[Decorative lamps]]></category>
 		<category domain="product_cat" nicename="fluorescent-lamps"><![CDATA[Fluorescent lamps]]></category>
 		<category domain="product_cat" nicename="for-the-nursery"><![CDATA[For the nursery]]></category>
 		<category domain="product_cat" nicename="led-lamps"><![CDATA[LED lamps]]></category>
@@ -9787,7 +9783,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:17:{i:0;i:1654852350;i:1;i:1654852350;i:2;i:1654852350;i:3;i:1654852350;i:4;i:1654852350;i:5;i:1654852350;i:6;i:1654852350;i:7;i:1654852350;i:8;i:1654852350;i:9;i:1654852350;i:10;i:1654852350;i:11;i:1654852350;i:12;i:1654852350;i:13;i:1654852350;i:14;i:1654852350;i:15;i:1654852350;i:16;i:1654852350;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:13:{i:0;i:1675934498;i:1;i:1675934498;i:2;i:1675934498;i:3;i:1675934498;i:4;i:1675934498;i:5;i:1675934498;i:6;i:1675934498;i:7;i:1675934498;i:8;i:1675934498;i:9;i:1675934498;i:10;i:1675934498;i:11;i:1675934498;i:12;i:1675934498;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -9971,7 +9967,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:11:{i:0;i:1654852330;i:1;i:1654852330;i:2;i:1654852330;i:3;i:1654852330;i:4;i:1654852330;i:5;i:1654852330;i:6;i:1654852330;i:7;i:1654852330;i:8;i:1654852330;i:9;i:1654852330;i:10;i:1654852330;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:16:{i:0;i:1675537474;i:1;i:1675537474;i:2;i:1675537474;i:3;i:1675537474;i:4;i:1675537474;i:5;i:1675537474;i:6;i:1675537474;i:7;i:1675537474;i:8;i:1675537474;i:9;i:1675537474;i:10;i:1675537474;i:11;i:1675537474;i:12;i:1675537474;i:13;i:1675537474;i:14;i:1675537474;i:15;i:1675537474;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -10638,8 +10634,8 @@ As an alternative theory, (and because Latin scholars do this sort of thing) som
 					<wp:menu_order>0</wp:menu_order>
 					<wp:post_type><![CDATA[post]]></wp:post_type>
 												<category domain="post_tag" nicename="chair"><![CDATA[Chair]]></category>
-		<category domain="category" nicename="furniture"><![CDATA[Furniture]]></category>
 		<category domain="post_tag" nicename="furniture"><![CDATA[Furniture]]></category>
+		<category domain="category" nicename="furniture"><![CDATA[Furniture]]></category>
 		<category domain="post_tag" nicename="news"><![CDATA[News]]></category>
 											<wp:postmeta>
 							<wp:meta_key><![CDATA[_woodmart_whb_header]]></wp:meta_key>
@@ -11482,7 +11478,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:19:{i:0;i:1654852351;i:1;i:1654852351;i:2;i:1654852351;i:3;i:1654852351;i:4;i:1654852351;i:5;i:1654852351;i:6;i:1654852351;i:7;i:1654852351;i:8;i:1654852351;i:9;i:1654852351;i:10;i:1654852351;i:11;i:1654852351;i:12;i:1654852351;i:13;i:1654852351;i:14;i:1654852351;i:15;i:1654852351;i:16;i:1654852351;i:17;i:1654852351;i:18;i:1654852351;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:19:{i:0;i:1675906568;i:1;i:1675906568;i:2;i:1675906568;i:3;i:1675906568;i:4;i:1675906568;i:5;i:1675906568;i:6;i:1675906568;i:7;i:1675906568;i:8;i:1675906568;i:9;i:1675906568;i:10;i:1675906568;i:11;i:1675906568;i:12;i:1675906568;i:13;i:1675906568;i:14;i:1675906568;i:15;i:1675906568;i:16;i:1675906568;i:17;i:1675906568;i:18;i:1675906568;}]]></wp:meta_value>
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[_product_image_gallery]]></wp:meta_key>
@@ -11674,7 +11670,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:16:{i:0;i:1654852363;i:1;i:1654852363;i:2;i:1654852363;i:3;i:1654852363;i:4;i:1654852363;i:5;i:1654852363;i:6;i:1654852363;i:7;i:1654852363;i:8;i:1654852363;i:9;i:1654852363;i:10;i:1654852363;i:11;i:1654852363;i:12;i:1654852363;i:13;i:1654852363;i:14;i:1654852363;i:15;i:1654852363;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:13:{i:0;i:1675953628;i:1;i:1675953628;i:2;i:1675953628;i:3;i:1675953628;i:4;i:1675953628;i:5;i:1675953628;i:6;i:1675953628;i:7;i:1675953628;i:8;i:1675953628;i:9;i:1675953628;i:10;i:1675953628;i:11;i:1675953628;i:12;i:1675953628;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -11840,7 +11836,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:16:{i:0;i:1654852363;i:1;i:1654852363;i:2;i:1654852363;i:3;i:1654852363;i:4;i:1654852363;i:5;i:1654852363;i:6;i:1654852363;i:7;i:1654852363;i:8;i:1654852363;i:9;i:1654852363;i:10;i:1654852363;i:11;i:1654852363;i:12;i:1654852363;i:13;i:1654852363;i:14;i:1654852363;i:15;i:1654852363;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:15:{i:0;i:1675925460;i:1;i:1675925460;i:2;i:1675925460;i:3;i:1675925460;i:4;i:1675925460;i:5;i:1675925460;i:6;i:1675925460;i:7;i:1675925460;i:8;i:1675925460;i:9;i:1675925460;i:10;i:1675925460;i:11;i:1675925460;i:12;i:1675925460;i:13;i:1675925460;i:14;i:1675925460;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -12005,7 +12001,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:18:{i:0;i:1654852353;i:1;i:1654852353;i:2;i:1654852353;i:3;i:1654852353;i:4;i:1654852353;i:5;i:1654852353;i:6;i:1654852353;i:7;i:1654852353;i:8;i:1654852353;i:9;i:1654852353;i:10;i:1654852353;i:11;i:1654852353;i:12;i:1654852353;i:13;i:1654852353;i:14;i:1654852353;i:15;i:1654852353;i:16;i:1654852353;i:17;i:1654852353;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:19:{i:0;i:1675577332;i:1;i:1675577332;i:2;i:1675577332;i:3;i:1675577332;i:4;i:1675577332;i:5;i:1675577332;i:6;i:1675577332;i:7;i:1675577332;i:8;i:1675577332;i:9;i:1675577332;i:10;i:1675577332;i:11;i:1675577332;i:12;i:1675577332;i:13;i:1675577332;i:14;i:1675577332;i:15;i:1675577332;i:16;i:1675577332;i:17;i:1675577332;i:18;i:1675577332;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -12176,7 +12172,7 @@ View Collection
 						</wp:postmeta>
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[woodmart_history_of_visits]]></wp:meta_key>
-							<wp:meta_value><![CDATA[a:11:{i:0;i:1654852365;i:1;i:1654852365;i:2;i:1654852365;i:3;i:1654852365;i:4;i:1654852365;i:5;i:1654852365;i:6;i:1654852365;i:7;i:1654852365;i:8;i:1654852365;i:9;i:1654852365;i:10;i:1654852365;}]]></wp:meta_value>
+							<wp:meta_value><![CDATA[a:13:{i:0;i:1675763381;i:1;i:1675763381;i:2;i:1675763381;i:3;i:1675763381;i:4;i:1675763381;i:5;i:1675763381;i:6;i:1675763381;i:7;i:1675763381;i:8;i:1675763381;i:9;i:1675763381;i:10;i:1675763381;i:11;i:1675763381;i:12;i:1675763381;}]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -12225,16 +12221,16 @@ View Collection
 										</item>
 								<item>
 					<title><![CDATA[]]></title>
-					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2022/06/03/263/</link>
+					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2023/01/18/263/</link>
 					<pubDate>Mon, 23 May 2022 11:06:44 +0000</pubDate>
 					<dc:creator><![CDATA[zakhar]]></dc:creator>
 					<guid isPermaLink="false">http://dummy.xtemos.com/woodmart2/megamarket-elementor/?p=263</guid>
 											<content:encoded><![CDATA[ ]]></content:encoded>
 															<wp:post_id>263</wp:post_id>
-					<wp:post_date><![CDATA[2022-06-03 09:01:23]]></wp:post_date>
+					<wp:post_date><![CDATA[2023-01-18 12:57:32]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-05-23 11:06:44]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 09:01:23]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 09:01:23]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-18 12:57:32]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-18 12:57:32]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 					<wp:post_name><![CDATA[263]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -12302,19 +12298,31 @@ View Collection
 							<wp:meta_key><![CDATA[_menu_item_style_aside]]></wp:meta_key>
 							<wp:meta_value><![CDATA[default]]></wp:meta_value>
 						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2022-06-03]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_menu_item_scroll]]></wp:meta_key>
+							<wp:meta_value><![CDATA[no]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2023-01-10]]></wp:meta_value>
+						</wp:postmeta>
 										</item>
 								<item>
 					<title><![CDATA[]]></title>
-					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2022/06/03/264/</link>
+					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2023/01/18/264/</link>
 					<pubDate>Mon, 23 May 2022 11:06:44 +0000</pubDate>
 					<dc:creator><![CDATA[zakhar]]></dc:creator>
 					<guid isPermaLink="false">http://dummy.xtemos.com/woodmart2/megamarket-elementor/?p=264</guid>
 											<content:encoded><![CDATA[ ]]></content:encoded>
 															<wp:post_id>264</wp:post_id>
-					<wp:post_date><![CDATA[2022-06-03 09:01:23]]></wp:post_date>
+					<wp:post_date><![CDATA[2023-01-18 12:57:32]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-05-23 11:06:44]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 09:01:23]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 09:01:23]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-18 12:57:32]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-18 12:57:32]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 					<wp:post_name><![CDATA[264]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -12382,19 +12390,31 @@ View Collection
 							<wp:meta_key><![CDATA[_menu_item_style_aside]]></wp:meta_key>
 							<wp:meta_value><![CDATA[default]]></wp:meta_value>
 						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2022-06-03]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_menu_item_scroll]]></wp:meta_key>
+							<wp:meta_value><![CDATA[no]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2023-01-10]]></wp:meta_value>
+						</wp:postmeta>
 										</item>
 								<item>
 					<title><![CDATA[]]></title>
-					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2022/06/03/266/</link>
+					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2023/01/18/266/</link>
 					<pubDate>Mon, 23 May 2022 11:06:44 +0000</pubDate>
 					<dc:creator><![CDATA[zakhar]]></dc:creator>
 					<guid isPermaLink="false">http://dummy.xtemos.com/woodmart2/megamarket-elementor/?p=266</guid>
 											<content:encoded><![CDATA[ ]]></content:encoded>
 															<wp:post_id>266</wp:post_id>
-					<wp:post_date><![CDATA[2022-06-03 09:01:23]]></wp:post_date>
+					<wp:post_date><![CDATA[2023-01-18 12:57:32]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-05-23 11:06:44]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 09:01:23]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 09:01:23]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-18 12:57:32]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-18 12:57:32]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 					<wp:post_name><![CDATA[266]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -12462,19 +12482,31 @@ View Collection
 							<wp:meta_key><![CDATA[_menu_item_style_aside]]></wp:meta_key>
 							<wp:meta_value><![CDATA[default]]></wp:meta_value>
 						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2022-06-03]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_menu_item_scroll]]></wp:meta_key>
+							<wp:meta_value><![CDATA[no]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2023-01-10]]></wp:meta_value>
+						</wp:postmeta>
 										</item>
 								<item>
 					<title><![CDATA[]]></title>
-					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2022/06/03/267/</link>
+					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2023/01/18/267/</link>
 					<pubDate>Mon, 23 May 2022 11:06:44 +0000</pubDate>
 					<dc:creator><![CDATA[zakhar]]></dc:creator>
 					<guid isPermaLink="false">http://dummy.xtemos.com/woodmart2/megamarket-elementor/?p=267</guid>
 											<content:encoded><![CDATA[ ]]></content:encoded>
 															<wp:post_id>267</wp:post_id>
-					<wp:post_date><![CDATA[2022-06-03 09:01:23]]></wp:post_date>
+					<wp:post_date><![CDATA[2023-01-18 12:57:32]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-05-23 11:06:44]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 09:01:23]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 09:01:23]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-18 12:57:32]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-18 12:57:32]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 					<wp:post_name><![CDATA[267]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -12542,19 +12574,31 @@ View Collection
 							<wp:meta_key><![CDATA[_menu_item_style_aside]]></wp:meta_key>
 							<wp:meta_value><![CDATA[default]]></wp:meta_value>
 						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2022-06-03]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_menu_item_scroll]]></wp:meta_key>
+							<wp:meta_value><![CDATA[no]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2023-01-10]]></wp:meta_value>
+						</wp:postmeta>
 										</item>
 								<item>
 					<title><![CDATA[]]></title>
-					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2022/06/03/268/</link>
+					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2023/01/18/268/</link>
 					<pubDate>Mon, 23 May 2022 11:06:44 +0000</pubDate>
 					<dc:creator><![CDATA[zakhar]]></dc:creator>
 					<guid isPermaLink="false">http://dummy.xtemos.com/woodmart2/megamarket-elementor/?p=268</guid>
 											<content:encoded><![CDATA[ ]]></content:encoded>
 															<wp:post_id>268</wp:post_id>
-					<wp:post_date><![CDATA[2022-06-03 09:01:23]]></wp:post_date>
+					<wp:post_date><![CDATA[2023-01-18 12:57:32]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-05-23 11:06:44]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 09:01:23]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 09:01:23]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-18 12:57:32]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-18 12:57:32]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 					<wp:post_name><![CDATA[268]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -12622,19 +12666,31 @@ View Collection
 							<wp:meta_key><![CDATA[_menu_item_style_aside]]></wp:meta_key>
 							<wp:meta_value><![CDATA[default]]></wp:meta_value>
 						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2022-06-03]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_menu_item_scroll]]></wp:meta_key>
+							<wp:meta_value><![CDATA[no]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2023-01-10]]></wp:meta_value>
+						</wp:postmeta>
 										</item>
 								<item>
 					<title><![CDATA[]]></title>
-					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2022/06/03/269/</link>
+					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2023/01/18/269/</link>
 					<pubDate>Mon, 23 May 2022 11:06:44 +0000</pubDate>
 					<dc:creator><![CDATA[zakhar]]></dc:creator>
 					<guid isPermaLink="false">http://dummy.xtemos.com/woodmart2/megamarket-elementor/?p=269</guid>
 											<content:encoded><![CDATA[ ]]></content:encoded>
 															<wp:post_id>269</wp:post_id>
-					<wp:post_date><![CDATA[2022-06-03 09:01:23]]></wp:post_date>
+					<wp:post_date><![CDATA[2023-01-18 12:57:32]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-05-23 11:06:44]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 09:01:23]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 09:01:23]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-18 12:57:32]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-18 12:57:32]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 					<wp:post_name><![CDATA[269]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -12702,19 +12758,31 @@ View Collection
 							<wp:meta_key><![CDATA[_menu_item_style_aside]]></wp:meta_key>
 							<wp:meta_value><![CDATA[default]]></wp:meta_value>
 						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2022-06-03]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_menu_item_scroll]]></wp:meta_key>
+							<wp:meta_value><![CDATA[no]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2023-01-10]]></wp:meta_value>
+						</wp:postmeta>
 										</item>
 								<item>
 					<title><![CDATA[]]></title>
-					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2022/06/03/272/</link>
+					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2023/01/18/272/</link>
 					<pubDate>Mon, 23 May 2022 11:08:09 +0000</pubDate>
 					<dc:creator><![CDATA[zakhar]]></dc:creator>
 					<guid isPermaLink="false">http://dummy.xtemos.com/woodmart2/megamarket-elementor/?p=272</guid>
 											<content:encoded><![CDATA[ ]]></content:encoded>
 															<wp:post_id>272</wp:post_id>
-					<wp:post_date><![CDATA[2022-06-03 09:01:23]]></wp:post_date>
+					<wp:post_date><![CDATA[2023-01-18 12:57:32]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-05-23 11:08:09]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 09:01:23]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 09:01:23]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-18 12:57:32]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-18 12:57:32]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 					<wp:post_name><![CDATA[272]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -12781,6 +12849,18 @@ View Collection
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[_menu_item_style_aside]]></wp:meta_key>
 							<wp:meta_value><![CDATA[default]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2022-06-03]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_menu_item_scroll]]></wp:meta_key>
+							<wp:meta_value><![CDATA[no]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2023-01-10]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>
@@ -13409,15 +13489,15 @@ View Collection
 										</item>
 								<item>
 					<title><![CDATA[All Categories]]></title>
-					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2022/06/03/all-categories/</link>
+					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2023/01/18/all-categories/</link>
 					<pubDate>Thu, 02 Jun 2022 07:29:53 +0000</pubDate>
 					<dc:creator><![CDATA[ernest]]></dc:creator>
 					<guid isPermaLink="false">http://dummy.xtemos.com/woodmart2/megamarket-elementor/?p=1621</guid>
 															<wp:post_id>1621</wp:post_id>
-					<wp:post_date><![CDATA[2022-06-03 09:01:23]]></wp:post_date>
+					<wp:post_date><![CDATA[2023-01-18 12:57:32]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-06-02 07:29:53]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 09:01:23]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 09:01:23]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-18 12:57:32]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-18 12:57:32]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 					<wp:post_name><![CDATA[all-categories]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -13469,18 +13549,30 @@ View Collection
 							<wp:meta_key><![CDATA[_menu_item_style_aside]]></wp:meta_key>
 							<wp:meta_value><![CDATA[with-bg]]></wp:meta_value>
 						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2022-06-03]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_menu_item_scroll]]></wp:meta_key>
+							<wp:meta_value><![CDATA[no]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2023-01-10]]></wp:meta_value>
+						</wp:postmeta>
 										</item>
 								<item>
 					<title><![CDATA[All products]]></title>
-					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2022/06/03/all-products/</link>
+					<link>http://dummy.xtemos.com/woodmart2/megamarket-elementor/2023/01/18/all-products/</link>
 					<pubDate>Thu, 02 Jun 2022 07:31:50 +0000</pubDate>
 					<dc:creator><![CDATA[ernest]]></dc:creator>
 					<guid isPermaLink="false">http://dummy.xtemos.com/woodmart2/megamarket-elementor/?p=1623</guid>
 															<wp:post_id>1623</wp:post_id>
-					<wp:post_date><![CDATA[2022-06-03 09:01:23]]></wp:post_date>
+					<wp:post_date><![CDATA[2023-01-18 12:57:32]]></wp:post_date>
 					<wp:post_date_gmt><![CDATA[2022-06-02 07:31:50]]></wp:post_date_gmt>
-					<wp:post_modified><![CDATA[2022-06-03 09:01:23]]></wp:post_modified>
-					<wp:post_modified_gmt><![CDATA[2022-06-03 09:01:23]]></wp:post_modified_gmt>
+					<wp:post_modified><![CDATA[2023-01-18 12:57:32]]></wp:post_modified>
+					<wp:post_modified_gmt><![CDATA[2023-01-18 12:57:32]]></wp:post_modified_gmt>
 					<wp:comment_status><![CDATA[closed]]></wp:comment_status>
 					<wp:post_name><![CDATA[all-products]]></wp:post_name>
 					<wp:status><![CDATA[publish]]></wp:status>
@@ -13531,6 +13623,18 @@ View Collection
 												<wp:postmeta>
 							<wp:meta_key><![CDATA[_menu_item_style_aside]]></wp:meta_key>
 							<wp:meta_value><![CDATA[default]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2022-06-03]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_menu_item_scroll]]></wp:meta_key>
+							<wp:meta_value><![CDATA[no]]></wp:meta_value>
+						</wp:postmeta>
+												<wp:postmeta>
+							<wp:meta_key><![CDATA[_wp_old_date]]></wp:meta_key>
+							<wp:meta_value><![CDATA[2023-01-10]]></wp:meta_value>
 						</wp:postmeta>
 										</item>
 								<item>

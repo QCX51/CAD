@@ -117,4 +117,4 @@ class Result_Count extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Result_Count() );
+Plugin::instance()->widgets_manager->register( new Result_Count() );

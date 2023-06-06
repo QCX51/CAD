@@ -5,6 +5,7 @@
  * @package Woodmart
  */
 
+use XTS\Modules\Checkout_Order_Table;
 use XTS\Modules\Layouts\Main;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -32,6 +33,10 @@ if ( ! function_exists( 'woodmart_shortcode_checkout_order_review' ) ) {
 
 		if ( $settings['css'] ) {
 			$wrapper_classes .= ' ' . vc_shortcode_custom_css_class( $settings['css'] );
+		}
+
+		if ( Checkout_Order_Table::get_instance()->is_enable_woodmart_product_table_template() ) {
+			$wrapper_classes .= ' wd-manage-on';
 		}
 
 		ob_start();

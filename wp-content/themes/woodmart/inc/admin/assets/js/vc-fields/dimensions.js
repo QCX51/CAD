@@ -1,6 +1,6 @@
 (function($) {
 	$('#vc_ui-panel-edit-element').on('vcPanel.shown', function() {
-		$('.wd-dimensions').each(function() {
+		$('.wd-dimensions-wrapp').each(function() {
 			let $wrapper = $(this);
 			let $valueInput = $wrapper.find('.wpb_vc_param_value');
 			let settings = $valueInput.data('settings');
@@ -10,10 +10,10 @@
 				let device = $this.data('value');
 
 				updateActiveClass($this);
-				updateActiveClass($wrapper.find('.wd-dimension[data-device="'+ device +'"]'));
+				updateActiveClass($wrapper.find('.wd-dimensions[data-device="'+ device +'"]'));
 			});
 
-			$wrapper.find('.wd-dimension').each(function() {
+			$wrapper.find('.wd-dimensions').each(function() {
 				let $this = $(this);
 
 				setMainValue();
@@ -40,7 +40,7 @@
 					let $this = $(this);
 
 					updateActiveClass($this);
-					$this.parents('.wd-dimension').data('unit', $this.data('unit'));
+					$this.parents('.wd-dimensions').data('unit', $this.data('unit'));
 					$this.parent().siblings().find('input').val('');
 					setMainValue();
 				});
@@ -56,7 +56,7 @@
 
 					var flag = false;
 
-					$wrapper.find('.wd-dimension').each(function() {
+					$wrapper.find('.wd-dimensions').each(function() {
 						let $this = $(this);
 
 						if ($this.find('input[data-id="top"]').val() || $this.find('input[data-id="right"]').val() || $this.find('input[data-id="bottom"]').val() || $this.find('input[data-id="left"]').val()) {

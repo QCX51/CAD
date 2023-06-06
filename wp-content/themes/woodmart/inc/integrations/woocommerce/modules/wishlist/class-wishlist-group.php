@@ -90,7 +90,7 @@ class Wishlists_Group extends Singleton {
 
 		$response['wishlist_content'] = Ui::get_instance()->wishlist_page_content( $wishlist );
 
-		echo wp_json_encode( $response );
+		wp_send_json( $response );
 
 		exit;
 	}
@@ -147,7 +147,7 @@ class Wishlists_Group extends Singleton {
 
 		$response['wishlist_content'] = Ui::get_instance()->wishlist_page_content( $wishlist );
 
-		echo wp_json_encode( $response );
+		wp_send_json( $response );
 
 		exit;
 	}
@@ -194,7 +194,7 @@ class Wishlists_Group extends Singleton {
 
 		$response['wishlist_content'] = Ui::get_instance()->wishlist_page_content( $wishlist );
 
-		echo wp_json_encode( $response );
+		wp_send_json( $response );
 
 		exit;
 	}

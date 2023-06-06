@@ -79,7 +79,7 @@ class WOODMART_Notices {
 					echo '<p>' . $msg['msg'] . '</p>';
 
 					if ( 'error' !== $msg['type'] ) {
-						echo '<a class="wd-dismiss-link" href="' . esc_url( wp_nonce_url( add_query_arg( 'woodmart-hide-notice', $hash ) ) ) . '">Dismiss Notice</a>';
+						echo '<a class="wd-dismiss-link" href="' . esc_url( wp_nonce_url( add_query_arg( 'woodmart-hide-notice', $hash ) ) ) . '">' . esc_html_e( 'Dismiss Notice', 'woodmart' ) . '</a>';
 						echo '<a class="notice-dismiss" href="' . esc_url( wp_nonce_url( add_query_arg( 'woodmart-hide-notice', $hash ) ) ) . '"></a>';
 					}
 

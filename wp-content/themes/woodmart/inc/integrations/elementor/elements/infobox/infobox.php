@@ -68,7 +68,7 @@ if ( ! function_exists( 'woodmart_elementor_infobox_carousel_template' ) ) {
 
 		?>
 		<div class="wd-carousel-container info-box-carousel-wrapper<?php echo esc_attr( $wrapper_classes ); ?>" <?php echo woodmart_get_owl_attributes( $settings ); ?>>
-			<div class="owl-carousel info-box-carousel<?php echo esc_attr( $carousel_classes ); ?>">
+			<div class="owl-carousel wd-owl info-box-carousel<?php echo esc_attr( $carousel_classes ); ?>">
 				<?php foreach ( $settings['content_repeater'] as $index => $infobox ) : ?>
 					<?php
 					$infobox                    = $infobox + $settings;
@@ -88,6 +88,7 @@ if ( ! function_exists( 'woodmart_elementor_infobox_template' ) ) {
 			'link'                        => '',
 			'alignment'                   => 'left',
 			'image_alignment'             => 'top',
+			'image_vertical_alignment'    => 'top',
 			'style'                       => '',
 			'hover'                       => '',
 			'woodmart_color_scheme'       => '',
@@ -154,6 +155,11 @@ if ( ! function_exists( 'woodmart_elementor_infobox_template' ) ) {
 		$wrapper_classes .= ' box-style-' . $settings['style'];
 		$wrapper_classes .= ' color-scheme-' . $settings['woodmart_color_scheme'];
 		$wrapper_classes .= $settings['wrapper_classes'] ? ' ' . $settings['wrapper_classes'] : '';
+
+		if ( in_array( $settings['image_alignment'], array( 'left', 'right' ), true ) ) {
+			$wrapper_classes .= ' wd-items-' . $settings['image_vertical_alignment'];
+		}
+
 		if ( 'bg-hover' === $settings['style'] ) {
 			$wrapper_classes .= ' color-scheme-hover-' . $settings['woodmart_hover_color_scheme'];
 		}
@@ -232,6 +238,16 @@ if ( ! function_exists( 'woodmart_elementor_infobox_template' ) ) {
 		}
 
 		woodmart_enqueue_inline_style( 'info-box' );
+
+		if ( 'border' === $settings['style'] ) {
+			woodmart_enqueue_inline_style( 'info-box-style-brd' );
+		} elseif ( in_array( $settings['style'], array( 'shadow', 'bg-hover' ), true ) ) {
+			woodmart_enqueue_inline_style( 'info-box-style-shadow-and-bg-hover' );
+		}
+
+		if ( $settings['btn_text'] && 'hover' === $settings['btn_position'] ) {
+			woodmart_enqueue_inline_style( 'info-box-btn-hover' );
+		}
 
 		?>
 		<div class="info-box-wrapper">

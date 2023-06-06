@@ -21,6 +21,7 @@ class Before extends Singleton {
 	 * Init.
 	 */
 	public function init() {
+		$this->remove_shop_page();
 		$this->import_attributes();
 	}
 
@@ -77,5 +78,18 @@ class Before extends Singleton {
 		delete_transient( 'wc_attribute_taxonomies' );
 
 		update_option( 'woodmart_import_attributes', 'imported' );
+	}
+
+	/**
+	 * Remove default shop page
+	 *
+	 * @return void
+	 */
+	private function remove_shop_page() {
+		$shop_page_id = get_option( 'woocommerce_shop_page_id' );
+
+		if ( $shop_page_id ) {
+			wp_delete_post( $shop_page_id, true );
+		}
 	}
 }

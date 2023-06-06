@@ -123,6 +123,49 @@ class Gallery extends Widget_Base {
 			)
 		);
 
+		$this->add_control(
+			'thumbnails_left_vertical_columns',
+			array(
+				'label'     => esc_html__( 'Thumbnails per slide', 'woodmart' ),
+				'type'      => Controls_Manager::SELECT,
+				'options'   => array(
+					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'default' => esc_html__( 'Default', 'woodmart' ),
+					'2'       => '2',
+					'3'       => '3',
+					'4'       => '4',
+					'5'       => '5',
+					'6'       => '6',
+				),
+				'default'   => 'inherit',
+				'condition' => array(
+					'thumbnails_position' => 'left',
+				),
+			)
+		);
+
+		$this->add_responsive_control(
+			'thumbnails_bottom_columns',
+			array(
+				'label'          => esc_html__( 'Thumbnails per slide', 'woodmart' ),
+				'type'           => Controls_Manager::SELECT,
+				'options'        => array(
+					'inherit' => esc_html__( 'Inherit from Theme Settings', 'woodmart' ),
+					'2'       => '2',
+					'3'       => '3',
+					'4'       => '4',
+					'5'       => '5',
+					'6'       => '6',
+				),
+				'default'        => 'inherit',
+				'tablet_default' => 'inherit',
+				'mobile_default' => 'inherit',
+				'condition'      => array(
+					'thumbnails_position' => 'bottom',
+				),
+			)
+		);
+
 		$this->end_controls_section();
 	}
 
@@ -133,8 +176,10 @@ class Gallery extends Widget_Base {
 		$settings = wp_parse_args(
 			$this->get_settings_for_display(),
 			array(
-				'thumbnails_position' => 'left',
-				'product_id'          => false,
+				'thumbnails_position'              => 'left',
+				'product_id'                       => false,
+				'thumbnails_bottom_columns_tablet' => 'inherit',
+				'thumbnails_bottom_columns_mobile' => 'inherit',
 			)
 		);
 
@@ -147,7 +192,11 @@ class Gallery extends Widget_Base {
 		wc_get_template(
 			'single-product/product-image.php',
 			array(
-				'builder_thumbnails_position' => $settings['thumbnails_position'],
+				'builder_thumbnails_position'         => $settings['thumbnails_position'],
+				'builder_thumbnails_vertical_columns' => $settings['thumbnails_left_vertical_columns'],
+				'builder_thumbnails_columns_desktop'  => $settings['thumbnails_bottom_columns'],
+				'builder_thumbnails_columns_tablet'   => $settings['thumbnails_bottom_columns_tablet'],
+				'builder_thumbnails_columns_mobile'   => $settings['thumbnails_bottom_columns_mobile'],
 			)
 		);
 
@@ -155,4 +204,4 @@ class Gallery extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Gallery() );
+Plugin::instance()->widgets_manager->register( new Gallery() );

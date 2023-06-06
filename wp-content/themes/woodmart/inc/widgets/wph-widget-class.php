@@ -74,6 +74,14 @@ if ( ! class_exists( 'WPH_Widget' ) )
 			return $categories_array;
 		}
 
+		public function is_widget_preview() {
+			if ( apply_filters( 'woodmart_hide_content_on_widget_preview', true ) && defined( 'REST_REQUEST' ) && REST_REQUEST ) {
+				return true;
+			}
+
+			return false;
+		}
+
         /** 
         * Create Widget 
         * 
@@ -148,9 +156,15 @@ if ( ! class_exists( 'WPH_Widget' ) )
             $this->before_update_fields();
 
             foreach ( $this->fields as $key ) {
-                $slug = (isset($key['id'])) ? $key['id'] : $key['param_name'];
+				if ( isset( $key['id'] ) ) {
+					$slug = $key['id'];
+				} elseif ( isset( $key['param_name'] ) ) {
+					$slug = $key['param_name'];
+				} else {
+					continue;
+				}
 
-                if ( isset( $key['validate'] ) ) {
+				if ( isset( $key['validate'] ) ) {
                     if ( false === $this->validate( $key['validate'], $new_instance[$slug] ) )
                     return $instance;
                 }
@@ -731,7 +745,7 @@ if ( ! class_exists( 'WPH_Widget' ) )
 						    <div data-attachment_id="<?php echo esc_attr( $id ); ?>">
 							    <?php echo wp_get_attachment_image( $id, 'thumbnail' ); // phpcs:ignore ?>
 							    <a href="#" class="xts-remove">
-								    <span class="dashicons dashicons-dismiss"></span>
+								    <span class="xts-i-close"></span>
 							    </a>
 						    </div>
 					    <?php endif; ?>

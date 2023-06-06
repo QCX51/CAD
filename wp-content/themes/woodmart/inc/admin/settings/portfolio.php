@@ -285,17 +285,17 @@ Options::add_field(
 		'options'     => array(
 			'pagination' => array(
 				'name'  => esc_html__( 'Pagination links', 'woodmart' ),
-				'hint'     => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-pagination-pagination-links.jpg" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-pagination-pagination-links.mp4" autoplay loop muted></video>',
 				'value' => 'pagination',
 			),
 			'load_more'  => array(
 				'name'  => esc_html__( '"Load more" button', 'woodmart' ),
-				'hint'     => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-pagination-load-more-button.jpg" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-pagination-load-more-button.mp4" autoplay loop muted></video>',
 				'value' => 'load_more',
 			),
 			'infinit'    => array(
 				'name'  => esc_html__( 'Infinit scrolling', 'woodmart' ),
-				'hint'     => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-pagination-infinit.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-pagination-infinit.mp4" autoplay loop muted></video>',
 				'value' => 'infinit',
 			),
 		),
@@ -424,6 +424,8 @@ Options::add_field(
 		'type'        => 'switcher',
 		'section'     => 'portfolio_archive_section',
 		'default'     => '1',
+		'on-text'     => esc_html__( 'Yes', 'woodmart' ),
+		'off-text'    => esc_html__( 'No', 'woodmart' ),
 		'priority'    => 90,
 	)
 );
@@ -439,12 +441,12 @@ Options::add_field(
 		'options'     => array(
 			'links'   => array(
 				'name'  => esc_html__( 'Links', 'woodmart' ),
-				'hint'  => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-categories-filters-links.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-categories-filters-links.mp4" autoplay loop muted></video>',
 				'value' => 'links',
 			),
 			'masonry' => array(
 				'name'  => esc_html__( 'Masonry', 'woodmart' ),
-				'hint'  => wp_kses( __( '<img data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-categories-filters-masonry.gif" alt="">', 'woodmart' ), true ),
+				'hint'        => '<video data-src="' . WOODMART_TOOLTIP_URL . 'portfolio-categories-filters-masonry.mp4" autoplay loop muted></video>',
 				'value' => 'masonry',
 			),
 		),

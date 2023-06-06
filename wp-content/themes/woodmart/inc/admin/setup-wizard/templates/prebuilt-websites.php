@@ -60,9 +60,11 @@ if ( Import::get_instance()->is_imported( 'base' ) && Remove::get_instance()->ha
 			<?php esc_html_e( 'View home page', 'woodmart' ); ?>
 		</a>
 
-		<a class="xts-inline-btn xts-i-cart" href="<?php echo esc_url( wc_admin_url( '&path=/setup-wizard' ) ); ?>">
-			<?php esc_html_e( 'WooCommerce setup', 'woodmart' ); ?>
-		</a>
+		<?php if ( class_exists( 'WooCommerce' ) ) : ?>
+			<a class="xts-inline-btn xts-i-cart" href="<?php echo esc_url( wc_admin_url( '&path=/setup-wizard' ) ); ?>">
+				<?php esc_html_e( 'WooCommerce setup', 'woodmart' ); ?>
+			</a>
+		<?php endif; ?>
 
 		<a class="xts-inline-btn xts-i-theme-settings" href="<?php echo esc_url( admin_url( 'admin.php?page=xts_theme_settings' ) ); ?>">
 			<?php esc_html_e( 'Theme settings', 'woodmart' ); ?>

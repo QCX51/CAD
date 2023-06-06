@@ -1,5 +1,5 @@
 (function($) {
-	$('#vc_ui-panel-edit-element').on('vcPanel.shown', function() {
+	$('#vc_ui-panel-edit-element').on('vcPanel.shown click > .vc_controls [data-vc-control="clone"]', function() {
 		$('.wd-colorpicker').each(function() {
 			let $wrapper = $(this);
 			let $valueInput = $wrapper.find('.wpb_vc_param_value');

@@ -319,4 +319,4 @@ class Author_Area extends Widget_Base {
 	}
 }
 
-Plugin::instance()->widgets_manager->register_widget_type( new Author_Area() );
+Plugin::instance()->widgets_manager->register( new Author_Area() );

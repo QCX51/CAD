@@ -112,27 +112,39 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 		$default_btn_bg_color       = woodmart_get_opt( 'btns_default_bg' );
 		$default_btn_bg_color_hover = woodmart_get_opt( 'btns_default_bg_hover' );
 
-		// Shop button.
-		$shop_btn_style           = woodmart_get_opt( 'btns_shop_style' );
-		$shop_btn_color           = 'light' === woodmart_get_opt( 'btns_shop_color_scheme' ) ? '#fff' : '#333';
-		$shop_btn_color_hover     = 'light' === woodmart_get_opt( 'btns_shop_color_scheme_hover' ) ? '#fff' :
-			'#333';
-		$shop_btn_bg_color       = woodmart_get_opt( 'btns_shop_bg' );
-		$shop_btn_bg_color_hover = woodmart_get_opt( 'btns_shop_bg_hover' );
-
 		// Accent button.
-		$accent_btn_style       = woodmart_get_opt( 'btns_accent_style' );
-		$accent_btn_color       = 'light' === woodmart_get_opt( 'btns_accent_color_scheme' ) ? '#fff' : '#333';
-		$accent_btn_color_hover = 'light' === woodmart_get_opt( 'btns_accent_color_scheme_hover' ) ? '#fff' : '#333';
-		$accent_btn_bg_color       = woodmart_get_opt( 'btns_accent_bg' );
-		$accent_btn_bg_color_hover = woodmart_get_opt( 'btns_accent_bg_hover' );
+		$accent_btn_style          = woodmart_get_opt( 'btns_shop_style' );
+		$accent_btn_color          = '#333';
+		$accent_btn_color_hover    = '#333';
+		$accent_btn_bg_color       = woodmart_get_opt( 'btns_shop_bg' );
+		$accent_btn_bg_color_hover = woodmart_get_opt( 'btns_shop_bg_hover' );
+
+		if ( 'light' === woodmart_get_opt( 'btns_shop_color_scheme' ) ) {
+			$accent_btn_color = '#fff';
+		} elseif ( 'custom' === woodmart_get_opt( 'btns_shop_color_scheme' ) ) {
+			$accent_btn_color_custom = woodmart_get_opt( 'btns_shop_color_scheme_custom' );
+
+			if ( ! empty( $accent_btn_color_custom['idle'] ) ) {
+				$accent_btn_color = $accent_btn_color_custom['idle'];
+			}
+		}
+
+		if ( 'light' === woodmart_get_opt( 'btns_shop_color_scheme_hover' ) ) {
+			$accent_btn_color_hover = '#fff';
+		} elseif ( 'custom' === woodmart_get_opt( 'btns_shop_color_scheme_hover' ) ) {
+			$accent_btn_color_hover_custom = woodmart_get_opt( 'btns_shop_color_scheme_hover_custom' );
+
+			if ( ! empty( $accent_btn_color_custom['idle'] ) ) {
+				$accent_btn_color_hover = $accent_btn_color_hover_custom['idle'];
+			}
+		}
 
 		// Link.
 		$link_color = woodmart_get_opt( 'link-color' );
 		$primary_color = woodmart_get_opt( 'primary-color' );
 		$alternative_color = woodmart_get_opt( 'secondary-color' );
 
-		// Typography;
+		// Typography.
 		$text_font = woodmart_get_opt( 'text-font' );
 		$title_font = woodmart_get_opt( 'primary-font' );
 		$entities_font = woodmart_get_opt( 'post-titles-font' );
@@ -140,8 +152,35 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 		$widget_title_font = woodmart_get_opt( 'widget-titles-font' );
 		$header_el_font = woodmart_get_opt( 'navigation-font' );
 
+		// Icon font.
+		$icon_font      = woodmart_get_opt( 'icon_font', array( 'font' => '1', 'weight' => '400' ) );
+		$font_display   = woodmart_get_opt( 'icons_font_display' );
+		$icon_font_name = 'woodmart-font-';
+
+		if ( ! empty( $icon_font['font'] ) ) {
+			$icon_font_name .= $icon_font['font'];
+		}
+
+		if ( ! empty( $icon_font['weight'] ) ) {
+			$icon_font_name .= '-' . $icon_font['weight'];
+		}
+
+		$rounding = woodmart_get_opt( 'rounding_size', 'none' );
+
+		if ( 'none' === $rounding ) {
+			$rounding = 0;
+		} elseif ( 'custom' === $rounding ) {
+			$custom_rounding = json_decode( woodmart_decompress( woodmart_get_opt( 'custom_rounding_size' ) ), true );
+
+			if ( ! empty( $custom_rounding['devices']['desktop']['value'] ) ) {
+				$rounding = $custom_rounding['devices']['desktop']['value'];
+			} else {
+				$rounding = 0;
+			}
+		}
+
+		ob_start();
 		?>
-		<style>
 			:root {
 			/* FORMS */
 
@@ -169,22 +208,13 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 			--btn-default-bgcolor-hover: <?php echo esc_attr( $default_btn_bg_color_hover['idle'] ) ?>;
 			<?php endif; ?>
 
-			--btn-shop-color: <?php echo esc_attr( $shop_btn_color ) ?>;
-			--btn-shop-color-hover: <?php echo esc_attr( $shop_btn_color_hover ) ?>;
+			--btn-accented-color: <?php echo esc_attr( $accent_btn_color ) ?>;
+			--btn-accented-color-hover: <?php echo esc_attr( $accent_btn_color_hover ) ?>;
 			<?php if ( ! empty( $accent_btn_bg_color['idle'] ) ) : ?>
-			--btn-accent-bgcolor: <?php echo esc_attr( $accent_btn_bg_color['idle'] ) ?>;
+			--btn-accented-bgcolor: <?php echo esc_attr( $accent_btn_bg_color['idle'] ) ?>;
 			<?php endif; ?>
 			<?php if ( ! empty( $accent_btn_bg_color_hover['idle'] ) ) : ?>
-			--btn-accent-bgcolor-hover: <?php echo esc_attr( $accent_btn_bg_color_hover['idle'] ) ?>;
-			<?php endif; ?>
-
-			--btn-accent-color: <?php echo esc_attr( $accent_btn_color ) ?>;
-			--btn-accent-color-hover: <?php echo esc_attr( $accent_btn_color_hover ) ?>;
-			<?php if ( ! empty( $shop_btn_bg_color['idle'] ) ) : ?>
-			--btn-shop-bgcolor: <?php echo esc_attr( $shop_btn_bg_color['idle'] ) ?>;
-			<?php endif; ?>
-			<?php if ( ! empty( $shop_btn_bg_color_hover['idle'] ) ) : ?>
-			--btn-shop-bgcolor-hover: <?php echo esc_attr( $shop_btn_bg_color_hover['idle'] ) ?>;
+			--btn-accented-bgcolor-hover: <?php echo esc_attr( $accent_btn_bg_color_hover['idle'] ) ?>;
 			<?php endif; ?>
 			<?php if ( 'flat' === $default_btn_style ) : ?>
 			--btn-default-brd-radius: 0px;
@@ -194,20 +224,12 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 			--btn-default-bottom: 0px;
 			<?php endif; ?>
 
-			<?php if ( 'flat' === $shop_btn_style ) : ?>
-			--btn-shop-brd-radius: 0.001px;
-			--btn-shop-box-shadow: none;
-			--btn-shop-box-shadow-hover: none;
-			--btn-shop-box-shadow-active: none;
-			--btn-shop-bottom: 0px;
-			<?php endif; ?>
-
 			<?php if ( 'flat' === $accent_btn_style ) : ?>
-			--btn-accent-brd-radius: 0px;
-			--btn-accent-box-shadow: none;
-			--btn-accent-box-shadow-hover: none;
-			--btn-accent-box-shadow-active: none;
-			--btn-accent-bottom: 0px;
+			--btn-accented-brd-radius: 0px;
+			--btn-accented-box-shadow: none;
+			--btn-accented-box-shadow-hover: none;
+			--btn-accented-box-shadow-active: none;
+			--btn-accented-bottom: 0px;
 			<?php endif; ?>
 
 			<?php if ( '3d' === $default_btn_style ) : ?>
@@ -217,18 +239,11 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 			--btn-default-box-shadow-hover: inset 0 -2px 0 rgba(0, 0, 0, .15);
 			<?php endif; ?>
 
-			<?php if ( '3d' === $shop_btn_style ) : ?>
-			--btn-shop-bottom-active: -1px;
-			--btn-shop-brd-radius: 0.001px;
-			--btn-shop-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .15);
-			--btn-shop-box-shadow-hover: inset 0 -2px 0 rgba(0, 0, 0, .15);
-			<?php endif; ?>
-
 			<?php if ( '3d' === $accent_btn_style ) : ?>
-			--btn-accent-bottom-active: -1px;
-			--btn-accent-brd-radius: 0px;
-			--btn-accent-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .15);
-			--btn-accent-box-shadow-hover: inset 0 -2px 0 rgba(0, 0, 0, .15);
+			--btn-accented-bottom-active: -1px;
+			--btn-accented-brd-radius: 0px;
+			--btn-accented-box-shadow: inset 0 -2px 0 rgba(0, 0, 0, .15);
+			--btn-accented-box-shadow-hover: inset 0 -2px 0 rgba(0, 0, 0, .15);
 			<?php endif; ?>
 
 			<?php if ( 'rounded' === $default_btn_style ) : ?>
@@ -237,16 +252,10 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 			--btn-default-box-shadow-hover: none;
 			<?php endif; ?>
 
-			<?php if ( 'rounded' === $shop_btn_style ) : ?>
-			--btn-shop-brd-radius: 35px;
-			--btn-shop-box-shadow: none;
-			--btn-shop-box-shadow-hover: none;
-			<?php endif; ?>
-
 			<?php if ( 'rounded' === $accent_btn_style ) : ?>
-			--btn-accent-brd-radius: 35px;
-			--btn-accent-box-shadow: none;
-			--btn-accent-box-shadow-hover: none;
+			--btn-accented-brd-radius: 35px;
+			--btn-accented-box-shadow: none;
+			--btn-accented-box-shadow-hover: none;
 			<?php endif; ?>
 
 			<?php if ( 'semi-rounded' === $default_btn_style ) : ?>
@@ -255,16 +264,10 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 			--btn-default-box-shadow-hover: none;
 			<?php endif; ?>
 
-			<?php if ( 'semi-rounded' === $shop_btn_style ) : ?>
-			--btn-shop-brd-radius: 5px;
-			--btn-shop-box-shadow: none;
-			--btn-shop-box-shadow-hover: none;
-			<?php endif; ?>
-
 			<?php if ( 'semi-rounded' === $accent_btn_style ) : ?>
-			--btn-accent-brd-radius: 5px;
-			--btn-accent-box-shadow: none;
-			--btn-accent-box-shadow-hover: none;
+			--btn-accented-brd-radius: 5px;
+			--btn-accented-box-shadow: none;
+			--btn-accented-box-shadow-hover: none;
 			<?php endif; ?>
 
 			/* LINKS */
@@ -338,6 +341,18 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 			--wd-header-el-font-weight: <?php echo esc_attr( $header_el_font[0]['font-weight'] ); ?>;
 			--wd-header-el-transform: <?php echo esc_attr( $header_el_font[0]['text-transform'] ); ?>;
 			<?php endif; ?>
+
+			--wd-brd-radius: <?php echo esc_attr( $rounding ) ?>px;
+			}
+
+			@font-face {
+				font-weight: normal;
+				font-style: normal;
+				font-family: "woodmart-font";
+				src: url("<?php echo esc_url( woodmart_remove_https( WOODMART_THEME_DIR . '/fonts/' . $icon_font_name . '.woff2' ) . '?v=' . woodmart_get_theme_info( 'Version' ) ); ?>") format("woff2");
+				<?php if ( 'disable' !== $font_display ) : ?>
+					font-display: <?php echo esc_html( $font_display ); ?>;
+				<?php endif; ?>
 			}
 
 			div.block-editor-writing-flow {
@@ -348,7 +363,7 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 
 			<?php if ( 'full-width-content' === $predefined_site_width ) : ?>
 				div.block-editor .editor-styles-wrapper .wp-block:not([data-align="full"]), div.block-editor .editor-styles-wrapper .wp-block[data-align="wide"] {
-					 max-width: 100%;
+					max-width: 100%;
 				}
 			<?php endif; ?>
 
@@ -361,11 +376,16 @@ if ( ! function_exists( 'woodmart_gutenberg_editor_custom_styles' ) ) {
 					max-width: <?php echo esc_attr( $site_width + 150 ); ?>px;
 				}
 			<?php endif; ?>
-		</style>
 		<?php
+
+		$style = ob_get_clean();
+
+		wp_register_style( 'wd-gutenberg-editor-custom', false );
+		wp_enqueue_style( 'wd-gutenberg-editor-custom' );
+		wp_add_inline_style( 'wd-gutenberg-editor-custom', $style );
 	}
 
-	add_action( 'admin_print_styles-post.php', 'woodmart_gutenberg_editor_custom_styles', 10 );
-	add_action( 'admin_print_styles-post-new.php', 'woodmart_gutenberg_editor_custom_styles', 10 );
-	add_action( 'admin_print_styles-widgets.php', 'woodmart_gutenberg_editor_custom_styles', 10 );
+	add_action( 'admin_print_styles-post.php', 'woodmart_gutenberg_editor_custom_styles', 20 );
+	add_action( 'admin_print_styles-post-new.php', 'woodmart_gutenberg_editor_custom_styles', 20 );
+	add_action( 'admin_print_styles-widgets.php', 'woodmart_gutenberg_editor_custom_styles', 20 );
 }

@@ -317,14 +317,14 @@ if ( ! function_exists( 'woodmart_main_loop' ) ) {
 		<?php
 
 		if ( $is_ajax ) {
-			$output = array(
-				'items'    => $output,
-				'status'   => ( $max_page > $paged ) ? 'have-posts' : 'no-more-posts',
-				'nextPage' => add_query_arg( 'woo_ajax', '1', next_posts( $max_page, false ) ),
-				'currentPage' => strtok( woodmart_get_current_url(), '?' ),
+			wp_send_json(
+				array(
+					'items'       => $output,
+					'status'      => ( $max_page > $paged ) ? 'have-posts' : 'no-more-posts',
+					'nextPage'    => add_query_arg( 'woo_ajax', '1', next_posts( $max_page, false ) ),
+					'currentPage' => strtok( woodmart_get_current_url(), '?' ),
+				)
 			);
-
-			echo json_encode( $output );
 		}
 	}
 }
@@ -393,6 +393,7 @@ if ( ! function_exists( 'woodmart_get_post_thumbnail' ) ) {
 				$custom_sizes = woodmart_loop_prop( 'img_size_custom' );
 
 				if ( is_array( $size ) ) {
+					$custom_sizes           = array();
 					$custom_sizes['width']  = $size[0];
 					$custom_sizes['height'] = $size[1];
 					$size                   = 'custom';
@@ -666,8 +667,9 @@ if ( ! function_exists( 'woodmart_posts_navigation' ) ) {
 					<div class="wd-page-nav-btn prev-btn<?php echo woodmart_get_old_classes( ' blog-posts-nav-btn' ); ?>">
 						<?php if ( ! empty( $next_post ) ) : ?>
 							<a href="<?php echo get_permalink( $next_post->ID ); ?>">
-								<span class="btn-label"><?php esc_html_e( 'Newer', 'woodmart' ); ?></span>
+								<span class="wd-label"><?php esc_html_e( 'Newer', 'woodmart' ); ?></span>
 								<span class="wd-entities-title"><?php echo get_the_title( $next_post->ID ); ?></span>
+								<span class="wd-page-nav-icon"></span>
 							</a>
 						<?php endif; ?>
 					</div>
@@ -681,8 +683,9 @@ if ( ! function_exists( 'woodmart_posts_navigation' ) ) {
 					<div class="wd-page-nav-btn next-btn<?php echo woodmart_get_old_classes( ' blog-posts-nav-btn' ); ?>">
 						<?php if ( ! empty( $prev_post ) ) : ?>
 							<a href="<?php echo get_permalink( $prev_post->ID ); ?>">
-								<span class="btn-label"><?php esc_html_e( 'Older', 'woodmart' ); ?></span>
+								<span class="wd-label"><?php esc_html_e( 'Older', 'woodmart' ); ?></span>
 								<span class="wd-entities-title"><?php echo get_the_title( $prev_post->ID ); ?></span>
+								<span class="wd-page-nav-icon"></span>
 							</a>
 						<?php endif; ?>
 					</div>
@@ -867,6 +870,7 @@ if ( ! function_exists( 'woodmart_get_owl_atts' ) ) {
 			'post_type'               => '',
 			'slider'                  => '',
 			'library'                 => 'owl',
+			'css'                     => '',
 		);
 	}
 }
@@ -1753,7 +1757,7 @@ if ( ! function_exists( 'woodmart_mobile_menu' ) ) {
 		echo '<div class="mobile-nav wd-side-hidden' . esc_attr( $nav_classes ) . '">';
 
 		if ( $close_btn ) {
-			echo '<div class="wd-heading widget-heading"><div class="close-side-widget wd-action-btn wd-style-text wd-cross-icon"><a href="#" rel="nofollow">' . esc_html__( 'Close', 'woodmart' ) . '</a></div></div>';
+			echo '<div class="wd-heading"><div class="close-side-widget wd-action-btn wd-style-text wd-cross-icon"><a href="#" rel="nofollow">' . esc_html__( 'Close', 'woodmart' ) . '</a></div></div>';
 		}
 
 		if ( $search_form ) {
@@ -2064,7 +2068,7 @@ if ( ! function_exists( 'woodmart_get_twitts' ) ) {
 
 if ( ! function_exists( 'woodmart_full_screen_main_nav' ) ) {
 	function woodmart_full_screen_main_nav() {
-		if ( ! whb_is_full_screen_menu() || ( wp_is_mobile() && woodmart_get_opt( 'mobile_optimization', 0 ) ) || ( woodmart_get_opt( 'maintenance_mode' ) && ! is_user_logged_in() ) ) {
+		if ( ! whb_is_full_screen_menu() || ( wp_is_mobile() && woodmart_get_opt( 'mobile_optimization', 0 ) ) || woodmart_is_maintenance_active() ) {
 			return;
 		}
 
